@@ -54,6 +54,7 @@ public class MarketMgmUI extends JFrame {
 	
 	//Constructor
 	public MarketMgmUI() {
+		super("ReSell Market");
 		showMain();
 		
 	}
