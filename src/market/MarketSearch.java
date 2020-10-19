@@ -73,7 +73,7 @@ public class MarketSearch {
 		//이벤트 처리 클래스
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
-				System.out.println("search");			
+				System.out.println("test");			
 //				searchProc();
 			}
 		}
