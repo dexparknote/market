@@ -1,5 +1,6 @@
 package market;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,7 @@ public class MarketRegister {
 	}	
 	
 	//Method
+	
 	public void register() {
 	main.switchPane(MarketMgmUI.REGISTER);
 	
