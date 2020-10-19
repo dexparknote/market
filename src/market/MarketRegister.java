@@ -44,7 +44,7 @@ public class MarketRegister {
 		jl_explain = new JLabel("설명"); 
 		jt_name = new JTextField(15);
 		jt_price = new JTextField(15);
-		jt_explain = new JTextField(45);
+		jt_explain = new JTextField(47);
 		btnReg = new JButton("등록하기");
 		btnReset = new JButton("다시쓰기");
 		
