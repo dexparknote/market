@@ -102,16 +102,16 @@ public class MarketRegister {
 		return result;
 	}//regFormCheck method
 	
-/* MarketVO 만들면 주석제거
 	//registerProc
 	public void registerProc() {
 		//MemberVO 객체를 생성하여 등록
-		MemberVO vo = new MemberVO();
-		vo.setName(jt_name.getText().trim());
-		vo.setPrice(jt_price.getText().trim());
+		ProductVO vo = new ProductVO();
+		vo.setPid(jt_name.getText().trim());
+		vo.setPrice( Integer.parseInt(jt_price.getText().trim()));
 		vo.setExplain(jt_explain.getText().trim());
 		
 		//member 테이블에 등록
+		/* system 만들어야함
 		boolean result =main.system.register(vo);
 		
 		if(result) {
@@ -119,12 +119,12 @@ public class MarketRegister {
 		}else {
 			JOptionPane.showMessageDialog(null, main.getMsg("등록 실패!!"));
 		}
-		
+		*/
 //		if(MemberMgmUI.list.add(vo))
 //			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
 		
 	}
-*/
+
 	//이벤트 처리 클래스
 	class MemberRegisterEvent implements ActionListener{
 		
