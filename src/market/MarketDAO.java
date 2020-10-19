@@ -1,6 +1,8 @@
 package market;
 
-public class MarketDAO extends DBConn{
+import java.util.ArrayList;
+
+class MarketDAO extends DBConn{
 	
 	
 	/**
@@ -24,5 +26,69 @@ public class MarketDAO extends DBConn{
 		}
 		return result;
 	}
+	
+	/**
+	 * select
+	 */
+	public ArrayList<ProductVO> select(){
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		
+		try {
+			//1. sql»ý¼º
+			String sql = " select pid, pname, price, address, explain, pdate " + 
+						" from (select pid, pname, price, address, explain, pdate from product " + 
+						"      order by pdate desc)";
+			
+			getPreparedStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProductVO vo = new ProductVO();
+				vo.setPid(rs.getString(1));
+				vo.setPname(rs.getString(2));
+				vo.setPrice(rs.getInt(3));
+				vo.setAddress(rs.getString(4));
+				vo.setExplain(rs.getString(5));
+				vo.setPdate(rs.getString(6));
+			
+				
+				list.add(vo);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	/**
+	 * select(String name)
+	 */
+	public ProductVO select(String pname) {
+		ProductVO vo = new ProductVO();
+		
+		try {
+			String sql = "select pid, pname, price, address, explain, pdate from product where pname=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1,pname);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo.setPid(rs.getString(1));
+				vo.setPname(rs.getString(2));
+				vo.setPrice(rs.getInt(3));
+				vo.setAddress(rs.getString(4));
+				vo.setExplain(rs.getString(5));
+				vo.setPdate(rs.getString(6));
+			}			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
+	
+	
+
 
 }

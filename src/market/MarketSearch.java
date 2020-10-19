@@ -33,7 +33,7 @@ public class MarketSearch {
 			
 			jp_search = new JPanel();
 			jp_searchResult = new JPanel();
-			jl_searchName = new JLabel("물품명 ");
+			jl_searchName = new JLabel("물품명");
 			jt_search = new JTextField(20);
 			sta = new TextArea(20,50);
 			sta.setEditable(false);
@@ -55,30 +55,34 @@ public class MarketSearch {
 			
 			jt_search.addActionListener(new MemberSearchEvent());
 		}//search method
-//		
-//		//searchProc - 데이터 검색
-//		public void searchProc() {
-//			//1. 검색명 가져오기 : jt_search
-//			String name = jt_search.getText().trim();
-//			sta.setText("");
-//		
-//			//2. DB연동
-//			MarketVO rvo = main.system.search(name);
-//
-//			//3. 검색 결과에 따라 JOption~
-//			if(rvo != null) {
-//				sta.append(rvo.getName() +"\t");
-//				sta.append(rvo.getAddr() +"\t");
-//			}else {
-//				sta.append("데이터가 존재하지 않습니다.");
-//			}		
-//		}
-//		
+		
+		//searchProc - 데이터 검색
+		public void searchProc() {
+			//1. 검색명 가져오기 : jt_search
+			String pname = jt_search.getText().trim();
+			sta.setText("");
+		
+			//2. DB연동
+			ProductVO rvo = main.system.search(pname);
+
+			//3. 검색 결과에 따라 JOption~
+			if(rvo != null) {
+				sta.append(rvo.getPid() +"\t");
+				sta.append(rvo.getPname() +"\t");
+				sta.append(rvo.getPrice() +"\t");
+				sta.append(rvo.getAddress() +"\t");
+				sta.append(rvo.getExplain() +"\t");
+				sta.append(rvo.getPdate() +"\t");
+			}else {
+				sta.append("데이터가 존재하지 않습니다.");
+			}		
+		}
+		
 		//이벤트 처리 클래스
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
-				System.out.println("test!!!~~");			
-//				searchProc()
+//				System.out.println("test!!!~~");			
+				searchProc();
 			}
 		}
 		

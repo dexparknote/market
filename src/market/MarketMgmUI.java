@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,8 +20,10 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+
 public class MarketMgmUI extends JFrame {
 	//Field
+	public static final ArrayList<ProductVO> list =new ArrayList<ProductVO>();
 	public MarketMgmSystem system = new MarketMgmSystem();
 	
 	public static final int REGISTER = 1;
