@@ -249,7 +249,15 @@ public class MarketMgmUI extends JFrame {
 			
 			MarketMgmUIEvent eventObj = new MarketMgmUIEvent(this);
 			doJoin.addActionListener(eventObj);
+			resetJoin.addActionListener(eventObj);
 			addWindowListener(eventObj);
+		}
+		
+		public void joinCancel() {
+			joinForm.setVisible(false);
+			joinLaPane.setVisible(false);
+			joinTaPane.setVisible(false); 
+			joinBtnPane.setVisible(false);
 		}
 		
 		//메뉴 이동 제어
@@ -348,6 +356,11 @@ public class MarketMgmUI extends JFrame {
 					new MarketRegister(main).register();
 				}else if(btnSearch == obj) {
 					new MarketSearch(main).search();
+				}else if(resetJoin == obj) {
+					showMain();
+					joinCancel();
+				}else if(btnDelete == obj) {
+					new MarketDelete(main).delete();
 				}
 
 			 
