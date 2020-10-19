@@ -6,4 +6,5 @@ public class MarketJoin {
 	//Method
 	//±è±â¸²2222
 	//girim git test2
+	//YOUNGJAE TEST 10/19 11:01
 }
