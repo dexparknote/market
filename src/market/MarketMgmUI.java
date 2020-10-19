@@ -264,10 +264,10 @@ public class MarketMgmUI extends JFrame {
 		public void resetPane() {
 			showPane.setVisible(false);
 			showButtonPane.setVisible(false);
-			joinForm.setVisible(false);
-			joinLaPane.setVisible(false);
-			joinTaPane.setVisible(false);
-			joinBtnPane.setVisible(false);
+//			joinForm.setVisible(false);
+//			joinLaPane.setVisible(false);
+//			joinTaPane.setVisible(false);
+//			joinBtnPane.setVisible(false);
 			mainPane.setVisible(false);
 			regPane.setVisible(false);
 			searchPane.setVisible(false);
