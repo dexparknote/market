@@ -2,7 +2,7 @@ package market;
 
 public class ProductVO {
 	//Field
-	String pid, pname, address, explain, sysdate;
+	String pid, pname, address, explain, pdate;
 	int price;
 	public String getPid() {
 		return pid;
@@ -28,17 +28,17 @@ public class ProductVO {
 	public void setExplain(String explain) {
 		this.explain = explain;
 	}
-	public String getSysdate() {
-		return sysdate;
-	}
-	public void setSysdate(String sysdate) {
-		this.sysdate = sysdate;
-	}
 	public int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public String getPdate() {
+		return pdate;
+	}
+	public void setPdate(String pdate) {
+		this.pdate = pdate;
 	}
 	
 	

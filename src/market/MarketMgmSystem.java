@@ -9,4 +9,8 @@ public class MarketMgmSystem {
 		dao = new MarketDAO();
 		
 	}
+	
+	public boolean register(ProductVO vo) {
+		return dao.insert(vo);
+	}
 }

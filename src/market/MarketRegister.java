@@ -111,12 +111,11 @@ public class MarketRegister {
 	public void registerProc() {
 		//MemberVO 객체를 생성하여 등록
 		ProductVO vo = new ProductVO();
-		vo.setPid(jt_name.getText().trim());
+		vo.setPname(jt_name.getText().trim());
 		vo.setPrice( Integer.parseInt(jt_price.getText().trim()));
 		vo.setExplain(jt_explain.getText().trim());
 		
 		//member 테이블에 등록
-		/* system 만들어야함
 		boolean result =main.system.register(vo);
 		
 		if(result) {
@@ -124,7 +123,7 @@ public class MarketRegister {
 		}else {
 			JOptionPane.showMessageDialog(null, main.getMsg("등록 실패!!"));
 		}
-		*/
+		
 //		if(MemberMgmUI.list.add(vo))
 //			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
 		
