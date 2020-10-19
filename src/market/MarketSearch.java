@@ -65,7 +65,8 @@ public class MarketSearch {
 			//2. DB연동
 			ProductVO rvo = main.system.search(pname);
 
-			//3. 검색 결과에 따라 JOption~
+			//3. 검색 결과에 따라 JOption
+
 			if(rvo != null) {
 				sta.append(rvo.getPid() +"\t");
 				sta.append(rvo.getPname() +"\t");
@@ -81,7 +82,7 @@ public class MarketSearch {
 		//이벤트 처리 클래스
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
-//				System.out.println("test!!!~~");			
+//				System.out.println("test!!!");			
 				searchProc();
 			}
 		}
