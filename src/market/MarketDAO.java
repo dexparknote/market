@@ -24,5 +24,32 @@ public class MarketDAO extends DBConn{
 		}
 		return result;
 	}
-
+	
+	/** DB Table 만들면 그때 추가하기!
+	 * delete select 
+	 */
+	public boolean delselect(String pname) {
+		boolean result = false;
+		
+		try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/** DB Table 만들면 그때 추가하기!
+	 * delete
+	 */
+	public boolean delete(String pname) {
+		boolean result = false;
+		
+		try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

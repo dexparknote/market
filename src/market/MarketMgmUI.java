@@ -22,14 +22,13 @@ import javax.swing.JTextField;
 
 public class MarketMgmUI extends JFrame {
 	//Field
-	public MarketMgmSystem system = new MarketMgmSystem();
+	public static MarketMgmSystem system = new MarketMgmSystem();
 	
 	public static final int REGISTER = 1;
 	public static final int SEARCH = 2;
 	public static final int UPDATE = 3;
 	public static final int DELETE = 4;
 	public static final int CHAT = 5;
-	//public static final int JOIN = 6;//회원가입 
 	
 	JPanel showPane, showButtonPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
@@ -245,13 +244,23 @@ public class MarketMgmUI extends JFrame {
 			
 			MarketMgmUIEvent eventObj = new MarketMgmUIEvent(this);
 			doJoin.addActionListener(eventObj);
+			resetJoin.addActionListener(eventObj);
 			addWindowListener(eventObj);
+		}
+		
+		//회원가입 취소
+		public void joinCancel() {
+			joinForm.setVisible(false);
+			joinLaPane.setVisible(false);
+			joinTaPane.setVisible(false); 
+			joinBtnPane.setVisible(false);
 		}
 		
 		//메뉴 이동 제어
 		public void resetPane() {
 			showPane.setVisible(false);
 			showButtonPane.setVisible(false);
+			joinForm.setVisible(false);
 			joinLaPane.setVisible(false);
 			joinTaPane.setVisible(false);
 			joinBtnPane.setVisible(false);
@@ -347,6 +356,11 @@ public class MarketMgmUI extends JFrame {
 					new MarketRegister(main).register();
 				}else if(btnSearch == obj) {
 					new MarketSearch(main).search();
+				}else if(resetJoin == obj) { // 가입취소 버튼 -> 메인화면 
+					joinCancel();
+					showMain();
+				}else if(btnDelete == obj) {
+					new MarketDelete(main).delete();
 				}
 
 			 
