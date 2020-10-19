@@ -33,7 +33,7 @@ public class MarketSearch {
 			
 			jp_search = new JPanel();
 			jp_searchResult = new JPanel();
-			jl_searchName = new JLabel("물품명 >>");
+			jl_searchName = new JLabel("물품명 ");
 			jt_search = new JTextField(20);
 			sta = new TextArea(20,50);
 			sta.setEditable(false);
@@ -78,7 +78,7 @@ public class MarketSearch {
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
 				System.out.println("test!!!~~");			
-//				searchProc();
+//				searchProc()
 			}
 		}
 		
