@@ -26,4 +26,11 @@ public class MarketMgmSystem {
 		return dao.select(pname);
 	}
 	
+	public boolean delselect(String pname) {
+		return dao.delselect(pname);
+	}
+
+	public boolean delete(String pname) {
+		return dao.delete(pname);
+	}
 }
