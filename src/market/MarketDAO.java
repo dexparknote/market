@@ -27,6 +27,15 @@ class MarketDAO extends DBConn{
 		return result;
 	}
 	
+<<<<<<< HEAD
+	/** DB Table 만들면 그때 추가하기!
+	 * delete select 
+	 */
+	public boolean delselect(String pname) {
+		boolean result = false;
+		
+		try {
+=======
 	/**
 	 * select
 	 */
@@ -54,10 +63,29 @@ class MarketDAO extends DBConn{
 				list.add(vo);
 			}
 			
+>>>>>>> 28ce6c1d02fe1ad3e29c13f7ba4b5017640255ea
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+<<<<<<< HEAD
+		return result;
+	}
+	
+	/** DB Table 만들면 그때 추가하기!
+	 * delete
+	 */
+	public boolean delete(String pname) {
+		boolean result = false;
+		
+		try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+=======
 		return list;
 	}
 	
@@ -116,4 +144,5 @@ class MarketDAO extends DBConn{
 		return result;
 	}
 
+>>>>>>> 28ce6c1d02fe1ad3e29c13f7ba4b5017640255ea
 }

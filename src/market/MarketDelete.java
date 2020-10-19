@@ -85,4 +85,8 @@ public class MarketDelete {
 		}
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b2c41a919fb53cd46ed3d83c6433e0549f8f17b2
