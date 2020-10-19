@@ -1,6 +1,7 @@
 package market;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,7 +33,7 @@ public class MarketSearch {
 			
 			jp_search = new JPanel();
 			jp_searchResult = new JPanel();
-			jl_searchName = new JLabel("검색명 >>");
+			jl_searchName = new JLabel("물품명 >>");
 			jt_search = new JTextField(20);
 			sta = new TextArea(20,50);
 			sta.setEditable(false);
@@ -44,6 +45,10 @@ public class MarketSearch {
 			
 			searchPane.add(jp_search);
 			searchPane.add(jp_searchResult);
+			
+			jp_search.setBackground(Color.getHSBColor(100, 100, 82));
+			jp_searchResult.setBackground(Color.getHSBColor(100, 100, 82));
+			sta.setBackground(Color.getHSBColor(255, 255, 1));		
 			
 			main.add(searchPane, BorderLayout.CENTER);
 			main.setVisible(true);	
