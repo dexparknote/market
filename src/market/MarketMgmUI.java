@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 
 public class MarketMgmUI extends JFrame {
 	//Field
+	public MarketMgmSystem system = new MarketMgmSystem();
+	
 	public static final int REGISTER = 1;
 	public static final int SEARCH = 2;
 	public static final int UPDATE = 3;
@@ -343,6 +345,8 @@ public class MarketMgmUI extends JFrame {
 					join();
 				}else if(btnReg == obj) {
 					new MarketRegister(main).register();
+				}else if(btnSearch == obj) {
+					new MarketSearch(main).search();
 				}
 
 			 

@@ -1,5 +1,6 @@
 package market;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,7 @@ public class MarketRegister {
 	}	
 	
 	//Method
+	
 	public void register() {
 	main.switchPane(MarketMgmUI.REGISTER);
 	
@@ -42,7 +44,7 @@ public class MarketRegister {
 		jl_explain = new JLabel("설명"); 
 		jt_name = new JTextField(15);
 		jt_price = new JTextField(15);
-		jt_explain = new JTextField(45);
+		jt_explain = new JTextField(47);
 		btnReg = new JButton("등록하기");
 		btnReset = new JButton("다시쓰기");
 		
@@ -93,6 +95,11 @@ public class MarketRegister {
 			JOptionPane.showMessageDialog(null, 
 					main.getMsg("설명을 입력해주세요"));
 			jt_explain.requestFocus();
+		}else if( Integer.parseInt(jt_price.getText().trim())<0 ) {
+			JOptionPane.showMessageDialog(null, 
+					main.getMsg("가격를 다시 입력해주세요"));
+			jt_price.setText("");
+			jt_price.requestFocus();
 		}else {
 			result = true;
 		}
@@ -100,13 +107,12 @@ public class MarketRegister {
 		return result;
 	}//regFormCheck method
 	
-/* MarketVO 만들면 주석제거
 	//registerProc
 	public void registerProc() {
 		//MemberVO 객체를 생성하여 등록
-		MemberVO vo = new MemberVO();
-		vo.setName(jt_name.getText().trim());
-		vo.setPrice(jt_price.getText().trim());
+		ProductVO vo = new ProductVO();
+		vo.setPname(jt_name.getText().trim());
+		vo.setPrice( Integer.parseInt(jt_price.getText().trim()));
 		vo.setExplain(jt_explain.getText().trim());
 		
 		//member 테이블에 등록
@@ -122,14 +128,14 @@ public class MarketRegister {
 //			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
 		
 	}
-*/
+
 	//이벤트 처리 클래스
 	class MemberRegisterEvent implements ActionListener{
 		
 		public void actionPerformed(ActionEvent ae) {
 			Object obj = ae.getSource();
 			if(btnReg == obj) {
-//				if(regFormCheck()) registerProc();  // MarketVO 만들면 주석제
+				if(regFormCheck()) registerProc(); 
 			}else if(btnReset == obj) {
 				jt_name.setText("");
 				jt_price.setText("");
