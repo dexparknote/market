@@ -252,9 +252,6 @@ public class MarketMgmUI extends JFrame {
 		public void resetPane() {
 			showPane.setVisible(false);
 			showButtonPane.setVisible(false);
-			joinLaPane.setVisible(false);
-			joinTaPane.setVisible(false);
-			joinBtnPane.setVisible(false);
 			mainPane.setVisible(false);
 			regPane.setVisible(false);
 			searchPane.setVisible(false);
@@ -332,7 +329,7 @@ public class MarketMgmUI extends JFrame {
 			//윈도우 이벤트 처리
 			public void windowClosing(WindowEvent we) {
 				//JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
-//				system.dao.close();
+				system.dao.close();
 				System.exit(0);
 			}
 			
