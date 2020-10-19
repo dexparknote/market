@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,9 +21,15 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+
 public class MarketMgmUI extends JFrame {
 	//Field
+<<<<<<< HEAD
 	public static MarketMgmSystem system = new MarketMgmSystem();
+=======
+	public static final ArrayList<ProductVO> list =new ArrayList<ProductVO>();
+	public MarketMgmSystem system = new MarketMgmSystem();
+>>>>>>> 28ce6c1d02fe1ad3e29c13f7ba4b5017640255ea
 	
 	public static final int REGISTER = 1;
 	public static final int SEARCH = 2;
@@ -53,6 +60,7 @@ public class MarketMgmUI extends JFrame {
 	
 	//Constructor
 	public MarketMgmUI() {
+		super("ReSell Market");
 		showMain();
 		
 	}
@@ -260,10 +268,13 @@ public class MarketMgmUI extends JFrame {
 		public void resetPane() {
 			showPane.setVisible(false);
 			showButtonPane.setVisible(false);
+<<<<<<< HEAD
 			joinForm.setVisible(false);
 			joinLaPane.setVisible(false);
 			joinTaPane.setVisible(false);
 			joinBtnPane.setVisible(false);
+=======
+>>>>>>> 28ce6c1d02fe1ad3e29c13f7ba4b5017640255ea
 			mainPane.setVisible(false);
 			regPane.setVisible(false);
 			searchPane.setVisible(false);
@@ -341,7 +352,7 @@ public class MarketMgmUI extends JFrame {
 			//윈도우 이벤트 처리
 			public void windowClosing(WindowEvent we) {
 				//JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
-//				system.dao.close();
+				system.dao.close();
 				System.exit(0);
 			}
 			

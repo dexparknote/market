@@ -1,6 +1,8 @@
 package market;
 
-public class MarketDAO extends DBConn{
+import java.util.ArrayList;
+
+class MarketDAO extends DBConn{
 	
 	
 	/**
@@ -25,6 +27,7 @@ public class MarketDAO extends DBConn{
 		return result;
 	}
 	
+<<<<<<< HEAD
 	/** DB Table 만들면 그때 추가하기!
 	 * delete select 
 	 */
@@ -32,10 +35,40 @@ public class MarketDAO extends DBConn{
 		boolean result = false;
 		
 		try {
+=======
+	/**
+	 * select
+	 */
+	public ArrayList<ProductVO> select(){
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		
+		try {
+			//1. sql생성
+			String sql = " select pid, pname, price, address, explain, pdate " + 
+						" from (select pid, pname, price, address, explain, pdate from product " + 
+						"      order by pdate desc)";
+			
+			getPreparedStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProductVO vo = new ProductVO();
+				vo.setPid(rs.getString(1));
+				vo.setPname(rs.getString(2));
+				vo.setPrice(rs.getInt(3));
+				vo.setAddress(rs.getString(4));
+				vo.setExplain(rs.getString(5));
+				vo.setPdate(rs.getString(6));
+			
+				
+				list.add(vo);
+			}
+			
+>>>>>>> 28ce6c1d02fe1ad3e29c13f7ba4b5017640255ea
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+<<<<<<< HEAD
 		return result;
 	}
 	
@@ -52,4 +85,39 @@ public class MarketDAO extends DBConn{
 		
 		return result;
 	}
+=======
+		return list;
+	}
+	
+	/**
+	 * select(String name)
+	 */
+	public ProductVO select(String pname) {
+		ProductVO vo = new ProductVO();
+		
+		try {
+			String sql = "select pid, pname, price, address, explain, pdate from product where pname=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1,pname);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo.setPid(rs.getString(1));
+				vo.setPname(rs.getString(2));
+				vo.setPrice(rs.getInt(3));
+				vo.setAddress(rs.getString(4));
+				vo.setExplain(rs.getString(5));
+				vo.setPdate(rs.getString(6));
+			}			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+	}
+	
+	
+
+
+>>>>>>> 28ce6c1d02fe1ad3e29c13f7ba4b5017640255ea
 }
