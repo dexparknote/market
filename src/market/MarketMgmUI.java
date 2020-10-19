@@ -24,12 +24,8 @@ import javax.swing.JTextField;
 
 public class MarketMgmUI extends JFrame {
 	//Field
-<<<<<<< HEAD
 	public static MarketMgmSystem system = new MarketMgmSystem();
-=======
 	public static final ArrayList<ProductVO> list =new ArrayList<ProductVO>();
-	public MarketMgmSystem system = new MarketMgmSystem();
->>>>>>> 28ce6c1d02fe1ad3e29c13f7ba4b5017640255ea
 	
 	public static final int REGISTER = 1;
 	public static final int SEARCH = 2;
@@ -256,10 +252,7 @@ public class MarketMgmUI extends JFrame {
 			addWindowListener(eventObj);
 		}
 		
-<<<<<<< HEAD
-=======
 		//회원가입 취소
->>>>>>> b2c41a919fb53cd46ed3d83c6433e0549f8f17b2
 		public void joinCancel() {
 			joinForm.setVisible(false);
 			joinLaPane.setVisible(false);
@@ -271,13 +264,10 @@ public class MarketMgmUI extends JFrame {
 		public void resetPane() {
 			showPane.setVisible(false);
 			showButtonPane.setVisible(false);
-<<<<<<< HEAD
 			joinForm.setVisible(false);
 			joinLaPane.setVisible(false);
 			joinTaPane.setVisible(false);
 			joinBtnPane.setVisible(false);
-=======
->>>>>>> 28ce6c1d02fe1ad3e29c13f7ba4b5017640255ea
 			mainPane.setVisible(false);
 			regPane.setVisible(false);
 			searchPane.setVisible(false);
@@ -370,15 +360,12 @@ public class MarketMgmUI extends JFrame {
 					new MarketRegister(main).register();
 				}else if(btnSearch == obj) {
 					new MarketSearch(main).search();
-<<<<<<< HEAD
 				}else if(resetJoin == obj) {
 					showMain();
 					joinCancel();
-=======
 				}else if(resetJoin == obj) { // 가입취소 버튼 -> 메인화면 
 					joinCancel();
 					showMain();
->>>>>>> b2c41a919fb53cd46ed3d83c6433e0549f8f17b2
 				}else if(btnDelete == obj) {
 					new MarketDelete(main).delete();
 				}
