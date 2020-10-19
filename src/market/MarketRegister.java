@@ -1,6 +1,7 @@
 package market;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,6 +31,7 @@ public class MarketRegister {
 	//Method
 	public void register() {
 	main.switchPane(MarketMgmUI.REGISTER);
+	
 		
 		jp_name = new JPanel();
 		jp_price = new JPanel();
@@ -54,6 +56,11 @@ public class MarketRegister {
 		jp_price.add(jl_price);  jp_price.add(jt_price);
 		jp_explain.add(jl_explain);  jp_explain.add(jt_explain);
 		jp_button.add(btnReg);	jp_button.add(btnReset);
+		
+		jp_name.setBackground(Color.getHSBColor(100, 100, 82));
+		jp_price.setBackground(Color.getHSBColor(100, 100, 82));
+		jp_explain.setBackground(Color.getHSBColor(100, 100, 82));
+		jp_button.setBackground(Color.getHSBColor(100, 100, 82));
 		
 		regPane.add(jp_name);
 		regPane.add(jp_price);
