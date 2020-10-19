@@ -26,21 +26,21 @@ public class MarketMgmUI extends JFrame {
 	public static final int UPDATE = 3;
 	public static final int DELETE = 4;
 	public static final int CHAT = 5;
-	public static final int JOIN = 6;//회원가입
+//	public static final int JOIN = 6;//회원가입
 	
 	JPanel showPane, showButtonPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
 	JPanel mainPane, menuPane;	
-	JButton btnReg, btnList, btnSearch, btnUpdate, btnDelete,	btnExit;
+	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat;
 	JLabel jl_title, jl_img;
 	JTextField jtf_id;  //아이디 입력 JTextField
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
 
-//	JPanel regPane = new JPanel(new GridLayout(10,1));
-//	JPanel listPane = new JPanel();
-//	JPanel searchPane = new JPanel();
-//	JPanel updatePane = new JPanel(new GridLayout(10,1));
-//	JPanel deletePane = new JPanel();	
+	JPanel regPane = new JPanel(new GridLayout(10,1));
+	JPanel searchPane = new JPanel();
+	JPanel updatePane = new JPanel(new GridLayout(10,1));
+	JPanel deletePane = new JPanel();	
+	JPanel chatPane = new JPanel();
 
 	public static Font font = new Font("맑은 고딕", Font.BOLD, 12);
 	
@@ -106,17 +106,68 @@ public class MarketMgmUI extends JFrame {
 			addWindowListener(new MarketMgmUIEvent(this));
 			
 		}
-/*		
+		
+		public void start() { //임시용
+			showPane.setVisible(false);
+			showButtonPane.setVisible(false);
+			
+			mainPane = new JPanel();	
+			menuPane = new JPanel(new GridLayout(10,1));
+			jl_title = new JLabel("\n @ 중고거래 시스템에 오신것을 환영합니다 @ ");
+			jl_img = new JLabel(new ImageIcon("src/member/main.png"));
+			
+			btnReg = new JButton("물품등록");
+			btnSearch = new JButton("게시물 검색");
+			btnUpdate = new JButton("게시물 수정");
+			btnDelete = new JButton("물품삭제");
+			btnChat = new JButton("채팅하기");
+			
+			jl_title.setFont(new Font("맑은 고딕",Font.BOLD,16));
+			btnReg.setFont(font);  btnSearch.setFont(font);
+			btnUpdate.setFont(font);  btnDelete.setFont(font);  
+			btnChat.setFont(font);
+			mainPane.add(jl_img);
+			mainPane.add(jl_title);		
+			
+			menuPane.add(btnReg);
+			menuPane.add(btnSearch);
+			menuPane.add(btnUpdate);
+			menuPane.add(btnDelete);
+			menuPane.add(btnChat);
+
+			add(menuPane, BorderLayout.WEST);
+			add(mainPane, BorderLayout.CENTER);
+			
+			setSize(600,500);
+			
+			Dimension fsize = getSize();
+			Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize(); 
+			int width = (int)(scsize.getWidth()-fsize.getWidth())/2;
+			int height =(int)(scsize.getHeight()-fsize.getHeight())/2;
+			
+			setLocation(width, height);
+			setVisible(true);
+			
+			MarketMgmUIEvent eventObj = new MarketMgmUIEvent(this);
+			addWindowListener(eventObj);
+			btnReg.addActionListener(eventObj);
+			btnSearch.addActionListener(eventObj);
+			btnUpdate.addActionListener(eventObj);
+			btnDelete.addActionListener(eventObj);
+			btnChat.addActionListener(eventObj);
+
+		}//start method
+
 		//메뉴 이동 제어
 		public void resetPane() {
 			showPane.setVisible(false);
 			showButtonPane.setVisible(false);
 			mainPane.setVisible(false);
 			regPane.setVisible(false);
-			listPane.setVisible(false);
 			searchPane.setVisible(false);
 			updatePane.setVisible(false);
 			deletePane.setVisible(false);
+			chatPane.setVisible(false);
 		}
 		
 		public void switchPane(String menu) {
@@ -124,9 +175,6 @@ public class MarketMgmUI extends JFrame {
 			if(menu.equals("register")) {
 				regPane.removeAll();
 				regPane.setVisible(true);
-			}else if(menu.equals("list")) {		
-				listPane.removeAll();
-				listPane.setVisible(true);
 			}else if(menu.equals("search")) {		
 				searchPane.removeAll();
 				searchPane.setVisible(true);
@@ -136,6 +184,9 @@ public class MarketMgmUI extends JFrame {
 			}else if(menu.equals("delete")) {		
 				deletePane.removeAll();
 				deletePane.setVisible(true);
+			}else if(menu.equals("chat")) {		
+				chatPane.removeAll();
+				chatPane.setVisible(true);
 			}
 		}
 		
@@ -147,22 +198,22 @@ public class MarketMgmUI extends JFrame {
 				regPane.setVisible(true);
 				break;
 			case 2 : 
-				listPane.removeAll();
-				listPane.setVisible(true);
-				break;
-			case 3 : 
 				searchPane.removeAll();
 				searchPane.setVisible(true);
 				break;
-			case 4 : 
+			case 3 : 
 				updatePane.removeAll();
 				updatePane.setVisible(true);
 				break;
-			case 5 : 
+			case 4 : 
 				deletePane.removeAll();
 				deletePane.setVisible(true);
 				break;
-			}
+			case 5 : 
+				chatPane.removeAll();
+				chatPane.setVisible(true);
+				break;
+			}	
 		}//switchPane method
 
 		//메시지를 입력받아 JLabel 생성하고 폰트를 수정하여 리턴
@@ -171,7 +222,7 @@ public class MarketMgmUI extends JFrame {
 			label.setFont(font);
 			return label;
 		}
-*/
+
 		//이벤트 처리 클래스
 		class MarketMgmUIEvent extends WindowAdapter
 								implements ActionListener{
@@ -195,6 +246,13 @@ public class MarketMgmUI extends JFrame {
 			//액션 이벤트 처리
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
+				if(btnLogin ==obj) {
+					start();
+				}else if(btnJoin == obj) {
+					
+				}else if(btnReg == obj) {
+					new MarketRegister(main).register();
+				}
 
 			 
 			}		
