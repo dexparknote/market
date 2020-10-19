@@ -114,7 +114,7 @@ public class MarketMgmUI extends JFrame {
 			mainPane = new JPanel();	
 			menuPane = new JPanel(new GridLayout(10,1));
 			jl_title = new JLabel("\n @ 중고거래 시스템에 오신것을 환영합니다 @ ");
-			jl_img = new JLabel(new ImageIcon("src/member/main.png"));
+			jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 			mainPane.setBackground(Color.getHSBColor(100, 100, 82));
 			menuPane.setBackground(Color.getHSBColor(100, 100, 100));
 			regPane.setBackground(Color.getHSBColor(100, 100, 82));
