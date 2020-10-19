@@ -95,6 +95,11 @@ public class MarketRegister {
 			JOptionPane.showMessageDialog(null, 
 					main.getMsg("설명을 입력해주세요"));
 			jt_explain.requestFocus();
+		}else if( Integer.parseInt(jt_price.getText().trim())<0 ) {
+			JOptionPane.showMessageDialog(null, 
+					main.getMsg("가격를 다시 입력해주세요"));
+			jt_price.setText("");
+			jt_price.requestFocus();
 		}else {
 			result = true;
 		}
@@ -131,7 +136,7 @@ public class MarketRegister {
 		public void actionPerformed(ActionEvent ae) {
 			Object obj = ae.getSource();
 			if(btnReg == obj) {
-//				if(regFormCheck()) registerProc();  // MarketVO 만들면 주석제
+				if(regFormCheck()) registerProc(); 
 			}else if(btnReset == obj) {
 				jt_name.setText("");
 				jt_price.setText("");
