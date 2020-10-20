@@ -11,12 +11,11 @@ class MarketDAO extends DBConn{
 	public boolean insert(ProductVO vo) {
 		boolean result = false;
 		try {
-			String sql="insert into product values(?,?,null,?,sysdate,?)";
+			String sql="insert into product values(SEQ_PID.NEXTVAL,?,null,?,sysdate,?)";
 			getPreparedStatement(sql);
-			pstmt.setInt(1,(int)((Math.random()*100)));//0~100 난수 생성
-			pstmt.setString(2, vo.getPname());
-			pstmt.setString(3, vo.getExplain());
-			pstmt.setInt(4, vo.getPrice());
+			pstmt.setString(1, vo.getPname());
+			pstmt.setString(2, vo.getExplain());
+			pstmt.setInt(3, vo.getPrice());
 			
 			int count=pstmt.executeUpdate();
 			if(count!=0) 	result =true;

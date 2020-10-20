@@ -1,5 +1,5 @@
 package market;
-//backup
+//Å×½ºÆ®
 public class ProductVO {
 	//Field
 	String pid, pname, address, explain, pdate;
