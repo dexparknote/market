@@ -92,6 +92,14 @@ class MarketDAO extends DBConn{
 		boolean result = false;
 
 		try {
+			String sql = "select count(*) from product where pid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, pname);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) != 0) result = true;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -104,8 +112,13 @@ class MarketDAO extends DBConn{
 	 */
 	public boolean delete(String pname) {
 		boolean result = false;
-
+			
 		try {
+			String sql = "delete from product where pid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, pname);
+			int count = pstmt.executeUpdate();
+			if(count != 0) result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
