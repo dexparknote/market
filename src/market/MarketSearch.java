@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -54,20 +55,50 @@ public class MarketSearch {
 			main.setVisible(true);	
 			
 			jt_search.addActionListener(new MemberSearchEvent());
+			listAll();
 		}//search method
+		
+		//전체리스트
+		public  void listAll() {
+			ArrayList<ProductVO> plist = main.system.list();
+			
+			if(plist.size() != 0) {
+				sta.append("\t임시ui\n");
+				sta.append("------------------------------------------------------");
+				sta.append("------------------------------------------------------\n");	
+				sta.append("물품번호\t\t물품명\t\t가격\t\t주소\t\t설명\t\t등록일\n");
+				sta.append("------------------------------------------------------");
+				sta.append("------------------------------------------------------\n");	
+				
+				for(ProductVO rvo : plist) {
+					sta.append(rvo.getPid() +"\t\t");
+					sta.append(rvo.getPname() +"\t\t");
+					sta.append(rvo.getPrice() +"\t\t");
+					sta.append(rvo.getAddress() +"\t\t");
+					sta.append(rvo.getExplain() +"\t\t");
+					sta.append(rvo.getPdate() +"\n");		
+				}
+			}else {
+				sta.append("데이터가 존재하지 않습니다. " );
+			}
+		}
 		
 		//searchProc - 데이터 검색
 		public void searchProc() {
-			//1. 검색명 가져오기 : jt_search
+		
 			String pname = jt_search.getText().trim();
 			sta.setText("");
 		
-			//2. DB연동
 			ProductVO rvo = main.system.search(pname);
 
-			//3. 검색 결과에 따라 JOption
-
 			if(rvo != null) {
+				sta.append("\t임시ui\n");
+				sta.append("------------------------------------------------------");
+				sta.append("------------------------------------------------------\n");	
+				sta.append("물품번호\t\t물품명\t\t가격\t\t주소\t\t설명\t\t등록일\n");
+				sta.append("------------------------------------------------------");
+				sta.append("------------------------------------------------------\n");	
+				
 				sta.append(rvo.getPid() +"\t");
 				sta.append(rvo.getPname() +"\t");
 				sta.append(rvo.getPrice() +"\t");
