@@ -17,9 +17,9 @@ import java.awt.event.ActionEvent;
 public class MarketRegister1 {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField jt_name;
+	private JTextField jt_price;
+	private JTextField jt_explain;
 
 	/**
 	 * Launch the application.
@@ -65,19 +65,19 @@ public class MarketRegister1 {
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("\uBB3C\uD488 \uC774\uB984    :");
-		lblNewLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(125, 9, 113, 36);
-		panel_1.add(lblNewLabel);
+		JLabel jl_name = new JLabel("\uBB3C\uD488 \uC774\uB984    :");
+		jl_name.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		jl_name.setHorizontalAlignment(SwingConstants.CENTER);
+		jl_name.setBounds(125, 9, 113, 36);
+		panel_1.add(jl_name);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
-		textField.setForeground(Color.BLACK);
-		textField.setBounds(239, 15, 149, 25);
-		panel_1.add(textField);
-		textField.setColumns(13);
+		jt_name = new JTextField();
+		jt_name.setHorizontalAlignment(SwingConstants.CENTER);
+		jt_name.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
+		jt_name.setForeground(Color.BLACK);
+		jt_name.setBounds(239, 15, 149, 25);
+		panel_1.add(jt_name);
+		jt_name.setColumns(13);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.getHSBColor(100, 100, 100));
@@ -85,18 +85,18 @@ public class MarketRegister1 {
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("\uBB3C\uD488 \uAC00\uACA9    :");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		lblNewLabel_1.setBounds(128, 10, 109, 36);
-		panel_2.add(lblNewLabel_1);
+		JLabel jl_price = new JLabel("\uBB3C\uD488 \uAC00\uACA9    :");
+		jl_price.setHorizontalAlignment(SwingConstants.CENTER);
+		jl_price.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		jl_price.setBounds(128, 10, 109, 36);
+		panel_2.add(jl_price);
 		
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
-		textField_1.setBounds(237, 16, 153, 25);
-		panel_2.add(textField_1);
-		textField_1.setColumns(10);
+		jt_price = new JTextField();
+		jt_price.setHorizontalAlignment(SwingConstants.CENTER);
+		jt_price.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
+		jt_price.setBounds(237, 16, 153, 25);
+		panel_2.add(jt_price);
+		jt_price.setColumns(10);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.getHSBColor(100, 100, 100));
@@ -104,32 +104,32 @@ public class MarketRegister1 {
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("-   \uBB3C\uD488 \uC124\uBA85   -");
-		lblNewLabel_2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(145, 10, 155, 28);
-		panel_3.add(lblNewLabel_2);
+		JLabel jl_explain = new JLabel("-   \uBB3C\uD488 \uC124\uBA85   -");
+		jl_explain.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		jl_explain.setHorizontalAlignment(SwingConstants.CENTER);
+		jl_explain.setBounds(145, 10, 155, 28);
+		panel_3.add(jl_explain);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(12, 49, 429, 99);
-		panel_3.add(textField_2);
-		textField_2.setColumns(10);
+		jt_explain = new JTextField();
+		jt_explain.setBounds(12, 49, 429, 99);
+		panel_3.add(jt_explain);
+		jt_explain.setColumns(10);
 		
-		JButton btnNewButton = new JButton("\uBB3C\uD488\uB4F1\uB85D");
-		btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		btnNewButton.setBackground(Color.ORANGE);
-		btnNewButton.setBounds(198, 396, 111, 23);
-		panel.add(btnNewButton);
+		JButton btnReg = new JButton("\uBB3C\uD488\uB4F1\uB85D");
+		btnReg.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		btnReg.setBackground(Color.ORANGE);
+		btnReg.setBounds(198, 396, 111, 23);
+		panel.add(btnReg);
 		
-		JButton btnNewButton_1 = new JButton("\uB4F1\uB85D \uCDE8\uC18C");
-		btnNewButton_1.setBackground(Color.ORANGE);
-		btnNewButton_1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		btnNewButton_1.setForeground(Color.BLACK);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnReset = new JButton("\uB4F1\uB85D \uCDE8\uC18C");
+		btnReset.setBackground(Color.ORANGE);
+		btnReset.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		btnReset.setForeground(Color.BLACK);
+		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(353, 396, 111, 23);
-		panel.add(btnNewButton_1);
+		btnReset.setBounds(353, 396, 111, 23);
+		panel.add(btnReset);
 	}
 }
