@@ -37,6 +37,8 @@ public class MarketUpdate {
 	
 	//Method
 	public void update() {
+		System.out.println("hi");
+		
 		tf_update_list = new ArrayList<JTextField>();
 
 		main.switchPane(MarketMgmUI.UPDATE);
