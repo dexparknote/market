@@ -33,7 +33,7 @@ public class MarketDelete {
 		main.switchPane(MarketMgmUI.DELETE);
 
 		jp_deleteSearch = new JPanel();
-		jl_deleteSearchName = new JLabel("삭제할 물품 입력 : ");
+		jl_deleteSearchName = new JLabel("삭제할 물품 번호 입력 : ");
 		jt_deleteSearch = new JTextField(20);
 		jl_deleteSearchName.setFont(MarketMgmUI.font);
 
