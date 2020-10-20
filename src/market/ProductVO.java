@@ -40,8 +40,5 @@ public class ProductVO {
 	public void setPdate(String pdate) {
 		this.pdate = pdate;
 	}
-	
-	
-	
 
 }
