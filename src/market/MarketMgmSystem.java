@@ -12,6 +12,10 @@ public class MarketMgmSystem {
 		
 	}
 	
+	public boolean join(MemberVO vo) {
+		return dao.join(vo);
+	}
+	
 	public boolean register(ProductVO vo) {
 		return dao.insert(vo);
 	}

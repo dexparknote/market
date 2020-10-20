@@ -48,6 +48,7 @@ public class MarketMgmUI extends JFrame {
 	JPanel deletePane = new JPanel();	
 	JPanel chatPane = new JPanel();
 	JPanel joinBtnPane = new JPanel();
+	
 	JPanel joinForm = new JPanel();
     JPanel joinLaPane = new JPanel(new GridLayout(7,1));
     JPanel joinTaPane = new JPanel(new GridLayout(7,1));

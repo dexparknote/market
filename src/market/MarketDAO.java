@@ -6,6 +6,31 @@ class MarketDAO extends DBConn{
 	
 	
 	/**
+	 *	join 
+	 */
+	public boolean join(MemberVO vo) {
+		boolean result = false;
+		
+		try {
+			String sql = "insert into market_member values(?,?,?,?,?,?,sysdate)";
+			getPreparedStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPass());
+			pstmt.setString(3, vo.getName());
+			pstmt.setString(4, vo.getAddr());
+			pstmt.setString(5, vo.getPhone());
+			pstmt.setString(6, vo.getEmail());
+			int count = pstmt.executeUpdate();
+			if(count != 0) result = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/**
 	 *  insert
 	 */
 	public boolean insert(ProductVO vo) {
@@ -85,8 +110,8 @@ class MarketDAO extends DBConn{
 		return vo;
 	}
 	
-	/** DB Table 만들면 그때 추가하기!
-	 * delete select 
+	/** 
+	 * delete select -민석
 	 */
 	public boolean delselect(String pname) {
 		boolean result = false;
@@ -107,8 +132,8 @@ class MarketDAO extends DBConn{
 		return result;
 	}
 
-	/** DB Table 만들면 그때 추가하기!
-	 * delete
+	/** 
+	 * delete -민석
 	 */
 	public boolean delete(String pname) {
 		boolean result = false;
