@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 public class MarketMgmUI extends JFrame {
 	//Field
 	public static MarketMgmSystem system = new MarketMgmSystem();
-	public static final ArrayList<ProductVO> list =new ArrayList<ProductVO>();
+	
 	
 	public static final int REGISTER = 1;
 	public static final int SEARCH = 2;
@@ -364,6 +364,8 @@ public class MarketMgmUI extends JFrame {
 					showMain();
 				}else if(btnDelete == obj) {
 					new MarketDelete(main).delete();
+				}else if(btnUpdate == obj) {
+					new MarketUpdate(main).update();
 				}
 
 			 
