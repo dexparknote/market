@@ -176,7 +176,7 @@ public class MarketMgmUI extends JFrame {
 			btnUpdate.addActionListener(eventObj);
 			btnDelete.addActionListener(eventObj);
 			btnChat.addActionListener(eventObj);
-
+			setResizable(false);
 		}//start method
 
 		//È¸¿ø°¡ÀÔ Æû --¹Î¼®
