@@ -175,6 +175,7 @@ public class MarketMgmUI extends JFrame {
 			btnUpdate.addActionListener(eventObj);
 			btnDelete.addActionListener(eventObj);
 			btnChat.addActionListener(eventObj);
+			setResizable(false);
 		}//start method
 
 		//메뉴 이동 제어
