@@ -37,6 +37,8 @@ public class MarketUpdate {
 	
 	//Method
 	public void update() {
+		System.out.println("hi");
+		
 		tf_update_list = new ArrayList<JTextField>();
 
 		main.switchPane(MarketMgmUI.UPDATE);
@@ -171,7 +173,9 @@ public class MarketUpdate {
 			} else if(obj == btnUpdate || obj == tf_update_last) {
 				updateProc();
 			} else if(obj == btnUpdateReset) {
-				JOptionPane.showMessageDialog(null, "다시작성");
+				for(JTextField tf : tf_update_list) {
+					tf.setText("");
+				}
 			}
 		}
 	}
