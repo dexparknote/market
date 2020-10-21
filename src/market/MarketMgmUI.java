@@ -19,7 +19,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 
 public class MarketMgmUI extends JFrame {
@@ -50,7 +52,7 @@ public class MarketMgmUI extends JFrame {
 
 	JPanel joinBtnPane, joinLaPane, joinTaPane, joinForm;
 	String[] join_menu = {"아이디", "비밀번호", "이름", "주소", "전화번호", "E-Mail"};
-	JButton doJoin, resetJoin;
+	JButton doJoin, resetJoin;	
 	
 	public static Font font = new Font("맑은 고딕", Font.BOLD, 12);
 	
