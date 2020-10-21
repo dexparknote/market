@@ -29,6 +29,7 @@ public class MarketMgmSystem {
 	public ProductVO search(String pname) {
 		return dao.select(pname);
 	}
+	
 	/** 물품 정보 삭제 검색 - 민석 **/
 	public boolean delselect(String pname) {
 		return dao.delselect(pname);

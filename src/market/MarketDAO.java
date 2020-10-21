@@ -83,6 +83,7 @@ class MarketDAO extends DBConn{
 		
 		return list;
 	}
+	
 	/**
 	 * select(String name) - ±â¸²
 	 */
@@ -94,7 +95,9 @@ class MarketDAO extends DBConn{
 			getPreparedStatement(sql);
 			pstmt.setString(1,pname);
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
+				
 				vo.setPid(rs.getString(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
