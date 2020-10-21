@@ -19,7 +19,7 @@ public class MarketMgmJoin {
 	
 	JPanel joinBtnPane, joinLaPane, joinTaPane, joinForm;
 //	String[] join_menu = {"아이디", "비밀번호", "이름", "주소", "전화번호", "E-Mail"};
-	JLabel jl_login, jl_id, jl_pass, jl_name, jl_addr, jl_phone, jl_email;
+	JLabel jl_login, jl_id, jl_pass, jl_name, jl_addr, jl_phone, jl_email, jl_emailCheck;
 	JTextField jf_id, jf_pass, jf_name, jf_addr, jf_phone, jf_email;
 	JButton doJoin, resetJoin, idcheck;
 	
@@ -51,7 +51,8 @@ public class MarketMgmJoin {
         jl_name = new JLabel("이름");
         jl_addr = new JLabel("주소");
         jl_phone = new JLabel("핸드폰");
-        jl_email = new JLabel("이메일");
+        jl_email = new JLabel("이메일");	
+        jl_emailCheck = new JLabel("");
         
         /* 텍스트 필드 */
         JPanel pf1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -60,6 +61,7 @@ public class MarketMgmJoin {
         JPanel pf4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JPanel pf5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JPanel pf6 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel pf7 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         jf_id =new JTextField(20);
         jf_pass =new JPasswordField(20);
         jf_name =new JTextField(20);
@@ -80,7 +82,7 @@ public class MarketMgmJoin {
         pl3.add(jl_name);
         pl4.add(jl_addr);
         pl5.add(jl_phone);
-        pl6.add(jl_email);
+        pl6.add(jl_email);		
         joinLaPane.add(pl1);
         joinLaPane.add(pl2);
         joinLaPane.add(pl3);
@@ -93,7 +95,7 @@ public class MarketMgmJoin {
         pf3.add(jf_name);
         pf4.add(jf_addr);
         pf5.add(jf_phone);	pf5.add(new JLabel("-없이 입력"));
-        pf6.add(jf_email);
+        pf6.add(jf_email);	pf6.add(jl_emailCheck);
         joinTaPane.add(pf1);
         joinTaPane.add(pf2);
         joinTaPane.add(pf3);
@@ -134,6 +136,7 @@ public class MarketMgmJoin {
         doJoin.addActionListener(eventObj);
         resetJoin.addActionListener(eventObj);
         idcheck.addActionListener(eventObj);
+        jf_email.addActionListener(eventObj);
      }
 	
 	public void joinOff() {
@@ -217,10 +220,23 @@ public class MarketMgmJoin {
 		boolean result = main.system.idCheck(vo.getId());
 		
 		if(result) {
-			JOptionPane.showMessageDialog(null, main.getMsg("이미 사용중인 아이디 입니다."));
+			JOptionPane.showMessageDialog(null, main.getMsg("이미 사용중인 아이디입니다."));
 		}
 		else {
-			JOptionPane.showMessageDialog(null, main.getMsg("사용가능한 아이디 입니다."));
+			JOptionPane.showMessageDialog(null, main.getMsg("사용가능한 아이디입니다."));
+		}
+	}
+	
+	public void existEmailCheck() {
+		MemberVO vo = new MemberVO();
+		vo.setEmail(jf_email.getText().trim());
+		boolean result = main.system.emailCheck(vo.getEmail());
+		
+		if(result) {
+			jl_emailCheck.setText("이미 등록된 이메일입니다.");
+		}
+		else {
+			jl_emailCheck.setText("사용 가능한 이메일입니다.");
 		}
 	}
 	
@@ -238,6 +254,9 @@ public class MarketMgmJoin {
 			}
 			else if(idcheck == obj) {
 				existIdCheck();
+			}
+			else if(jf_email == obj) {
+				existEmailCheck();
 			}
 		}
 	}

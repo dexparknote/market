@@ -58,4 +58,9 @@ public class MarketMgmSystem {
 		return dao.idCheck(mid);
 	}
 	
+	/** 이메일 중복체크 -민석*/
+	public boolean emailCheck(String memail) {
+		return dao.emailCheck(memail);
+	}
+	
 } // class

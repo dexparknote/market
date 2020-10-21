@@ -239,4 +239,25 @@ class MarketDAO extends DBConn{
 		
 		return result;
 	}
+	
+	/**
+	 * 이메일 중복 확인
+	 */
+	public boolean emailCheck(String memail) {
+		boolean result = false;
+		
+		try {
+			String sql ="select count(memail) from market_member where memail=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, memail);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) !=0 ) result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
