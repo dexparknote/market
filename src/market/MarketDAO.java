@@ -6,17 +6,41 @@ class MarketDAO extends DBConn{
 	
 	
 	/**
+	 *	join 
+	 */
+	public boolean join(MemberVO vo) {
+		boolean result = false;
+		
+		try {
+			String sql = "insert into market_member values(?,?,?,?,?,?,sysdate)";
+			getPreparedStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPass());
+			pstmt.setString(3, vo.getName());
+			pstmt.setString(4, vo.getAddr());
+			pstmt.setString(5, vo.getPhone());
+			pstmt.setString(6, vo.getEmail());
+			int count = pstmt.executeUpdate();
+			if(count != 0) result = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/**
 	 *  insert
 	 */
 	public boolean insert(ProductVO vo) {
 		boolean result = false;
 		try {
-			String sql="insert into product values(?,?,null,?,sysdate,?)";
+			String sql="insert into product values(SEQ_PID.NEXTVAL,?,null,?,sysdate,?)";
 			getPreparedStatement(sql);
-			pstmt.setInt(1,(int)((Math.random()*100)));//0~100 난수 생성
-			pstmt.setString(2, vo.getPname());
-			pstmt.setString(3, vo.getExplain());
-			pstmt.setInt(4, vo.getPrice());
+			pstmt.setString(1, vo.getPname());
+			pstmt.setString(2, vo.getExplain());
+			pstmt.setInt(3, vo.getPrice());
 			
 			int count=pstmt.executeUpdate();
 			if(count!=0) 	result =true;
@@ -86,13 +110,21 @@ class MarketDAO extends DBConn{
 		return vo;
 	}
 	
-	/** DB Table 만들면 그때 추가하기!
-	 * delete select 
+	/** 
+	 * delete select -민석
 	 */
 	public boolean delselect(String pname) {
 		boolean result = false;
 
 		try {
+			String sql = "select count(*) from product where pid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, pname);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) != 0) result = true;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -100,13 +132,18 @@ class MarketDAO extends DBConn{
 		return result;
 	}
 
-	/** DB Table 만들면 그때 추가하기!
-	 * delete
+	/** 
+	 * delete -민석
 	 */
 	public boolean delete(String pname) {
 		boolean result = false;
-
+			
 		try {
+			String sql = "delete from product where pid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, pname);
+			int count = pstmt.executeUpdate();
+			if(count != 0) result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -170,6 +207,7 @@ class MarketDAO extends DBConn{
 			pstmt.setString(2, pvo.getAddress());
 			pstmt.setString(3, pvo.getExplain());
 			pstmt.setInt(4, pvo.getPrice());
+			pstmt.setString(5, pvo.getPid());
 			
 			int count = pstmt.executeUpdate();
 			if(count != 0) result = true;
@@ -181,4 +219,45 @@ class MarketDAO extends DBConn{
 		return result;
 	}
 	
+	/**
+	 * 아이디 중복 확인
+	 */
+	public boolean idCheck(String mid) {
+		boolean result = false;
+		
+		try {
+			String sql = "select count(mid) from market_member where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) != 0) result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * 이메일 중복 확인
+	 */
+	public boolean emailCheck(String memail) {
+		boolean result = false;
+		
+		try {
+			String sql ="select count(memail) from market_member where memail=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, memail);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) !=0 ) result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

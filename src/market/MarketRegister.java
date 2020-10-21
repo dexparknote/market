@@ -3,6 +3,7 @@ package market;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import market.MarketRegister.MemberRegisterEvent;
 
 
 public class MarketRegister {
@@ -32,52 +36,95 @@ public class MarketRegister {
 	//Method
 	
 	public void register() {
-	main.switchPane(MarketMgmUI.REGISTER);
-	
+		main.switchPane(MarketMgmUI.REGISTER);
 		
-		jp_name = new JPanel();
-		jp_price = new JPanel();
-		jp_explain = new JPanel();
-		jp_button = new JPanel();
-		jl_name = new JLabel("π∞«∞ ¿Ã∏ß");
-		jl_price = new JLabel("π∞«∞ ∞°∞›");
-		jl_explain = new JLabel("º≥∏Ì"); 
-		jt_name = new JTextField(15);
-		jt_price = new JTextField(15);
-		jt_explain = new JTextField(47);
-		btnReg = new JButton("µÓ∑œ«œ±‚");
-		btnReset = new JButton("¥ŸΩ√æ≤±‚");
+		regPane.setBackground(Color.getHSBColor(100, 100, 82));
+		regPane.setBounds(0, 0, 600, 500);
+		regPane.setLayout(null);
 		
-		btnReg.setFont(MarketMgmUI.font);
-		btnReset.setFont(MarketMgmUI.font);
-		jl_name.setFont(MarketMgmUI.font);  
-		jl_price.setFont(MarketMgmUI.font);
-		jl_explain.setFont(MarketMgmUI.font);
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.getHSBColor(100, 100, 100));
+		panel_1.setBounds(32, 30, 420, 56);
+		regPane.add(panel_1);
+		panel_1.setLayout(null);
 		
-		jp_name.add(jl_name);   jp_name.add(jt_name);
-		jp_price.add(jl_price);  jp_price.add(jt_price);
-		jp_explain.add(jl_explain);  jp_explain.add(jt_explain);
-		jp_button.add(btnReg);	jp_button.add(btnReset);
+		jl_name = new JLabel("\uBB3C\uD488 \uC774\uB984    :");
+		jl_name.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 12));
+		jl_name.setHorizontalAlignment(SwingConstants.CENTER);
+		jl_name.setBounds(71, 9, 113, 36);
+		panel_1.add(jl_name);
 		
-		jp_name.setBackground(Color.getHSBColor(100, 100, 82));
-		jp_price.setBackground(Color.getHSBColor(100, 100, 82));
-		jp_explain.setBackground(Color.getHSBColor(100, 100, 82));
-		jp_button.setBackground(Color.getHSBColor(100, 100, 82));
+		jt_name = new JTextField();
+		jt_name.setHorizontalAlignment(SwingConstants.CENTER);
+		jt_name.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 13));
+		jt_name.setForeground(Color.BLACK);
+		jt_name.setBounds(196, 15, 149, 25);
+		panel_1.add(jt_name);
+		jt_name.setColumns(13);
 		
-		regPane.add(jp_name);
-		regPane.add(jp_price);
-		regPane.add(jp_explain);
-		regPane.add(jp_button);
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.getHSBColor(100, 100, 100));
+		panel_2.setBounds(32, 133, 420, 56);
+		regPane.add(panel_2);
+		panel_2.setLayout(null);
 		
-		main.add(regPane, BorderLayout.CENTER);
-		main.setVisible(true);
+		jl_price = new JLabel("\uBB3C\uD488 \uAC00\uACA9    :");
+		jl_price.setHorizontalAlignment(SwingConstants.CENTER);
+		jl_price.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 12));
+		jl_price.setBounds(67, 10, 109, 36);
+		panel_2.add(jl_price);
 		
-		//∏ÆΩ∫≥ 
-		MemberRegisterEvent regEvent = new MemberRegisterEvent();
-		btnReg.addActionListener(regEvent);
-		btnReset.addActionListener(regEvent);		
+		jt_price = new JTextField();
+		jt_price.setHorizontalAlignment(SwingConstants.CENTER);
+		jt_price.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 13));
+		jt_price.setBounds(196, 16, 153, 25);
+		panel_2.add(jt_price);
+		jt_price.setColumns(10);
 		
-	}//register method
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.getHSBColor(100, 100, 100));
+		panel_3.setBounds(32, 228, 420, 158);
+		regPane.add(panel_3);
+		panel_3.setLayout(null);
+		
+		jl_explain = new JLabel("-   \uBB3C\uD488 \uC124\uBA85   -");
+		jl_explain.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 12));
+		jl_explain.setHorizontalAlignment(SwingConstants.CENTER);
+		jl_explain.setBounds(127, 10, 155, 28);
+		panel_3.add(jl_explain);
+		
+		jt_explain = new JTextField();
+		jt_explain.setBounds(12, 49, 395, 99);
+		panel_3.add(jt_explain);
+		jt_explain.setColumns(10);
+		
+		btnReg = new JButton("\uBB3C\uD488\uB4F1\uB85D");
+		btnReg.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 12));
+		btnReg.setBackground(Color.ORANGE);
+		btnReg.setBounds(103, 396, 111, 23);
+		regPane.add(btnReg);
+		
+		btnReset = new JButton("\uB4F1\uB85D \uCDE8\uC18C");
+		btnReset.setBackground(Color.ORANGE);
+		btnReset.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.PLAIN, 12));
+		btnReset.setForeground(Color.BLACK);
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnReset.setBounds(251, 396, 111, 23);
+		regPane.add(btnReset);
+		
+			
+			main.add(regPane, BorderLayout.CENTER);
+			main.setVisible(true);
+			
+			//∏ÆΩ∫≥ 
+			MemberRegisterEvent regEvent = new MemberRegisterEvent();
+			btnReg.addActionListener(regEvent);
+			btnReset.addActionListener(regEvent);		
+			
+		}//register method
 	
 	//regFormCheck
 	public boolean regFormCheck() {

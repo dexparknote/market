@@ -34,6 +34,7 @@ public class MarketMgmUI extends JFrame {
 	public static final int UPDATE = 3;
 	public static final int DELETE = 4;
 	public static final int CHAT = 5;
+	public static final int JOIN = 6;
 	
 	JPanel showPane, showButtonPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
@@ -48,11 +49,13 @@ public class MarketMgmUI extends JFrame {
 	JPanel updatePane = new JPanel(new GridLayout(10,1));
 	JPanel deletePane = new JPanel();	
 	JPanel chatPane = new JPanel();
-	//JPanel joinPane = new JPanel(new GridLayout(10,1));
 
-	JPanel joinBtnPane, joinLaPane, joinTaPane, joinForm;
-	String[] join_menu = {"아이디", "비밀번호", "이름", "주소", "전화번호", "E-Mail"};
-	JButton doJoin, resetJoin;	
+	JPanel joinBtnPane = new JPanel();
+	
+	JPanel joinForm = new JPanel();
+    JPanel joinLaPane = new JPanel(new GridLayout(7,1));
+    JPanel joinTaPane = new JPanel(new GridLayout(7,1));
+
 	
 	public static Font font = new Font("맑은 고딕", Font.BOLD, 12);
 	
@@ -176,92 +179,9 @@ public class MarketMgmUI extends JFrame {
 			btnUpdate.addActionListener(eventObj);
 			btnDelete.addActionListener(eventObj);
 			btnChat.addActionListener(eventObj);
-
+			setResizable(false);
 		}//start method
 
-		//회원가입 폼 --민석
-		public void join() {
-			showPane.setVisible(false);
-			showButtonPane.setVisible(false);
-			
-			joinForm = new JPanel();
-			joinLaPane = new JPanel(new GridLayout(7,1));
-			joinTaPane = new JPanel(new GridLayout(7,1));
-			joinBtnPane = new JPanel();
-			doJoin = new JButton("회원가입");
-			resetJoin = new JButton("가입취소");
-			
-			joinBtnPane.add(doJoin);
-			joinBtnPane.add(resetJoin);
-
-			JLabel form = new JLabel("회원가입");
-			joinForm.add(form);
-
-			joinForm.setBackground(Color.getHSBColor(100, 100, 100));
-			joinLaPane.setBackground(Color.getHSBColor(100, 100, 100));
-			joinTaPane.setBackground(Color.getHSBColor(100, 100, 100));
-			joinBtnPane.setBackground(Color.getHSBColor(100, 100, 100));
-			
-			for(String menu : join_menu) {
-				JLabel la = new JLabel(menu);
-				JPanel pa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-				pa.setBackground(Color.getHSBColor(100, 100, 82));
-				pa.add(la);
-				joinLaPane.add(pa);
-				
-				if(menu.equals("전화번호")) {
-					JTextField hp1 = new JTextField(3);
-					JTextField hp2 = new JTextField(5);
-					JTextField hp3 = new JTextField(5);
-					JPanel t_pa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-					t_pa.setBackground(Color.getHSBColor(100, 100, 82));
-					t_pa.add(hp1);
-					t_pa.add(new JLabel("-"));
-					t_pa.add(hp2);
-					t_pa.add(new JLabel("-"));
-					t_pa.add(hp3);
-					joinTaPane.add(t_pa);
-				}
-				else if(menu.equals("주소")) {
-					JTextField addr1 = new JTextField(30);
-					JTextField addr2 = new JTextField(30);
-					JPanel t_pa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-					t_pa.setBackground(Color.getHSBColor(100, 100, 82));
-					t_pa.add(addr1);
-					t_pa.add(addr2);
-					joinTaPane.add(t_pa);
-				}
-				else {
-					JPanel t_pa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-					t_pa.setBackground(Color.getHSBColor(100, 100, 82));
-					JTextField jtf = new JTextField(20);
-					t_pa.add(jtf);
-					joinTaPane.add(t_pa);
-				}
-			}
-			
-			add(joinForm, BorderLayout.NORTH);
-			add(joinLaPane, BorderLayout.WEST);
-			add(joinTaPane, BorderLayout.CENTER);
-			add(joinBtnPane, BorderLayout.SOUTH);
-
-			setSize(400,500);
-			setVisible(true);
-			
-			MarketMgmUIEvent eventObj = new MarketMgmUIEvent(this);
-			doJoin.addActionListener(eventObj);
-			resetJoin.addActionListener(eventObj);
-			addWindowListener(eventObj);
-		}
-		
-		//회원가입 취소
-		public void joinCancel() {
-			joinForm.setVisible(false);
-			joinLaPane.setVisible(false);
-			joinTaPane.setVisible(false); 
-			joinBtnPane.setVisible(false);
-		}
-		
 		//메뉴 이동 제어
 		public void resetPane() {
 			showPane.setVisible(false);
@@ -353,24 +273,16 @@ public class MarketMgmUI extends JFrame {
 				if(btnLogin ==obj) {
 					start();
 				}else if(btnJoin == obj) {
-					join();
+					new MarketMgmJoin(main).join();
 				}else if(btnReg == obj) {
 					new MarketRegister(main).register();
 				}else if(btnSearch == obj) {
 					new MarketSearch(main).search();
-				}else if(resetJoin == obj) {
-					showMain();
-					joinCancel();
-				}else if(resetJoin == obj) { // 가입취소 버튼 -> 메인화면 
-					joinCancel();
-					showMain();
 				}else if(btnDelete == obj) {
 					new MarketDelete(main).delete();
 				}else if(btnUpdate == obj) {
 					new MarketUpdate(main).update();
 				}
-
-			 
 			}		
 		}//event class	
 }

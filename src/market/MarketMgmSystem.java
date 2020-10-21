@@ -12,6 +12,10 @@ public class MarketMgmSystem {
 		
 	}
 	
+	public boolean join(MemberVO vo) {
+		return dao.join(vo);
+	}
+	
 	public boolean register(ProductVO vo) {
 		return dao.insert(vo);
 	}
@@ -25,11 +29,11 @@ public class MarketMgmSystem {
 	public ProductVO search(String pname) {
 		return dao.select(pname);
 	}
-	
+	/** 물품 정보 삭제 검색 - 민석 **/
 	public boolean delselect(String pname) {
 		return dao.delselect(pname);
 	}
-
+	/** 물품 정보 삭제 - 민석 **/
 	public boolean delete(String pname) {
 		return dao.delete(pname);
 	}
@@ -47,6 +51,16 @@ public class MarketMgmSystem {
 	/** 물품정보 수정 -영화씨*/
 	public boolean update_pr(ProductVO pvo) {
 		return dao.update_pr(pvo);
+	}
+	
+	/** 아이디 중복체크 -민석 */
+	public boolean idCheck(String mid) {
+		return dao.idCheck(mid);
+	}
+	
+	/** 이메일 중복체크 -민석*/
+	public boolean emailCheck(String memail) {
+		return dao.emailCheck(memail);
 	}
 	
 } // class

@@ -1,5 +1,5 @@
 package market;
-//backup
+//Å×½ºÆ®
 public class ProductVO {
 	//Field
 	String pid, pname, address, explain, pdate;
@@ -40,8 +40,5 @@ public class ProductVO {
 	public void setPdate(String pdate) {
 		this.pdate = pdate;
 	}
-	
-	
-	
 
 }

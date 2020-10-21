@@ -37,6 +37,8 @@ public class MarketUpdate {
 	
 	//Method
 	public void update() {
+		System.out.println("hi");
+		
 		tf_update_list = new ArrayList<JTextField>();
 
 		main.switchPane(MarketMgmUI.UPDATE);
@@ -156,10 +158,17 @@ public class MarketUpdate {
 		
 		if(main.system.update_pr(pvo)) {
 			JOptionPane.showMessageDialog(null, "수정이 완료됐습니다");
+			for(JTextField tf : tf_update_list) {
+				tf.setText("");
+			}
 //			selectFormTable();
+			System.out.println("1111");
+			new MarketSearch(main).search();
+			System.out.println("2222");
 		} else {
 			JOptionPane.showMessageDialog(null, "수정을 실패했습니다");
 		}
+		
 	}
 	
 	/** 이벤트 처리 클래스 */
@@ -171,7 +180,9 @@ public class MarketUpdate {
 			} else if(obj == btnUpdate || obj == tf_update_last) {
 				updateProc();
 			} else if(obj == btnUpdateReset) {
-				JOptionPane.showMessageDialog(null, "다시작성");
+				for(JTextField tf : tf_update_list) {
+					tf.setText("");
+				}
 			}
 		}
 	}
