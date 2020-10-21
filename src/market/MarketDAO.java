@@ -219,4 +219,24 @@ class MarketDAO extends DBConn{
 		return result;
 	}
 	
+	/**
+	 * 아이디 중복 확인
+	 */
+	public boolean idCheck(String mid) {
+		boolean result = false;
+		
+		try {
+			String sql = "select count(mid) from market_member where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) != 0) result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
