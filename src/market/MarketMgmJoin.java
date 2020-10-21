@@ -23,6 +23,7 @@ public class MarketMgmJoin {
 	JTextField jf_id, jf_pass, jf_name, jf_addr, jf_phone, jf_email;
 	JButton doJoin, resetJoin, idcheck;
 	
+	
 	public MarketMgmJoin() {}
 	public MarketMgmJoin(MarketMgmUI main) {
 		this.main = main;
@@ -132,6 +133,7 @@ public class MarketMgmJoin {
         MemberMgmJoinEvent eventObj = new MemberMgmJoinEvent();
         doJoin.addActionListener(eventObj);
         resetJoin.addActionListener(eventObj);
+        idcheck.addActionListener(eventObj);
      }
 	
 	public void joinOff() {
@@ -209,6 +211,19 @@ public class MarketMgmJoin {
 		}
 	}
 	
+	public void existIdCheck() {
+		MemberVO vo = new MemberVO();
+		vo.setId(jf_id.getText().trim());
+		boolean result = main.system.idCheck(vo.getId());
+		
+		if(result) {
+			JOptionPane.showMessageDialog(null, main.getMsg("이미 사용중인 아이디 입니다."));
+		}
+		else {
+			JOptionPane.showMessageDialog(null, main.getMsg("사용가능한 아이디 입니다."));
+		}
+	}
+	
 	class MemberMgmJoinEvent implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Object obj = e.getSource();
@@ -218,6 +233,9 @@ public class MarketMgmJoin {
 			else if(resetJoin == obj) {
 				joinCancel();
 				main.showMain();
+			}
+			else if(idcheck == obj) {
+				existIdCheck();
 			}
 		}
 	}

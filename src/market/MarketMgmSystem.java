@@ -53,4 +53,9 @@ public class MarketMgmSystem {
 		return dao.update_pr(pvo);
 	}
 	
+	/** 아이디 중복체크 -민석 */
+	public boolean idCheck(String mid) {
+		return dao.idCheck(mid);
+	}
+	
 } // class
