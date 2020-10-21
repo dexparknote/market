@@ -28,16 +28,16 @@ public class MarketSearch {
 		MarketMgmUI main;
 		
 //JTable
-	Object[] columns = {"물품번호","물품명","가격","주소","게시글","등록일"};	//컬럼명
-	DefaultTableModel model =new DefaultTableModel(columns,0);	//
-	JTable table= new JTable(model); 	//JTable 
-	Object[] row =new Object[6];  //JTable에 추가되는 하나의 row 추가될 객체 
+	Object[] columns = {"물품번호","물품명","가격","주소","게시글","등록일"};	
+	DefaultTableModel model =new DefaultTableModel(columns,0);	
+	JTable table= new JTable(model); 	
+	Object[] row =new Object[6];  
 		
 		//Constructor
 		public MarketSearch() {}
 		public MarketSearch(MarketMgmUI main) {
 			this.main = main;
-			searchPane = main.searchPane;	//searchPane과 main의 searchPane은 같음 즉 옆에 있는 메뉴 버튼일꺼야
+			searchPane = main.searchPane;	
 		}
 		
 		//Method
@@ -62,7 +62,7 @@ public class MarketSearch {
 			jp_searchResult.setBackground(Color.getHSBColor(100, 100, 82));		
 			main.add(searchPane, BorderLayout.NORTH); 
 					
-			crateJTableData();	//출력되는 데이터 가져오기
+			crateJTableData();	
 			model.setColumnIdentifiers(columns);
 			table.setModel(model);
 			
