@@ -108,10 +108,7 @@ public class MarketRegister {
 		btnReset.setBackground(Color.ORANGE);
 		btnReset.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		btnReset.setForeground(Color.BLACK);
-		btnReset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnReset.setBounds(251, 396, 111, 23);
 		regPane.add(btnReset);
 		
