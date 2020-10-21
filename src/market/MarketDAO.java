@@ -61,7 +61,6 @@ class MarketDAO extends DBConn{
 			String sql = " select pid, pname, price, address, explain, pdate " + 
 						" from (select pid, pname, price, address, explain, pdate from product " + 
 						"      order by pdate desc)";
-			
 			getPreparedStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -72,8 +71,7 @@ class MarketDAO extends DBConn{
 				vo.setAddress(rs.getString(4));
 				vo.setExplain(rs.getString(5));
 				vo.setPdate(rs.getString(6));
-			
-				
+					
 				list.add(vo);
 			}
 			
@@ -97,7 +95,6 @@ class MarketDAO extends DBConn{
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				
 				vo.setPid(rs.getString(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
@@ -112,6 +109,7 @@ class MarketDAO extends DBConn{
 		
 		return vo;
 	}
+	
 	
 	/** 
 	 * delete select -¹Î¼®
