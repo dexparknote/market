@@ -3,7 +3,6 @@ package market;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -11,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
+import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,8 +23,9 @@ import javax.swing.JTextField;
 
 public class MarketMgmUI extends JFrame {
 	//Field
-	public static MarketMgmSystem system = new MarketMgmSystem();
 	
+	
+	public static MarketMgmSystem system = new MarketMgmSystem();
 	
 	public static final int REGISTER = 1;
 	public static final int SEARCH = 2;
@@ -61,9 +61,11 @@ public class MarketMgmUI extends JFrame {
 		showMain();
 		
 	}
+	
+	
 	//Method
 		public void showMain() {  //10.13 영재 수정
-			showPane = new JPanel();
+			showPane = new JPanel(); 
 			showButtonPane = new JPanel();
 			JPanel jp_login=new JPanel(new GridLayout(2,1));
 			JPanel jp_id=new JPanel();
