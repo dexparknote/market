@@ -3,7 +3,6 @@ package market;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class MarketMgmJoin {
@@ -61,7 +61,7 @@ public class MarketMgmJoin {
         JPanel pf5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JPanel pf6 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         jf_id =new JTextField(20);
-        jf_pass =new JTextField(20);
+        jf_pass =new JPasswordField(20);
         jf_name =new JTextField(20);
         jf_addr =new JTextField(20);
         jf_phone =new JTextField(20);
@@ -229,6 +229,8 @@ public class MarketMgmJoin {
 			Object obj = e.getSource();
 			if(doJoin == obj) {
 				if(joinFomeCheck()) joinProc();
+				joinCancel();
+				main.showMain();
 			}
 			else if(resetJoin == obj) {
 				joinCancel();
