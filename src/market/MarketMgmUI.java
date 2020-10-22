@@ -71,7 +71,7 @@ public class MarketMgmUI extends JFrame {
 	//Method
 		public void showMain() {  //10.22 영재 수정
 			
-			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+			showPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\login_main.png").getImage());
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
 			getContentPane().add(showPane);
 			
