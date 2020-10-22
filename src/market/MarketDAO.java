@@ -60,7 +60,7 @@ class MarketDAO extends DBConn{
 		try {
 			String sql = " select pid, pname, price, address, explain, pdate " + 
 						" from (select pid, pname, price, address, explain, pdate from product " + 
-						"      order by pdate desc)";
+						"      order by pid desc)";
 			getPreparedStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -89,7 +89,7 @@ class MarketDAO extends DBConn{
 		ProductVO vo = new ProductVO();
 		
 		try {
-			String sql = "select pid, pname, price, address, explain, pdate from product where pname=?";
+			String sql = "select pid, pname, price, address, explain, pdate from product where pname like '%' || ? || '%'";
 			getPreparedStatement(sql);
 			pstmt.setString(1,pname);
 			rs = pstmt.executeQuery();
