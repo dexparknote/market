@@ -115,12 +115,12 @@ public class MarketMgmUI extends JFrame {
          
 //         jl_title = new JLabel("\n Market Management System \n");
          JLabel jl_id = new JLabel(" 아이디 ");
-         JLabel jl_pass= new JLabel("비밀번호");
          jp_id.add(jl_id);
          jp_id.add(jtf_id);
+         JLabel jl_pass= new JLabel("비밀번호");
+         jp_pass.add(jl_pass);
          jtf_pass=new JPasswordField(15);
          jp_pass.add(jtf_pass);
-         jp_pass.add(jl_pass);
          jp_login.add(jp_id);
          jp_login.add(jp_pass);
          
