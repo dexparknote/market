@@ -107,7 +107,7 @@ public class MarketSearch {
 			model.fireTableDataChanged();
 		}
 		
-		//특정값 JTableDate
+		//특정 JTableDate
 		public void crateJTableData(String pname){
 			ProductVO vo = main.system.search(pname);
 			model.setNumRows(0);			
@@ -131,7 +131,7 @@ public class MarketSearch {
 			String pname = jt_search.getText().trim();	
 			if (!jt_search.getText().equals("")) {
 				
-				/**추후 문자열 비교 필요함**/
+				/**추후 문자열 비교 수정필요함**/
 				if (jt_search.getText().trim().equals(pname)) {		
 						crateJTableData(pname);
 				} else {
