@@ -34,7 +34,6 @@ public class MarketRegister {
 	}	
 	
 	//Method
-	
 	public void register() {
 		main.switchPane(MarketMgmUI.REGISTER);
 		
@@ -108,7 +107,6 @@ public class MarketRegister {
 		btnReset.setBackground(Color.ORANGE);
 		btnReset.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		btnReset.setForeground(Color.BLACK);
-		
 		btnReset.setBounds(251, 396, 111, 23);
 		regPane.add(btnReset);
 		
@@ -122,6 +120,7 @@ public class MarketRegister {
 			btnReset.addActionListener(regEvent);		
 			
 		}//register method
+	
 	
 	//regFormCheck
 	public boolean regFormCheck() {
