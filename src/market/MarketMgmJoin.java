@@ -50,7 +50,7 @@ public class MarketMgmJoin {
 		joinOff();
         main.showPane.setVisible(false);
         
-        joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\se_workspace\\sist_project_1\\images\\join_back.png").getImage());
+        joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\join_back.png").getImage());
 		main.setSize(joinBackPane.getWidth(),joinBackPane.getHeight()+38);
 		main.getContentPane().add(joinBackPane);
         
