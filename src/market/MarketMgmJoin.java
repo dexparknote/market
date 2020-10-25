@@ -36,7 +36,6 @@ public class MarketMgmJoin {
 	public void join() {
 		joinOff();
         main.showPane.setVisible(false);
-        main.showButtonPane.setVisible(false);
 		
         /* ¶óº§ */
         JPanel pl1 = new JPanel(new FlowLayout(FlowLayout.LEFT));

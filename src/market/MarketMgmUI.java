@@ -71,8 +71,9 @@ public class MarketMgmUI extends JFrame {
 	//Method
 		public void showMain() {  //10.22 영재 수정
 			
-			showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/images/login_main.png").getImage());
+			showPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\back.png").getImage());
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
+			
 			getContentPane().add(showPane);
 			
 			JLabel Jl_id = new JLabel("\uC544\uC774\uB514");
@@ -305,6 +306,9 @@ class ImagePanel extends JPanel{
 	
 	public void paintComponent(Graphics g) {
 		g.drawImage(img,0,0,null);
+//		g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+
+		
 	}
 	
 }
