@@ -2,131 +2,151 @@ package market;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import java.awt.GridLayout;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 public class MarketMgmJoin {
 	
 	MarketMgmUI main;
 	
-	JPanel joinBtnPane, joinLaPane, joinTaPane, joinForm;
-//	String[] join_menu = {"아이디", "비밀번호", "이름", "주소", "전화번호", "E-Mail"};
+	JPanel joinBackPane;
+	private JTextField jf_id;
+	private JTextField jf_pass;
+	private JTextField jf_name;
+	private JTextField jf_addr;
+	private JTextField jf_phone;
+	private JTextField jf_email;
 	JLabel jl_login, jl_id, jl_pass, jl_name, jl_addr, jl_phone, jl_email, jl_emailCheck;
-	JTextField jf_id, jf_pass, jf_name, jf_addr, jf_phone, jf_email;
 	JButton doJoin, resetJoin, idcheck;
 	
 	
+	
 	public MarketMgmJoin() {}
+	
 	public MarketMgmJoin(MarketMgmUI main) {
 		this.main = main;
-		this.joinBtnPane = main.joinBtnPane;
-		this.joinLaPane = main.joinLaPane;
-		this.joinTaPane = main.joinTaPane;
-		this.joinForm = main.joinForm;
+		this.joinBackPane = main.joinBackPane;
 	}
 	
+	 /**
+	  * @wbp.parser.entryPoint
+	 */
 	public void join() {
 		joinOff();
         main.showPane.setVisible(false);
-		
-        /* 라벨 */
-        JPanel pl1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pl2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pl3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pl4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pl5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pl6 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        jl_login = new JLabel("회원가입");
-        jl_id = new JLabel("아이디");
-        jl_pass = new JLabel("비밀번호");
-        jl_name = new JLabel("이름");
-        jl_addr = new JLabel("주소");
-        jl_phone = new JLabel("핸드폰");
-        jl_email = new JLabel("이메일");	
+        
+        joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\se_workspace\\sist_project_1\\images\\join_back.png").getImage());
+		main.setSize(joinBackPane.getWidth(),joinBackPane.getHeight()+38);
+		main.getContentPane().add(joinBackPane);
+        
+        jl_login = new JLabel("\uD68C\uC6D0\uAC00\uC785");
+        jl_login.setFont(new Font("굴림", Font.BOLD, 15));
+        jl_login.setBounds(174, 10, 106, 30);
+        joinBackPane.add(jl_login);
+        
+        jl_id = new JLabel("\uC544\uC774\uB514");
+        jl_id.setFont(new Font("굴림", Font.BOLD, 13));
+        jl_id.setBounds(30, 75, 60, 20);
+        joinBackPane.add(jl_id);
+        
+        jl_pass = new JLabel("\uBE44\uBC00\uBC88\uD638");
+        jl_pass.setFont(new Font("굴림", Font.BOLD, 13));
+        jl_pass.setBounds(30, 120, 60, 20);
+        joinBackPane.add(jl_pass);
+        
+        jl_name = new JLabel("\uC774\uB984");
+        jl_name.setFont(new Font("굴림", Font.BOLD, 13));
+        jl_name.setBounds(30, 165, 60, 20);
+        joinBackPane.add(jl_name);
+        
+        jl_phone = new JLabel("\uD578\uB4DC\uD3F0");
+        jl_phone.setFont(new Font("굴림", Font.BOLD, 13));
+        jl_phone.setBounds(30, 255, 60, 20);
+        joinBackPane.add(jl_phone);
+        
+        jl_addr = new JLabel("\uC8FC\uC18C");
+        jl_addr.setFont(new Font("굴림", Font.BOLD, 13));
+        jl_addr.setBounds(30, 210, 60, 20);
+        joinBackPane.add(jl_addr);
+        
+        jl_email = new JLabel("\uC774\uBA54\uC77C");
+        jl_email.setFont(new Font("굴림", Font.BOLD, 13));
+        jl_email.setBounds(30, 300, 60, 20);
+        joinBackPane.add(jl_email);
+        
+        jf_id = new JTextField();
+        jf_id.setBounds(115, 75, 140, 20);
+        joinBackPane.add(jf_id);
+        jf_id.setColumns(10);
+        
+        jf_pass = new JTextField();
+        jf_pass.setColumns(10);
+        jf_pass.setBounds(115, 120, 140, 20);
+        joinBackPane.add(jf_pass);
+        
+        jf_name = new JTextField();
+        jf_name.setColumns(10);
+        jf_name.setBounds(115, 165, 140, 20);
+        joinBackPane.add(jf_name);
+        
+        jf_addr = new JTextField();
+        jf_addr.setColumns(10);
+        jf_addr.setBounds(115, 210, 200, 20);
+        joinBackPane.add(jf_addr);
+        
+        jf_phone = new JTextField();
+        jf_phone.setColumns(10);
+        jf_phone.setBounds(115, 255, 140, 20);
+        joinBackPane.add(jf_phone);
+        
+        jf_email = new JTextField();
+        jf_email.setColumns(10);
+        jf_email.setBounds(115, 300, 200, 20);
+        joinBackPane.add(jf_email);
+        
+        idcheck = new JButton("\uC911\uBCF5\uD655\uC778");
+        idcheck.setBackground(Color.LIGHT_GRAY);
+        idcheck.setFont(new Font("굴림", Font.BOLD, 13));
+        idcheck.setBounds(270, 73, 95, 25);
+        joinBackPane.add(idcheck);
+        
+        JLabel label = new JLabel("-\uC5C6\uC774 \uC785\uB825");
+        label.setFont(new Font("굴림", Font.BOLD, 13));
+        label.setBounds(270, 255, 95, 20);
+        joinBackPane.add(label);
+        
         jl_emailCheck = new JLabel("");
+        jl_emailCheck.setFont(new Font("굴림", Font.BOLD, 13));
+        jl_emailCheck.setBounds(115, 336, 200, 20);
+        joinBackPane.add(jl_emailCheck);
         
-        /* 텍스트 필드 */
-        JPanel pf1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pf2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pf3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pf4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pf5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pf6 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel pf7 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        jf_id =new JTextField(20);
-        jf_pass =new JPasswordField(20);
-        jf_name =new JTextField(20);
-        jf_addr =new JTextField(20);
-        jf_phone =new JTextField(20);
-        jf_email =new JTextField(20);
+        resetJoin = new JButton("\uAC00\uC785\uCDE8\uC18C");
+        resetJoin.setFont(new Font("굴림", Font.BOLD, 13));
+        resetJoin.setBackground(Color.LIGHT_GRAY);
+        resetJoin.setBounds(303, 397, 95, 25);
+        joinBackPane.add(resetJoin);
         
-        /* 버튼 */
-        doJoin = new JButton("회원가입");
-        resetJoin = new JButton("가입취소");
-        idcheck = new JButton("중복확인");
-        joinBtnPane.add(doJoin);
-        joinBtnPane.add(resetJoin);
-        
-        joinForm.add(jl_login);
-        pl1.add(jl_id);		
-        pl2.add(jl_pass);
-        pl3.add(jl_name);
-        pl4.add(jl_addr);
-        pl5.add(jl_phone);
-        pl6.add(jl_email);		
-        joinLaPane.add(pl1);
-        joinLaPane.add(pl2);
-        joinLaPane.add(pl3);
-        joinLaPane.add(pl4);
-        joinLaPane.add(pl5);
-        joinLaPane.add(pl6);
-        
-        pf1.add(jf_id);		pf1.add(idcheck);
-        pf2.add(jf_pass);
-        pf3.add(jf_name);
-        pf4.add(jf_addr);
-        pf5.add(jf_phone);	pf5.add(new JLabel("-없이 입력"));
-        pf6.add(jf_email);	pf6.add(jl_emailCheck);
-        joinTaPane.add(pf1);
-        joinTaPane.add(pf2);
-        joinTaPane.add(pf3);
-        joinTaPane.add(pf4);
-        joinTaPane.add(pf5);
-        joinTaPane.add(pf6);
-        
-        pl1.setBackground(Color.getHSBColor(100, 100, 82));
-        pl2.setBackground(Color.getHSBColor(100, 100, 82));
-        pl3.setBackground(Color.getHSBColor(100, 100, 82));
-        pl4.setBackground(Color.getHSBColor(100, 100, 82));
-        pl5.setBackground(Color.getHSBColor(100, 100, 82));
-        pl6.setBackground(Color.getHSBColor(100, 100, 82));
-        pf1.setBackground(Color.getHSBColor(100, 100, 82));
-        pf2.setBackground(Color.getHSBColor(100, 100, 82));
-        pf3.setBackground(Color.getHSBColor(100, 100, 82));
-        pf4.setBackground(Color.getHSBColor(100, 100, 82));
-        pf5.setBackground(Color.getHSBColor(100, 100, 82));
-        pf6.setBackground(Color.getHSBColor(100, 100, 82));
-        
-        
-        joinForm.setBackground(Color.getHSBColor(100, 100, 100));
-        joinLaPane.setBackground(Color.getHSBColor(100, 100, 100));
-        joinTaPane.setBackground(Color.getHSBColor(100, 100, 100));
-        joinBtnPane.setBackground(Color.getHSBColor(100, 100, 100));
-        
-        main.add(joinForm, BorderLayout.NORTH);
-        main.add(joinLaPane, BorderLayout.WEST);
-        main.add(joinTaPane, BorderLayout.CENTER);
-        main.add(joinBtnPane, BorderLayout.SOUTH);
-        
-        main.setSize(400,500);
+        doJoin = new JButton("\uD68C\uC6D0\uAC00\uC785");
+        doJoin.setFont(new Font("굴림", Font.BOLD, 13));
+        doJoin.setBackground(Color.LIGHT_GRAY);
+        doJoin.setBounds(199, 398, 95, 25);
+        joinBackPane.add(doJoin);
+
         main.setVisible(true);
 
         joinOn();
@@ -135,29 +155,21 @@ public class MarketMgmJoin {
         doJoin.addActionListener(eventObj);
         resetJoin.addActionListener(eventObj);
         idcheck.addActionListener(eventObj);
+        jf_id.addActionListener(eventObj);
         jf_email.addActionListener(eventObj);
      }
 	
 	public void joinOff() {
-		joinForm.removeAll();
-		joinLaPane.removeAll();
-		joinTaPane.removeAll(); 
-		joinBtnPane.removeAll();
+		joinBackPane.removeAll();
 	}
 	
 	public void joinOn() {
-		joinForm.setVisible(true);
-		joinLaPane.setVisible(true);
-		joinTaPane.setVisible(true);
-		joinBtnPane.setVisible(true);
+		joinBackPane.setVisible(true);
 	}
 	
 	/* 회원가입 취소 */
 	public void joinCancel() {
-		joinForm.setVisible(false);
-		joinLaPane.setVisible(false);
-		joinTaPane.setVisible(false); 
-		joinBtnPane.setVisible(false);
+		joinBackPane.setVisible(false);
 	}
 	
 	public boolean joinFomeCheck() {
@@ -258,5 +270,27 @@ public class MarketMgmJoin {
 				existEmailCheck();
 			}
 		}
+	}
+}
+
+class ImageJoinPanel extends JPanel{
+	private Image img;
+	
+	public ImageJoinPanel(Image img) {
+		this.img= img;
+		setSize(new Dimension(img.getWidth(null),img.getHeight(null)));
+		setPreferredSize(new Dimension(img.getWidth(null),img.getHeight(null)) );
+		setLayout(null);
+	}
+	public int getWidth() {
+		return img.getWidth(null);
+	}
+	
+	public int getHeight() {
+		return img.getHeight(null);
+	}
+	
+	public void paintComponent(Graphics g) {
+		g.drawImage(img,0,0,null);
 	}
 }

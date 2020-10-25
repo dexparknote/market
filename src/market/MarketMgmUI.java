@@ -53,11 +53,11 @@ public class MarketMgmUI extends JFrame {
 	JPanel deletePane = new JPanel();	
 	JPanel chatPane = new JPanel();
 
-	JPanel joinBtnPane = new JPanel();
-	
-	JPanel joinForm = new JPanel();
-    JPanel joinLaPane = new JPanel(new GridLayout(7,1));
-    JPanel joinTaPane = new JPanel(new GridLayout(7,1));
+	JPanel joinBackPane = new JPanel();
+//	JPanel joinBtnPane = new JPanel();
+//	JPanel joinForm = new JPanel();
+//    JPanel joinLaPane = new JPanel(new GridLayout(7,1));
+//    JPanel joinTaPane = new JPanel(new GridLayout(7,1));
 
 	
 	public static Font font = new Font("¸¼Àº °íµñ", Font.BOLD, 12);
@@ -66,12 +66,13 @@ public class MarketMgmUI extends JFrame {
 	public MarketMgmUI() {
 		super("ReSell Market");
 		showMain();
-		
 	}
 	//Method
 		public void showMain() {  //10.22 ¿µÀç ¼öÁ¤
 			
+
 			showPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\login_main.png").getImage());
+
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
 			getContentPane().add(showPane);
 			
