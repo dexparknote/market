@@ -49,9 +49,12 @@ public class MarketMgmJoin {
 	public void join() {
 		joinOff();
         main.showPane.setVisible(false);
+       
+        joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\join_back.png" ).getImage());
+
 // ¿µÀç-"C:/java_workspace/market/images/join_back.png").getImage());
-//¹Î¼® - C:\\dev\\se_workspace\\sist_project_1\\images\\join_back.png").getImage()
-        joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\se_workspace\\sist_project_1\\images\\join_back.png").getImage());
+//¹Î¼® - C:\\dev\\se_workspace\\sist_project_1\\images\\join_back.png").getImage();
+//±â¸² -"C:\\dev\\eclipse_workspace\\market\\images\\join_back.png"  
 
 		main.setSize(joinBackPane.getWidth(),joinBackPane.getHeight()+38);
 		main.getContentPane().add(joinBackPane);
@@ -133,6 +136,7 @@ public class MarketMgmJoin {
         label.setBounds(270, 255, 95, 20);
         joinBackPane.add(label);
         
+
         jl_emailCheck = new JLabel("");
         jl_emailCheck.setFont(new Font("±¼¸²", Font.BOLD, 13));
         jl_emailCheck.setBounds(115, 336, 200, 20);

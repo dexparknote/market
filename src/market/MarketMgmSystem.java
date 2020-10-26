@@ -64,4 +64,8 @@ public class MarketMgmSystem {
 		return dao.emailCheck(memail);
 	}
 	
+	/** 로그인 체크 -민석 */
+	public boolean loginCheck(String mid, String mpass) {
+		return dao.loginCheck(mid, mpass);
+	}
 } // class
