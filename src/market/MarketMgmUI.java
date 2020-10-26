@@ -46,12 +46,15 @@ public class MarketMgmUI extends JFrame {
 	JLabel jl_title, jl_img;
 	JTextField jtf_id;  //아이디 입력 JTextField
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
+	
+	ImagePanel regPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 
-	JPanel regPane = new JPanel(new GridLayout(10,1));
-	JPanel searchPane = new JPanel();
-	JPanel updatePane = new JPanel(new GridLayout(10,1));
-	JPanel deletePane = new JPanel();	
-	JPanel chatPane = new JPanel();
+//영재-C:/java_workspace/market/images/register_back.png
+//민석-C:\\dev\\se_workspace\\sist_project_1\\images\\start_back.png
 
 	JPanel joinBackPane = new JPanel();
 //	JPanel joinBtnPane = new JPanel();
@@ -70,8 +73,7 @@ public class MarketMgmUI extends JFrame {
 	//Method
 		public void showMain() {  //10.22 영재 수정
 			
-
-			showPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\login_main.png").getImage());
+			showPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\login_main.png").getImage()); //영재
 
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
 			getContentPane().add(showPane);
@@ -161,7 +163,7 @@ public class MarketMgmUI extends JFrame {
 			add(menuPane, BorderLayout.WEST);
 			add(mainPane, BorderLayout.CENTER);
 			
-			setSize(600,500);
+			setSize(800,650);
 			
 			Dimension fsize = getSize();
 			Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize(); 
