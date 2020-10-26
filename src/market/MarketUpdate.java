@@ -299,25 +299,31 @@ public class MarketUpdate {
 	/** 수정처리 메소드 */
 	public void updateProc() {
 		ArrayList<String> dataList = new ArrayList<String>();
-		for(JTextField tf : tf_update_list) {
-			dataList.add(tf.getText().trim());
-		}
+//		for(JTextField tf : tf_update_list) {
+//			dataList.add(tf.getText().trim());
+//		}
+		dataList.add(tf_pname.getText().trim());
+		dataList.add(tf_price.getText().trim());
+//		dataList.add(tf_phone.getText().trim());
+		dataList.add(tf_address.getText().trim());
+		dataList.add(tf_explain.getText().trim());
+		
+		
 		ProductVO pvo = new ProductVO();
 		pvo.setPid(dataList.get(0));
 		pvo.setPname(dataList.get(1));
-		pvo.setAddress(dataList.get(2));
-		pvo.setExplain(dataList.get(3));
-		pvo.setPrice(Integer.parseInt(dataList.get(4)));
+		pvo.setPrice(Integer.parseInt(dataList.get(2)));
+//		pvo.setPhone(IdataList.get(3));
+		pvo.setAddress(dataList.get(3));
+		pvo.setExplain(dataList.get(4));
 		
 		if(main.system.update_pr(pvo)) {
 			JOptionPane.showMessageDialog(null, "수정이 완료됐습니다");
-			for(JTextField tf : tf_update_list) {
-				tf.setText("");
-			}
+//			for(JTextField tf : tf_update_list) {
+//				tf.setText("");
+//			}
 //			selectFormTable();
-			System.out.println("1111");
 			new MarketSearch(main).search();
-			System.out.println("2222");
 		} else {
 			JOptionPane.showMessageDialog(null, "수정을 실패했습니다");
 		}
@@ -334,9 +340,14 @@ public class MarketUpdate {
 			} else if(obj == btnUpdate || obj == tf_update_last) {
 				updateProc();
 			} else if(obj == btnUpdateReset) {
-				for(JTextField tf : tf_update_list) {
-					tf.setText("");
-				}
+//				for(JTextField tf : tf_update_list) {
+//					tf.setText("");
+//				}
+				tf_pname.setText("");
+				tf_price.setText("");
+				tf_phone.setText("");
+				tf_address.setText("");
+				tf_explain.setText("");
 			}
 		}
 	}
