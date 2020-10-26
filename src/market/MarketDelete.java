@@ -36,7 +36,7 @@ public class MarketDelete {
 	 */
 	public void delete() {
 		main.switchPane(MarketMgmUI.DELETE);
-		main.setSize(deletePane.getWidth(),deletePane.getHeight()+38);
+		main.setSize(deletePane.getWidth(),deletePane.getHeight());
 		main.getContentPane().add(deletePane);
 		deletePane.setLayout(null);
 		

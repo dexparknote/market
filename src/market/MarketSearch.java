@@ -3,13 +3,10 @@ package market;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,10 +15,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 
 
@@ -62,8 +58,6 @@ public class MarketSearch   {
 		
 			searchPane.add(jp_search);
 			searchPane.add(jp_searchResult);
-			searchPane.add(table);
-					
 			
 			crateJTableData();	
 			model.setColumnIdentifiers(columns);
@@ -72,6 +66,10 @@ public class MarketSearch   {
 			DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 			dtcr.setHorizontalAlignment(SwingConstants.CENTER);	
 		    TableColumnModel tcm = table.getColumnModel();
+		    JTableHeader header = table.getTableHeader();
+		    header.setBackground(Color.DARK_GRAY);
+		    header.setForeground(Color.white);  jp_search.setBackground(Color.white); jp_searchResult.setBackground(Color.white);
+			
 		    
 		    table.getColumn("물품번호").setCellRenderer(dtcr);
 		    table.getColumn("물품명").setCellRenderer(dtcr);
@@ -94,9 +92,9 @@ public class MarketSearch   {
 			
 			jp_searchResult.setLayout(new BorderLayout());
 			searchPane.setLayout(new BorderLayout());			
-			
-			jp_searchResult.add(BorderLayout.SOUTH,pane);			
-			searchPane.add(BorderLayout.CENTER,jp_searchResult);	
+				
+			searchPane.add(BorderLayout.CENTER,jp_searchResult);
+			searchPane.add(BorderLayout.SOUTH,pane);
 			searchPane.add(BorderLayout.NORTH,jp_search);
 			main.add(searchPane, BorderLayout.CENTER);
 			main.setVisible(true);	

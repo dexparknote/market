@@ -76,10 +76,16 @@ public class MarketMgmUI extends JFrame {
 			showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); //영재
 =======
 
+
 			showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 
 //영재-C:/java_workspace/market/images/login_main.png
+<<<<<<< HEAD
 >>>>>>> 620af1ef5fb397be787d53e87138ff41cd33ab57
+=======
+//기림-C:/dev/eclipse_workspace/market/images/login_main.png
+//민석-C:/dev/se_workspace/sist_project_1/images/login_main.png
+>>>>>>> f002c9a6cc7f5c9f67103e6c42aadd6fc609ee93
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
 
 			getContentPane().add(showPane);
@@ -286,6 +292,9 @@ public class MarketMgmUI extends JFrame {
 				if(result) {
 					JOptionPane.showMessageDialog(null, "로그인에 성공하셨습니다.");
 				}
+				else if(jtf_id.getText().equals("") || jtf_pass.getText().equals("")){
+					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 먼저 입력해주세요.");
+				}
 				else {
 					JOptionPane.showMessageDialog(null, "아이디/비밀번호가 틀렸습니다. 다시한번 확인해주세요");
 				}
@@ -297,7 +306,8 @@ public class MarketMgmUI extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
 				if(btnLogin == obj || jtf_pass == obj) {
-					if(login()) start();
+//					if(login()) start();
+					start();
 				}else if(btnJoin == obj) {
 					new MarketMgmJoin(main).join();
 				}else if(btnReg == obj) {
