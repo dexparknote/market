@@ -48,11 +48,12 @@ public class MarketMgmUI extends JFrame {
 	JTextField jtf_id;  //아이디 입력 JTextField
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
 	
-	ImagePanel regPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
-	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
-	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
-	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
-	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
+	ImagePanel regPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+
 
 //영재-C:/java_workspace/market/images/register_back.png
 //기림 -"C:\\dev\\eclipse_workspace\\market\\images\\register_back.png"
@@ -71,7 +72,12 @@ public class MarketMgmUI extends JFrame {
 	//Method
 		public void showMain() {  //10.22 영재 수정
 
+<<<<<<< HEAD
 			showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage());
+=======
+			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+
+>>>>>>> branch 'master' of https://github.com/lyj6054/market.git
 
 //영재-C:/java_workspace/market/images/login_main.png
 //기림-C:/dev/eclipse_workspace/market/images/login_main.png
@@ -295,7 +301,8 @@ public class MarketMgmUI extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
 				if(btnLogin == obj || jtf_pass == obj) {
-					if(login()) start();
+//					if(login()) start();
+					start();
 				}else if(btnJoin == obj) {
 					new MarketMgmJoin(main).join();
 				}else if(btnReg == obj) {
