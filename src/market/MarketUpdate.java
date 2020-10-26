@@ -1,7 +1,10 @@
 package market;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -36,6 +39,9 @@ public class MarketUpdate {
 	}
 	
 	//Method
+	 /**
+	  * @wbp.parser.entryPoint
+	 */
 	public void update() {
 		System.out.println("hi");
 		
@@ -187,3 +193,24 @@ public class MarketUpdate {
 		}
 	}
 } 
+class ImageJoinPanel extends JPanel{
+	private Image img;
+	
+	public ImageJoinPanel(Image img) {
+		this.img= img;
+		setSize(new Dimension(img.getWidth(null),img.getHeight(null)));
+		setPreferredSize(new Dimension(img.getWidth(null),img.getHeight(null)) );
+		setLayout(null);
+	}
+	public int getWidth() {
+		return img.getWidth(null);
+	}
+	
+	public int getHeight() {
+		return img.getHeight(null);
+	}
+	
+	public void paintComponent(Graphics g) {
+		g.drawImage(img,0,0,null);
+	}
+}
