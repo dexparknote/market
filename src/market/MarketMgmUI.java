@@ -50,7 +50,8 @@ public class MarketMgmUI extends JFrame {
 	JPanel regPane = new JPanel(new GridLayout(10,1));
 	JPanel searchPane = new JPanel();
 	JPanel updatePane = new JPanel(new GridLayout(10,1));
-	JPanel deletePane = new JPanel();	
+	//¹Î¼®-C:\\dev\\se_workspace\\sist_project_1\\images\\start_back.png
+	JPanel deletePane = new ImageJoinPanel(new ImageIcon("C:\\dev\\se_workspace\\sist_project_1\\images\\start_back.png").getImage());	
 	JPanel chatPane = new JPanel();
 
 	JPanel joinBackPane = new JPanel();
@@ -159,7 +160,7 @@ public class MarketMgmUI extends JFrame {
 			add(menuPane, BorderLayout.WEST);
 			add(mainPane, BorderLayout.CENTER);
 			
-			setSize(600,500);
+			setSize(800,650);
 			
 			Dimension fsize = getSize();
 			Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize(); 
