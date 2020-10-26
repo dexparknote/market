@@ -31,7 +31,7 @@ public class MarketUpdate {
 	JPanel update_top, search_panel, update_bottom;
 //	JLabel id_label;
 	JTextField tf_update_last; // tf_update,
-	JButton  update_search, btnUpdate, btnUpdateReset; // 
+	JButton  update_search; // btnUpdate, btnUpdateReset; // 
 	ArrayList<JTextField> tf_update_list;
 	
 	ImagePanel img_update;
@@ -40,15 +40,17 @@ public class MarketUpdate {
 	JTextField tf_update;
 	JLabel lblNewLabel;
 	JLabel label_pname;
-	JLabel label_address;
-	JLabel label_phone;
-	JLabel label_pname_3;
-	JLabel label_pname_4;
-	JTextField textField;
-	JTextField textField_1;
-	JTextField textField_2;
-	JTextField textField_3;
-	JTextField textField_4;
+	private JButton btnUpdate;
+	private JButton btnUpdateReset;
+	private JLabel label_price;
+	private JLabel label_phone;
+	private JLabel label_address;
+	private JLabel label_explain;
+	private JTextField tf_pname;
+	private JTextField tf_price;
+	private JTextField tf_phone;
+	private JTextField tf_address;
+	private JTextField tf_explain;
 	
 	//Constructor
 	public MarketUpdate() {}
@@ -99,12 +101,12 @@ public class MarketUpdate {
 		img_update.add(lblNewLabel);
 		
 		JLabel title_label = new JLabel("\u203B  \uC218\uC815\uD560 \uBB3C\uD488\uC758 \uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694  \u203B");
-		title_label.setFont(new Font("∞Ê±‚√µ≥‚¡¶∏ÒV Bold", Font.PLAIN, 15));
+		title_label.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 16));
 		title_label.setBounds(239, 137, 286, 40);
 		img_update.add(title_label);
 		
 		JLabel id_label = new JLabel("[  \uBB3C\uD488\uBC88\uD638  ]");
-		id_label.setFont(new Font("∞Ê±‚√µ≥‚¡¶∏ÒV Bold", Font.PLAIN, 20));
+		id_label.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 22));
 		id_label.setBounds(49, 93, 127, 45);
 		img_update.add(id_label);
 		
@@ -116,10 +118,11 @@ public class MarketUpdate {
 		update_search = new JButton("\uAC80  \uC0C9");
 		update_search.setBackground(Color.DARK_GRAY);
 		update_search.setForeground(new Color(153, 204, 255));
-		update_search.setFont(new Font("-¿±∞ÌµÒ330", Font.PLAIN, 20));
+		update_search.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 20));
 		update_search.setBounds(610, 98, 91, 40);
-		
 		img_update.add(update_search);
+		
+		
 		
 		
 		main.getContentPane().add(updatePane);
@@ -164,64 +167,89 @@ public class MarketUpdate {
 //		
 		
 		label_pname = new JLabel("- \uBB3C \uD488 \uBA85");
-		label_pname.setFont(new Font("-¿±∞ÌµÒ330", Font.PLAIN, 18));
-		label_pname.setBounds(91, 217, 85, 40);
+		label_pname.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 20));
+		label_pname.setBounds(66, 216, 85, 40);
 		img_update.add(label_pname);
 		
-		label_address = new JLabel("- \uC8FC    \uC18C");
-		label_address.setFont(new Font("-¿±∞ÌµÒ330", Font.PLAIN, 18));
-		label_address.setBounds(91, 424, 85, 40);
-		img_update.add(label_address);
+		
+		label_price = new JLabel("- \uAC00    \uACA9");
+		label_price.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 20));
+		label_price.setBounds(66, 287, 85, 40);
+		img_update.add(label_price);
 		
 		label_phone = new JLabel("- \uC5F0 \uB77D \uCC98");
-		label_phone.setFont(new Font("-¿±∞ÌµÒ330", Font.PLAIN, 18));
-		label_phone.setBounds(91, 358, 85, 40);
+		label_phone.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 20));
+		label_phone.setBounds(66, 357, 85, 40);
 		img_update.add(label_phone);
 		
-		label_pname_3 = new JLabel("- \uC124    \uBA85");
-		label_pname_3.setFont(new Font("-¿±∞ÌµÒ330", Font.PLAIN, 18));
-		label_pname_3.setBounds(91, 495, 85, 40);
-		img_update.add(label_pname_3);
+		label_address = new JLabel("- \uC8FC    \uC18C");
+		label_address.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 20));
+		label_address.setBounds(66, 425, 85, 40);
+		img_update.add(label_address);
 		
-		label_pname_4 = new JLabel("- \uAC00    \uACA9");
-		label_pname_4.setFont(new Font("-¿±∞ÌµÒ330", Font.PLAIN, 18));
-		label_pname_4.setBounds(91, 288, 85, 40);
-		img_update.add(label_pname_4);
+		label_explain = new JLabel("- \uC124    \uBA85");
+		label_explain.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 20));
+		label_explain.setBounds(66, 496, 85, 40);
+		img_update.add(label_explain);
 		
-		textField = new JTextField();
-		textField.setBounds(188, 227, 260, 25);
-		img_update.add(textField);
-		textField.setColumns(10);
+		tf_pname = new JTextField();
+		tf_pname.setColumns(10);
+		tf_pname.setBounds(188, 226, 260, 25);
+		img_update.add(tf_pname);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(188, 298, 260, 25);
-		img_update.add(textField_1);
+		tf_price = new JTextField();
+		tf_price.setColumns(10);
+		tf_price.setBounds(188, 297, 260, 25);
+		img_update.add(tf_price);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(188, 368, 260, 25);
-		img_update.add(textField_2);
+		tf_phone = new JTextField();
+		tf_phone.setColumns(10);
+		tf_phone.setBounds(188, 367, 260, 25);
+		img_update.add(tf_phone);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(188, 505, 513, 67);
-		img_update.add(textField_3);
+		tf_address = new JTextField();
+		tf_address.setColumns(10);
+		tf_address.setBounds(188, 435, 260, 25);
+		img_update.add(tf_address);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(188, 436, 260, 25);
-		img_update.add(textField_4);
-		main.getContentPane().add(updatePane);
-		main.setLocationRelativeTo(null);
-		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		main.setVisible(true);
+		tf_explain = new JTextField();
+		tf_explain.setColumns(10);
+		tf_explain.setBounds(188, 496, 513, 67);
+		img_update.add(tf_explain);
+		
+		btnUpdate = new JButton("\uC218\uC815 \uC644\uB8CC");
+		btnUpdate.setBackground(Color.DARK_GRAY);
+		btnUpdate.setForeground(new Color(153, 204, 255));
+		btnUpdate.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 21));
+		btnUpdate.setBounds(278, 600, 115, 40);
+		img_update.add(btnUpdate);
+		
+		btnUpdateReset = new JButton("\uB2E4\uC2DC \uC791\uC131");
+		btnUpdateReset.setForeground(new Color(153, 204, 255));
+		btnUpdateReset.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 21));
+		btnUpdateReset.setBackground(Color.DARK_GRAY);
+		btnUpdateReset.setBounds(410, 600, 115, 40);
+		img_update.add(btnUpdateReset);
+		
+		
 		
 		String[] data_list = new String[4];
 		data_list[0] = pvo.getPname();
-		data_list[1] = pvo.getAddress();
-		data_list[2] = pvo.getExplain();
-		data_list[3] = String.valueOf(pvo.getPrice());
+		data_list[1] = String.valueOf(pvo.getPrice());
+		data_list[2] = pvo.getAddress();
+		data_list[3] = pvo.getExplain();
+		
+		tf_pname.setText(data_list[0]);
+		tf_price.setText(data_list[1]);
+//		tf_phone.setText(data_list[4]);
+		tf_address.setText(data_list[2]);
+		tf_explain.setText(data_list[3]);
+		
+		tf_update_list.add(tf_pname);
+		tf_update_list.add(tf_price);
+//		tf_update_list.add(tf_phone);
+		tf_update_list.add(tf_address);
+		tf_update_list.add(tf_explain);
 		
 //		for(int i=0; i<form_names.length; i++) {
 //			JPanel p1 = new JPanel();
@@ -245,8 +273,7 @@ public class MarketUpdate {
 //		main.getContentPane().add(updatePane);
 //		main.setVisible(true);
 		
-		img_update.add(updatePane);
-		main.getContentPane().add(img_update);
+		main.getContentPane().add(updatePane);
 		main.setLocationRelativeTo(null);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setVisible(true);
