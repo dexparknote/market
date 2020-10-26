@@ -53,11 +53,11 @@ public class MarketMgmUI extends JFrame {
 	JPanel deletePane = new JPanel();	
 	JPanel chatPane = new JPanel();
 
-	JPanel joinBtnPane = new JPanel();
-	
-	JPanel joinForm = new JPanel();
-    JPanel joinLaPane = new JPanel(new GridLayout(7,1));
-    JPanel joinTaPane = new JPanel(new GridLayout(7,1));
+	JPanel joinBackPane = new JPanel();
+//	JPanel joinBtnPane = new JPanel();
+//	JPanel joinForm = new JPanel();
+//    JPanel joinLaPane = new JPanel(new GridLayout(7,1));
+//    JPanel joinTaPane = new JPanel(new GridLayout(7,1));
 
 	
 	public static Font font = new Font("¸¼Àº °íµñ", Font.BOLD, 12);
@@ -66,14 +66,14 @@ public class MarketMgmUI extends JFrame {
 	public MarketMgmUI() {
 		super("ReSell Market");
 		showMain();
-		
 	}
 	//Method
 		public void showMain() {  //10.22 ¿µÀç ¼öÁ¤
 			
-			showPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\back.png").getImage());
+			showPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\login_main.png").getImage());
+
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
-			
+
 			getContentPane().add(showPane);
 			
 			JLabel Jl_id = new JLabel("\uC544\uC774\uB514");
@@ -161,7 +161,7 @@ public class MarketMgmUI extends JFrame {
 			add(menuPane, BorderLayout.WEST);
 			add(mainPane, BorderLayout.CENTER);
 			
-			setSize(600,500);
+			setSize(800,650);
 			
 			Dimension fsize = getSize();
 			Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize(); 
@@ -306,9 +306,6 @@ class ImagePanel extends JPanel{
 	
 	public void paintComponent(Graphics g) {
 		g.drawImage(img,0,0,null);
-//		g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-
-		
 	}
 	
 }

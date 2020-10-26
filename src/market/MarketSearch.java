@@ -2,11 +2,13 @@ package market;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,6 +26,7 @@ import javax.swing.table.TableColumnModel;
 
 public class MarketSearch   {
 //Field
+
 		JPanel searchPane, jp_search, jp_searchResult;
 		JLabel jl_searchName;
 		JButton btn_search;
@@ -43,7 +46,7 @@ public class MarketSearch   {
 		
 //Method
 		public void search() {		
-			
+		
 			main.switchPane(MarketMgmUI.SEARCH);
 			jp_search = new JPanel();
 			jp_searchResult = new JPanel();
@@ -82,7 +85,7 @@ public class MarketSearch   {
 			jp_searchResult.setLayout(new BorderLayout());
 			jp_searchResult.add(BorderLayout.NORTH, new Label("물품 조회"));
 			jp_searchResult.add(BorderLayout.SOUTH,pane);
-			main.add(searchPane, BorderLayout.NORTH); 
+			main.getContentPane().add(searchPane, BorderLayout.NORTH); 
 			searchPane.add(jp_searchResult);
 			
 			
@@ -91,9 +94,15 @@ public class MarketSearch   {
 			table.getColumn(table.getColumnName(4)).setPreferredWidth(150);
 			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
 
+			table.setPreferredScrollableViewportSize(new Dimension(600, 500));//Dimension의 데이터의 크기를 500,500으로 만들어서 table
+			table.setRowHeight(table.getRowHeight() + 70);	//나머지 여백을 70더 준거임
+	        table.setFillsViewportHeight(true);
 		
-			main.setVisible(true);	
-			main.add(searchPane);
+	  
+	        
+	        
+	        main.setVisible(true);	
+			main.getContentPane().add(searchPane);
 			btn_search.addActionListener(new MemberSearchEvent());
 			jt_search.addActionListener(new MemberSearchEvent());
 		}//search method
