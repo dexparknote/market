@@ -25,12 +25,13 @@ public class MarketRegister {
 		JTextField jt_name, jt_price,jt_explain;
 		MarketMgmUI main;
 		JButton btnReg, btnReset;
-	
+		MemberVO vo = new MemberVO();
 	//Constructor
 	public MarketRegister() {}
 	public MarketRegister(MarketMgmUI  main) {
 		this.main = main;
 		this.regPane = main.regPane;
+		this.vo=main.vo;
 	}	
 	
 	//Method
@@ -85,7 +86,7 @@ public class MarketRegister {
 		btnReset.setBounds(370, 524, 148, 42);
 		regPane.add(btnReset);
 		
-		JLabel id_panel = new JLabel("- (\uC544\uC774\uB514) \uB2D8 -");
+		JLabel id_panel = new JLabel("- "+ vo.getId()+"´Ô -");
 		id_panel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		id_panel.setHorizontalAlignment(SwingConstants.CENTER);
 		id_panel.setBounds(489, 10, 105, 42);
