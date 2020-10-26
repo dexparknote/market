@@ -296,7 +296,8 @@ public class MarketMgmUI extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
 				if(btnLogin == obj || jtf_pass == obj) {
-					if(login()) start();
+//					if(login()) start();
+					start();
 				}else if(btnJoin == obj) {
 					new MarketMgmJoin(main).join();
 				}else if(btnReg == obj) {
