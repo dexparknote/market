@@ -26,8 +26,8 @@ import javax.swing.table.TableColumnModel;
 
 public class MarketSearch   {
 //Field
-
-		JPanel searchPane, jp_search, jp_searchResult;
+		JPanel searchPane; 
+		JPanel jp_search, jp_searchResult;
 		JLabel jl_searchName;
 		JButton btn_search;
 		JTextField jt_search;
@@ -41,35 +41,35 @@ public class MarketSearch   {
 
 		public MarketSearch(MarketMgmUI main) {
 			this.main = main;
-			searchPane = main.searchPane;	
+			this.searchPane = main.searchPane;	
 		}
 		
 //Method
 		public void search() {		
-		
 			main.switchPane(MarketMgmUI.SEARCH);
+			
 			jp_search = new JPanel();
 			jp_searchResult = new JPanel();
 			jl_searchName = new JLabel("물품명");
 			btn_search = new JButton("검색");
 			jt_search = new JTextField(20);
-			jl_searchName.setFont(MarketMgmUI.font);
 			
 			jp_search.add(jl_searchName);
 			jp_search.add(jt_search);
 			jp_search.add(btn_search);
+		
 			searchPane.add(jp_search);
 			searchPane.add(jp_searchResult);
-			
-			jp_search.setBackground(Color.getHSBColor(100, 100, 82));
-			jp_searchResult.setBackground(Color.getHSBColor(100, 100, 82));		
+			searchPane.add(table);
+					
+			jl_searchName.setFont(MarketMgmUI.font);	
 					
 			crateJTableData();	
 			model.setColumnIdentifiers(columns);
 			table.setModel(model);
 			
 			DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-			dtcr.setHorizontalAlignment(SwingConstants.CENTER);	//셀데이터 가운데정렬
+			dtcr.setHorizontalAlignment(SwingConstants.CENTER);	
 		    TableColumnModel tcm = table.getColumnModel();
 		    
 		    table.getColumn("물품번호").setCellRenderer(dtcr);
@@ -80,29 +80,26 @@ public class MarketSearch   {
 		    table.getColumn("등록일").setCellRenderer(dtcr);
 		   
 		    JScrollPane pane=new JScrollPane(table);
-			pane.setBounds(50,100,100,100);
-			
-			jp_searchResult.setLayout(new BorderLayout());
-			jp_searchResult.add(BorderLayout.NORTH, new Label("물품 조회"));
-			jp_searchResult.add(BorderLayout.SOUTH,pane);
-			main.getContentPane().add(searchPane, BorderLayout.NORTH); 
-			searchPane.add(jp_searchResult);
-			
+//			pane.setBounds(50,100,100,100);
 			
 			table.getColumn(table.getColumnName(0)).setPreferredWidth(50);	
 			table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
 			table.getColumn(table.getColumnName(4)).setPreferredWidth(150);
 			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
-
-			table.setPreferredScrollableViewportSize(new Dimension(600, 500));//Dimension의 데이터의 크기를 500,500으로 만들어서 table
-			table.setRowHeight(table.getRowHeight() + 70);	//나머지 여백을 70더 준거임
-	        table.setFillsViewportHeight(true);
-		
-	  
-	        
-	        
-	        main.setVisible(true);	
-			main.getContentPane().add(searchPane);
+			
+			table.setPreferredScrollableViewportSize(new Dimension(500, 500));
+			table.setRowHeight(table.getRowHeight() + 70);
+			table.setFillsViewportHeight(true);
+			
+			jp_searchResult.setLayout(new BorderLayout());
+			jp_searchResult.add(BorderLayout.SOUTH,pane);
+			
+			searchPane.setLayout(new BorderLayout());			
+			searchPane.add(BorderLayout.CENTER,jp_searchResult);	
+			searchPane.add(BorderLayout.NORTH,jp_search);
+			main.add(searchPane, BorderLayout.CENTER);
+			main.setVisible(true);	
+			
 			btn_search.addActionListener(new MemberSearchEvent());
 			jt_search.addActionListener(new MemberSearchEvent());
 		}//search method
