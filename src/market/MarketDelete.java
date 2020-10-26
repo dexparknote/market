@@ -1,21 +1,31 @@
 package market;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.Color;
 
 public class MarketDelete {
 	// Field
 	MarketMgmUI main;
-	JPanel jp_deleteSearch;
-	JLabel jl_deleteSearchName;
+	JPanel deletePane, jp_deleteSearch;
 	JTextField jt_deleteSearch;
-	JPanel deletePane;
+	JButton deleteSearch;
+	JLabel jl_deleteSearchName;
+	
+//	JLabel jl_deleteSearchName;
+//	JTextField jt_deleteSearch;
 
 	// Constructor
 	public MarketDelete() {
@@ -26,26 +36,36 @@ public class MarketDelete {
 		this.deletePane = main.deletePane;
 	}
 
-	// Method
-	// delete
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public void delete() {
-		// switchPane("delete");
 		main.switchPane(MarketMgmUI.DELETE);
-
-		jp_deleteSearch = new JPanel();
-		jl_deleteSearchName = new JLabel("삭제할 물품 번호 입력 : ");
-		jt_deleteSearch = new JTextField(20);
-		jl_deleteSearchName.setFont(MarketMgmUI.font);
-
-		jp_deleteSearch.add(jl_deleteSearchName);
-		jp_deleteSearch.add(jt_deleteSearch);
-		deletePane.add(jp_deleteSearch);
-
-		main.add(deletePane, BorderLayout.CENTER);
+		main.setSize(deletePane.getWidth(),deletePane.getHeight()+38);
+		main.getContentPane().add(deletePane);
+		deletePane.setLayout(null);
+		
+		jl_deleteSearchName = new JLabel("\uBB3C\uD488 \uBC88\uD638");
+		jl_deleteSearchName.setFont(new Font("굴림", Font.BOLD, 13));
+		jl_deleteSearchName.setBounds(213, 28, 58, 15);
+		deletePane.add(jl_deleteSearchName);
+		
+		jt_deleteSearch = new JTextField();
+		jt_deleteSearch.setBounds(284, 25, 156, 21);
+		deletePane.add(jt_deleteSearch);
+		jt_deleteSearch.setColumns(10);
+		
+		deleteSearch = new JButton("\uAC80\uC0C9");
+		deleteSearch.setForeground(new Color(102, 204, 255));
+		deleteSearch.setBackground(Color.DARK_GRAY);
+		deleteSearch.setFont(new Font("굴림", Font.BOLD, 13));
+		deleteSearch.setBounds(452, 24, 64, 23);
+		deletePane.add(deleteSearch);
+		
 		main.setVisible(true);
 
 		jt_deleteSearch.addActionListener(new MemberDeleteEvent());
-
+		deleteSearch.addActionListener(new MemberDeleteEvent());
 	}// delete method
 
 	// deleteDataCheck
@@ -67,13 +87,16 @@ public class MarketDelete {
 	// 이벤트 처리 클래스
 	class MemberDeleteEvent implements ActionListener {
 		public void actionPerformed(ActionEvent ae) {
-			if (!jt_deleteSearch.getText().equals("")) {
+			Object obj = ae.getSource();
+			
+			if (!jt_deleteSearch.getText().equals("") || obj == deleteSearch) {
 				String name = jt_deleteSearch.getText().trim();
 
 				if (deleteDataCheck(name)) {
 					int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 삭제하시겠습니까?"));
 					if (result == 0)
 						deleteProc(name);
+						jt_deleteSearch.setText("");
 				} else {
 					// 삭제할 데이터 없음
 					JOptionPane.showMessageDialog(null, main.getMsg("삭제할 데이터가 존재하지 않습니다."));
@@ -84,5 +107,26 @@ public class MarketDelete {
 			}
 		}
 	}
+}
 
+class ImageDeletePanel extends JPanel{
+	private Image img;
+	
+	public ImageDeletePanel(Image img) {
+		this.img= img;
+		setSize(new Dimension(img.getWidth(null),img.getHeight(null)));
+		setPreferredSize(new Dimension(img.getWidth(null),img.getHeight(null)) );
+		setLayout(null);
+	}
+	public int getWidth() {
+		return img.getWidth(null);
+	}
+	
+	public int getHeight() {
+		return img.getHeight(null);
+	}
+	
+	public void paintComponent(Graphics g) {
+		g.drawImage(img,0,0,null);
+	}
 }
