@@ -14,12 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 
-public class MarketSearch {
+public class MarketSearch   {
 //Field
 		JPanel searchPane, jp_search, jp_searchResult;
 		JLabel jl_searchName;
@@ -63,6 +66,7 @@ public class MarketSearch {
 			table.setModel(model);
 			
 			DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+			dtcr.setHorizontalAlignment(SwingConstants.CENTER);	//셀데이터 가운데정렬
 		    TableColumnModel tcm = table.getColumnModel();
 		    
 		    table.getColumn("물품번호").setCellRenderer(dtcr);
@@ -80,7 +84,14 @@ public class MarketSearch {
 			jp_searchResult.add(BorderLayout.SOUTH,pane);
 			main.add(searchPane, BorderLayout.NORTH); 
 			searchPane.add(jp_searchResult);
+			
+			
+			table.getColumn(table.getColumnName(0)).setPreferredWidth(50);	
+			table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
+			table.getColumn(table.getColumnName(4)).setPreferredWidth(150);
+			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
 
+		
 			main.setVisible(true);	
 			main.add(searchPane);
 			btn_search.addActionListener(new MemberSearchEvent());
