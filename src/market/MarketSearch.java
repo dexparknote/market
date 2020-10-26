@@ -80,7 +80,6 @@ public class MarketSearch   {
 		    table.getColumn("µÓ∑œ¿œ").setCellRenderer(dtcr);
 		   
 		    JScrollPane pane=new JScrollPane(table);
-//			pane.setBounds(50,100,100,100);
 			
 			table.getColumn(table.getColumnName(0)).setPreferredWidth(50);	
 			table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
