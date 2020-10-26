@@ -197,7 +197,6 @@ public class MarketMgmUI extends JFrame {
 			resetPane();			
 			if(menu.equals("register")) {
 				regPane.removeAll();
-				regPane.setBounds(130, 0, 466, 472);
 				regPane.setVisible(true);
 			}else if(menu.equals("search")) {		
 				searchPane.removeAll();

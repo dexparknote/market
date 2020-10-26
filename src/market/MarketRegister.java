@@ -36,79 +36,60 @@ public class MarketRegister {
 	//Method
 	public void register() {
 		main.switchPane(MarketMgmUI.REGISTER);
-		
-		regPane.setBackground(Color.getHSBColor(100, 100, 82));
-		regPane.setBounds(0, 0, 600, 500);
 		regPane.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.getHSBColor(100, 100, 100));
-		panel_1.setBounds(32, 30, 420, 56);
-		regPane.add(panel_1);
-		panel_1.setLayout(null);
-		
-		jl_name = new JLabel("\uBB3C\uD488 \uC774\uB984    :");
-		jl_name.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		jl_name = new JLabel("\uBB3C\uD514 \uC774\uB984  :");
 		jl_name.setHorizontalAlignment(SwingConstants.CENTER);
-		jl_name.setBounds(71, 9, 113, 36);
-		panel_1.add(jl_name);
+		jl_name.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		jl_name.setBounds(60, 69, 99, 42);
+		regPane.add(jl_name);
 		
-		jt_name = new JTextField();
-		jt_name.setHorizontalAlignment(SwingConstants.CENTER);
-		jt_name.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
-		jt_name.setForeground(Color.BLACK);
-		jt_name.setBounds(196, 15, 149, 25);
-		panel_1.add(jt_name);
-		jt_name.setColumns(13);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.getHSBColor(100, 100, 100));
-		panel_2.setBounds(32, 133, 420, 56);
-		regPane.add(panel_2);
-		panel_2.setLayout(null);
-		
-		jl_price = new JLabel("\uBB3C\uD488 \uAC00\uACA9    :");
+		 jl_price = new JLabel("\uBB3C\uD514 \uAC00\uACA9  :");
 		jl_price.setHorizontalAlignment(SwingConstants.CENTER);
 		jl_price.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		jl_price.setBounds(67, 10, 109, 36);
-		panel_2.add(jl_price);
+		jl_price.setBounds(60, 164, 99, 42);
+		regPane.add(jl_price);
+		
+		jl_explain = new JLabel("\uBB3C\uD514 \uC124\uBA85  :");
+		jl_explain.setHorizontalAlignment(SwingConstants.CENTER);
+		jl_explain.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		jl_explain.setBounds(60, 264, 99, 42);
+		regPane.add(jl_explain);
+		
+		jt_name = new JTextField();
+		jt_name.setFont(new Font("±¼¸²", Font.PLAIN, 13));
+		jt_name.setBounds(173, 78, 156, 29);
+		regPane.add(jt_name);
+		jt_name.setColumns(10);
 		
 		jt_price = new JTextField();
-		jt_price.setHorizontalAlignment(SwingConstants.CENTER);
-		jt_price.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
-		jt_price.setBounds(196, 16, 153, 25);
-		panel_2.add(jt_price);
+		jt_price.setFont(new Font("±¼¸²", Font.PLAIN, 13));
+		jt_price.setBounds(173, 173, 156, 29);
+		regPane.add(jt_price);
 		jt_price.setColumns(10);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.getHSBColor(100, 100, 100));
-		panel_3.setBounds(32, 228, 420, 158);
-		regPane.add(panel_3);
-		panel_3.setLayout(null);
-		
-		jl_explain = new JLabel("-   \uBB3C\uD488 \uC124\uBA85   -");
-		jl_explain.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		jl_explain.setHorizontalAlignment(SwingConstants.CENTER);
-		jl_explain.setBounds(127, 10, 155, 28);
-		panel_3.add(jl_explain);
-		
 		jt_explain = new JTextField();
-		jt_explain.setBounds(12, 49, 395, 99);
-		panel_3.add(jt_explain);
+		jt_explain.setBounds(171, 271, 423, 199);
+		regPane.add(jt_explain);
 		jt_explain.setColumns(10);
 		
-		btnReg = new JButton("\uBB3C\uD488\uB4F1\uB85D");
-		btnReg.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		btnReg.setBackground(Color.ORANGE);
-		btnReg.setBounds(103, 396, 111, 23);
+		btnReg = new JButton("\uBB3C\uD488 \uB4F1\uB85D");
+		btnReg.setForeground(new Color(153, 204, 255));
+		btnReg.setBackground(Color.DARK_GRAY);
+		btnReg.setBounds(151, 524, 148, 42);
 		regPane.add(btnReg);
 		
 		btnReset = new JButton("\uB4F1\uB85D \uCDE8\uC18C");
-		btnReset.setBackground(Color.ORANGE);
-		btnReset.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
-		btnReset.setForeground(Color.BLACK);
-		btnReset.setBounds(251, 396, 111, 23);
+		btnReset.setForeground(new Color(153, 204, 255));
+		btnReset.setBackground(Color.DARK_GRAY);
+		btnReset.setBounds(370, 524, 148, 42);
 		regPane.add(btnReset);
+		
+		JLabel id_panel = new JLabel("- (\uC544\uC774\uB514) \uB2D8 -");
+		id_panel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		id_panel.setHorizontalAlignment(SwingConstants.CENTER);
+		id_panel.setBounds(489, 10, 105, 42);
+		regPane.add(id_panel);
 		
 			
 			main.add(regPane, BorderLayout.CENTER);
