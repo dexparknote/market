@@ -286,6 +286,7 @@ public class MarketMgmUI extends JFrame {
 					if (result == 0) {
 						mainPane.setVisible(false);
 						menuPane.setVisible(false);
+						resetPane();
 						showMain();
 					}
 				}
