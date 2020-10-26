@@ -37,7 +37,18 @@ public class MarketUpdate {
 	ImagePanel img_update;
 	
 	MarketUpdateEvent eventObj = new MarketUpdateEvent();
-	private JTextField tf_update;
+	JTextField tf_update;
+	JLabel lblNewLabel;
+	JLabel label_pname;
+	JLabel label_address;
+	JLabel label_phone;
+	JLabel label_pname_3;
+	JLabel label_pname_4;
+	JTextField textField;
+	JTextField textField_1;
+	JTextField textField_2;
+	JTextField textField_3;
+	JTextField textField_4;
 	
 	//Constructor
 	public MarketUpdate() {}
@@ -56,7 +67,7 @@ public class MarketUpdate {
 
 		main.switchPane(MarketMgmUI.UPDATE);
 		
-		img_update = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
+		img_update = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); 
 		
 		
 //		update_top = new JPanel(new BorderLayout());
@@ -81,9 +92,15 @@ public class MarketUpdate {
 		
 		updatePane.add(img_update);
 		
+		lblNewLabel = new JLabel("\uB3C4\uC2EC \uC18D \uBC14\uB2E4 : \uBC14\uAFD4\uC4F0\uACE0 \uB2E4\uC2DC\uC4F0\uACE0");
+		lblNewLabel.setFont(new Font("경기천년제목V Bold", Font.BOLD, 26));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setBounds(188, 38, 415, 25);
+		img_update.add(lblNewLabel);
+		
 		JLabel title_label = new JLabel("\u203B  \uC218\uC815\uD560 \uBB3C\uD488\uC758 \uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694  \u203B");
-		title_label.setFont(new Font("경기천년제목V Bold", Font.PLAIN, 20));
-		title_label.setBounds(202, 28, 379, 40);
+		title_label.setFont(new Font("경기천년제목V Bold", Font.PLAIN, 15));
+		title_label.setBounds(239, 137, 286, 40);
 		img_update.add(title_label);
 		
 		JLabel id_label = new JLabel("[  \uBB3C\uD488\uBC88\uD638  ]");
@@ -100,9 +117,11 @@ public class MarketUpdate {
 		update_search.setBackground(Color.DARK_GRAY);
 		update_search.setForeground(new Color(153, 204, 255));
 		update_search.setFont(new Font("-윤고딕330", Font.PLAIN, 20));
-		update_search.setBounds(606, 97, 91, 40);
+		update_search.setBounds(610, 98, 91, 40);
 		
 		img_update.add(update_search);
+		
+		
 		main.getContentPane().add(updatePane);
 		main.setLocationRelativeTo(null);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -124,6 +143,7 @@ public class MarketUpdate {
 			if(idx != 0) {
 				ProductVO pvo = main.system.selectProduct(pid);
 				updateOkForm(pvo);
+				
 			} else {
 				updateFailForm();
 			}
@@ -132,15 +152,70 @@ public class MarketUpdate {
 	
 	/** 수정 데이터 등록 폼 : 물품명, 주소, 설명, 가격 **/
 	public void updateOkForm(ProductVO pvo) {
-		update_bottom = new JPanel(new BorderLayout());
-		JPanel label_panel = new JPanel(new GridLayout(4,1));
-		JPanel tf_panel = new JPanel(new GridLayout(4,1));
-		JPanel btn_panel = new JPanel();
-		btnUpdate = new JButton("수정완료");
-		btnUpdateReset = new JButton("다시작성");
-		btn_panel.add(btnUpdate); btn_panel.add(btnUpdateReset);
+		update();
 		
+//		update_bottom = new JPanel(new BorderLayout());
+//		JPanel label_panel = new JPanel(new GridLayout(4,1));
+//		JPanel tf_panel = new JPanel(new GridLayout(4,1));
+//		JPanel btn_panel = new JPanel();
+//		btnUpdate = new JButton("수정완료");
+//		btnUpdateReset = new JButton("다시작성");
+//		btn_panel.add(btnUpdate); btn_panel.add(btnUpdateReset);
+//		
 		
+		label_pname = new JLabel("- \uBB3C \uD488 \uBA85");
+		label_pname.setFont(new Font("-윤고딕330", Font.PLAIN, 18));
+		label_pname.setBounds(91, 217, 85, 40);
+		img_update.add(label_pname);
+		
+		label_address = new JLabel("- \uC8FC    \uC18C");
+		label_address.setFont(new Font("-윤고딕330", Font.PLAIN, 18));
+		label_address.setBounds(91, 424, 85, 40);
+		img_update.add(label_address);
+		
+		label_phone = new JLabel("- \uC5F0 \uB77D \uCC98");
+		label_phone.setFont(new Font("-윤고딕330", Font.PLAIN, 18));
+		label_phone.setBounds(91, 358, 85, 40);
+		img_update.add(label_phone);
+		
+		label_pname_3 = new JLabel("- \uC124    \uBA85");
+		label_pname_3.setFont(new Font("-윤고딕330", Font.PLAIN, 18));
+		label_pname_3.setBounds(91, 495, 85, 40);
+		img_update.add(label_pname_3);
+		
+		label_pname_4 = new JLabel("- \uAC00    \uACA9");
+		label_pname_4.setFont(new Font("-윤고딕330", Font.PLAIN, 18));
+		label_pname_4.setBounds(91, 288, 85, 40);
+		img_update.add(label_pname_4);
+		
+		textField = new JTextField();
+		textField.setBounds(188, 227, 260, 25);
+		img_update.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(188, 298, 260, 25);
+		img_update.add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(188, 368, 260, 25);
+		img_update.add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(188, 505, 513, 67);
+		img_update.add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(188, 436, 260, 25);
+		img_update.add(textField_4);
+		main.getContentPane().add(updatePane);
+		main.setLocationRelativeTo(null);
+		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		main.setVisible(true);
 		
 		String[] data_list = new String[4];
 		data_list[0] = pvo.getPname();
@@ -148,26 +223,32 @@ public class MarketUpdate {
 		data_list[2] = pvo.getExplain();
 		data_list[3] = String.valueOf(pvo.getPrice());
 		
-		for(int i=0; i<form_names.length; i++) {
-			JPanel p1 = new JPanel();
-			JPanel p2 = new JPanel();
-			JLabel label = new JLabel(form_names[i]);
-			JTextField tf = new JTextField(30);
-			tf.setText(data_list[i]);
-			p1.add(label); p2.add(tf);
-			label_panel.add(p1);
-			tf_panel.add(p2);
-			
-			tf_update_list.add(tf);
-		}
+//		for(int i=0; i<form_names.length; i++) {
+//			JPanel p1 = new JPanel();
+//			JPanel p2 = new JPanel();
+//			JLabel label = new JLabel(form_names[i]);
+//			JTextField tf = new JTextField(30);
+//			tf.setText(data_list[i]);
+//			p1.add(label); p2.add(tf);
+//			label_panel.add(p1);
+//			tf_panel.add(p2);
+//			
+//			tf_update_list.add(tf);
+//		}
 		
-		update_bottom.add(BorderLayout.NORTH, new JLabel());
-		update_bottom.add(BorderLayout.WEST, label_panel);
-		update_bottom.add(BorderLayout.CENTER, tf_panel);
-		update_bottom.add(BorderLayout.SOUTH, btn_panel);
+//		update_bottom.add(BorderLayout.NORTH, new JLabel());
+//		update_bottom.add(BorderLayout.WEST, label_panel);
+//		update_bottom.add(BorderLayout.CENTER, tf_panel);
+//		update_bottom.add(BorderLayout.SOUTH, btn_panel);
+//		
+//		updatePane.add(BorderLayout.CENTER, update_bottom);
+//		main.getContentPane().add(updatePane);
+//		main.setVisible(true);
 		
-		updatePane.add(BorderLayout.CENTER, update_bottom);
-		main.getContentPane().add(updatePane);
+		img_update.add(updatePane);
+		main.getContentPane().add(img_update);
+		main.setLocationRelativeTo(null);
+		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setVisible(true);
 		
 		btnUpdate.addActionListener(eventObj);
@@ -222,6 +303,7 @@ public class MarketUpdate {
 			Object obj = ae.getSource();
 			if(obj == tf_update || obj == update_search) {
 				updateSearchProc(); //검색명 확인 후 수정 폼 데이터 입력 
+				
 			} else if(obj == btnUpdate || obj == tf_update_last) {
 				updateProc();
 			} else if(obj == btnUpdateReset) {
