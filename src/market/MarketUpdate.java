@@ -9,27 +9,35 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.Color;
 
 
 public class MarketUpdate {
 	//Field 
 	MarketMgmUI main;
+	
 	JPanel updatePane, mainPane; //전체 업데이트 패널
 	int idx = -1;
 	String[] form_names = {"물품명","주소","설명","가격"};
 	
 	JPanel update_top, search_panel, update_bottom;
-	JLabel id_label;
-	JTextField tf_update, tf_update_last;
-	JButton update_search, btnUpdate, btnUpdateReset;
+//	JLabel id_label;
+	JTextField tf_update_last; // tf_update,
+	JButton  update_search, btnUpdate, btnUpdateReset; // 
 	ArrayList<JTextField> tf_update_list;
 	
+	ImagePanel img_update;
+	
 	MarketUpdateEvent eventObj = new MarketUpdateEvent();
+	private JTextField tf_update;
 	
 	//Constructor
 	public MarketUpdate() {}
@@ -40,38 +48,69 @@ public class MarketUpdate {
 	
 	//Method
 	 /**
-	  * @wbp.parser.entryPoint
-	 */
+     * @wbp.parser.entryPoint
+    */
 	public void update() {
-		System.out.println("hi");
 		
 		tf_update_list = new ArrayList<JTextField>();
 
 		main.switchPane(MarketMgmUI.UPDATE);
 		
-		update_top = new JPanel(new BorderLayout());
-		search_panel = new JPanel();
-		String title = "<<<<<   수정할 물품의 번호를 입력해주세요   >>>>>";
-		JLabel title_label = new JLabel(title);
-		id_label = new JLabel("물품번호");
-		tf_update = new JTextField(20);
-		update_search = new JButton("검색");
+		img_update = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 		
-		tf_update_list.add(tf_update);
 		
-		search_panel.add(id_label); search_panel.add(tf_update); search_panel.add(update_search);
+//		update_top = new JPanel(new BorderLayout());
+//		search_panel = new JPanel();
+//		String title = "<<<<<   수정할 물품의 번호를 입력해주세요   >>>>>";
+//		JLabel title_label = new JLabel(title);
+//		id_label = new JLabel("물품번호");
+//		tf_update = new JTextField(20);
+//		update_search = new JButton("검색");
+//		
+//		tf_update_list.add(tf_update);
+//		
+//		search_panel.add(id_label); search_panel.add(tf_update); search_panel.add(update_search);
+//		
+//		update_top.add(BorderLayout.NORTH, title_label);
+//		update_top.add(BorderLayout.CENTER, search_panel);
+//		
+//		updatePane.setLayout(new BorderLayout());
+//		updatePane.add(BorderLayout.NORTH, update_top);
+//		main.add(BorderLayout.CENTER, updatePane);
+//		main.setVisible(true);
 		
-		update_top.add(BorderLayout.NORTH, title_label);
-		update_top.add(BorderLayout.CENTER, search_panel);
+		updatePane.add(img_update);
 		
-		updatePane.setLayout(new BorderLayout());
-		updatePane.add(BorderLayout.NORTH, update_top);
-		main.add(BorderLayout.CENTER, updatePane);
+		JLabel title_label = new JLabel("\u203B  \uC218\uC815\uD560 \uBB3C\uD488\uC758 \uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694  \u203B");
+		title_label.setFont(new Font("경기천년제목V Bold", Font.PLAIN, 20));
+		title_label.setBounds(202, 28, 379, 40);
+		img_update.add(title_label);
+		
+		JLabel id_label = new JLabel("[  \uBB3C\uD488\uBC88\uD638  ]");
+		id_label.setFont(new Font("경기천년제목V Bold", Font.PLAIN, 20));
+		id_label.setBounds(49, 93, 127, 45);
+		img_update.add(id_label);
+		
+		tf_update = new JTextField();
+		tf_update.setBounds(188, 98, 398, 40);
+		img_update.add(tf_update);
+		tf_update.setColumns(10);
+		
+		update_search = new JButton("\uAC80  \uC0C9");
+		update_search.setBackground(Color.DARK_GRAY);
+		update_search.setForeground(new Color(153, 204, 255));
+		update_search.setFont(new Font("-윤고딕330", Font.PLAIN, 20));
+		update_search.setBounds(606, 97, 91, 40);
+		
+		img_update.add(update_search);
+		main.getContentPane().add(updatePane);
+		main.setLocationRelativeTo(null);
+		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setVisible(true);
 		
 		tf_update.addActionListener(eventObj);
 		update_search.addActionListener(eventObj);
-		
+//		
 	}
 	
 	/** 수정 검색 처리 */
@@ -128,7 +167,7 @@ public class MarketUpdate {
 		update_bottom.add(BorderLayout.SOUTH, btn_panel);
 		
 		updatePane.add(BorderLayout.CENTER, update_bottom);
-		main.add(updatePane);
+		main.getContentPane().add(updatePane);
 		main.setVisible(true);
 		
 		btnUpdate.addActionListener(eventObj);
@@ -144,7 +183,7 @@ public class MarketUpdate {
 		update_bottom.add(BorderLayout.CENTER, new JLabel("!! 물품의 정보가 존재하지 않습니다 !!"));
 		
 		updatePane.add(BorderLayout.CENTER, update_bottom);
-		main.add(updatePane);
+		main.getContentPane().add(updatePane);
 		main.setVisible(true);
 		
 	}
@@ -193,6 +232,7 @@ public class MarketUpdate {
 		}
 	}
 } 
+
 class ImageJoinPanel extends JPanel{
 	private Image img;
 	
