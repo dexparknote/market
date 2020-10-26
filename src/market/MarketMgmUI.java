@@ -282,6 +282,9 @@ public class MarketMgmUI extends JFrame {
 				if(result) {
 					JOptionPane.showMessageDialog(null, "로그인에 성공하셨습니다.");
 				}
+				else if(jtf_id.getText().equals("") || jtf_pass.getText().equals("")){
+					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 먼저 입력해주세요.");
+				}
 				else {
 					JOptionPane.showMessageDialog(null, "아이디/비밀번호가 틀렸습니다. 다시한번 확인해주세요");
 				}
