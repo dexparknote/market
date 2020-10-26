@@ -49,8 +49,10 @@ public class MarketMgmJoin {
 	public void join() {
 		joinOff();
         main.showPane.setVisible(false);
-        
-        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/java_workspace/market/images/join_back.png").getImage());//¿µÀç
+// ¿µÀç-"C:/java_workspace/market/images/join_back.png").getImage());
+//¹Î¼® - C:\\dev\\se_workspace\\sist_project_1\\images\\join_back.png").getImage()
+        joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\se_workspace\\sist_project_1\\images\\join_back.png").getImage());
+
 		main.setSize(joinBackPane.getWidth(),joinBackPane.getHeight()+38);
 		main.getContentPane().add(joinBackPane);
         
@@ -120,7 +122,8 @@ public class MarketMgmJoin {
         joinBackPane.add(jf_email);
         
         idcheck = new JButton("\uC911\uBCF5\uD655\uC778");
-        idcheck.setBackground(Color.LIGHT_GRAY);
+        idcheck.setForeground(new Color(102, 204, 255));
+        idcheck.setBackground(Color.DARK_GRAY);
         idcheck.setFont(new Font("±¼¸²", Font.BOLD, 13));
         idcheck.setBounds(270, 73, 95, 25);
         joinBackPane.add(idcheck);
@@ -136,14 +139,16 @@ public class MarketMgmJoin {
         joinBackPane.add(jl_emailCheck);
         
         resetJoin = new JButton("\uAC00\uC785\uCDE8\uC18C");
+        resetJoin.setForeground(new Color(102, 204, 255));
         resetJoin.setFont(new Font("±¼¸²", Font.BOLD, 13));
-        resetJoin.setBackground(Color.LIGHT_GRAY);
+        resetJoin.setBackground(Color.DARK_GRAY);
         resetJoin.setBounds(303, 397, 95, 25);
         joinBackPane.add(resetJoin);
         
         doJoin = new JButton("\uD68C\uC6D0\uAC00\uC785");
+        doJoin.setForeground(new Color(102, 204, 255));
         doJoin.setFont(new Font("±¼¸²", Font.BOLD, 13));
-        doJoin.setBackground(Color.LIGHT_GRAY);
+        doJoin.setBackground(Color.DARK_GRAY);
         doJoin.setBounds(199, 398, 95, 25);
         joinBackPane.add(doJoin);
 

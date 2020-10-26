@@ -52,11 +52,9 @@ public class MarketMgmUI extends JFrame {
 	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
-//	JPanel regPane = new JPanel(new GridLayout(10,1));
-//	JPanel searchPane = new JPanel();
-//	JPanel updatePane = new JPanel(new GridLayout(10,1));
-//	JPanel deletePane = new JPanel();	
-//	JPanel chatPane = new JPanel();
+
+//영재-C:/java_workspace/market/images/register_back.png
+//민석-C:\\dev\\se_workspace\\sist_project_1\\images\\start_back.png
 
 	JPanel joinBackPane = new JPanel();
 //	JPanel joinBtnPane = new JPanel();
