@@ -3,6 +3,7 @@ package market;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,6 +48,7 @@ public class MarketSearch   {
 //Method
 		public void search() {		
 			main.switchPane(MarketMgmUI.SEARCH);
+			searchPane.setLayout(null);
 			
 			jp_search = new JPanel();
 			jp_searchResult = new JPanel();
@@ -62,8 +64,7 @@ public class MarketSearch   {
 			searchPane.add(jp_searchResult);
 			searchPane.add(table);
 					
-			jl_searchName.setFont(MarketMgmUI.font);	
-					
+			
 			crateJTableData();	
 			model.setColumnIdentifiers(columns);
 			table.setModel(model);
@@ -81,9 +82,10 @@ public class MarketSearch   {
 		   
 		    JScrollPane pane=new JScrollPane(table);
 			
-			table.getColumn(table.getColumnName(0)).setPreferredWidth(50);	
+			table.getColumn(table.getColumnName(0)).setPreferredWidth(30);	
 			table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
-			table.getColumn(table.getColumnName(4)).setPreferredWidth(150);
+			table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
+			table.getColumn(table.getColumnName(4)).setPreferredWidth(200);
 			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
 			
 			table.setPreferredScrollableViewportSize(new Dimension(500, 500));
@@ -91,9 +93,9 @@ public class MarketSearch   {
 			table.setFillsViewportHeight(true);
 			
 			jp_searchResult.setLayout(new BorderLayout());
-			jp_searchResult.add(BorderLayout.SOUTH,pane);
-			
 			searchPane.setLayout(new BorderLayout());			
+			
+			jp_searchResult.add(BorderLayout.SOUTH,pane);			
 			searchPane.add(BorderLayout.CENTER,jp_searchResult);	
 			searchPane.add(BorderLayout.NORTH,jp_search);
 			main.add(searchPane, BorderLayout.CENTER);

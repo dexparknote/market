@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
@@ -42,7 +43,7 @@ public class MarketMgmUI extends JFrame {
 	ImagePanel showPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
 	JPanel mainPane,  contentsPane,menuPane;	
-	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat;
+	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout;
 	JLabel jl_title, jl_img;
 	JTextField jtf_id;  //아이디 입력 JTextField
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
@@ -54,15 +55,13 @@ public class MarketMgmUI extends JFrame {
 	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\register_back.png").getImage()); //영재
 
 //영재-C:/java_workspace/market/images/register_back.png
+
 //민석-C:\\dev\\se_workspace\\sist_project_1\\images\\start_back.png
 //기림 -"C:\\dev\\eclipse_workspace\\market\\images\\register_back.png"
 
-	JPanel joinBackPane = new JPanel();
-//	JPanel joinBtnPane = new JPanel();
-//	JPanel joinForm = new JPanel();
-//    JPanel joinLaPane = new JPanel(new GridLayout(7,1));
-//    JPanel joinTaPane = new JPanel(new GridLayout(7,1));
+//민석-C:/dev/se_workspace/sist_project_1/images/register_back.png
 
+	JPanel joinBackPane = new JPanel();
 	
 	public static Font font = new Font("맑은 고딕", Font.BOLD, 12);
 	
@@ -75,6 +74,7 @@ public class MarketMgmUI extends JFrame {
 		public void showMain() {  //10.22 영재 수정
 
 			showPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\login_main.png").getImage());
+
 
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
 
@@ -126,7 +126,7 @@ public class MarketMgmUI extends JFrame {
 			showPane.setVisible(false);
 			
 			mainPane = new JPanel();	
-			menuPane = new JPanel(new GridLayout(5,1));
+			menuPane = new JPanel(new GridLayout(6,1));
 			jl_title = new JLabel("\n @ 중고거래 시스템에 오신것을 환영합니다 @ ");
 			jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 			mainPane.setBackground(Color.getHSBColor(100, 100, 82));
@@ -142,17 +142,19 @@ public class MarketMgmUI extends JFrame {
 			btnUpdate = new JButton("게시물 수정");
 			btnDelete = new JButton("물품삭제");
 			btnChat = new JButton("채팅하기");
+			btnLogout = new JButton("로그아웃");
 			
 			btnReg.setBackground(new Color(240, 255, 240));
 			btnSearch.setBackground(new Color(240, 255, 240));
 			btnUpdate.setBackground(new Color(240, 255, 240));
 			btnDelete.setBackground(new Color(240, 255, 240));
 			btnChat.setBackground(new Color(240, 255, 240));
+			btnLogout.setBackground(new Color(240, 255, 240));
 			
 			jl_title.setFont(new Font("맑은 고딕",Font.BOLD,16));
 			btnReg.setFont(font);  btnSearch.setFont(font);
 			btnUpdate.setFont(font);  btnDelete.setFont(font);  
-			btnChat.setFont(font);
+			btnChat.setFont(font);	btnLogout.setFont(font);
 			mainPane.add(jl_img);
 			mainPane.add(jl_title);		
 			
@@ -161,6 +163,7 @@ public class MarketMgmUI extends JFrame {
 			menuPane.add(btnUpdate);
 			menuPane.add(btnDelete);
 			menuPane.add(btnChat);
+			menuPane.add(btnLogout);
 
 			add(menuPane, BorderLayout.WEST);
 			add(mainPane, BorderLayout.CENTER);
@@ -182,7 +185,7 @@ public class MarketMgmUI extends JFrame {
 			btnUpdate.addActionListener(eventObj);
 			btnDelete.addActionListener(eventObj);
 			btnChat.addActionListener(eventObj);
-
+			btnLogout.addActionListener(eventObj);
 		}//start method
 		
 
@@ -201,7 +204,6 @@ public class MarketMgmUI extends JFrame {
 			resetPane();			
 			if(menu.equals("register")) {
 				regPane.removeAll();
-				regPane.setBounds(130, 0, 466, 472);
 				regPane.setVisible(true);
 			}else if(menu.equals("search")) {		
 				searchPane.removeAll();
@@ -286,6 +288,14 @@ public class MarketMgmUI extends JFrame {
 					new MarketDelete(main).delete();
 				}else if(btnUpdate == obj) {
 					new MarketUpdate(main).update();
+				}else if(btnLogout == obj) {
+					int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
+					if (result == 0) {
+						mainPane.setVisible(false);
+						menuPane.setVisible(false);
+						resetPane();
+						showMain();
+					}
 				}
 			}		
 		}//event class	

@@ -53,9 +53,9 @@ public class MarketMgmJoin {
         joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\join_back.png" ).getImage());
 
 // ¿µÀç-"C:/java_workspace/market/images/join_back.png").getImage());
-//¹Î¼® - C:\\dev\\se_workspace\\sist_project_1\\images\\join_back.png").getImage()
+//¹Î¼® - C:\\dev\\se_workspace\\sist_project_1\\images\\join_back.png").getImage();
 //±â¸² -"C:\\dev\\eclipse_workspace\\market\\images\\join_back.png"  
-        
+
 		main.setSize(joinBackPane.getWidth(),joinBackPane.getHeight()+38);
 		main.getContentPane().add(joinBackPane);
         
