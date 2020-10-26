@@ -54,15 +54,14 @@ public class MarketMgmUI extends JFrame {
 	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 
+
 //영재-C:/java_workspace/market/images/register_back.png
-
-//민석-C:\\dev\\se_workspace\\sist_project_1\\images\\start_back.png
 //기림 -"C:\\dev\\eclipse_workspace\\market\\images\\register_back.png"
-
 //민석-C:/dev/se_workspace/sist_project_1/images/register_back.png
 
 	JPanel joinBackPane = new JPanel();
 	
+	MemberVO vo = new MemberVO();
 	public static Font font = new Font("맑은 고딕", Font.BOLD, 12);
 	
 	//Constructor
@@ -76,6 +75,7 @@ public class MarketMgmUI extends JFrame {
 			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 
 
+//영재-C:/java_workspace/market/images/login_main.png
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
 
 			getContentPane().add(showPane);
@@ -117,6 +117,7 @@ public class MarketMgmUI extends JFrame {
 			
 			btnLogin.addActionListener(new MarketMgmUIEvent(this));
 			btnJoin.addActionListener(new MarketMgmUIEvent(this));
+			jtf_pass.addActionListener(new MarketMgmUIEvent(this));
 			addWindowListener(new MarketMgmUIEvent(this));
 			
 		}
@@ -127,7 +128,7 @@ public class MarketMgmUI extends JFrame {
 			
 			mainPane = new JPanel();	
 			menuPane = new JPanel(new GridLayout(6,1));
-			jl_title = new JLabel("\n @ 중고거래 시스템에 오신것을 환영합니다 @ ");
+			jl_title = new JLabel(vo.getId() + "\n님 중고거래 시스템 바다에 오신것을 환영합니다 @ ");
 			jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 			mainPane.setBackground(Color.getHSBColor(100, 100, 82));
 			menuPane.setBackground(Color.getHSBColor(100, 100, 100));
@@ -273,11 +274,26 @@ public class MarketMgmUI extends JFrame {
 				System.exit(0);
 			}
 			
+			public boolean login() {
+				vo.setId(jtf_id.getText());
+				vo.setPass(jtf_pass.getText());
+				
+				boolean result = system.loginCheck(vo.getId(), vo.getPass());				
+				if(result) {
+					JOptionPane.showMessageDialog(null, "로그인에 성공하셨습니다.");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "아이디/비밀번호가 틀렸습니다. 다시한번 확인해주세요");
+				}
+				
+				return result;
+			}
+			
 			//액션 이벤트 처리
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
-				if(btnLogin ==obj) {
-					start();
+				if(btnLogin == obj || jtf_pass == obj) {
+					if(login()) start();
 				}else if(btnJoin == obj) {
 					new MarketMgmJoin(main).join();
 				}else if(btnReg == obj) {

@@ -261,4 +261,26 @@ class MarketDAO extends DBConn{
 		
 		return result;
 	}
+	
+	/**
+	 * 로그인 체크
+	 */
+	public boolean loginCheck(String mid, String mpass) {
+		boolean result = false;
+		
+		try {
+			String sql = "select count(*) from market_member where mid=? and mpass=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, mid);
+			pstmt.setString(2, mpass);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) != 0) result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
