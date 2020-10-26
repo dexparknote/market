@@ -186,7 +186,6 @@ public class MarketMgmUI extends JFrame {
 		public void resetPane() {
 			showPane.setVisible(false);
 			mainPane.setVisible(false);
-			menuPane.setVisible(false);
 			regPane.setVisible(false);
 			searchPane.setVisible(false);
 			updatePane.setVisible(false);
@@ -286,7 +285,8 @@ public class MarketMgmUI extends JFrame {
 				}else if(btnLogout == obj) {
 					int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
 					if (result == 0) {
-						resetPane();
+						mainPane.setVisible(false);
+						menuPane.setVisible(false);
 						showMain();
 					}
 				}
