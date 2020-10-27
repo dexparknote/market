@@ -68,4 +68,9 @@ public class MarketMgmSystem {
 	public boolean loginCheck(String mid, String mpass) {
 		return dao.loginCheck(mid, mpass);
 	}
+	
+	/** 로그인 아이디 확인 **/
+	public boolean traceId(String mid) {
+		return dao.traceId(mid);
+	}
 } // class
