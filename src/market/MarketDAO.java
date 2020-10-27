@@ -36,15 +36,16 @@ class MarketDAO extends DBConn{
 	public boolean insert(ProductVO vo) {
 		boolean result = false;
 		try {
-			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,sysdate)";
+			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,?,sysdate)";
 			getPreparedStatement(sql);
-			pstmt.setString(1, vo.getPname());
-			pstmt.setInt(2, vo.getPrice());
-			pstmt.setString(3, vo.getPphone());
-			pstmt.setString(4, vo.getState());
-			pstmt.setString(5, vo.getMethod());
-			pstmt.setString(6, vo.getArea());
-			pstmt.setString(7, vo.getExplain());
+			pstmt.setString(1, vo.getMid());
+			pstmt.setString(2, vo.getPname());
+			pstmt.setInt(3, vo.getPrice());
+			pstmt.setString(4, vo.getPphone());
+			pstmt.setString(5, vo.getState());
+			pstmt.setString(6, vo.getMethod());
+			pstmt.setString(7, vo.getArea());
+			pstmt.setString(8, vo.getExplain());
 			
 			int count=pstmt.executeUpdate();
 			if(count!=0) 	result =true;
