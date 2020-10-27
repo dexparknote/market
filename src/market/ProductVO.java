@@ -1,20 +1,23 @@
 package market;
-//�׽�Ʈ
+//Å×½ºÆ®
 public class ProductVO {
 	//Field
-	String pid, pname, pphone, state, method, area, explain, pdate;
+	String mid,pid, pname, explain, pdate, pphone, state, method, area;
 	int price;
-	public String getPid() {
-		return pid;
+	
+	
+	
+	public String getMid() {
+		return mid;
 	}
-	public void setPid(String pid) {
-		this.pid = pid;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
-	public String getPname() {
-		return pname;
+	public String getMethod() {
+		return method;
 	}
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setMethod(String method) {
+		this.method = method;
 	}
 	public String getPphone() {
 		return pphone;
@@ -28,17 +31,23 @@ public class ProductVO {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getMethod() {
-		return method;
-	}
-	public void setMethod(String method) {
-		this.method = method;
-	}
 	public String getArea() {
 		return area;
 	}
 	public void setArea(String area) {
 		this.area = area;
+	}
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+	public String getPname() {
+		return pname;
+	}
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
 	public String getExplain() {
 		return explain;
@@ -46,18 +55,17 @@ public class ProductVO {
 	public void setExplain(String explain) {
 		this.explain = explain;
 	}
-	public String getPdate() {
-		return pdate;
-	}
-	public void setPdate(String pdate) {
-		this.pdate = pdate;
-	}
 	public int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	public String getPdate() {
+		return pdate;
+	}
+	public void setPdate(String pdate) {
+		this.pdate = pdate;
+	}
 
 }
