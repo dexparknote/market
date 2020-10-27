@@ -153,35 +153,36 @@ class MarketDAO extends DBConn{
 	}
 
 	/** 하나의 상품 조회  -영화씨 select select1로 수정*/
-	public ProductVO select1(String pid) {
-		ProductVO pvo = new ProductVO();
+	public BoardVO select1(String pid) {
+		BoardVO bvo = new BoardVO();
 		
 		try {
-			String sql = "select pname, address, explain, price from product where pid=?";
+			String sql = "select pname, price, phone, address, explain from board where pid=?";
 			getPreparedStatement(sql);
 			
 			pstmt.setString(1, pid);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				pvo.setPname(rs.getString(1));
-				pvo.setAddress(rs.getString(2));
-				pvo.setExplain(rs.getString(3));
-				pvo.setPrice(rs.getInt(4));
+				bvo.setPname(rs.getString(1));
+				bvo.setPrice(rs.getInt(2));
+				bvo.setPhone(rs.getString(3));
+				bvo.setAddress(rs.getString(4));
+				bvo.setExplain(rs.getString(5));
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return pvo;
+		return bvo;
 	}
 	/** 물품번호 검색 */
 	public int search(String pid) {
 		int result =0;
 		
 		try {
-			String sql = "select count(*) from product where pid=?";
+			String sql = "select count(*) from board where pid=?";
 			getPreparedStatement(sql);
 			
 			pstmt.setString(1, pid);
@@ -198,17 +199,17 @@ class MarketDAO extends DBConn{
 	}
 	
 	/** 물품정보 수정*/
-	public boolean update_pr(ProductVO pvo) {
+	public boolean update_pr(BoardVO bvo) {
 		boolean result = false;
 		
 		try {
-			String sql = "update product set pname=?, address=?, explain=?, price=? where pid=?";
+			String sql = "update board set pname=?, price=?, phone=?, address=?, explain=? where pid=?";
 			getPreparedStatement(sql);
-			pstmt.setString(1, pvo.getPname());
-			pstmt.setString(2, pvo.getAddress());
-			pstmt.setString(3, pvo.getExplain());
-			pstmt.setInt(4, pvo.getPrice());
-			pstmt.setString(5, pvo.getPid());
+			pstmt.setString(1, bvo.getPname());
+			pstmt.setString(2, bvo.getAddress());
+			pstmt.setString(3, bvo.getExplain());
+			pstmt.setInt(4, bvo.getPrice());
+			pstmt.setString(5, bvo.getPid());
 			
 			int count = pstmt.executeUpdate();
 			if(count != 0) result = true;

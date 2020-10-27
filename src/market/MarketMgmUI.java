@@ -74,22 +74,13 @@ public class MarketMgmUI extends JFrame {
 			
 			showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); //영재
 
-<<<<<<< HEAD
 //			showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 
-//영재-C:/java_workspace/market/images/login_main.png
-=======
 
-			showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 
 //영재-C:/java_workspace/market/images/login_main.png
-<<<<<<< HEAD
->>>>>>> 620af1ef5fb397be787d53e87138ff41cd33ab57
-=======
 //기림-C:/dev/eclipse_workspace/market/images/login_main.png
 //민석-C:/dev/se_workspace/sist_project_1/images/login_main.png
->>>>>>> f002c9a6cc7f5c9f67103e6c42aadd6fc609ee93
->>>>>>> master
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
 
 			getContentPane().add(showPane);

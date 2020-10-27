@@ -122,6 +122,73 @@ public class MarketUpdate {
 		update_search.setBounds(610, 98, 91, 40);
 		img_update.add(update_search);
 		
+
+		
+		label_pname = new JLabel("- \uBB3C \uD488 \uBA85");
+		label_pname.setFont(new Font("제주고딕", Font.PLAIN, 20));
+		label_pname.setBounds(66, 216, 85, 40);
+		img_update.add(label_pname);
+		
+		
+		label_price = new JLabel("- \uAC00    \uACA9");
+		label_price.setFont(new Font("제주고딕", Font.PLAIN, 20));
+		label_price.setBounds(66, 287, 85, 40);
+		img_update.add(label_price);
+		
+		label_phone = new JLabel("- \uC5F0 \uB77D \uCC98");
+		label_phone.setFont(new Font("제주고딕", Font.PLAIN, 20));
+		label_phone.setBounds(66, 357, 85, 40);
+		img_update.add(label_phone);
+		
+		label_address = new JLabel("- \uC8FC    \uC18C");
+		label_address.setFont(new Font("제주고딕", Font.PLAIN, 20));
+		label_address.setBounds(66, 425, 85, 40);
+		img_update.add(label_address);
+		
+		label_explain = new JLabel("- \uC124    \uBA85");
+		label_explain.setFont(new Font("제주고딕", Font.PLAIN, 20));
+		label_explain.setBounds(66, 496, 85, 40);
+		img_update.add(label_explain);
+		
+		tf_pname = new JTextField();
+		tf_pname.setColumns(10);
+		tf_pname.setBounds(188, 226, 260, 25);
+		img_update.add(tf_pname);
+		
+		tf_price = new JTextField();
+		tf_price.setColumns(10);
+		tf_price.setBounds(188, 297, 260, 25);
+		img_update.add(tf_price);
+		
+		tf_phone = new JTextField();
+		tf_phone.setColumns(10);
+		tf_phone.setBounds(188, 367, 260, 25);
+		img_update.add(tf_phone);
+		
+		tf_address = new JTextField();
+		tf_address.setColumns(10);
+		tf_address.setBounds(188, 435, 260, 25);
+		img_update.add(tf_address);
+		
+		tf_explain = new JTextField();
+		tf_explain.setColumns(10);
+		tf_explain.setBounds(188, 496, 513, 67);
+		img_update.add(tf_explain);
+		
+		btnUpdate = new JButton("\uC218\uC815 \uC644\uB8CC");
+		btnUpdate.setBackground(Color.DARK_GRAY);
+		btnUpdate.setForeground(new Color(153, 204, 255));
+		btnUpdate.setFont(new Font("제주고딕", Font.PLAIN, 21));
+		btnUpdate.setBounds(278, 600, 115, 40);
+		img_update.add(btnUpdate);
+		
+		btnUpdateReset = new JButton("\uB2E4\uC2DC \uC791\uC131");
+		btnUpdateReset.setForeground(new Color(153, 204, 255));
+		btnUpdateReset.setFont(new Font("제주고딕", Font.PLAIN, 21));
+		btnUpdateReset.setBackground(Color.DARK_GRAY);
+		btnUpdateReset.setBounds(410, 600, 115, 40);
+		img_update.add(btnUpdateReset);
+		
 		
 		
 		
@@ -144,8 +211,8 @@ public class MarketUpdate {
 		} else {
 			idx = main.system.SearchPid(pid);
 			if(idx != 0) {
-				ProductVO pvo = main.system.selectProduct(pid);
-				updateOkForm(pvo);
+				BoardVO bvo = main.system.selectProduct(pid);
+				updateOkForm(bvo);
 				
 			} else {
 				updateFailForm();
@@ -154,7 +221,7 @@ public class MarketUpdate {
 	}
 	
 	/** 수정 데이터 등록 폼 : 물품명, 주소, 설명, 가격 **/
-	public void updateOkForm(ProductVO pvo) {
+	public void updateOkForm(BoardVO bvo) {
 		update();
 		
 //		update_bottom = new JPanel(new BorderLayout());
@@ -233,21 +300,22 @@ public class MarketUpdate {
 		
 		
 		
-		String[] data_list = new String[4];
-		data_list[0] = pvo.getPname();
-		data_list[1] = String.valueOf(pvo.getPrice());
-		data_list[2] = pvo.getAddress();
-		data_list[3] = pvo.getExplain();
+		String[] data_list = new String[5];
+		data_list[0] = bvo.getPname();
+		data_list[1] = String.valueOf(bvo.getPrice());
+		data_list[2] = bvo.getPhone();
+		data_list[3] = bvo.getAddress();
+		data_list[4] = bvo.getExplain();
 		
 		tf_pname.setText(data_list[0]);
 		tf_price.setText(data_list[1]);
-//		tf_phone.setText(data_list[4]);
-		tf_address.setText(data_list[2]);
-		tf_explain.setText(data_list[3]);
+		tf_phone.setText(data_list[2]);
+		tf_address.setText(data_list[3]);
+		tf_explain.setText(data_list[4]);
 		
 		tf_update_list.add(tf_pname);
 		tf_update_list.add(tf_price);
-//		tf_update_list.add(tf_phone);
+		tf_update_list.add(tf_phone);
 		tf_update_list.add(tf_address);
 		tf_update_list.add(tf_explain);
 		
@@ -304,20 +372,20 @@ public class MarketUpdate {
 //		}
 		dataList.add(tf_pname.getText().trim());
 		dataList.add(tf_price.getText().trim());
-//		dataList.add(tf_phone.getText().trim());
+		dataList.add(tf_phone.getText().trim());
 		dataList.add(tf_address.getText().trim());
 		dataList.add(tf_explain.getText().trim());
 		
 		
-		ProductVO pvo = new ProductVO();
-		pvo.setPid(dataList.get(0));
-		pvo.setPname(dataList.get(1));
-		pvo.setPrice(Integer.parseInt(dataList.get(2)));
-//		pvo.setPhone(IdataList.get(3));
-		pvo.setAddress(dataList.get(3));
-		pvo.setExplain(dataList.get(4));
+		BoardVO bvo = new BoardVO();
+		bvo.setPid(dataList.get(0));
+		bvo.setPname(dataList.get(1));
+		bvo.setPrice(Integer.parseInt(dataList.get(2)));
+		bvo.setPhone(dataList.get(3));
+		bvo.setAddress(dataList.get(4));
+		bvo.setExplain(dataList.get(5));
 		
-		if(main.system.update_pr(pvo)) {
+		if(main.system.update_pr(bvo)) {
 			JOptionPane.showMessageDialog(null, "수정이 완료됐습니다");
 //			for(JTextField tf : tf_update_list) {
 //				tf.setText("");

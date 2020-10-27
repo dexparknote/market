@@ -40,7 +40,7 @@ public class MarketMgmSystem {
 	}
 
 	/** 물품 정보 출력  -영화씨 select select1로 수정**/
-	public ProductVO selectProduct(String pid) {
+	public BoardVO selectProduct(String pid) {
 		return dao.select1(pid);
 	}
 	
@@ -50,8 +50,8 @@ public class MarketMgmSystem {
 	}
 	
 	/** 물품정보 수정 -영화씨*/
-	public boolean update_pr(ProductVO pvo) {
-		return dao.update_pr(pvo);
+	public boolean update_pr(BoardVO bvo) {
+		return dao.update_pr(bvo);
 	}
 	
 	/** 아이디 중복체크 -민석 */
