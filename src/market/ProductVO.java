@@ -1,5 +1,5 @@
 package market;
-//�׽�Ʈ
+//Å×½ºÆ®
 public class ProductVO {
 	//Field
 	String pid, pname, explain, pdate, pphone, state, method, area;
