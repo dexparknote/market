@@ -68,7 +68,7 @@ class MarketDAO extends DBConn{
 				vo.setPid(rs.getString(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
-				vo.setAddress(rs.getString(4));
+//				vo.setAddress(rs.getString(4));
 				vo.setExplain(rs.getString(5));
 				vo.setPdate(rs.getString(6));
 					
@@ -98,7 +98,7 @@ class MarketDAO extends DBConn{
 				vo.setPid(rs.getString(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
-				vo.setAddress(rs.getString(4));
+//				vo.setAddress(rs.getString(4));
 				vo.setExplain(rs.getString(5));
 				vo.setPdate(rs.getString(6));
 			}			
