@@ -69,15 +69,7 @@ public class MarketUpdate {
 
 		main.switchPane(MarketMgmUI.UPDATE);
 		
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/heads/master
-		img_update = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\register_back.png").getImage()); 
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/heads/master
+		img_update = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); 
 		
 //¿µÀç "C:/java_workspace/market/images/join_back.png"
 //		update_top = new JPanel(new BorderLayout());
@@ -361,10 +353,4 @@ public class MarketUpdate {
 		}
 	}
 } 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/lyj6054/market.git
->>>>>>> refs/heads/master
