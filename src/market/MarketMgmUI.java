@@ -49,14 +49,16 @@ public class MarketMgmUI extends JFrame {
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
 	
 
-	ImagePanel regPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
-	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
-	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
-	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
-	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 
-//	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
+	ImagePanel regPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\register_back.png").getImage()); //영재
+	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\register_back.png").getImage()); //영재
+	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\register_back.png").getImage()); //영재
+	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\register_back.png").getImage()); //영재
+	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\register_back.png").getImage()); //영재
+<<<<<<< HEAD
+=======
 
+>>>>>>> refs/heads/master
 
 //영재-C:/java_workspace/market/images/register_back.png
 //기림 -"C:\\dev\\eclipse_workspace\\market\\images\\register_back.png"
@@ -75,12 +77,16 @@ public class MarketMgmUI extends JFrame {
 	//Method
 		public void showMain() {  //10.22 영재 수정
 			
+<<<<<<< HEAD
+=======
 
-			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+>>>>>>> refs/heads/master
+			showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage()); //영재
 
-			//영재-C:/java_workspace/market/images/login_main.png
-			//기림-C:/dev/eclipse_workspace/market/images/login_main.png
-			//민석-C:/dev/se_workspace/sist_project_1/images/login_main.png
+//영재-C:/java_workspace/market/images/login_main.png
+//기림-C:/dev/eclipse_workspace/market/images/login_main.png
+//민석-C:/dev/se_workspace/sist_project_1/images/login_main.png
+
 			
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
 
@@ -134,7 +140,7 @@ public class MarketMgmUI extends JFrame {
 			
 			mainPane = new JPanel();	
 			menuPane = new JPanel(new GridLayout(6,1));
-			jl_title = new JLabel(vo.getId() + "\n님 중고거래 시스템 바다에 오신것을 환영합니다 @ ");
+			jl_title = new JLabel(vo.getMid() + "\n님 중고거래 시스템 바다에 오신것을 환영합니다 @ ");
 			jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 			mainPane.setBackground(Color.getHSBColor(100, 100, 82));
 			menuPane.setBackground(Color.getHSBColor(100, 100, 100));

@@ -1,53 +1,62 @@
 package market;
 
 public class MemberVO {
-	String id, pass, name, addr, phone, email;
+	String mid,mpass,mname,maddr,mphone,memail,pdate;
 
-	public String getId() {
-		return id;
+	public String getMid() {
+		return mid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 
-	public String getPass() {
-		return pass;
+	public String getMpass() {
+		return mpass;
 	}
 
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setMpass(String mpass) {
+		this.mpass = mpass;
 	}
 
-	public String getName() {
-		return name;
+	public String getMname() {
+		return mname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
 
-	public String getAddr() {
-		return addr;
+	public String getMaddr() {
+		return maddr;
 	}
 
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setMaddr(String maddr) {
+		this.maddr = maddr;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getMphone() {
+		return mphone;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setMphone(String mphone) {
+		this.mphone = mphone;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getMemail() {
+		return memail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMemail(String memail) {
+		this.memail = memail;
 	}
+
+	public String getPdate() {
+		return pdate;
+	}
+
+	public void setPdate(String pdate) {
+		this.pdate = pdate;
+	}
+		
 }

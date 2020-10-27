@@ -36,16 +36,11 @@ class MarketDAO extends DBConn{
 	public boolean insert(ProductVO vo) {
 		boolean result = false;
 		try {
-			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,?,sysdate)";
+			String sql="insert into product values(SEQ_PID.NEXTVAL,?,null,?,sysdate,?)";
 			getPreparedStatement(sql);
-			pstmt.setString(1, vo.getMid());
-			pstmt.setString(2, vo.getPname());
+			pstmt.setString(1, vo.getPname());
+			pstmt.setString(2, vo.getExplain());
 			pstmt.setInt(3, vo.getPrice());
-			pstmt.setString(4, vo.getPphone());
-			pstmt.setString(5, vo.getState());
-			pstmt.setString(6, vo.getMethod());
-			pstmt.setString(7, vo.getArea());
-			pstmt.setString(8, vo.getExplain());
 			
 			int count=pstmt.executeUpdate();
 			if(count!=0) 	result =true;
@@ -61,20 +56,23 @@ class MarketDAO extends DBConn{
 	 */
 	public ArrayList<ProductVO> select(){
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
-		
 		try {
-			String sql = " select pid, pname, price, address, explain, pdate " + 
-						" from (select pid, pname, price, address, explain, pdate from product " + 
+			String sql = " select pid, pname, price, phone,state,method,area,explain, pdate " + 
+						" from (pid, pname, price, phone,state,method,area,explain from product " + 
 						"      order by pid desc)";
 			getPreparedStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ProductVO vo = new ProductVO();
-				vo.setPid(rs.getString(1));
+				vo.setPid(rs.getInt(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
-				vo.setExplain(rs.getString(5));
-				vo.setPdate(rs.getString(6));
+				vo.setPhone(rs.getString(4));
+				vo.setState(rs.getString(5));
+				vo.setMethod(rs.getString(6));
+				vo.setArea(rs.getString(7));
+				vo.setExplain(rs.getString(8));
+				vo.setPdate(rs.getString(9));
 					
 				list.add(vo);
 			}
@@ -93,17 +91,21 @@ class MarketDAO extends DBConn{
 		ProductVO vo = new ProductVO();
 		
 		try {
-			String sql = "select pid, pname, price, address, explain, pdate from product where pname like '%' || ? || '%'";
+			String sql = "select pid, pname, price, pphone, state,method,area,explain,pdate from product where pname like '%' || ? || '%'";
 			getPreparedStatement(sql);
 			pstmt.setString(1,pname);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				vo.setPid(rs.getString(1));
+				vo.setPid(rs.getInt(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
-				vo.setExplain(rs.getString(5));
-				vo.setPdate(rs.getString(6));
+				vo.setPhone(rs.getString(4));
+				vo.setState(rs.getString(5));
+				vo.setMethod(rs.getString(6));
+				vo.setArea(rs.getString(7));
+				vo.setExplain(rs.getString(8));
+				vo.setPdate(rs.getString(9));
 			}			
 			
 		}catch(Exception e) {
