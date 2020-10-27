@@ -40,7 +40,7 @@ public class MarketMgmSystem {
 	}
 
 	/** 물품 정보 출력  -영화 select select1로 수정**/
-	public BoardVO selectProduct(String pid) {
+	public ProductVO selectProduct(String pid) {
 		return dao.select1(pid);
 	}
 	

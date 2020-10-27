@@ -6,7 +6,6 @@ public class ProductVO {
 	int price;
 	
 	
-	
 	public String getMid() {
 		return mid;
 	}

@@ -153,36 +153,38 @@ class MarketDAO extends DBConn{
 	}
 
 	/** 하나의 상품 조회  -영화씨 select select1로 수정*/
-	public BoardVO select1(String pid) {
-		BoardVO bvo = new BoardVO();
+	public ProductVO select1(String pid) {
+		ProductVO pvo = new ProductVO();
 		
 		try {
-			String sql = "select pname, price, phone, address, explain from board where pid=?";
+			String sql = "select pname, price, pphone, state, method, area, explain from product where pid=?";
 			getPreparedStatement(sql);
 			
 			pstmt.setString(1, pid);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				bvo.setPname(rs.getString(1));
-				bvo.setPrice(rs.getInt(2));
-				bvo.setPhone(rs.getString(3));
-				bvo.setAddress(rs.getString(4));
-				bvo.setExplain(rs.getString(5));
+				pvo.setPname(rs.getString(1));
+				pvo.setPrice(rs.getInt(2));
+				pvo.setPphone(rs.getString(3));
+				pvo.setState(rs.getString(4));
+				pvo.setMethod(rs.getString(5));
+				pvo.setArea(rs.getString(6));
+				pvo.setExplain(rs.getString(7));
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return bvo;
+		return pvo;
 	}
 	/** 물품번호 검색 */
 	public int search(String pid) {
 		int result =0;
 		
 		try {
-			String sql = "select count(*) from board where pid=?";
+			String sql = "select count(*) from product where pid=?";
 			getPreparedStatement(sql);
 			
 			pstmt.setString(1, pid);
