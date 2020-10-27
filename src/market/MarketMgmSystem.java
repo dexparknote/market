@@ -39,17 +39,17 @@ public class MarketMgmSystem {
 		return dao.delete(pname);
 	}
 
-	/** 물품 정보 출력  -영화씨 select select1로 수정**/
+	/** 물품 정보 출력  -영화 select select1로 수정**/
 	public BoardVO selectProduct(String pid) {
 		return dao.select1(pid);
 	}
 	
-	/** 물품번호 검색 -영화씨*/
+	/** 물품번호 검색 -영화*/
 	public int SearchPid(String pid) {
 		return dao.search(pid);
 	}
 	
-	/** 물품정보 수정 -영화씨*/
+	/** 물품정보 수정 -영화*/
 	public boolean update_pr(BoardVO bvo) {
 		return dao.update_pr(bvo);
 	}
