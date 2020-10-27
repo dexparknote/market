@@ -38,7 +38,7 @@ class MarketDAO extends DBConn{
 		try {
 			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,?,sysdate)";
 			getPreparedStatement(sql);
-			pstmt.setString(1, vo.getMid());
+//			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getPname());
 			pstmt.setInt(3, vo.getPrice());
 			pstmt.setString(4, vo.getPphone());
