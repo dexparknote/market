@@ -63,8 +63,8 @@ class MarketDAO extends DBConn{
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
-			String sql = " select pid, pname, price, address, explain, pdate " + 
-						" from (select pid, pname, price, address, explain, pdate from product " + 
+			String sql = " select pid, pname, price, pphone, state, method, area, explain " + 
+						" from (select pid, pname, price, pphone, state, method, area, explain, pdate from product " + 
 						"      order by pid desc)";
 			getPreparedStatement(sql);
 			rs = pstmt.executeQuery();
@@ -73,8 +73,11 @@ class MarketDAO extends DBConn{
 				vo.setPid(rs.getString(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
-				vo.setExplain(rs.getString(5));
-				vo.setPdate(rs.getString(6));
+				vo.setPphone(rs.getString(4));
+				vo.setState(rs.getString(5));
+				vo.setMethod(rs.getString(6));
+				vo.setExplain(rs.getString(7));
+				vo.setPdate(rs.getString(8));
 					
 				list.add(vo);
 			}
@@ -93,7 +96,7 @@ class MarketDAO extends DBConn{
 		ProductVO vo = new ProductVO();
 		
 		try {
-			String sql = "select pid, pname, price, address, explain, pdate from product where pname like '%' || ? || '%'";
+			String sql = "select pid, pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%'";
 			getPreparedStatement(sql);
 			pstmt.setString(1,pname);
 			rs = pstmt.executeQuery();
@@ -102,8 +105,11 @@ class MarketDAO extends DBConn{
 				vo.setPid(rs.getString(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
-				vo.setExplain(rs.getString(5));
-				vo.setPdate(rs.getString(6));
+				vo.setPphone(rs.getString(4));
+				vo.setState(rs.getString(5));
+				vo.setMethod(rs.getString(6));
+				vo.setExplain(rs.getString(7));
+				vo.setPdate(rs.getString(8));
 			}			
 			
 		}catch(Exception e) {

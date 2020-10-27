@@ -29,8 +29,8 @@ public class MarketSearch   {
 		JButton btn_search;
 		JTextField jt_search;
 		MarketMgmUI main;
-		Object[] columns = {"물품번호","물품명","가격","주소","게시글","등록일"};	
-		Object[] row =new Object[6];  
+		Object[] columns = {"게시물번호","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일"};	
+		Object[] row =new Object[8];  
 		DefaultTableModel model =new DefaultTableModel(columns,0);	
 		JTable table= new JTable(model); 	
 		
@@ -70,20 +70,24 @@ public class MarketSearch   {
 		    header.setForeground(Color.white);  jp_search.setBackground(Color.white); jp_searchResult.setBackground(Color.white);
 			
 		    
-		    table.getColumn("물품번호").setCellRenderer(dtcr);
-		    table.getColumn("물품명").setCellRenderer(dtcr);
+		    table.getColumn("게시물번호").setCellRenderer(dtcr);
+		    table.getColumn("상품이름").setCellRenderer(dtcr);
 		    table.getColumn("가격").setCellRenderer(dtcr);
-		    table.getColumn("주소").setCellRenderer(dtcr);
-		    table.getColumn("게시글").setCellRenderer(dtcr);
+		    table.getColumn("연락처").setCellRenderer(dtcr);
+		    table.getColumn("상태").setCellRenderer(dtcr);
+		    table.getColumn("거래방법").setCellRenderer(dtcr);
+		    table.getColumn("거래지역").setCellRenderer(dtcr);
+		    table.getColumn("상품정보").setCellRenderer(dtcr);
 		    table.getColumn("등록일").setCellRenderer(dtcr);
 		   
 		    JScrollPane pane=new JScrollPane(table);
 			
-			table.getColumn(table.getColumnName(0)).setPreferredWidth(30);	
+			table.getColumn(table.getColumnName(0)).setPreferredWidth(70);	
 			table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
 			table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
-			table.getColumn(table.getColumnName(4)).setPreferredWidth(200);
 			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
+			table.getColumn(table.getColumnName(6)).setPreferredWidth(80);
+			table.getColumn(table.getColumnName(7)).setPreferredWidth(200);
 			
 			table.setPreferredScrollableViewportSize(new Dimension(800, 535));
 			table.setRowHeight(table.getRowHeight() + 70);
@@ -112,9 +116,11 @@ public class MarketSearch   {
 					row[0]=vo.getPid();
 					row[1]=vo.getPname();
 					row[2]=vo.getPrice();
-//					row[3]=vo.getAddress();
-					row[4]=vo.getExplain();
-					row[5]=vo.getPdate();
+					row[3]=vo.getPphone();
+					row[4]=vo.getState();
+					row[5]=vo.getMethod();
+					row[6]=vo.getExplain();
+					row[7]=vo.getPdate();
 				
 					model.addRow(row);
 				}
@@ -132,9 +138,11 @@ public class MarketSearch   {
 					row[0]=vo.getPid();
 					row[1]=vo.getPname();
 					row[2]=vo.getPrice();
-//					row[3]=vo.getAddress();
-					row[4]=vo.getExplain();
-					row[5]=vo.getPdate();
+					row[3]=vo.getPphone();
+					row[4]=vo.getState();
+					row[5]=vo.getMethod();
+					row[6]=vo.getExplain();
+					row[7]=vo.getPdate();
 				
 					model.addRow(row);
 				}
