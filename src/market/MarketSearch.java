@@ -35,7 +35,6 @@ public class MarketSearch   {
 		JTable table= new JTable(model); 	
 		
 //Constructor
-
 		public MarketSearch(MarketMgmUI main) {
 			this.main = main;
 			this.searchPane = main.searchPane;	
@@ -86,7 +85,7 @@ public class MarketSearch   {
 			table.getColumn(table.getColumnName(4)).setPreferredWidth(200);
 			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
 			
-			table.setPreferredScrollableViewportSize(new Dimension(500, 500));
+			table.setPreferredScrollableViewportSize(new Dimension(800, 535));
 			table.setRowHeight(table.getRowHeight() + 70);
 			table.setFillsViewportHeight(true);
 			
