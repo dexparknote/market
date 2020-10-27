@@ -48,11 +48,15 @@ public class MarketMgmUI extends JFrame {
 	JTextField jtf_id;  //아이디 입력 JTextField
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
 	
+
 	ImagePanel regPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+
+//	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
+
 
 //영재-C:/java_workspace/market/images/register_back.png
 //기림 -"C:\\dev\\eclipse_workspace\\market\\images\\register_back.png"
@@ -70,12 +74,14 @@ public class MarketMgmUI extends JFrame {
 	}
 	//Method
 		public void showMain() {  //10.22 영재 수정
-
+			
 
 			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 
-//영재-C:/java_workspace/market/images/login_main.png
-//기림-C:/dev/eclipse_workspace/market/images/login_main.png
+			//영재-C:/java_workspace/market/images/login_main.png
+			//기림-C:/dev/eclipse_workspace/market/images/login_main.png
+			//민석-C:/dev/se_workspace/sist_project_1/images/login_main.png
+			
 			setSize(showPane.getWidth(),showPane.getHeight()+38);
 
 			getContentPane().add(showPane);
@@ -138,10 +144,10 @@ public class MarketMgmUI extends JFrame {
 			deletePane.setBackground(Color.getHSBColor(100, 100, 82));
 			chatPane.setBackground(Color.getHSBColor(100, 100, 82));
 			
-			btnReg = new JButton("물품등록");
+			btnReg = new JButton("게시물 등록");
 			btnSearch = new JButton("게시물 검색");
 			btnUpdate = new JButton("게시물 수정");
-			btnDelete = new JButton("물품삭제");
+			btnDelete = new JButton("게시물 삭제");
 			btnChat = new JButton("채팅하기");
 			btnLogout = new JButton("로그아웃");
 			

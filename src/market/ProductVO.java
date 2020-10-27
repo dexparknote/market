@@ -2,8 +2,34 @@ package market;
 //Å×½ºÆ®
 public class ProductVO {
 	//Field
-	String pid, pname, address, explain, pdate;
+	String pid, pname, explain, pdate, pphone, state, method, area;
 	int price;
+	
+	
+	public String getMethod() {
+		return method;
+	}
+	public void setMethod(String method) {
+		this.method = method;
+	}
+	public String getPphone() {
+		return pphone;
+	}
+	public void setPphone(String pphone) {
+		this.pphone = pphone;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
 	public String getPid() {
 		return pid;
 	}
@@ -15,12 +41,6 @@ public class ProductVO {
 	}
 	public void setPname(String pname) {
 		this.pname = pname;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	public String getExplain() {
 		return explain;

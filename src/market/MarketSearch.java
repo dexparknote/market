@@ -113,7 +113,7 @@ public class MarketSearch   {
 					row[0]=vo.getPid();
 					row[1]=vo.getPname();
 					row[2]=vo.getPrice();
-					row[3]=vo.getAddress();
+//					row[3]=vo.getAddress();
 					row[4]=vo.getExplain();
 					row[5]=vo.getPdate();
 				
@@ -133,7 +133,7 @@ public class MarketSearch   {
 					row[0]=vo.getPid();
 					row[1]=vo.getPname();
 					row[2]=vo.getPrice();
-					row[3]=vo.getAddress();
+//					row[3]=vo.getAddress();
 					row[4]=vo.getExplain();
 					row[5]=vo.getPdate();
 				
