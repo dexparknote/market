@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -353,25 +354,3 @@ public class MarketUpdate {
 		}
 	}
 } 
-
-class ImageJoinPanel extends JPanel{
-	private Image img;
-	
-	public ImageJoinPanel(Image img) {
-		this.img= img;
-		setSize(new Dimension(img.getWidth(null),img.getHeight(null)));
-		setPreferredSize(new Dimension(img.getWidth(null),img.getHeight(null)) );
-		setLayout(null);
-	}
-	public int getWidth() {
-		return img.getWidth(null);
-	}
-	
-	public int getHeight() {
-		return img.getHeight(null);
-	}
-	
-	public void paintComponent(Graphics g) {
-		g.drawImage(img,0,0,null);
-	}
-}
