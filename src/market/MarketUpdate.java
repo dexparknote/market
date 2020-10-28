@@ -69,7 +69,7 @@ public class MarketUpdate {
 
 		main.switchPane(MarketMgmUI.UPDATE);
 		
-//		img_update = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); 
+		img_update = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); 
 		
 //영재 "C:/java_workspace/market/images/register_back.png"
 //기림 C:/dev/eclipse_workspace/market/images/register_back.png
