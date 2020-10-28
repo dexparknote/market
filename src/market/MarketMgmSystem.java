@@ -50,8 +50,8 @@ public class MarketMgmSystem {
 	}
 	
 	/** 물품정보 수정 -영화*/
-	public boolean update_pr(BoardVO bvo) {
-		return dao.update_pr(bvo);
+	public boolean update_pr(ProductVO pvo) {
+		return dao.update_pr(pvo);
 	}
 	
 	/** 아이디 중복체크 -민석 */

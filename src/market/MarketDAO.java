@@ -38,7 +38,7 @@ class MarketDAO extends DBConn{
 		try {
 			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,?,sysdate)";
 			getPreparedStatement(sql);
-//			pstmt.setString(1, vo.getMid());
+			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getPname());
 			pstmt.setInt(3, vo.getPrice());
 			pstmt.setString(4, vo.getPphone());
@@ -216,17 +216,20 @@ class MarketDAO extends DBConn{
 	}
 	
 	/** 물품정보 수정*/
-	public boolean update_pr(BoardVO bvo) {
+	public boolean update_pr(ProductVO pvo) {
 		boolean result = false;
 		
 		try {
-			String sql = "update board set pname=?, price=?, phone=?, address=?, explain=? where pid=?";
+			String sql = "update product set pname=?, price=?, pphone=?, state=?, method=?, area=?, explain=? where pid=?";
 			getPreparedStatement(sql);
-			pstmt.setString(1, bvo.getPname());
-			pstmt.setString(2, bvo.getAddress());
-			pstmt.setString(3, bvo.getExplain());
-			pstmt.setInt(4, bvo.getPrice());
-			pstmt.setString(5, bvo.getPid());
+			pstmt.setString(1, pvo.getPname());
+			pstmt.setInt(2, pvo.getPrice());
+			pstmt.setString(3, pvo.getPphone());
+			pstmt.setString(4, pvo.getState());
+			pstmt.setString(5, pvo.getMethod());
+			pstmt.setString(6, pvo.getArea());
+			pstmt.setString(7, pvo.getExplain());
+			pstmt.setString(8, pvo.getPid());
 			
 			int count = pstmt.executeUpdate();
 			if(count != 0) result = true;
