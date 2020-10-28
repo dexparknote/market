@@ -71,46 +71,39 @@ public class MarketUpdate {
 		tf_update_list = new ArrayList<String>();
 
 		main.switchPane(MarketMgmUI.UPDATE);
-		
+		updatePane.setLayout(null);
 
-		img_update = new JPanel();
+//		img_update = new JPanel();
 		
-//康犁 "C:/java_workspace/market/images/join_back.png"
-//康拳 C:\\dev\\se_workspace\\market\\images\\register_back.png
-//扁覆 C:/dev/eclipse_workspace/market/images/register_back.png
-//刮籍 C:/dev/se_workspace/sist_project_1/images/register_back.png
-		
-		updatePane.add(img_update);
+//		updatePane.add(img_update);
 		
 		lblNewLabel = new JLabel("\uB3C4\uC2EC \uC18D \uBC14\uB2E4 : \uBC14\uAFD4\uC4F0\uACE0 \uB2E4\uC2DC\uC4F0\uACE0");
 		lblNewLabel.setFont(new Font("力林绊雕", Font.BOLD, 18));
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setBounds(197, 24, 306, 25);
-		img_update.add(lblNewLabel);
+		updatePane.add(lblNewLabel);
 		
 		JLabel title_label = new JLabel("\u203B  \uC218\uC815\uD560 \uBB3C\uD488\uC758 \uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694  \u203B");
 		title_label.setFont(new Font("力林绊雕", Font.PLAIN, 12));
 		title_label.setBounds(216, 98, 214, 32);
-		img_update.add(title_label);
+		updatePane.add(title_label);
 		
 		JLabel id_label = new JLabel("[  \uBB3C\uD488\uBC88\uD638  ]");
 		id_label.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		id_label.setBounds(44, 69, 107, 40);
-		img_update.add(id_label);
+		updatePane.add(id_label);
 		
 		tf_update = new JTextField();
 		tf_update.setBounds(150, 75, 365, 25);
-		img_update.add(tf_update);
 		tf_update.setColumns(10);
+		updatePane.add(tf_update);
 		
 		update_search = new JButton("\uAC80  \uC0C9");
 		update_search.setBackground(Color.DARK_GRAY);
 		update_search.setForeground(new Color(153, 204, 255));
 		update_search.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		update_search.setBounds(527, 72, 79, 32);
-		img_update.add(update_search);
-		
-		
+		updatePane.add(update_search);
 		
 		
 		main.getContentPane().add(updatePane);
@@ -150,85 +143,85 @@ public class MarketUpdate {
 		label_pname = new JLabel("-   \uC0C1\uD488 \uC774\uB984");
 		label_pname.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		label_pname.setBounds(80, 148, 101, 40);
-		img_update.add(label_pname);
+		updatePane.add(label_pname);
 		
 		
 		label_price = new JLabel("-   \uC0C1\uD488 \uAC00\uACA9");
 		label_price.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		label_price.setBounds(80, 208, 101, 40);
-		img_update.add(label_price);
+		updatePane.add(label_price);
 		
 		label_phone = new JLabel("-  \uAC70\uB798\uC2DC\uC5F0\uB77D\uCC98");
 		label_phone.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		label_phone.setBounds(80, 270, 127, 40);
-		img_update.add(label_phone);
+		updatePane.add(label_phone);
 		
 		label_state = new JLabel("-   \uC0C1\uD488 \uC0C1\uD0DC");
 		label_state.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		label_state.setBounds(80, 325, 99, 40);
-		img_update.add(label_state);
+		updatePane.add(label_state);
 		
 		label_method = new JLabel("-   \uAC70\uB798 \uBC29\uBC95");
 		label_method.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		label_method.setBounds(80, 375, 101, 40);
-		img_update.add(label_method);
+		updatePane.add(label_method);
 		
 		tf_pname = new JTextField();
 		tf_pname.setFont(new Font("力林绊雕", Font.PLAIN, 14));
 		tf_pname.setColumns(10);
 		tf_pname.setBounds(212, 158, 284, 25);
-		img_update.add(tf_pname);
+		updatePane.add(tf_pname);
 		
 		tf_price = new JTextField();
 		tf_price.setFont(new Font("力林绊雕", Font.PLAIN, 14));
 		tf_price.setColumns(10);
 		tf_price.setBounds(212, 218, 284, 25);
-		img_update.add(tf_price);
+		updatePane.add(tf_price);
 		
 		tf_phone = new JTextField();
 		tf_phone.setFont(new Font("力林绊雕", Font.PLAIN, 14));
 		tf_phone.setColumns(10);
 		tf_phone.setBounds(212, 279, 284, 25);
-		img_update.add(tf_phone);
+		updatePane.add(tf_phone);
 		
 		tf_explain = new JTextField();
 		tf_explain.setFont(new Font("力林绊雕", Font.PLAIN, 14));
 		tf_explain.setColumns(10);
 		tf_explain.setBounds(212, 482, 394, 67);
-		img_update.add(tf_explain);
+		updatePane.add(tf_explain);
 		
 		btnUpdate = new JButton("\uC218\uC815 \uC644\uB8CC");
 		btnUpdate.setBackground(Color.DARK_GRAY);
 		btnUpdate.setForeground(new Color(153, 204, 255));
 		btnUpdate.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		btnUpdate.setBounds(432, 566, 101, 28);
-		img_update.add(btnUpdate);
+		updatePane.add(btnUpdate);
 		
 		btnUpdateReset = new JButton("\uB2E4\uC2DC \uC791\uC131");
 		btnUpdateReset.setForeground(new Color(153, 204, 255));
 		btnUpdateReset.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		btnUpdateReset.setBackground(Color.DARK_GRAY);
 		btnUpdateReset.setBounds(545, 566, 101, 28);
-		img_update.add(btnUpdateReset);
+		updatePane.add(btnUpdateReset);
 		
 		
 		label_explain = new JLabel("-   \uC0C1\uD488 \uC815\uBCF4");
 		label_explain.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		label_explain.setBounds(80, 475, 101, 40);
-		img_update.add(label_explain);
+		updatePane.add(label_explain);
 		
 		btn_use = new JRadioButton(" \uC0AC\uC6A9\uAC10 \uC788\uC74C");
 		btn_use.setFont(new Font("力林绊雕", Font.PLAIN, 14));
 		btn_use.setBounds(212, 336, 107, 23);
-		img_update.add(btn_use);
 		btn_use.setActionCommand("荤侩皑 乐澜");
+		updatePane.add(btn_use);
 		
 		btn_unuse = new JRadioButton(" \uC0AC\uC6A9\uAC10 \uC5C6\uC74C");
 		btn_unuse.setFont(new Font("力林绊雕", Font.PLAIN, 14));
 		btn_unuse.setBounds(339, 336, 107, 23);
-		img_update.add(btn_unuse);
 		btn_unuse.setActionCommand("荤侩皑 绝澜");
 		btn_unuse.setSelected(true);
+		updatePane.add(btn_unuse);
 		
 		group = new ButtonGroup();
 		group.add(btn_use);
@@ -237,19 +230,19 @@ public class MarketUpdate {
 		JLabel label_area = new JLabel("-   \uAC70\uB798 \uC9C0\uC5ED");
 		label_area.setFont(new Font("力林绊雕", Font.PLAIN, 16));
 		label_area.setBounds(80, 425, 101, 40);
-		img_update.add(label_area);
+		updatePane.add(label_area);
 		
 		combo_method = new JComboBox();
 		combo_method.setModel(new DefaultComboBoxModel(new String[] {"\uC9C1\uAC70\uB798", "\uBC30\uC1A1", "\uC9C1\uAC70\uB798 \uB610\uB294 \uBC30\uC1A1"}));
 		combo_method.setFont(new Font("力林绊雕", Font.PLAIN, 14));
 		combo_method.setBounds(212, 385, 107, 23);
-		img_update.add(combo_method);
+		updatePane.add(combo_method);
 		
 		combo_area = new JComboBox();
 		combo_area.setModel(new DefaultComboBoxModel(new String[] {"\uAC15\uC6D0\uB3C4", "\uACBD\uAE30\uB3C4", "\uACBD\uC0C1\uB0A8\uB3C4", "\uACBD\uC0C1\uBD81\uB3C4", "\uAD11\uC8FC\uAD11\uC5ED\uC2DC", "\uB300\uAD6C\uAD11\uC5ED\uC2DC", "\uB300\uC804\uAD11\uC5ED\uC2DC", "\uBD80\uC0B0\uAD11\uC5ED\uC2DC", "\uC11C\uC6B8\uD2B9\uBCC4\uC2DC", "\uC138\uC885\uD2B9\uBCC4\uC790\uCE58\uC2DC", "\uC6B8\uC0B0\uAD11\uC5ED\uC2DC", "\uC778\uCC9C\uAD11\uC5ED\uC2DC", "\uC804\uB77C\uB0A8\uB3C4", "\uC804\uB77C\uBD81\uB3C4", "\uC81C\uC8FC\uD2B9\uBCC4\uC790\uCE58\uB3C4", "\uCDA9\uCCAD\uB0A8\uB3C4", "\uCDA9\uCCAD\uB0A8\uB3C4"}));
 		combo_area.setFont(new Font("力林绊雕", Font.PLAIN, 14));
 		combo_area.setBounds(212, 436, 107, 23);
-		img_update.add(combo_area);
+		updatePane.add(combo_area);
 		
 		
 		
