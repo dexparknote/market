@@ -174,7 +174,7 @@ public class MarketMgmUI extends JFrame {
 			add(menuPane, BorderLayout.WEST);
 			add(mainPane, BorderLayout.CENTER);
 			
-			setSize(800,650);
+			setSize(1200,650);
 			
 			Dimension fsize = getSize();
 			Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize(); 
@@ -211,18 +211,23 @@ public class MarketMgmUI extends JFrame {
 			if(menu.equals("register")) {
 				regPane.removeAll();
 				regPane.setVisible(true);
+				regPane.setSize(1200, 650);
 			}else if(menu.equals("search")) {		
 				searchPane.removeAll();
 				searchPane.setVisible(true);
+				searchPane.setSize(1200, 650);
 			}else if(menu.equals("update")) {		
 				updatePane.removeAll();
 				updatePane.setVisible(true);
+				updatePane.setSize(1200, 650);
 			}else if(menu.equals("delete")) {		
 				deletePane.removeAll();
 				deletePane.setVisible(true);
+				deletePane.setSize(1200, 650);
 			}else if(menu.equals("chat")) {		
 				chatPane.removeAll();
 				chatPane.setVisible(true);
+				chatPane.setSize(1200, 650);
 			}
 		}
 		
@@ -302,8 +307,8 @@ public class MarketMgmUI extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
 				if(btnLogin == obj || jtf_pass == obj) {
-					if(login()) start();
-//					start();
+//					if(login()) start();
+					start();
 				}else if(btnJoin == obj) {
 					new MarketMgmJoin(main).join();
 				}else if(btnReg == obj) {

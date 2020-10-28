@@ -26,7 +26,7 @@ public class MarketMgmJoin {
 	
 	JPanel joinBackPane;
 	private JTextField jf_id;
-	private JTextField jf_pass;
+	private JPasswordField jf_pass;
 	private JTextField jf_name;
 	private JTextField jf_addr;
 	private JTextField jf_phone;
@@ -100,7 +100,7 @@ public class MarketMgmJoin {
         joinBackPane.add(jf_id);
         jf_id.setColumns(10);
         
-        jf_pass = new JTextField();
+        jf_pass = new JPasswordField();
         jf_pass.setColumns(10);
         jf_pass.setBounds(115, 120, 140, 20);
         joinBackPane.add(jf_pass);
@@ -212,6 +212,7 @@ public class MarketMgmJoin {
 		else {
 			result = true;
 		}
+		
 		return result;
 	}
 	
@@ -265,9 +266,11 @@ public class MarketMgmJoin {
 		public void actionPerformed(ActionEvent e) {
 			Object obj = e.getSource();
 			if(doJoin == obj) {
-				if(joinFomeCheck()) joinProc();
-				joinCancel();
-				main.showMain();
+				if(joinFomeCheck()) {
+					joinProc();
+					joinCancel();
+					main.showMain();
+				}
 			}
 			else if(resetJoin == obj) {
 				joinCancel();
