@@ -34,7 +34,7 @@ public class MarketUpdate {
 	JButton  update_search; // btnUpdate, btnUpdateReset; // 
 	ArrayList<JTextField> tf_update_list;
 	
-	ImagePanel img_update;
+	JPanel img_update;
 	
 	MarketUpdateEvent eventObj = new MarketUpdateEvent();
 	JTextField tf_update;
@@ -69,10 +69,12 @@ public class MarketUpdate {
 
 		main.switchPane(MarketMgmUI.UPDATE);
 		
-		img_update = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); 
+		img_update = new JPanel(); 
+
 		
 //영재 "C:/java_workspace/market/images/register_back.png"
 //기림 C:/dev/eclipse_workspace/market/images/register_back.png
+//민석 C:/dev/se_workspace/sist_project_1/images/register_back.png
 //		update_top = new JPanel(new BorderLayout());
 //		search_panel = new JPanel();
 //		String title = "<<<<<   수정할 물품의 번호를 입력해주세요   >>>>>";
