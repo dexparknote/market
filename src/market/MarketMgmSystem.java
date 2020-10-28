@@ -45,7 +45,7 @@ public class MarketMgmSystem {
 	}
 	
 	/** 물품 정보 출력  -영화씨 select select1로 수정**/
-	public BoardVO selectProduct(String pid) {
+	public ProductVO selectProduct(String pid) {
 		return dao.select1(pid);
 	}
 	
@@ -54,9 +54,9 @@ public class MarketMgmSystem {
 		return dao.search(pid);
 	}
 	
-	/** 물품정보 수정 -영화씨*/
-	public boolean update_pr(BoardVO bvo) {
-		return dao.update_pr(bvo);
+	/** 물품정보 수정 -영화*/
+	public boolean update_pr(ProductVO pvo) {
+		return dao.update_pr(pvo);
 	}
 	
 	/** 아이디 중복체크 -민석 */
@@ -74,4 +74,22 @@ public class MarketMgmSystem {
 		return dao.loginCheck(mid, mpass);
 	}
 	
+	/** 현재 로그인 아이디 */
+	public boolean loginIng(String mid) {
+		return dao.loginIng(mid);
+	}
+	
+	/** 회원 정보 찾기 */
+	public int searchMember(String mpass) {
+		return dao.searchMember(mpass);
+	}
+	
+	/** 회원 조회 */
+	public MemberVO selectMember(String mpass) {
+		return selectMember(mpass);
+	}
+	
+	public boolean update_info(MemberVO mvo) {
+		return dao.update_info(mvo);
+	}
 } // class

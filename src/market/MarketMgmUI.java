@@ -1,14 +1,11 @@
 package market;
 
-//backup
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,27 +20,24 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
-import java.awt.SystemColor;
 
 public class MarketMgmUI extends JFrame {
 	// Field
 	public static MarketMgmSystem system = new MarketMgmSystem();
-
+	
 	public static final int REGISTER = 1;
 	public static final int SEARCH = 2;
 	public static final int UPDATE = 3;
 	public static final int DELETE = 4;
 	public static final int CHAT = 5;
-	public static final int JOIN = 6;
+	public static final int MYHOME = 6;
 
 	ImagePanel showPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
 	JPanel mainPane, contentsPane, menuPane;
-	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout;
+	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout, btnMyPage;
 	JLabel jl_title, jl_img;
 	JTextField jtf_id; // 아이디 입력 JTextField
 	JPasswordField jtf_pass; // 비밀번호 입력 JPasswordField
@@ -60,6 +54,7 @@ public class MarketMgmUI extends JFrame {
 //영재-C:/java_workspace/market/images/register_back.png
 //기림 -"C:/dev/eclipse_workspace/market/images/register_back.png"
 //민석-C:/dev/se_workspace/sist_project_1/images/register_back.png
+//영화 - ("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());
 
 	JPanel joinBackPane = new JPanel();
 
@@ -186,7 +181,6 @@ public class MarketMgmUI extends JFrame {
 		menuPane.add(btnUpdate);
 		menuPane.add(btnDelete);
 		menuPane.add(btnChat);
-
 //			add(menuPane, BorderLayout.WEST);
 //			add(mainPane, BorderLayout.CENTER);
 		getContentPane().add(menuPane);
@@ -203,13 +197,13 @@ public class MarketMgmUI extends JFrame {
 		north_panel.add(btnLogout);
 		btnLogout.setBackground(new Color(102, 153, 204));
 		btnLogout.setFont(new Font("제주고딕", Font.BOLD, 14));
-
-		JButton button = new JButton("\uB9C8\uC774 \uD398\uC774\uC9C0");
-		button.setForeground(Color.WHITE);
-		button.setFont(new Font("제주고딕", Font.BOLD, 14));
-		button.setBackground(new Color(102, 153, 204));
-		button.setBounds(962, 10, 107, 25);
-		north_panel.add(button);
+		
+		btnMyPage = new JButton("\uB9C8\uC774 \uD398\uC774\uC9C0");
+		btnMyPage.setForeground(Color.WHITE);
+		btnMyPage.setFont(new Font("제주고딕", Font.BOLD, 14));
+		btnMyPage.setBackground(new Color(102, 153, 204));
+		btnMyPage.setBounds(962, 10, 107, 25);
+		north_panel.add(btnMyPage);
 
 		JLabel welcome_member = new JLabel(vo.getId() + "님");
 		welcome_member.setFont(new Font("제주고딕", Font.PLAIN, 13));
@@ -235,6 +229,7 @@ public class MarketMgmUI extends JFrame {
 		btnDelete.addActionListener(eventObj);
 		btnChat.addActionListener(eventObj);
 		btnLogout.addActionListener(eventObj);
+		btnMyPage.addActionListener(eventObj);
 	}// start method
 
 	// 메뉴 이동 제어
@@ -246,6 +241,7 @@ public class MarketMgmUI extends JFrame {
 		updatePane.setVisible(false);
 		deletePane.setVisible(false);
 		chatPane.setVisible(false);
+		myPagePane.setVisible(false);
 	}
 
 	public void switchPane(String menu) {
@@ -301,6 +297,11 @@ public class MarketMgmUI extends JFrame {
 			chatPane.setVisible(true);
 			chatPane.setBounds(200, 130, 1000, 650);
 			break;
+		case 6:
+			myPagePane.removeAll();
+			myPagePane.setVisible(true);
+			myPagePane.setBounds(200, 130, 1000, 650);
+			break;
 		}
 	}// switchPane method
 
@@ -352,8 +353,8 @@ public class MarketMgmUI extends JFrame {
 		public void actionPerformed(ActionEvent ae) {
 			Object obj = ae.getSource();
 			if (btnLogin == obj || jtf_pass == obj) {
-//					if(login()) start();
-				start();
+					if(login()) start();
+//				start();
 			} else if (btnJoin == obj) {
 				new MarketMgmJoin(main).join();
 			} else if (btnReg == obj) {
@@ -373,6 +374,8 @@ public class MarketMgmUI extends JFrame {
 					resetPane();
 					showMain();
 				}
+			} else if (btnMyPage == obj) {
+				new MarketMyPage(main).myPage();
 			}
 		}
 	}// event class
