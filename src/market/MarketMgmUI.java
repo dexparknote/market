@@ -215,7 +215,7 @@ public class MarketMgmUI extends JFrame {
 			button.setBounds(962, 10, 107, 25);
 			north_panel.add(button);
 			
-			JLabel lblNewLabel = new JLabel("Test\uB2D8 ");
+			JLabel lblNewLabel = new JLabel(vo.getId()+"\uB2D8 ");
 			lblNewLabel.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblNewLabel.setBounds(819, 10, 131, 25);
