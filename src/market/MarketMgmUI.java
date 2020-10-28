@@ -49,11 +49,11 @@ public class MarketMgmUI extends JFrame {
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
 	
 
-	ImagePanel regPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
-	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
-	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());//영재
-	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
-	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
+	JPanel regPane = new JPanel(); //영재
+	JPanel searchPane = new JPanel(); //영재
+	JPanel updatePane = new JPanel(); //영재
+	JPanel deletePane = new JPanel(); //영재
+	JPanel chatPane = new JPanel(); //영재
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 

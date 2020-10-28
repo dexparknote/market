@@ -40,7 +40,7 @@ public class MarketUpdate {
 	JButton  update_search; // btnUpdate, btnUpdateReset; // 
 	ArrayList<String> tf_update_list;
 	
-	ImagePanel img_update;
+	JPanel img_update;
 	
 	MarketUpdateEvent eventObj = new MarketUpdateEvent();
 	JTextField tf_update;
@@ -72,7 +72,7 @@ public class MarketUpdate {
 
 		main.switchPane(MarketMgmUI.UPDATE);
 		
-		img_update = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());
+		img_update = new JPanel();
 		
 //영재 "C:/java_workspace/market/images/join_back.png"
 //영화 C:\\dev\\se_workspace\\market\\images\\register_back.png
