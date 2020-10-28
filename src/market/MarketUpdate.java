@@ -72,9 +72,10 @@ public class MarketUpdate {
 
 		main.switchPane(MarketMgmUI.UPDATE);
 		
-		img_update = new JPanel(); 
 
-//영재 "C:/java_workspace/market/images/register_back.png"
+		img_update = new JPanel();
+		
+//영재 "C:/java_workspace/market/images/join_back.png"
 //영화 C:\\dev\\se_workspace\\market\\images\\register_back.png
 //기림 C:/dev/eclipse_workspace/market/images/register_back.png
 //민석 C:/dev/se_workspace/sist_project_1/images/register_back.png
