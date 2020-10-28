@@ -76,7 +76,7 @@ public class MarketMgmUI extends JFrame {
 	public MarketMgmUI() {
 		super("ReSell Market");
 		showMain();
-//		start(); 영재 테스트용
+//		start(); //영재 테스트용
 	}
 	//Method
 		public void showMain() {  //10.22 영재 수정
@@ -148,7 +148,7 @@ public class MarketMgmUI extends JFrame {
 			jl_title = new JLabel(vo.getId() + "\n님 중고거래 시스템 바다에 오신것을 환영합니다 @ ");
 			jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 			mainPane.setBackground(Color.WHITE);
-			menuPane.setBackground(SystemColor.menu);
+			menuPane.setBackground(SystemColor.controlHighlight);
 			regPane.setBackground(Color.WHITE);
 			searchPane.setBackground(Color.WHITE);
 		    updatePane.setBackground(Color.WHITE);
@@ -365,6 +365,8 @@ public class MarketMgmUI extends JFrame {
 					new MarketDelete(main).delete();
 				}else if(btnUpdate == obj) {
 					new MarketUpdate(main).update();
+				}else if(btnChat == obj) {
+					new MarketChat(main).chat();
 				}else if(btnLogout == obj) {
 					int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
 					if (result == 0) {
