@@ -73,7 +73,7 @@ public class MarketMgmUI extends JFrame {
 	public MarketMgmUI() {
 		super("ReSell Market");
 		showMain();
-//		start();
+//		start(); 영재 테스트용
 	}
 	//Method
 		public void showMain() {  //10.22 영재 수정
