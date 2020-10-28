@@ -51,11 +51,11 @@ public class MarketMgmUI extends JFrame {
 	
 
 
-	JPanel regPane = new JPanel();
-	JPanel searchPane = new JPanel();
-	JPanel updatePane = new JPanel();
-	JPanel deletePane = new JPanel();
-	JPanel chatPane = new JPanel();
+	JPanel regPane = new JPanel(); //영재
+	JPanel searchPane = new JPanel(); //영재
+	JPanel updatePane = new JPanel(); //영재
+	JPanel deletePane = new JPanel(); //영재
+	JPanel chatPane = new JPanel(); //영재
 
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
@@ -64,6 +64,7 @@ public class MarketMgmUI extends JFrame {
 //영재-C:/java_workspace/market/images/register_back.png
 //기림 -"C:/dev/eclipse_workspace/market/images/register_back.png"
 //민석-C:/dev/se_workspace/sist_project_1/images/register_back.png
+//영화 - ("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());
 
 	JPanel joinBackPane = new JPanel();
 	
@@ -82,6 +83,8 @@ public class MarketMgmUI extends JFrame {
 			
 
 			showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
+//			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+//			showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 
 
 			//영재-C:/java_workspace/market/images/login_main.png
