@@ -26,6 +26,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import java.awt.SystemColor;
 
 
 public class MarketMgmUI extends JFrame {
@@ -49,11 +50,13 @@ public class MarketMgmUI extends JFrame {
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
 	
 
-	ImagePanel regPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
-	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
-	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
-	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
-	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/register_back.png").getImage()); //영재
+
+	JPanel regPane = new JPanel();
+	JPanel searchPane = new JPanel();
+	JPanel updatePane = new JPanel();
+	JPanel deletePane = new JPanel();
+	JPanel chatPane = new JPanel();
+
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 
@@ -66,17 +69,21 @@ public class MarketMgmUI extends JFrame {
 	
 	MemberVO vo = new MemberVO();
 	public static Font font = new Font("맑은 고딕", Font.BOLD, 12);
+	private JPanel north_panel;
 	
 	//Constructor
 	public MarketMgmUI() {
 		super("ReSell Market");
 		showMain();
+//		start();
 	}
 	//Method
 		public void showMain() {  //10.22 영재 수정
 			
 
-			showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
+			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+
+
 			//영재-C:/java_workspace/market/images/login_main.png
 			//기림-C:/dev/eclipse_workspace/market/images/login_main.png
 			//민석-C:/dev/se_workspace/sist_project_1/images/login_main.png
@@ -130,51 +137,89 @@ public class MarketMgmUI extends JFrame {
 		//start
 		public void start() { //임시용
 			showPane.setVisible(false);
+			getContentPane().setLayout(null);
 			
 			mainPane = new JPanel();	
-			menuPane = new JPanel(new GridLayout(6,1));
+			menuPane = new JPanel();
+			menuPane.setBounds(0, 130, 200, 650);
+			mainPane.setBounds(200,130, 1000,650);
 			jl_title = new JLabel(vo.getId() + "\n님 중고거래 시스템 바다에 오신것을 환영합니다 @ ");
 			jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
-			mainPane.setBackground(Color.getHSBColor(100, 100, 82));
-			menuPane.setBackground(Color.getHSBColor(100, 100, 100));
-			regPane.setBackground(Color.getHSBColor(100, 100, 82));
-			searchPane.setBackground(Color.getHSBColor(100, 100, 82));
-		    updatePane.setBackground(Color.getHSBColor(100, 100, 82));
-			deletePane.setBackground(Color.getHSBColor(100, 100, 82));
-			chatPane.setBackground(Color.getHSBColor(100, 100, 82));
+			mainPane.setBackground(Color.WHITE);
+			menuPane.setBackground(SystemColor.menu);
+			regPane.setBackground(new Color(204, 255, 255));
+			searchPane.setBackground(new Color(204, 255, 255));
+		    updatePane.setBackground(new Color(204, 255, 255));
+			deletePane.setBackground(new Color(204, 255, 255));
+			chatPane.setBackground(new Color(204, 255, 255));
 			
 			btnReg = new JButton("게시물 등록");
+			btnReg.setForeground(Color.WHITE);
+			btnReg.setBounds(40, 40, 120, 55);
 			btnSearch = new JButton("게시물 검색");
+			btnSearch.setForeground(Color.WHITE);
+			btnSearch.setBounds(40, 130, 120, 55);
 			btnUpdate = new JButton("게시물 수정");
+			btnUpdate.setForeground(Color.WHITE);
+			btnUpdate.setBounds(40, 220, 120, 55);
 			btnDelete = new JButton("게시물 삭제");
+			btnDelete.setForeground(Color.WHITE);
+			btnDelete.setBounds(40, 310, 120, 55);
 			btnChat = new JButton("채팅하기");
-			btnLogout = new JButton("로그아웃");
+			btnChat.setForeground(Color.WHITE);
+			btnChat.setBounds(40, 400, 119, 55);
 			
-			btnReg.setBackground(new Color(240, 255, 240));
-			btnSearch.setBackground(new Color(240, 255, 240));
-			btnUpdate.setBackground(new Color(240, 255, 240));
-			btnDelete.setBackground(new Color(240, 255, 240));
-			btnChat.setBackground(new Color(240, 255, 240));
-			btnLogout.setBackground(new Color(240, 255, 240));
+			btnReg.setBackground(new Color(102, 153, 204));
+			btnSearch.setBackground(new Color(102, 153, 204));
+			btnUpdate.setBackground(new Color(102, 153, 204));
+			btnDelete.setBackground(new Color(102, 153, 204));
+			btnChat.setBackground(new Color(102, 153, 204));
 			
 			jl_title.setFont(new Font("맑은 고딕",Font.BOLD,16));
-			btnReg.setFont(font);  btnSearch.setFont(font);
-			btnUpdate.setFont(font);  btnDelete.setFont(font);  
-			btnChat.setFont(font);	btnLogout.setFont(font);
+			btnReg.setFont(new Font("제주고딕", Font.PLAIN, 17));  btnSearch.setFont(new Font("제주고딕", Font.PLAIN, 17));
+			btnUpdate.setFont(new Font("제주고딕", Font.PLAIN, 17));  btnDelete.setFont(new Font("제주고딕", Font.PLAIN, 17));  
+			btnChat.setFont(new Font("제주고딕", Font.PLAIN, 17));
 			mainPane.add(jl_img);
 			mainPane.add(jl_title);		
+			menuPane.setLayout(null);
 			
 			menuPane.add(btnReg);
 			menuPane.add(btnSearch);
 			menuPane.add(btnUpdate);
 			menuPane.add(btnDelete);
 			menuPane.add(btnChat);
-			menuPane.add(btnLogout);
 
-			add(menuPane, BorderLayout.WEST);
-			add(mainPane, BorderLayout.CENTER);
+//			add(menuPane, BorderLayout.WEST);
+//			add(mainPane, BorderLayout.CENTER);
+			getContentPane().add(menuPane);
+			getContentPane().add(mainPane);
 			
-			setSize(1200,650);
+			north_panel = new JPanel();
+			north_panel.setBackground(new Color(153, 204, 255));
+			north_panel.setBounds(0, 0, 1200, 130);
+			getContentPane().add(north_panel);
+			north_panel.setLayout(null);
+			btnLogout = new JButton("로그아웃");
+			btnLogout.setForeground(Color.WHITE);
+			btnLogout.setBounds(1081, 10, 93, 25);
+			north_panel.add(btnLogout);
+			btnLogout.setBackground(new Color(102, 153, 204));
+			btnLogout.setFont(new Font("제주고딕", Font.BOLD, 14));
+			
+			JButton button = new JButton("\uB9C8\uC774 \uD398\uC774\uC9C0");
+			button.setForeground(Color.WHITE);
+			button.setFont(new Font("제주고딕", Font.BOLD, 14));
+			button.setBackground(new Color(102, 153, 204));
+			button.setBounds(962, 10, 107, 25);
+			north_panel.add(button);
+			
+			JLabel lblNewLabel = new JLabel("Test\uB2D8 ");
+			lblNewLabel.setFont(new Font("제주고딕", Font.PLAIN, 13));
+			lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+			lblNewLabel.setBounds(819, 10, 131, 25);
+			north_panel.add(lblNewLabel);
+			
+			setSize(1200,780);
 			
 			Dimension fsize = getSize();
 			Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize(); 
@@ -191,7 +236,6 @@ public class MarketMgmUI extends JFrame {
 			btnUpdate.addActionListener(eventObj);
 			btnDelete.addActionListener(eventObj);
 			btnChat.addActionListener(eventObj);
-			btnLogout.addActionListener(eventObj);
 		}//start method
 		
 
@@ -237,22 +281,27 @@ public class MarketMgmUI extends JFrame {
 			case 1 : 
 				regPane.removeAll();
 				regPane.setVisible(true);
+				regPane.setBounds(200,130, 1000,650);
 				break;
 			case 2 : 
 				searchPane.removeAll();
 				searchPane.setVisible(true);
+				searchPane.setBounds(200,130, 1000,650);
 				break;
 			case 3 : 
 				updatePane.removeAll();
 				updatePane.setVisible(true);
+				updatePane.setBounds(200,130, 1000,650);
 				break;
 			case 4 : 
 				deletePane.removeAll();
 				deletePane.setVisible(true);
+				deletePane.setBounds(200,130, 1000,650);
 				break;
 			case 5 : 
 				chatPane.removeAll();
 				chatPane.setVisible(true);
+				chatPane.setBounds(200,130, 1000,650);
 				break;
 			}	
 		}//switchPane method
