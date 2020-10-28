@@ -1,27 +1,42 @@
 package market;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.Color;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumnModel;
 
 public class MarketDelete {
 	// Field
 	MarketMgmUI main;
-	JPanel deletePane, jp_deleteSearch;
+	JPanel deletePane;
+	JPanel jp_delete_search, jp_deleteResult;
 	JTextField jt_deleteSearch;
 	JButton deleteSearch;
 	JLabel jl_deleteSearchName;
+	MemberVO mvo = new MemberVO();
+	Object[] columns = {"게시물번호","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일"};	
+	Object[] row =new Object[8];  
+	DefaultTableModel model =new DefaultTableModel(columns,0);	
+	JTable table= new JTable(model); 
 	
-//	JLabel jl_deleteSearchName;
-//	JTextField jt_deleteSearch;
-
+	
+	
 	// Constructor
 	public MarketDelete() {
 	}
@@ -29,6 +44,7 @@ public class MarketDelete {
 	public MarketDelete(MarketMgmUI main) {
 		this.main = main;
 		this.deletePane = main.deletePane;
+		this.mvo=main.vo;
 	}
 
 	/**
@@ -40,35 +56,110 @@ public class MarketDelete {
 		main.getContentPane().add(deletePane);
 		deletePane.setLayout(null);
 		
-		jl_deleteSearchName = new JLabel("\uBB3C\uD488 \uBC88\uD638");
+		jp_delete_search = new JPanel();
+		jp_deleteResult = new JPanel();
+		
+		jl_deleteSearchName = new JLabel("게시물 번호");
 		jl_deleteSearchName.setFont(new Font("굴림", Font.BOLD, 13));
 		jl_deleteSearchName.setBounds(213, 28, 58, 15);
-		deletePane.add(jl_deleteSearchName);
+		jp_delete_search.add(jl_deleteSearchName);
+//		deletePane.add(jl_deleteSearchName);
 		
 		jt_deleteSearch = new JTextField();
 		jt_deleteSearch.setBounds(284, 25, 156, 21);
-		deletePane.add(jt_deleteSearch);
-		jt_deleteSearch.setColumns(10);
+//		deletePane.add(jt_deleteSearch);
+		jp_delete_search.add(jt_deleteSearch);
+		jt_deleteSearch.setColumns(20);
 		
-		deleteSearch = new JButton("\uAC80\uC0C9");
+		deleteSearch = new JButton("삭제");
 		deleteSearch.setForeground(new Color(102, 204, 255));
 		deleteSearch.setBackground(Color.DARK_GRAY);
 		deleteSearch.setFont(new Font("굴림", Font.BOLD, 13));
 		deleteSearch.setBounds(452, 24, 64, 23);
-		deletePane.add(deleteSearch);
+//		deletePane.add(deleteSearch);
+		jp_delete_search.add(deleteSearch);
+		
+		deletePane.add(jp_delete_search);
+		deletePane.add(jp_deleteResult);
+		
+		crateJTableData();	
+		model.setColumnIdentifiers(columns);
+		table.setModel(model);
+		
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+		dtcr.setHorizontalAlignment(SwingConstants.CENTER);	
+	    TableColumnModel tcm = table.getColumnModel();
+	    JTableHeader header = table.getTableHeader();
+	    header.setBackground(Color.DARK_GRAY);
+	    header.setForeground(Color.white);  jp_delete_search.setBackground(Color.white); jp_deleteResult.setBackground(Color.white);
+		
+	    
+	    table.getColumn("게시물번호").setCellRenderer(dtcr);
+	    table.getColumn("상품이름").setCellRenderer(dtcr);
+	    table.getColumn("가격").setCellRenderer(dtcr);
+	    table.getColumn("연락처").setCellRenderer(dtcr);
+	    table.getColumn("상태").setCellRenderer(dtcr);
+	    table.getColumn("거래방법").setCellRenderer(dtcr);
+	    table.getColumn("거래지역").setCellRenderer(dtcr);
+	    table.getColumn("상품정보").setCellRenderer(dtcr);
+	    table.getColumn("등록일").setCellRenderer(dtcr);
+	   
+	    JScrollPane pane=new JScrollPane(table);
+		
+		table.getColumn(table.getColumnName(0)).setPreferredWidth(70);	
+		table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
+		table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
+		table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
+		table.getColumn(table.getColumnName(6)).setPreferredWidth(80);
+		table.getColumn(table.getColumnName(7)).setPreferredWidth(200);
+		
+		table.setPreferredScrollableViewportSize(new Dimension(800, 535));
+		table.setRowHeight(table.getRowHeight() + 70);
+		table.setFillsViewportHeight(true);
+		
+		jp_deleteResult.setLayout(new BorderLayout());
+		deletePane.setLayout(new BorderLayout());			
+			
+		deletePane.add(BorderLayout.CENTER,jp_deleteResult);
+		deletePane.add(BorderLayout.SOUTH,pane);
+		deletePane.add(BorderLayout.NORTH,jp_delete_search);
+		main.add(deletePane, BorderLayout.CENTER);
 		
 		main.setVisible(true);
 
 		jt_deleteSearch.addActionListener(new MemberDeleteEvent());
 		deleteSearch.addActionListener(new MemberDeleteEvent());
 	}// delete method
+	
+	//전체리스트 JTableDate
+	public void crateJTableData(){
+		ArrayList<ProductVO> plist = main.system.delete_list(mvo);
+		model.setNumRows(0);
+		
+		for(ProductVO vo: plist) {
+			if(vo != null) {
+				row[0]=vo.getPid();
+				row[1]=vo.getPname();
+				row[2]=vo.getPrice();
+				row[3]=vo.getPphone();
+				row[4]=vo.getState();
+				row[5]=vo.getMethod();
+				row[6]=vo.getExplain();
+				row[7]=vo.getPdate();
+			
+				model.addRow(row);
+			}
+			table.repaint();
+		}
+		model.fireTableDataChanged();
+	}
 
 	// deleteDataCheck
 
 	public boolean deleteDataCheck(String name) {
 		return main.system.delselect(name);
 	}
-
+	
 	// deleteProc
 	public void deleteProc(String name) {
 		boolean result = main.system.delete(name);

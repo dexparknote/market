@@ -3,8 +3,6 @@ package market;
 import java.util.ArrayList;
 
 class MarketDAO extends DBConn{
-	
-	
 	/**
 	 *	join 
 	 */
@@ -38,7 +36,7 @@ class MarketDAO extends DBConn{
 		try {
 			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,?,sysdate)";
 			getPreparedStatement(sql);
-//			pstmt.setString(1, vo.getMid());
+			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getPname());
 			pstmt.setInt(3, vo.getPrice());
 			pstmt.setString(4, vo.getPphone());
@@ -92,6 +90,40 @@ class MarketDAO extends DBConn{
 		
 		return list;
 	}
+	/**
+	 * delete_select - ¹Î¼® 
+	 */
+	public ArrayList <ProductVO> delete_select(MemberVO mvo) {
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		
+		try {
+			String sql = " select pid, pname, price, pphone, state, method, area, explain " + 
+						" from (select pid, pname, price, pphone, state, method, area, explain, pdate from product p, market_member m " + 
+						" where m.mid=p.mid and m.mid=? order by pid desc)";
+			getPreparedStatement(sql);
+			pstmt.setString(1, mvo.getId());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProductVO vo = new ProductVO();
+				vo.setPid(rs.getString(1));
+				vo.setPname(rs.getString(2));
+				vo.setPrice(rs.getInt(3));
+				vo.setPphone(rs.getString(4));
+				vo.setState(rs.getString(5));
+				vo.setMethod(rs.getString(6));
+				vo.setExplain(rs.getString(7));
+				vo.setPdate(rs.getString(8));
+				list.add(vo);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
 	
 	/**
 	 * select(String name) - ±â¸²

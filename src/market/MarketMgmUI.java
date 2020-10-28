@@ -54,6 +54,7 @@ public class MarketMgmUI extends JFrame {
 	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());//영재
 	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
+	
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 
@@ -288,7 +289,8 @@ public class MarketMgmUI extends JFrame {
 				vo.setId(jtf_id.getText());
 				vo.setPass(jtf_pass.getText());
 				
-				boolean result = system.loginCheck(vo.getId(), vo.getPass());				
+				boolean result = system.loginCheck(vo.getId(), vo.getPass());	
+				
 				if(result) {
 					JOptionPane.showMessageDialog(null, "로그인에 성공하셨습니다.");
 				}
@@ -306,8 +308,8 @@ public class MarketMgmUI extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
 				if(btnLogin == obj || jtf_pass == obj) {
-//					if(login()) start();
-					start();
+					if(login()) start();
+//					start();
 				}else if(btnJoin == obj) {
 					new MarketMgmJoin(main).join();
 				}else if(btnReg == obj) {
