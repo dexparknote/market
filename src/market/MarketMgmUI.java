@@ -288,9 +288,6 @@ public class MarketMgmUI extends JFrame {
 				
 				if(result) {
 					JOptionPane.showMessageDialog(null, "로그인에 성공하셨습니다.");
-					boolean traceId = system.traceId(vo.getId());
-					return traceId;
-					//추적
 				}
 				else if(jtf_id.getText().equals("") || jtf_pass.getText().equals("")){
 					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 먼저 입력해주세요.");
@@ -301,7 +298,6 @@ public class MarketMgmUI extends JFrame {
 				
 				return result;
 			}
-			
 			
 			//액션 이벤트 처리
 			public void actionPerformed(ActionEvent ae) {

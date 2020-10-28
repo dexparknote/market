@@ -29,11 +29,13 @@ public class MarketDelete {
 	JTextField jt_deleteSearch;
 	JButton deleteSearch;
 	JLabel jl_deleteSearchName;
-	
+	MemberVO mvo = new MemberVO();
 	Object[] columns = {"게시물번호","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일"};	
 	Object[] row =new Object[8];  
 	DefaultTableModel model =new DefaultTableModel(columns,0);	
 	JTable table= new JTable(model); 
+	
+	
 	
 	// Constructor
 	public MarketDelete() {
@@ -42,6 +44,7 @@ public class MarketDelete {
 	public MarketDelete(MarketMgmUI main) {
 		this.main = main;
 		this.deletePane = main.deletePane;
+		this.mvo=main.vo;
 	}
 
 	/**
@@ -130,7 +133,7 @@ public class MarketDelete {
 	
 	//전체리스트 JTableDate
 	public void crateJTableData(){
-		ArrayList<ProductVO> plist = main.system.list();
+		ArrayList<ProductVO> plist = main.system.delete_list(mvo);
 		model.setNumRows(0);
 		
 		for(ProductVO vo: plist) {
@@ -157,14 +160,6 @@ public class MarketDelete {
 		return main.system.delselect(name);
 	}
 	
-	/*
-	public void deleteListProc() {
-		MemberVO vo = new MemberVO();
-		if(main.system.traceId(vo.getId())) {
-			
-		}
-	}
-	*/
 	// deleteProc
 	public void deleteProc(String name) {
 		boolean result = main.system.delete(name);
