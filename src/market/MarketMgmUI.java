@@ -82,9 +82,7 @@ public class MarketMgmUI extends JFrame {
 		public void showMain() {  //10.22 영재 수정
 			
 
-//			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-			showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); //영재
-
+			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 //			showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 
 
@@ -151,11 +149,11 @@ public class MarketMgmUI extends JFrame {
 			jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 			mainPane.setBackground(Color.WHITE);
 			menuPane.setBackground(SystemColor.menu);
-			regPane.setBackground(new Color(204, 255, 255));
-			searchPane.setBackground(new Color(204, 255, 255));
-		    updatePane.setBackground(new Color(204, 255, 255));
-			deletePane.setBackground(new Color(204, 255, 255));
-			chatPane.setBackground(new Color(204, 255, 255));
+			regPane.setBackground(Color.WHITE);
+			searchPane.setBackground(Color.WHITE);
+		    updatePane.setBackground(Color.WHITE);
+			deletePane.setBackground(Color.WHITE);
+			chatPane.setBackground(Color.WHITE);
 			
 			btnReg = new JButton("게시물 등록");
 			btnReg.setForeground(Color.WHITE);
