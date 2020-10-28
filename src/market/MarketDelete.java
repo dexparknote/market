@@ -71,7 +71,7 @@ public class MarketDelete {
 		jp_delete_search.add(jt_deleteSearch);
 		jt_deleteSearch.setColumns(20);
 		
-		deleteSearch = new JButton("\uAC80\uC0C9");
+		deleteSearch = new JButton("ªË¡¶");
 		deleteSearch.setForeground(new Color(102, 204, 255));
 		deleteSearch.setBackground(Color.DARK_GRAY);
 		deleteSearch.setFont(new Font("±º∏≤", Font.BOLD, 13));
