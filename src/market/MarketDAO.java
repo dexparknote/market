@@ -79,6 +79,7 @@ class MarketDAO extends DBConn{
 				vo.setArea(rs.getString(7));
 				vo.setExplain(rs.getString(8));
 				vo.setPdate(rs.getString(9));
+//				vo.setRating(rs.getString(10));	//평점
 					
 				list.add(vo);
 			}
@@ -112,6 +113,7 @@ class MarketDAO extends DBConn{
 				vo.setArea(rs.getString(7));
 				vo.setExplain(rs.getString(8));
 				vo.setPdate(rs.getString(9));
+//				vo.setRating(rs.getString(10));	//평점
 			}			
 			
 		}catch(Exception e) {
