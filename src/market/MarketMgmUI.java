@@ -49,11 +49,11 @@ public class MarketMgmUI extends JFrame {
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
 	
 
-	ImagePanel regPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/register_back.png").getImage()); //영재
-	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/register_back.png").getImage()); //영재
-	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/register_back.png").getImage()); //영재
-	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/register_back.png").getImage()); //영재
-	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel regPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel searchPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel deletePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
+	ImagePanel chatPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage()); //영재
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 
@@ -76,7 +76,7 @@ public class MarketMgmUI extends JFrame {
 		public void showMain() {  //10.22 영재 수정
 			
 
-			showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage());
+			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 
 			//영재-C:/java_workspace/market/images/login_main.png
 			//기림-C:/dev/eclipse_workspace/market/images/login_main.png
