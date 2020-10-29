@@ -80,13 +80,13 @@ public class MarketMgmSystem {
 	}
 	
 	/** 회원 정보 찾기 */
-	public int searchMember(String mpass) {
-		return dao.searchMember(mpass);
+	public int searchMember(String mid) {
+		return dao.searchMember(mid);
 	}
 	
 	/** 회원 조회 */
 	public MemberVO selectMember(String mpass) {
-		return selectMember(mpass);
+		return dao.selectMember(mpass);
 	}
 	
 	public boolean update_info(MemberVO mvo) {

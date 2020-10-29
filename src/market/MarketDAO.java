@@ -362,7 +362,7 @@ class MarketDAO extends DBConn{
 		int result = 0;
 		
 		try {
-			String sql = "select count(*) from market_member where mpass=?";
+			String sql = "select count(*) from market_member where mid=?";
 			getPreparedStatement(sql);
 			pstmt.setString(1, mpass);
 			rs = pstmt.executeQuery();
@@ -377,13 +377,13 @@ class MarketDAO extends DBConn{
 	}
 	
 	/** 회원 조회 */
-	public MemberVO selectMember(String mpass) {
+	public MemberVO selectMember(String mid) {
 		MemberVO mvo = new MemberVO();
 		
 		try {
-			String sql = "select mpass, mname, maddr, mphone, memail where mpass=?";
+			String sql = "select mpass, mname, maddr, mphone, memail from market_member where mid=?";
 			getPreparedStatement(sql);
-			pstmt.setString(1, mpass);
+			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -405,14 +405,14 @@ class MarketDAO extends DBConn{
 		boolean result = false;
 		
 		try {
-			String sql = "update market_member set mpass=?, mname=?, maddr=?, mphone=?, memail=? where mpass=?";
+			String sql = "update market_member set mpass=?, mname=?, maddr=?, mphone=?, memail=? where mid=?";
 			getPreparedStatement(sql);
 			pstmt.setString(1, mvo.getPass());
 			pstmt.setString(2, mvo.getName());
 			pstmt.setString(3, mvo.getAddr());
 			pstmt.setString(4, mvo.getPhone());
 			pstmt.setString(5, mvo.getEmail());
-			pstmt.setString(6, mvo.getPass());
+			pstmt.setString(6, mvo.getId());
 			int count = pstmt.executeUpdate();
 			if(count != 0) result = true;
 		} catch (Exception e) {

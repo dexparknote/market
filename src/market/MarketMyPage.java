@@ -11,29 +11,30 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class MarketMyPage {
 
 	MarketMgmUI main;
 	JPanel myPagePane; 
 //	JPanel info_updatePane, inputIdPane;
-	private JTextField jt_passCheck;
+	private JTextField jt_idCheck;
 	private JTextField jt_upass;
 	private JTextField jt_uname;
 	private JTextField jt_uaddr;
 	private JTextField jt_uphone;
 	private JTextField jt_uemail;
-	JButton btn_passCheck, btn_updateInfo, btn_updateCancel;
+	JButton btn_idCheck, btn_updateInfo, btn_updateCancel;
 	MarketUpdateInfoEvent eventobj = new MarketUpdateInfoEvent();
-	String mpass;
+	String mid;
 	int idx = 0;
-	MemberVO mvo = new MemberVO();
+	MemberVO vo = new MemberVO();
 	ArrayList<String> tf_update_list = new ArrayList<>();
 	public MarketMyPage() {}
 	public MarketMyPage(MarketMgmUI main) {
 		this.main = main;
 		this.myPagePane = main.myPagePane;
-		this.mvo = main.vo;
+		this.vo = main.vo;
 	}
 	
 	 /**
@@ -43,113 +44,115 @@ public class MarketMyPage {
 		main.switchPane(MarketMgmUI.MYHOME);
 		
 //		myPagePane = new JPanel();
-//		myPagePane.setLocation(-265, -120);
 		myPagePane.setLayout(null);
 		
-//		inputIdPane = new JPanel();
-//		inputIdPane.setBounds(304, 10, 382, 88);
-//		myPagePane.add(inputIdPane);
-//		inputIdPane.setLayout(null);
-		
-		JLabel inform = new JLabel("\uBCF8\uC778 \uD655\uC778\uC744 \uC704\uD574 \uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.");
+		JLabel inform = new JLabel("\u203B \uBCF8\uC778 \uD655\uC778\uC744 \uC704\uD574 \uC544\uC774\uB514\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694. \u203B");
+		inform.setHorizontalAlignment(SwingConstants.CENTER);
 		inform.setFont(new Font("力林绊雕", Font.PLAIN, 13));
-		inform.setBounds(76, 10, 245, 32);
+		inform.setBounds(307, 44, 333, 32);
 		myPagePane.add(inform);
 		
-		JLabel jl_pass = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		jl_pass.setFont(new Font("力林绊雕", Font.PLAIN, 14));
-		jl_pass.setBounds(55, 54, 51, 15);
+		JLabel jl_pass = new JLabel("[ \uC544\uC774\uB514 ]");
+		jl_pass.setHorizontalAlignment(SwingConstants.CENTER);
+		jl_pass.setFont(new Font("力林绊雕", Font.PLAIN, 19));
+		jl_pass.setBounds(297, 21, 92, 20);
 		myPagePane.add(jl_pass);
 		
-		jt_passCheck = new JTextField();
-		jt_passCheck.setBounds(118, 52, 126, 21);
-		myPagePane.add(jt_passCheck);
-		jt_passCheck.setColumns(10);
+		jt_idCheck = new JTextField();
+		jt_idCheck.setFont(new Font("力林绊雕", Font.PLAIN, 19));
+		jt_idCheck.setBounds(411, 20, 138, 21);
+		myPagePane.add(jt_idCheck);
+		jt_idCheck.setColumns(10);
 		
-		btn_passCheck = new JButton("\uC778\uC99D");
-		btn_passCheck.setFont(new Font("力林绊雕", Font.PLAIN, 14));
-		btn_passCheck.setBounds(256, 52, 57, 23);
-		myPagePane.add(btn_passCheck);
-		
+		btn_idCheck = new JButton("\uC778\uC99D");
+		btn_idCheck.setBackground(Color.DARK_GRAY);
+		btn_idCheck.setForeground(new Color(153, 204, 255));
+		btn_idCheck.setFont(new Font("力林绊雕", Font.PLAIN, 19));
+		btn_idCheck.setBounds(581, 20, 74, 22);
+		myPagePane.add(btn_idCheck);
 		main.getContentPane().add(myPagePane);
 		main.setVisible(true);
 		
-		jt_passCheck.addActionListener(eventobj);
-		btn_passCheck.addActionListener(eventobj);
+		jt_idCheck.addActionListener(eventobj);
+		btn_idCheck.addActionListener(eventobj);
 	}
 	
 	public void myPageUdate(MemberVO mvo) {
 		myPage();
 		
-//		info_updatePane = new JPanel();
-//		info_updatePane.setBounds(275, 120, 443, 380);
-//		myPagePane.add(info_updatePane);
-//		info_updatePane.setLayout(null);
-		
-		JLabel uinform = new JLabel("\uB2D8\uC758 \uAC1C\uC778\uC815\uBCF4");
-		uinform.setBounds(125, 20, 180, 30);
-		uinform.setFont(new Font("力林绊雕", Font.PLAIN, 14));
+		JLabel uinform = new JLabel(vo.getId()+"\uB2D8\uC758 \uAC1C\uC778\uC815\uBCF4");
+		uinform.setBounds(346, 99, 237, 30);
+		uinform.setFont(new Font("力林绊雕", Font.PLAIN, 19));
 		uinform.setHorizontalAlignment(SwingConstants.RIGHT);
 		myPagePane.add(uinform);
 		
-		JLabel jl_upass = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		jl_upass.setBounds(90, 85, 68, 15);
-		jl_upass.setFont(new Font("力林绊雕", Font.PLAIN, 14));
+		JLabel jl_upass = new JLabel("- \uBE44\uBC00\uBC88\uD638");
+		jl_upass.setBounds(297, 190, 95, 25);
+		jl_upass.setFont(new Font("力林绊雕", Font.PLAIN, 19));
 		myPagePane.add(jl_upass);
 		
-		JLabel jl_uname = new JLabel("\uC774\uB984");
-		jl_uname.setBounds(90, 135, 68, 15);
-		jl_uname.setFont(new Font("力林绊雕", Font.PLAIN, 14));
+		JLabel jl_uname = new JLabel("- \uC774\uB984");
+		jl_uname.setBounds(297, 245, 68, 25);
+		jl_uname.setFont(new Font("力林绊雕", Font.PLAIN, 19));
 		myPagePane.add(jl_uname);
 		
-		JLabel jl_uaddr = new JLabel("\uC8FC\uC18C");
-		jl_uaddr.setBounds(90, 185, 68, 15);
-		jl_uaddr.setFont(new Font("力林绊雕", Font.PLAIN, 14));
+		JLabel jl_uaddr = new JLabel("- \uC8FC\uC18C");
+		jl_uaddr.setBounds(297, 300, 68, 25);
+		jl_uaddr.setFont(new Font("力林绊雕", Font.PLAIN, 19));
 		myPagePane.add(jl_uaddr);
 		
-		JLabel jl_uphone = new JLabel("\uC804\uD654\uBC88\uD638");
-		jl_uphone.setBounds(90, 235, 68, 15);
-		jl_uphone.setFont(new Font("力林绊雕", Font.PLAIN, 14));
+		JLabel jl_uphone = new JLabel("- \uC804\uD654\uBC88\uD638");
+		jl_uphone.setBounds(297, 355, 95, 25);
+		jl_uphone.setFont(new Font("力林绊雕", Font.PLAIN, 19));
 		myPagePane.add(jl_uphone);
 		
-		JLabel jl_uemail = new JLabel("\uC774\uBA54\uC77C");
-		jl_uemail.setBounds(90, 285, 68, 15);
-		jl_uemail.setFont(new Font("力林绊雕", Font.PLAIN, 14));
+		JLabel jl_uemail = new JLabel("- \uC774\uBA54\uC77C");
+		jl_uemail.setBounds(297, 410, 68, 25);
+		jl_uemail.setFont(new Font("力林绊雕", Font.PLAIN, 19));
 		myPagePane.add(jl_uemail);
 		
 		jt_upass = new JTextField();
-		jt_upass.setBounds(170, 83, 165, 21);
+		jt_upass.setFont(new Font("力林绊雕", Font.PLAIN, 19));
+		jt_upass.setBounds(446, 190, 230, 25);
 		myPagePane.add(jt_upass);
 		jt_upass.setColumns(10);
 		
 		jt_uname = new JTextField();
-		jt_uname.setBounds(170, 133, 165, 21);
+		jt_uname.setFont(new Font("力林绊雕", Font.PLAIN, 19));
+		jt_uname.setBounds(446, 245, 230, 25);
 		jt_uname.setColumns(10);
 		myPagePane.add(jt_uname);
 		
 		jt_uaddr = new JTextField();
-		jt_uaddr.setBounds(170, 183, 165, 21);
+		jt_uaddr.setFont(new Font("力林绊雕", Font.PLAIN, 19));
+		jt_uaddr.setBounds(446, 300, 230, 25);
 		jt_uaddr.setColumns(10);
 		myPagePane.add(jt_uaddr);
 		
 		jt_uphone = new JTextField();
-		jt_uphone.setBounds(170, 233, 165, 21);
+		jt_uphone.setFont(new Font("力林绊雕", Font.PLAIN, 19));
+		jt_uphone.setBounds(446, 355, 230, 25);
 		jt_uphone.setColumns(10);
 		myPagePane.add(jt_uphone);
 		
 		jt_uemail = new JTextField();
-		jt_uemail.setBounds(170, 283, 165, 21);
+		jt_uemail.setFont(new Font("力林绊雕", Font.PLAIN, 19));
+		jt_uemail.setBounds(446, 410, 230, 25);
 		jt_uemail.setColumns(10);
 		myPagePane.add(jt_uemail);
 		
 		btn_updateInfo = new JButton("\uC218\uC815\uD558\uAE30");
-		btn_updateInfo.setBounds(121, 344, 95, 23);
-		btn_updateInfo.setFont(new Font("力林绊雕", Font.PLAIN, 14));
+		btn_updateInfo.setBackground(Color.DARK_GRAY);
+		btn_updateInfo.setForeground(new Color(153, 204, 255));
+		btn_updateInfo.setBounds(741, 483, 107, 30);
+		btn_updateInfo.setFont(new Font("力林绊雕", Font.PLAIN, 19));
 		myPagePane.add(btn_updateInfo);
 		
 		btn_updateCancel = new JButton("\uCDE8\uC18C\uD558\uAE30");
-		btn_updateCancel.setBounds(228, 344, 95, 23);
-		btn_updateCancel.setFont(new Font("力林绊雕", Font.PLAIN, 14));
+		btn_updateCancel.setBackground(Color.DARK_GRAY);
+		btn_updateCancel.setForeground(new Color(153, 204, 255));
+		btn_updateCancel.setBounds(860, 483, 107, 30);
+		btn_updateCancel.setFont(new Font("力林绊雕", Font.PLAIN, 19));
 		myPagePane.add(btn_updateCancel);
 		
 		String[] list = new String[5];
@@ -179,32 +182,30 @@ public class MarketMyPage {
 	}
 	
 	public void idSearchProc() {
-		mpass = jt_passCheck.getText().trim();
-		if(mpass.equals("")) {
+		mid = jt_idCheck.getText().trim();
+		if(mid.equals("")) {
 			JOptionPane.showMessageDialog(null, "厚剐锅龋甫 涝仿秦林技夸");
-			jt_passCheck.requestFocus();
+			jt_idCheck.requestFocus();
 		}
 		else {
-			if(main.system.loginIng(mvo.getId())) {
-				idx = main.system.searchMember(mpass);
-				if(idx != 0) {
-					mvo = main.system.selectMember(mpass);
+				idx = main.system.searchMember(mid);
+				if(idx != 0 ) {
+					MemberVO mvo = main.system.selectMember(mid);
 					myPageUdate(mvo);
 				}
-			}
 		}
 	}
 	
 	public void updateProc() {
 		ArrayList<String> list = new ArrayList<>();
-		
 		list.add(jt_upass.getText().trim());
 		list.add(jt_uname.getText().trim());
 		list.add(jt_uaddr.getText().trim());
 		list.add(jt_uphone.getText().trim());
 		list.add(jt_uemail.getText().trim());
 		
-		mvo = new MemberVO();
+		MemberVO mvo = new MemberVO();
+		mvo.setId(mid);
 		mvo.setPass(list.get(0));
 		mvo.setName(list.get(1));
 		mvo.setAddr(list.get(2));
@@ -216,16 +217,24 @@ public class MarketMyPage {
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "荐沥 角菩沁嚼聪促.");
+			System.out.println(main.system.update_info(mvo));
 		}
 	}
 	
 	class MarketUpdateInfoEvent implements ActionListener {
 		public void actionPerformed(ActionEvent ae) {
 			Object obj = ae.getSource();
-			if(jt_passCheck == obj || btn_passCheck == obj) {
+			if(jt_idCheck == obj || btn_idCheck == obj) {
 				idSearchProc();
 			} else if(btn_updateInfo == obj) {
 				updateProc();
+			} else if(btn_updateCancel == obj) {
+				int result = JOptionPane.showConfirmDialog(null, main.getMsg("荐沥阑 秒家窍矫摆嚼聪鳖?"));
+				if (result == 0) {
+					myPagePane.setVisible(false);
+					main.start();
+				}
+					
 			}
 		}
 	}
