@@ -232,7 +232,7 @@ public class MarketMyPage {
 				int result = JOptionPane.showConfirmDialog(null, main.getMsg("수정을 취소하시겠습니까?"));
 				if (result == 0) {
 					myPagePane.setVisible(false);
-					main.start();
+					myPage();
 				}
 					
 			}
