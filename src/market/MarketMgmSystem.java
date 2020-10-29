@@ -11,6 +11,10 @@ public class MarketMgmSystem {
 		dao = new MarketDAO();
 	}
 	
+	public boolean state(MemberVO vo,int login_state) {
+		return dao.state(vo,login_state);
+	}
+	
 	public boolean join(MemberVO vo) {
 		return dao.join(vo);
 	}

@@ -5,6 +5,27 @@ import java.util.ArrayList;
 
 class MarketDAO extends DBConn{
 	/**
+	 *	state 
+	 */
+	public boolean state(MemberVO vo,int login_state) {
+		boolean result = false;
+		
+		try {
+			String sql = "update market_member set login_state=? where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setInt(1,login_state);
+			pstmt.setString(2, vo.id);
+			System.out.println("»óÅÂ º¯°æµÊ");
+			int count = pstmt.executeUpdate();
+			if(count != 0) result = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	/**
 	 *	join 
 	 */
 	public boolean join(MemberVO vo) {

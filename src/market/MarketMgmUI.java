@@ -74,6 +74,8 @@ public class MarketMgmUI extends JFrame {
 
 		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
+//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 
 		// 영재-C:/java_workspace/market/images/login_main.png
 		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
@@ -138,12 +140,12 @@ public class MarketMgmUI extends JFrame {
 		jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 		mainPane.setBackground(Color.WHITE);
 		menuPane.setBackground(SystemColor.menu);
-		regPane.setBackground(new Color(204, 255, 255));
-		searchPane.setBackground(new Color(204, 255, 255));
-		updatePane.setBackground(new Color(204, 255, 255));
-		deletePane.setBackground(new Color(204, 255, 255));
-		chatPane.setBackground(new Color(204, 255, 255));
-		myPagePane.setBackground(new Color(204, 255, 255));
+		regPane.setBackground(Color.WHITE);
+		searchPane.setBackground(Color.WHITE);
+		updatePane.setBackground(Color.WHITE);
+		deletePane.setBackground(Color.WHITE);
+		chatPane.setBackground(Color.WHITE);
+		myPagePane.setBackground(Color.WHITE);
 
 		btnReg = new JButton("게시물 등록");
 		btnReg.setForeground(Color.WHITE);
@@ -329,6 +331,7 @@ public class MarketMgmUI extends JFrame {
 		// 윈도우 이벤트 처리
 		public void windowClosing(WindowEvent we) {
 			// JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
+			system.state(vo,0);
 			system.dao.close();
 			System.exit(0);
 		}
@@ -355,6 +358,7 @@ public class MarketMgmUI extends JFrame {
 			Object obj = ae.getSource();
 			if (btnLogin == obj || jtf_pass == obj) {
 				if (login())
+					system.state(vo,1);
 					start();
 //					start();
 			} else if (btnJoin == obj) {
@@ -372,6 +376,7 @@ public class MarketMgmUI extends JFrame {
 			} else if (btnLogout == obj) {
 				int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
 				if (result == 0) {
+					system.state(vo,0);
 					mainPane.setVisible(false);
 					menuPane.setVisible(false);
 					resetPane();
