@@ -1,10 +1,9 @@
 package market;
-//�׽�Ʈ
+//Å×½ºÆ®
 public class ProductVO {
 	//Field
-	String mid,pid, pname, explain, pdate, pphone, state, method, area;
+	String mid, pid, pname, explain, pdate, pphone, state, method, area;
 	int price;
-	
 	
 	
 	public String getMid() {

@@ -51,11 +51,11 @@ public class MarketMgmUI extends JFrame {
 	
 
 
-	JPanel regPane = new JPanel();
-	JPanel searchPane = new JPanel();
-	JPanel updatePane = new JPanel();
-	JPanel deletePane = new JPanel();
-	JPanel chatPane = new JPanel();
+	JPanel regPane = new JPanel(); //영재
+	JPanel searchPane = new JPanel(); //영재
+	JPanel updatePane = new JPanel(); //영재
+	JPanel deletePane = new JPanel(); //영재
+	JPanel chatPane = new JPanel(); //영재
 
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
@@ -64,6 +64,7 @@ public class MarketMgmUI extends JFrame {
 //영재-C:/java_workspace/market/images/register_back.png
 //기림 -"C:/dev/eclipse_workspace/market/images/register_back.png"
 //민석-C:/dev/se_workspace/sist_project_1/images/register_back.png
+//영화 - ("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());
 
 	JPanel joinBackPane = new JPanel();
 	
@@ -75,14 +76,12 @@ public class MarketMgmUI extends JFrame {
 	public MarketMgmUI() {
 		super("ReSell Market");
 		showMain();
-//		start();
+//		start(); //영재 테스트용
 	}
 	//Method
 		public void showMain() {  //10.22 영재 수정
 			
-
 			showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage());
-
 
 			//영재-C:/java_workspace/market/images/login_main.png
 			//기림-C:/dev/eclipse_workspace/market/images/login_main.png
@@ -146,12 +145,12 @@ public class MarketMgmUI extends JFrame {
 			jl_title = new JLabel(vo.getId() + "\n님 중고거래 시스템 바다에 오신것을 환영합니다 @ ");
 			jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 			mainPane.setBackground(Color.WHITE);
-			menuPane.setBackground(SystemColor.menu);
-			regPane.setBackground(new Color(204, 255, 255));
-			searchPane.setBackground(new Color(204, 255, 255));
-		    updatePane.setBackground(new Color(204, 255, 255));
-			deletePane.setBackground(new Color(204, 255, 255));
-			chatPane.setBackground(new Color(204, 255, 255));
+			menuPane.setBackground(SystemColor.controlHighlight);
+			regPane.setBackground(Color.WHITE);
+			searchPane.setBackground(Color.WHITE);
+		    updatePane.setBackground(Color.WHITE);
+			deletePane.setBackground(Color.WHITE);
+			chatPane.setBackground(Color.WHITE);
 			
 			btnReg = new JButton("게시물 등록");
 			btnReg.setForeground(Color.WHITE);
@@ -213,7 +212,7 @@ public class MarketMgmUI extends JFrame {
 			button.setBounds(962, 10, 107, 25);
 			north_panel.add(button);
 			
-			JLabel lblNewLabel = new JLabel("Test\uB2D8 ");
+			JLabel lblNewLabel = new JLabel(vo.getId()+"\uB2D8 ");
 			lblNewLabel.setFont(new Font("제주고딕", Font.PLAIN, 13));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 			lblNewLabel.setBounds(819, 10, 131, 25);
@@ -363,6 +362,8 @@ public class MarketMgmUI extends JFrame {
 					new MarketDelete(main).delete();
 				}else if(btnUpdate == obj) {
 					new MarketUpdate(main).update();
+				}else if(btnChat == obj) {
+					new MarketChat(main).chat();
 				}else if(btnLogout == obj) {
 					int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
 					if (result == 0) {

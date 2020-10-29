@@ -71,6 +71,9 @@ class MarketDAO extends DBConn{
 				vo.setPid(rs.getString(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
+//				vo.setAddress(rs.getString(4));
+				vo.setExplain(rs.getString(5));
+				vo.setPdate(rs.getString(6));
 				vo.setPphone(rs.getString(4));
 				vo.setState(rs.getString(5));
 				vo.setMethod(rs.getString(6));
@@ -158,6 +161,7 @@ class MarketDAO extends DBConn{
 	}
 	
 	
+	
 	/** 
 	 * delete select -민석
 	 */
@@ -200,36 +204,38 @@ class MarketDAO extends DBConn{
 	}
 
 	/** 하나의 상품 조회  -영화씨 select select1로 수정*/
-	public BoardVO select1(String pid) {
-		BoardVO bvo = new BoardVO();
+	public ProductVO select1(String pid) {
+		ProductVO pvo = new ProductVO();
 		
 		try {
-			String sql = "select pname, price, phone, address, explain from board where pid=?";
+			String sql = "select pname, price, pphone, state, method, area, explain from product where pid=?";
 			getPreparedStatement(sql);
 			
 			pstmt.setString(1, pid);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				bvo.setPname(rs.getString(1));
-				bvo.setPrice(rs.getInt(2));
-				bvo.setPhone(rs.getString(3));
-				bvo.setAddress(rs.getString(4));
-				bvo.setExplain(rs.getString(5));
+				pvo.setPname(rs.getString(1));
+				pvo.setPrice(rs.getInt(2));
+				pvo.setPphone(rs.getString(3));
+				pvo.setState(rs.getString(4));
+				pvo.setMethod(rs.getString(5));
+				pvo.setArea(rs.getString(6));
+				pvo.setExplain(rs.getString(7));
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return bvo;
+		return pvo;
 	}
 	/** 물품번호 검색 */
 	public int search(String pid) {
 		int result =0;
 		
 		try {
-			String sql = "select count(*) from board where pid=?";
+			String sql = "select count(*) from product where pid=?";
 			getPreparedStatement(sql);
 			
 			pstmt.setString(1, pid);
@@ -246,17 +252,20 @@ class MarketDAO extends DBConn{
 	}
 	
 	/** 물품정보 수정*/
-	public boolean update_pr(BoardVO bvo) {
+	public boolean update_pr(ProductVO pvo) {
 		boolean result = false;
 		
 		try {
-			String sql = "update board set pname=?, price=?, phone=?, address=?, explain=? where pid=?";
+			String sql = "update product set pname=?, price=?, pphone=?, state=?, method=?, area=?, explain=? where pid=?";
 			getPreparedStatement(sql);
-			pstmt.setString(1, bvo.getPname());
-			pstmt.setString(2, bvo.getAddress());
-			pstmt.setString(3, bvo.getExplain());
-			pstmt.setInt(4, bvo.getPrice());
-			pstmt.setString(5, bvo.getPid());
+			pstmt.setString(1, pvo.getPname());
+			pstmt.setInt(2, pvo.getPrice());
+			pstmt.setString(3, pvo.getPphone());
+			pstmt.setString(4, pvo.getState());
+			pstmt.setString(5, pvo.getMethod());
+			pstmt.setString(6, pvo.getArea());
+			pstmt.setString(7, pvo.getExplain());
+			pstmt.setString(8, pvo.getPid());
 			
 			int count = pstmt.executeUpdate();
 			if(count != 0) result = true;
