@@ -47,7 +47,7 @@ public class MarketRegister {
     */
 	public void register() {
 		main.switchPane(MarketMgmUI.REGISTER);
-//		ImagePanel regPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage());
+//		JPanel regPane = new JPanel();
 		regPane.setLayout(null);
 		
 		JLabel jl_name = new JLabel("-  \uC0C1\uD488 \uC774\uB984 ");

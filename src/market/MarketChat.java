@@ -23,10 +23,12 @@ public class MarketChat {
 	JPanel chatPane , chatMainPane;
 	JLabel jl_chat_select;
 	JTextField jt_chat_select;
-	JButton btnChat_select;
+	JButton btnChat_select, btn_msg, btn_chatjoin, btn_chatroom, send;
 	MarketMgmUI main;
 	MemberVO mvo = new MemberVO();
-	private JTextField textField;
+	JTextField input;
+	JScrollPane scrollPane;
+	JTextArea content;
 	
 //Constructor
 public MarketChat() {}
@@ -75,63 +77,64 @@ public void chat() {
 	chatPane.add(panel);
 	panel.setLayout(null);
 	
-	JLabel lblNewLabel = new JLabel("\uC804\uCCB4 \uC811\uC18D\uC790");
-	lblNewLabel.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	lblNewLabel.setBounds(40, 23, 85, 14);
-	panel.add(lblNewLabel);
+	JLabel label_all = new JLabel("\uC804\uCCB4 \uC811\uC18D\uC790");
+	label_all.setFont(new Font("力林绊雕", Font.PLAIN, 15));
+	label_all.setBounds(40, 23, 85, 14);
+	panel.add(label_all);
 	
-	JList list = new JList();
-	list.setBounds(23, 44, 112, 142);
-	panel.add(list);
+	JList list_all = new JList();
+	list_all.setBounds(23, 44, 112, 142);
+	panel.add(list_all);
 	
-	JLabel lblNewLabel_1 = new JLabel("\uCC44\uD305\uBC29 \uBAA9\uB85D");
-	lblNewLabel_1.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	lblNewLabel_1.setBounds(40, 243, 85, 19);
-	panel.add(lblNewLabel_1);
+	JLabel label_chatlist = new JLabel("\uCC44\uD305\uBC29 \uBAA9\uB85D");
+	label_chatlist.setFont(new Font("力林绊雕", Font.PLAIN, 15));
+	label_chatlist.setBounds(40, 243, 85, 19);
+	panel.add(label_chatlist);
 	
-	JButton btnNewButton = new JButton("\uCABD\uC9C0 \uBCF4\uB0B4\uAE30");
-	btnNewButton.setBackground(Color.DARK_GRAY);
-	btnNewButton.setForeground(Color.WHITE);
-	btnNewButton.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	btnNewButton.setBounds(23, 196, 112, 23);
-	panel.add(btnNewButton);
+	btn_msg = new JButton("\uCABD\uC9C0 \uBCF4\uB0B4\uAE30");
+	btn_msg.setBackground(Color.DARK_GRAY);
+	btn_msg.setForeground(Color.WHITE);
+	btn_msg.setFont(new Font("力林绊雕", Font.PLAIN, 15));
+	btn_msg.setBounds(23, 196, 112, 23);
+	panel.add(btn_msg);
 	
-	JButton btnNewButton_1 = new JButton("\uCC44\uD305\uBC29\uCC38\uC5EC");
-	btnNewButton_1.setBackground(Color.DARK_GRAY);
-	btnNewButton_1.setForeground(Color.WHITE);
-	btnNewButton_1.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	btnNewButton_1.setBounds(23, 419, 112, 23);
-	panel.add(btnNewButton_1);
 	
-	JButton btnNewButton_1_1 = new JButton("\uBC29 \uB9CC\uB4E4\uAE30");
-	btnNewButton_1_1.setBackground(Color.DARK_GRAY);
-	btnNewButton_1_1.setForeground(Color.WHITE);
-	btnNewButton_1_1.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	btnNewButton_1_1.setBounds(23, 452, 112, 23);
-	panel.add(btnNewButton_1_1);
+	btn_chatjoin = new JButton("\uCC44\uD305\uBC29\uCC38\uC5EC");
+	btn_chatjoin.setBackground(Color.DARK_GRAY);
+	btn_chatjoin.setForeground(Color.WHITE);
+	btn_chatjoin.setFont(new Font("力林绊雕", Font.PLAIN, 15));
+	btn_chatjoin.setBounds(23, 419, 112, 23);
+	panel.add(btn_chatjoin);
 	
-	JList list_1 = new JList();
-	list_1.setBounds(23, 266, 112, 142);
-	panel.add(list_1);
+	btn_chatroom = new JButton("\uBC29 \uB9CC\uB4E4\uAE30");
+	btn_chatroom.setBackground(Color.DARK_GRAY);
+	btn_chatroom.setForeground(Color.WHITE);
+	btn_chatroom.setFont(new Font("力林绊雕", Font.PLAIN, 15));
+	btn_chatroom.setBounds(23, 452, 112, 23);
+	panel.add(btn_chatroom);
 	
-	textField = new JTextField();
-	textField.setBounds(147, 445, 481, 30);
-	panel.add(textField);
-	textField.setColumns(10);
+	JList list_chatlist = new JList();
+	list_chatlist.setBounds(23, 266, 112, 142);
+	panel.add(list_chatlist);
 	
-	JButton btnNewButton_2 = new JButton("\uC804  \uC1A1");
-	btnNewButton_2.setBackground(Color.DARK_GRAY);
-	btnNewButton_2.setForeground(Color.WHITE);
-	btnNewButton_2.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	btnNewButton_2.setBounds(634, 445, 80, 28);
-	panel.add(btnNewButton_2);
+	input = new JTextField();
+	input.setBounds(147, 445, 481, 30);
+	panel.add(input);
+	input.setColumns(10);
 	
-	JScrollPane scrollPane = new JScrollPane();
+	send = new JButton("\uC804  \uC1A1");
+	send.setBackground(Color.DARK_GRAY);
+	send.setForeground(Color.WHITE);
+	send.setFont(new Font("力林绊雕", Font.PLAIN, 15));
+	send.setBounds(634, 445, 80, 28);
+	panel.add(send);
+	
+	scrollPane = new JScrollPane();
 	scrollPane.setBounds(147, 19, 566, 417);
 	panel.add(scrollPane);
 	
-	JTextArea textArea = new JTextArea();
-	scrollPane.setViewportView(textArea);
+	content = new JTextArea();
+	scrollPane.setViewportView(content);
 	main.setVisible(true);
 		
 	//府胶呈
