@@ -1,4 +1,5 @@
 package market;
+import java.awt.print.Printable;
 //backup
 import java.util.ArrayList;
 
@@ -330,6 +331,90 @@ class MarketDAO extends DBConn{
 			if(rs.next()) {
 				if(rs.getInt(1) != 0) result = true;
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/** 현재 로그인 아이디 */
+	public boolean loginIng(String mid) {
+		boolean result = false;
+		
+		try {
+			String sql = "select count(*) from market_member where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) != 0) result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/** 패스워드와 일치하는 멤버 찾기*/
+	public int searchMember(String mpass) {
+		int result = 0;
+		
+		try {
+			String sql = "select count(*) from market_member where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, mpass);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/** 회원 조회 */
+	public MemberVO selectMember(String mid) {
+		MemberVO mvo = new MemberVO();
+		
+		try {
+			String sql = "select mpass, mname, maddr, mphone, memail from market_member where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				mvo.setPass(rs.getString(1));
+				mvo.setName(rs.getString(2));
+				mvo.setAddr(rs.getString(3));
+				mvo.setPhone(rs.getString(4));
+				mvo.setEmail(rs.getString(5));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return mvo;
+	}
+	
+	public boolean update_info(MemberVO mvo) {
+		boolean result = false;
+		
+		try {
+			String sql = "update market_member set mpass=?, mname=?, maddr=?, mphone=?, memail=? where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, mvo.getPass());
+			pstmt.setString(2, mvo.getName());
+			pstmt.setString(3, mvo.getAddr());
+			pstmt.setString(4, mvo.getPhone());
+			pstmt.setString(5, mvo.getEmail());
+			pstmt.setString(6, mvo.getId());
+			int count = pstmt.executeUpdate();
+			if(count != 0) result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,7 @@
 package market;
 
 import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -254,6 +255,7 @@ public class MarketUpdate {
 		tf_pname.setText(data_list[0]);
 		tf_price.setText(data_list[1]);
 		tf_phone.setText(data_list[2]);
+		
 		if(pvo.getState().equals("사용감 있음")) {
 			btn_use.setSelected(true);
 			btn_use.setText(data_list[3]);
