@@ -26,7 +26,7 @@ import javax.swing.SwingConstants;
 public class MarketMgmUI extends JFrame {
 	// Field
 	public static MarketMgmSystem system = new MarketMgmSystem();
-	
+
 	public static final int REGISTER = 1;
 	public static final int SEARCH = 2;
 	public static final int UPDATE = 3;
@@ -66,13 +66,14 @@ public class MarketMgmUI extends JFrame {
 	public MarketMgmUI() {
 		super("ReSell Market");
 		showMain();
-//		start();
+//		start(); //영재 테스트용
 	}
 
 	// Method
 	public void showMain() { // 10.22 영재 수정
 
-		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
+		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+//			showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 
 		// 영재-C:/java_workspace/market/images/login_main.png
 		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
@@ -197,7 +198,7 @@ public class MarketMgmUI extends JFrame {
 		north_panel.add(btnLogout);
 		btnLogout.setBackground(new Color(102, 153, 204));
 		btnLogout.setFont(new Font("제주고딕", Font.BOLD, 14));
-		
+
 		btnMyPage = new JButton("\uB9C8\uC774 \uD398\uC774\uC9C0");
 		btnMyPage.setForeground(Color.WHITE);
 		btnMyPage.setFont(new Font("제주고딕", Font.BOLD, 14));
@@ -353,8 +354,9 @@ public class MarketMgmUI extends JFrame {
 		public void actionPerformed(ActionEvent ae) {
 			Object obj = ae.getSource();
 			if (btnLogin == obj || jtf_pass == obj) {
-					if(login()) start();
-//				start();
+				if (login())
+					start();
+//					start();
 			} else if (btnJoin == obj) {
 				new MarketMgmJoin(main).join();
 			} else if (btnReg == obj) {
@@ -365,12 +367,13 @@ public class MarketMgmUI extends JFrame {
 				new MarketDelete(main).delete();
 			} else if (btnUpdate == obj) {
 				new MarketUpdate(main).update();
+			} else if (btnChat == obj) {
+				new MarketChat(main).chat();
 			} else if (btnLogout == obj) {
 				int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
 				if (result == 0) {
 					mainPane.setVisible(false);
 					menuPane.setVisible(false);
-					north_panel.setVisible(false);
 					resetPane();
 					showMain();
 				}
