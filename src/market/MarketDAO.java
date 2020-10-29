@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 class MarketDAO extends DBConn{
 	/**
-	 *	state 
+	 *	login_state 
 	 */
-	public boolean state(MemberVO vo,int login_state) {
+	public boolean login_state(MemberVO vo,int login_state) {
 		boolean result = false;
 		
 		try {
@@ -15,11 +15,63 @@ class MarketDAO extends DBConn{
 			getPreparedStatement(sql);
 			pstmt.setInt(1,login_state);
 			pstmt.setString(2, vo.id);
-			System.out.println("상태 변경됨");
+			System.out.println("login_state 변경됨");
 			int count = pstmt.executeUpdate();
 			if(count != 0) result = true;
 			
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/**
+	 *	server_state 
+	 */
+	public boolean server_state(MemberVO vo,int server_state) {
+		boolean result = false;
+		
+		try {
+			String sql = "update market_member set server_state=? where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setInt(1,server_state);
+			pstmt.setString(2, vo.id);
+			System.out.println("server_state 변경됨");
+			int count = pstmt.executeUpdate();
+			if(count != 0) result = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * SellCkeck
+	 */
+	public boolean SellCkeck(MemberVO vo) {
+		boolean result= false;
+		
+		try {
+			String sql = "select  count(*) from product  where mid =? ";
+			getPreparedStatement(sql);
+			pstmt.setString(1,vo.id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				if(rs.getInt(1)>=1) {
+					result=true;
+					System.out.println(vo.id+"님의 게시물은 1개이상입니다.");
+				}else {
+					System.out.println(vo.id+"님의 게시물은 0개입니다.");
+				}
+			}			
+			
+			
+			
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		

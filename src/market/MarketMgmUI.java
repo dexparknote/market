@@ -72,7 +72,7 @@ public class MarketMgmUI extends JFrame {
 	// Method
 	public void showMain() { // 10.22 영재 수정
 
-		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage());
+		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
@@ -331,7 +331,8 @@ public class MarketMgmUI extends JFrame {
 		// 윈도우 이벤트 처리
 		public void windowClosing(WindowEvent we) {
 			// JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
-			system.state(vo,0);
+			system.login_state(vo,0); //종료 시 login_state 0으로
+			system.server_state(vo,0);//종료 시 server_state 0으로
 			system.dao.close();
 			System.exit(0);
 		}
@@ -358,7 +359,13 @@ public class MarketMgmUI extends JFrame {
 			Object obj = ae.getSource();
 			if (btnLogin == obj || jtf_pass == obj) {
 				if (login())
-					system.state(vo,1);
+					system.login_state(vo,1);//로그인 시 login_state를 1로 변경
+					if(system.SellCkeck(vo)){// 판매 게시물이 있으면 true 없으면 false
+						//server와 연결하기
+						
+						//서버와 연결 시 server_state 1로 변경
+						system.server_state(vo,1);
+					}
 					start();
 //					start();
 			} else if (btnJoin == obj) {
@@ -376,9 +383,11 @@ public class MarketMgmUI extends JFrame {
 			} else if (btnLogout == obj) {
 				int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
 				if (result == 0) {
-					system.state(vo,0);
+					system.login_state(vo,0); //로그아웃 시 login_state 0으로
+					system.server_state(vo,0);//로그아웃 시 server_state 0으로
 					mainPane.setVisible(false);
 					menuPane.setVisible(false);
+					north_panel.setVisible(false);
 					resetPane();
 					showMain();
 				}

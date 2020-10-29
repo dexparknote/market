@@ -222,15 +222,14 @@ public class MarketRegister {
 		//member 테이블에 등록
 		boolean result =main.system.register(vo);
 		
+		//서버와 연결이 되있지 않다면 서버와 연결
+		
+		
 		if(result) {
 			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
 		}else {
 			JOptionPane.showMessageDialog(null, main.getMsg("등록 실패!!"));
 		}
-		
-//		if(MemberMgmUI.list.add(vo))
-//			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
-		
 	}
 
 	//이벤트 처리 클래스
