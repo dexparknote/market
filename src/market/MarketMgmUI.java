@@ -65,6 +65,7 @@ public class MarketMgmUI extends JFrame {
 	// Constructor
 	public MarketMgmUI() {
 		super("ReSell Market");
+		
 		showMain();
 //		start(); //영재 테스트용
 	}
@@ -72,10 +73,10 @@ public class MarketMgmUI extends JFrame {
 	// Method
 	public void showMain() { // 10.22 영재 수정
 
-		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage());
 
 		// 영재-C:/java_workspace/market/images/login_main.png
 		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
