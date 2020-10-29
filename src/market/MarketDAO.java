@@ -7,13 +7,13 @@ class MarketDAO extends DBConn{
 	/**
 	 *	state 
 	 */
-	public boolean state(MemberVO vo,int state) {
+	public boolean state(MemberVO vo,int login_state) {
 		boolean result = false;
 		
 		try {
-			String sql = "update market_member set state=? where mid=?";
+			String sql = "update market_member set login_state=? where mid=?";
 			getPreparedStatement(sql);
-			pstmt.setInt(1,state);
+			pstmt.setInt(1,login_state);
 			pstmt.setString(2, vo.id);
 			System.out.println("»óÅÂ º¯°æµÊ");
 			int count = pstmt.executeUpdate();

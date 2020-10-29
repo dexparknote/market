@@ -1,15 +1,15 @@
 package market;
 
 public class MemberVO {
-	String id, pass, name, addr, phone, email, state;
+	String id, pass, name, addr, phone, email, login_state;
 
 	
 	public String getState() {
-		return state;
+		return login_state;
 	}
 
 	public void setState(String state) {
-		this.state = state;
+		this.login_state = state;
 	}
 
 	public String getId() {
