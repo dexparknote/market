@@ -122,20 +122,20 @@ class MarketDAO extends DBConn{
 	}
 	
 	
-	
 	/**
 	 * select(String name) - 기림
 	 */
-	public ProductVO select(String pname) {
-		ProductVO vo = new ProductVO();
+	public ArrayList<ProductVO> select(String pname){
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
 			String sql = "select pid, pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%'";
 			getPreparedStatement(sql);
-			pstmt.setString(1,pname);
+			pstmt.setString(1, pname);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
+				ProductVO vo = new ProductVO();
 				vo.setPid(rs.getString(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
@@ -146,13 +146,15 @@ class MarketDAO extends DBConn{
 				vo.setExplain(rs.getString(8));
 				vo.setPdate(rs.getString(9));
 //				vo.setRating(rs.getString(10));	//평점
-			}			
+					
+				list.add(vo);
+			}
 			
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return vo;
+		return list;
 	}
 	
 	

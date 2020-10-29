@@ -358,7 +358,7 @@ public class MarketMgmUI extends JFrame {
 				}else if(btnReg == obj) {
 					new MarketRegister(main).register();
 				}else if(btnSearch == obj) {
-					new MarketSearch(main).search();
+					new MarketSearch(main, system.dao).search("show_all");
 				}else if(btnDelete == obj) {
 					new MarketDelete(main).delete();
 				}else if(btnUpdate == obj) {

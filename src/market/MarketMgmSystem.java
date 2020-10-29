@@ -30,7 +30,7 @@ public class MarketMgmSystem {
 	}
 
 	/**검색 - 기림**/
-	public ProductVO search(String pname) {
+	public ArrayList<ProductVO> search(String pname) {
 		return dao.select(pname);
 	}
 	
