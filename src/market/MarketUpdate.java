@@ -41,7 +41,7 @@ public class MarketUpdate {
 	JButton  update_search; // btnUpdate, btnUpdateReset; // 
 	ArrayList<String> tf_update_list;
 	
-	JPanel img_update;
+	ImagePanel img_update;
 	
 	MarketUpdateEvent eventObj = new MarketUpdateEvent();
 	JTextField tf_update;
@@ -76,7 +76,7 @@ public class MarketUpdate {
 		updatePane.setLayout(null);
 
 //		img_update = new JPanel();
-//		img_update = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());
+//		updatePane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());
 		
 //		updatePane.add(img_update);
 //		updatePane.add(lblNewLabel);
