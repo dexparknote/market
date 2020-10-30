@@ -11,6 +11,18 @@ public class MarketMgmSystem {
 		dao = new MarketDAO();
 	}
 	
+	public boolean login_state(MemberVO vo,int login_state) {
+		return dao.login_state(vo,login_state);
+	}
+	
+	public boolean server_state(MemberVO vo,int server_state) {
+		return dao.server_state(vo,server_state);
+	}
+	
+	public boolean SellCkeck(MemberVO vo) {
+		return dao.SellCkeck(vo);
+	}
+	
 	public boolean join(MemberVO vo) {
 		return dao.join(vo);
 	}
@@ -74,4 +86,22 @@ public class MarketMgmSystem {
 		return dao.loginCheck(mid, mpass);
 	}
 	
+	/** 현재 로그인 아이디 */
+	public boolean loginIng(String mid) {
+		return dao.loginIng(mid);
+	}
+	
+	/** 회원 정보 찾기 */
+	public int searchMember(String mid) {
+		return dao.searchMember(mid);
+	}
+	
+	/** 회원 조회 */
+	public MemberVO selectMember(String mpass) {
+		return dao.selectMember(mpass);
+	}
+	
+	public boolean update_info(MemberVO mvo) {
+		return dao.update_info(mvo);
+	}
 } // class
