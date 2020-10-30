@@ -35,8 +35,6 @@ public class MarketDelete {
 	DefaultTableModel model =new DefaultTableModel(columns,0);	
 	JTable table= new JTable(model); 
 	
-	
-	
 	// Constructor
 	public MarketDelete() {
 	}

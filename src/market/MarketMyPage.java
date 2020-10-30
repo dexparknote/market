@@ -214,6 +214,8 @@ public class MarketMyPage {
 		
 		if(main.system.update_info(mvo)) {
 			JOptionPane.showMessageDialog(null, "수정이 완료되었습니다.");
+			myPagePane.setVisible(false);
+			myPage();
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "수정 실패했습니다.");
