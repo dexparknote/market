@@ -36,6 +36,7 @@ public class MarketChat {
 	
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
+	private JScrollPane scrollPane_1;
 	
 	
 //Constructor
@@ -57,7 +58,7 @@ public MarketChat(MarketMgmUI  main) {
 public void chat() {
 	main.switchPane(MarketMgmUI.CHAT);
 	chatPane.setLayout(null);
-//	chatPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());
+//	JPanel chatPane = new JPanel();
 	
 	JLabel title_label = new JLabel("※  채팅을 원하는 게시물 번호 입력  ※");
 	title_label.setFont(new Font("제주고딕", Font.PLAIN, 13));
@@ -94,9 +95,13 @@ public void chat() {
 	label_all.setBounds(40, 23, 85, 14);
 	panel.add(label_all);
 	
+	scrollPane_1 = new JScrollPane();
+	scrollPane_1.setBounds(23, 44, 112, 142);
+	panel.add(scrollPane_1);
+	
 	JList list_all = new JList();
-	list_all.setBounds(23, 44, 112, 142);
-	panel.add(list_all);
+//	list_all.add("1");
+	scrollPane_1.setViewportView(list_all);
 	
 	JLabel label_chatlist = new JLabel("\uCC44\uD305\uBC29 \uBAA9\uB85D");
 	label_chatlist.setFont(new Font("제주고딕", Font.PLAIN, 15));

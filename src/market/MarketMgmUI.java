@@ -337,18 +337,27 @@ public class MarketMgmUI extends JFrame {
 	class MarketMgmUIEvent extends WindowAdapter implements ActionListener {
 		// Field
 		MarketMgmUI main;
-
+		ObjectOutputStream oos;
 		// Constructor
 		public MarketMgmUIEvent() {
 		}
 
 		public MarketMgmUIEvent(MarketMgmUI main) {
 			this.main = main;
+			this.oos=main.oos;
 		}
 
 		// 윈도우 이벤트 처리
 		public void windowClosing(WindowEvent we) {
 			// JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
+			MessageVO msgVO = new MessageVO();
+			msgVO.setName(vo.id);
+			msgVO.setStatus(MultiChatClient.EXIT);
+			try {
+				oos.writeObject(msgVO);				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			system.login_state(vo,0); //종료 시 login_state 0으로
 			system.server_state(vo,0);//종료 시 server_state 0으로
 			system.dao.close();
@@ -378,7 +387,7 @@ public class MarketMgmUI extends JFrame {
 			MarketChat mc=new MarketChat(main);
 
 			if (btnLogin == obj || jtf_pass == obj) {
-				if (login())
+				if (login()) {
 					system.login_state(vo,1);//로그인 시 login_state를 1로 변경
 					if(system.SellCkeck(vo)){// 판매 게시물이 있으면 true 없으면 false
 						//server와 연결하기
@@ -386,6 +395,7 @@ public class MarketMgmUI extends JFrame {
 						//서버와 연결 시 server_state 1로 변경
 						system.server_state(vo,1);
 					}
+				}
 					start();
 //					start();
 			} else if (btnJoin == obj) {
@@ -405,6 +415,14 @@ public class MarketMgmUI extends JFrame {
 				if (result == 0) {
 					system.login_state(vo,0); //로그아웃 시 login_state 0으로
 					system.server_state(vo,0);//로그아웃 시 server_state 0으로
+					MessageVO msgVO = new MessageVO();
+					msgVO.setName(vo.id);
+					msgVO.setStatus(MultiChatClient.EXIT);
+					try {
+						oos.writeObject(msgVO);				
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 					mainPane.setVisible(false);
 					menuPane.setVisible(false);
 					north_panel.setVisible(false);
