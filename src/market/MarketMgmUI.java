@@ -395,9 +395,8 @@ public class MarketMgmUI extends JFrame {
 						//서버와 연결 시 server_state 1로 변경
 						system.server_state(vo,1);
 					}
-				}
 					start();
-//					start();
+				}
 			} else if (btnJoin == obj) {
 				new MarketMgmJoin(main).join();
 			} else if (btnReg == obj) {

@@ -21,13 +21,14 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import javax.swing.SwingConstants;
 
 public class MarketChat {	
 	//Field
 	JPanel chatPane , chatMainPane;
 	JLabel jl_chat_select;
 	JTextField jt_chat_select;
-	JButton btnChat_select, btn_msg, btn_chatjoin, btn_chatroom, send;
+	JButton btnChat_select, btn_chatjoin, send;
 	MarketMgmUI main;
 	MemberVO mvo = new MemberVO();
 	JTextField input;
@@ -36,7 +37,6 @@ public class MarketChat {
 	
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
-	private JScrollPane scrollPane_1;
 	
 	
 //Constructor
@@ -90,48 +90,22 @@ public void chat() {
 	chatPane.add(panel);
 	panel.setLayout(null);
 	
-	JLabel label_all = new JLabel("\uC804\uCCB4 \uC811\uC18D\uC790");
-	label_all.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	label_all.setBounds(40, 23, 85, 14);
-	panel.add(label_all);
-	
-	scrollPane_1 = new JScrollPane();
-	scrollPane_1.setBounds(23, 44, 112, 142);
-	panel.add(scrollPane_1);
-	
-	JList list_all = new JList();
-//	list_all.add("1");
-	scrollPane_1.setViewportView(list_all);
-	
 	JLabel label_chatlist = new JLabel("\uCC44\uD305\uBC29 \uBAA9\uB85D");
+	label_chatlist.setHorizontalAlignment(SwingConstants.CENTER);
 	label_chatlist.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	label_chatlist.setBounds(40, 243, 85, 19);
+	label_chatlist.setBounds(23, 19, 112, 19);
 	panel.add(label_chatlist);
-	
-	btn_msg = new JButton("\uCABD\uC9C0 \uBCF4\uB0B4\uAE30");
-	btn_msg.setBackground(Color.DARK_GRAY);
-	btn_msg.setForeground(Color.WHITE);
-	btn_msg.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	btn_msg.setBounds(23, 196, 112, 23);
-	panel.add(btn_msg);
 	
 	
 	btn_chatjoin = new JButton("\uCC44\uD305\uBC29\uCC38\uC5EC");
 	btn_chatjoin.setBackground(Color.DARK_GRAY);
 	btn_chatjoin.setForeground(Color.WHITE);
 	btn_chatjoin.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	btn_chatjoin.setBounds(23, 419, 112, 23);
+	btn_chatjoin.setBounds(23, 419, 112, 54);
 	panel.add(btn_chatjoin);
 	
-	btn_chatroom = new JButton("\uBC29 \uB9CC\uB4E4\uAE30");
-	btn_chatroom.setBackground(Color.DARK_GRAY);
-	btn_chatroom.setForeground(Color.WHITE);
-	btn_chatroom.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	btn_chatroom.setBounds(23, 452, 112, 23);
-	panel.add(btn_chatroom);
-	
 	JList list_chatlist = new JList();
-	list_chatlist.setBounds(23, 266, 112, 142);
+	list_chatlist.setBounds(23, 48, 112, 360);
 	panel.add(list_chatlist);
 	
 //	input = new JTextField();
