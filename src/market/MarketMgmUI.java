@@ -286,30 +286,6 @@ public class MarketMgmUI extends JFrame {
 		myPagePane.setVisible(false);
 	}
 
-	public void switchPane(String menu) {
-		resetPane();
-		if (menu.equals("register")) {
-			regPane.removeAll();
-			regPane.setVisible(true);
-			regPane.setSize(1200, 650);
-		} else if (menu.equals("search")) {
-			searchPane.removeAll();
-			searchPane.setVisible(true);
-			searchPane.setSize(1200, 650);
-		} else if (menu.equals("update")) {
-			updatePane.removeAll();
-			updatePane.setVisible(true);
-			updatePane.setSize(1200, 650);
-		} else if (menu.equals("delete")) {
-			deletePane.removeAll();
-			deletePane.setVisible(true);
-			deletePane.setSize(1200, 650);
-		} else if (menu.equals("chat")) {
-			chatPane.removeAll();
-			chatPane.setVisible(true);
-			chatPane.setSize(1200, 650);
-		}
-	}
 
 	public void switchPane(int menu) {
 		resetPane();
