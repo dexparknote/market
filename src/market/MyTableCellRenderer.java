@@ -12,9 +12,11 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
 public class MyTableCellRenderer extends AbstractCellEditor implements TableCellEditor, TableCellRenderer{	
+	MarketSearch market_s;
 	MarketMgmUI main;
 	
-	public MyTableCellRenderer(MarketMgmUI main) {
+	public MyTableCellRenderer(MarketSearch market_s,MarketMgmUI main) {
+		this.market_s = market_s ;
 		this.main = main;
 	}
 	
@@ -31,7 +33,21 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 		
 		btn_buy.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				 JOptionPane.showConfirmDialog(null, main.getMsg("정말로 구매하시겠습니까?"));			
+				int result = JOptionPane.showConfirmDialog(null, "정말로 구매하시겠습니까?");
+				 if (result == 0) {
+					 int review_result = JOptionPane.showConfirmDialog(null, "리뷰하시겠습니까?");
+					 if(result == 0) {
+						 ProductVO vo = market_s.plist.get(row);
+//						 main.reviewForm(vo);
+						 
+						 
+					 }else {
+						 JOptionPane.showMessageDialog(null,"취소되었습니다.");
+					 }
+					 
+				}else {
+					JOptionPane.showMessageDialog(null,"취소되었습니다.");
+				}
 			}			
 		});
 			return btn_buy;	

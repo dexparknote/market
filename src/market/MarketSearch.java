@@ -94,7 +94,7 @@ import javax.swing.table.TableModel;
 			
 			table.setPreferredScrollableViewportSize(new Dimension(1000,1000));
 
-			MyTableCellRenderer tcr = new MyTableCellRenderer(main);
+			MyTableCellRenderer tcr = new MyTableCellRenderer(this,main);
 			table.getColumnModel().getColumn(9).setCellEditor(tcr);
 			table.getColumnModel().getColumn(9).setCellRenderer(tcr);
 			

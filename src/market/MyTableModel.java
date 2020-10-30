@@ -13,8 +13,9 @@ class MyTableModel extends AbstractTableModel {
     String[] columnNames= new String[]{"게시물번호","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일","구매"};
     private Object[][] data;
     Object value;
+    
     //Constructor
-    MyTableModel(ArrayList<ProductVO> plist ) {  
+    MyTableModel(ArrayList<ProductVO> plist) {  
     	int i=0;	
     	data = new Object[plist.size()][];      	
     	for(ProductVO vo : plist) {
@@ -23,7 +24,21 @@ class MyTableModel extends AbstractTableModel {
     		i++;	   	
     		
     	}
-    }
+    }   
+    
+//    MyTableModel(ArrayList<ReviewVO>rlist,String review) {  
+//    	String[] columnNames= new String[]{};
+//        private Object[][] data;
+//        Object value;
+//    	int i=0;	
+//    	data = new Object[rlist.size()][];      	
+//    	for(ReviewVO vo : rlist) {
+////    		icon[i] = new ImageIcon("이미지파일"+vo.getSimg());
+////    		data[i] = new Object[]{vo.getRating(),vo.getEvaluation()};
+//    		i++;	   	
+// 		
+//    	}
+//    }
     
     public int getColumnCount() {	
         return columnNames.length;
