@@ -3,35 +3,33 @@ package market;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 
 class MyTableModel extends AbstractTableModel {
 	//Field
     boolean DEBUG = true;
     ImageIcon [] icon = new ImageIcon[6];
-    private String[] columnNames;
+    String[] columnNames= new String[]{"게시물번호","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일","구매"};
     private Object[][] data;
     Object value;
-    
     //Constructor
-    MyTableModel(ArrayList<ProductVO> plist) {  
+    MyTableModel(ArrayList<ProductVO> plist ) {  
     	int i=0;	
     	data = new Object[plist.size()][];      	
-    	columnNames = new String[]{"게시물번호","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일"};
-    	
     	for(ProductVO vo : plist) {
-    		
 //    		icon[i] = new ImageIcon("이미지파일"+vo.getSimg());
-    		data[i] = new Object[]{vo.getPid(),vo.getPname(),vo.getPrice(),vo.getPphone(),vo.getState(),vo.getMethod(),vo.getArea(),vo.getExplain(),vo.getPdate()};
-    		i++;	   //배열의 인덱스 번호  		
+    		data[i] = new Object[]{vo.getPid(),vo.getPname(),vo.getPrice(),vo.getPphone(),vo.getState(),vo.getMethod(),vo.getArea(),vo.getExplain(),vo.getPdate(),null};
+    		i++;	   	
+    		
     	}
     }
     
-    public int getColumnCount() {
+    public int getColumnCount() {	
         return columnNames.length;
     }
 
-    public int getRowCount() {
+    public int getRowCount() {		
         return data.length;
     }
 
@@ -48,7 +46,8 @@ class MyTableModel extends AbstractTableModel {
     }
 
     public boolean isCellEditable(int row, int col) {
-        return col==1 || col==6 ? true : false;
+        return col==1 || col==9 ? true : false;	
+//    		return col ==9;
     }
 
     public void setValue(Object value) {
@@ -64,4 +63,11 @@ class MyTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col);
         setValue(value);       
     }
+    
+    
+    
+    
+    
+    
+    
 } 

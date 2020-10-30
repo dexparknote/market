@@ -74,4 +74,5 @@ public class MarketMgmSystem {
 		return dao.loginCheck(mid, mpass);
 	}
 	
+	
 } // class

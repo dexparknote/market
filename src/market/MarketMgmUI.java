@@ -1,13 +1,10 @@
 package market;
-//backup
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.SystemColor;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,11 +19,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
-import java.awt.SystemColor;
 
 
 public class MarketMgmUI extends JFrame {
@@ -44,19 +38,16 @@ public class MarketMgmUI extends JFrame {
 	ImagePanel showPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
 	JPanel mainPane,  contentsPane,menuPane;	
-	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout;
+	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout, btnlist;
 	JLabel jl_title, jl_img;
 	JTextField jtf_id;  //아이디 입력 JTextField
 	JPasswordField jtf_pass; //비밀번호 입력 JPasswordField
-	
-
 
 	JPanel regPane = new JPanel(); //영재
 	JPanel searchPane = new JPanel(); //영재
 	JPanel updatePane = new JPanel(); //영재
 	JPanel deletePane = new JPanel(); //영재
 	JPanel chatPane = new JPanel(); //영재
-
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 
@@ -218,7 +209,7 @@ public class MarketMgmUI extends JFrame {
 			lblNewLabel.setBounds(819, 10, 131, 25);
 			north_panel.add(lblNewLabel);
 			
-			setSize(1200,780);
+			setSize(1230,830);
 			
 			Dimension fsize = getSize();
 			Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize(); 
