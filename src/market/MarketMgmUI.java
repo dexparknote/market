@@ -291,32 +291,32 @@ public class MarketMgmUI extends JFrame {
 		case 1:
 			regPane.removeAll();
 			regPane.setVisible(true);
-			regPane.setBounds(200, 130, 1200, 650);
+			regPane.setBounds(200, 130, 1000, 650);
 			break;
 		case 2:
 			searchPane.removeAll();
 			searchPane.setVisible(true);
-			searchPane.setBounds(200, 130, 1200, 650);
+			searchPane.setBounds(200, 130, 1000, 650);
 			break;
 		case 3:
 			updatePane.removeAll();
 			updatePane.setVisible(true);
-			updatePane.setBounds(200, 130, 1200, 650);
+			updatePane.setBounds(200, 130, 1000, 650);
 			break;
 		case 4:
 			deletePane.removeAll();
 			deletePane.setVisible(true);
-			deletePane.setBounds(200, 130, 1200, 650);
+			deletePane.setBounds(200, 130, 1000, 650);
 			break;
 		case 5:
 			chatPane.removeAll();
 			chatPane.setVisible(true);
-			chatPane.setBounds(200, 130, 1200, 650);
+			chatPane.setBounds(200, 130, 1000, 650);
 			break;
 		case 6:
 			myPagePane.removeAll();
 			myPagePane.setVisible(true);
-			myPagePane.setBounds(200, 130, 1200, 650);
+			myPagePane.setBounds(200, 130, 1000, 650);
 			break;
 		}
 	}// switchPane method

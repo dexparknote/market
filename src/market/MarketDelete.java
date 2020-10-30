@@ -31,7 +31,7 @@ public class MarketDelete {
 	JLabel jl_deleteSearchName;
 	MemberVO mvo = new MemberVO();
 	Object[] columns = {"게시물번호","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일"};	
-	Object[] row =new Object[8];  
+	Object[] row =new Object[9];  
 	DefaultTableModel model =new DefaultTableModel(columns,0);	
 	JTable table= new JTable(model); 
 	
@@ -109,7 +109,7 @@ public class MarketDelete {
 		table.getColumn(table.getColumnName(6)).setPreferredWidth(80);
 		table.getColumn(table.getColumnName(7)).setPreferredWidth(200);
 		
-		table.setPreferredScrollableViewportSize(new Dimension(800, 535));
+		table.setPreferredScrollableViewportSize(new Dimension(1200, 535));
 		table.setRowHeight(table.getRowHeight() + 70);
 		table.setFillsViewportHeight(true);
 		
@@ -140,8 +140,9 @@ public class MarketDelete {
 				row[3]=vo.getPphone();
 				row[4]=vo.getState();
 				row[5]=vo.getMethod();
-				row[6]=vo.getExplain();
-				row[7]=vo.getPdate();
+				row[6]=vo.getArea();					
+				row[7]=vo.getExplain();
+				row[8]=vo.getPdate();
 			
 				model.addRow(row);
 			}
