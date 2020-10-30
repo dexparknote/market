@@ -37,7 +37,7 @@ public class MultiChatClient extends WindowAdapter implements ActionListener {
 	//Constructor
 	public MultiChatClient() {
 		try {
-			socket = new Socket("localhost",5777);
+			socket = new Socket("localhost",7000);
 			oos = new ObjectOutputStream(socket.getOutputStream());
 			ois = new ObjectInputStream(socket.getInputStream());
 			

@@ -14,7 +14,7 @@ public class MultiChatServer {
 	//Constructor
 	public MultiChatServer() {
 		try {
-			server= new ServerSocket(5777);
+			server= new ServerSocket(7000);
 			System.out.println("서버 실행 중~");
 			
 			while(true) {
