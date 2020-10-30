@@ -93,19 +93,16 @@ import javax.swing.table.TableModel;
 			table.getColumn(table.getColumnName(7)).setPreferredWidth(200);
 			
 			table.setPreferredScrollableViewportSize(new Dimension(1000,1000));
-			//
-			MyTableCellRenderer tcr = new MyTableCellRenderer();
+
+			MyTableCellRenderer tcr = new MyTableCellRenderer(main);
 			table.getColumnModel().getColumn(9).setCellEditor(tcr);
 			table.getColumnModel().getColumn(9).setCellRenderer(tcr);
-			//
 			
 			TableColumnModel tcm = table.getColumnModel();			
 			
 			for(int i=0;i<table.getColumnCount();i++) {
 				if(i==0 || i==1 || i==2 || i==3 || i==4 || i==5 || i==6 || i==7 || i==8) {
 					tcm.getColumn(i).setCellRenderer(dtcr); 
-//				}else if(i == 9){
-//					tcm.getColumn(i).setCellRenderer(new MyTableCellRenderer());
 				}
 			}
 			JScrollPane pane=new JScrollPane(table);	   
@@ -119,7 +116,7 @@ import javax.swing.table.TableModel;
 			main.add(searchPane, BorderLayout.CENTER);
 			main.setVisible(true);	
 			
-			table.getModel().addTableModelListener(this);	//t
+			table.getModel().addTableModelListener(this);	
 			btn_search.addActionListener(new MemberSearchEvent());
 			jt_search.addActionListener(new MemberSearchEvent());			
 		}
@@ -138,16 +135,10 @@ import javax.swing.table.TableModel;
 	    	System.out.println(e.getSource());
 	        int row = e.getFirstRow();
 	        int column = e.getColumn();
-	        
+
 	       TableModel model = (TableModel)e.getSource();
 	        String columnName = model.getColumnName(column);
-//	        Object data = model.getValueAt(row, column);
-	        JButton  btn = (JButton)model.getValueAt(row, column);
-	        
-	        Object obj = e.getSource();
-	        if(obj == btn) {
-	        	JOptionPane.showMessageDialog(null,"구매대기완료");	        	
-	        }
+	        Object data = model.getValueAt(row, column);       
 	    }
 	
 }
