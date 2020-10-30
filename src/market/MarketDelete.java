@@ -55,9 +55,9 @@ public class MarketDelete {
 		jp_delete_search = new JPanel();
 		jp_deleteResult = new JPanel();
 		
-		jl_deleteSearchName = new JLabel("게시물 번호");
-		jl_deleteSearchName.setFont(new Font("굴림", Font.BOLD, 13));
-		jl_deleteSearchName.setBounds(213, 28, 58, 15);
+		jl_deleteSearchName = new JLabel("[ 게시물 번호 ]  ");
+		jl_deleteSearchName.setFont(new Font("제주고딕", Font.PLAIN, 16));
+		jl_deleteSearchName.setBounds(205, 28, 58, 15);
 		jp_delete_search.add(jl_deleteSearchName);
 //		deletePane.add(jl_deleteSearchName);
 		
@@ -67,10 +67,10 @@ public class MarketDelete {
 		jp_delete_search.add(jt_deleteSearch);
 		jt_deleteSearch.setColumns(20);
 		
-		deleteSearch = new JButton("삭제");
-		deleteSearch.setForeground(new Color(102, 204, 255));
+		deleteSearch = new JButton("삭 제");
+		deleteSearch.setForeground(new Color(160, 204, 255));
 		deleteSearch.setBackground(Color.DARK_GRAY);
-		deleteSearch.setFont(new Font("굴림", Font.BOLD, 13));
+		deleteSearch.setFont(new Font("제주고딕", Font.PLAIN, 16));
 		deleteSearch.setBounds(452, 24, 64, 23);
 //		deletePane.add(deleteSearch);
 		jp_delete_search.add(deleteSearch);
