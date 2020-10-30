@@ -93,6 +93,7 @@ public class MarketMgmUI extends JFrame {
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage());
 
 		// 영재-C:/java_workspace/market/images/login_main.png
@@ -272,7 +273,6 @@ public class MarketMgmUI extends JFrame {
 			msgVO.setName(vo.id);
 			msgVO.setStatus(MultiChatClient.CONNECT);
 			
-			
 			oos.writeObject(msgVO);
 			
 			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
@@ -282,7 +282,6 @@ public class MarketMgmUI extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	// 메뉴 이동 제어
 	public void resetPane() {
@@ -295,7 +294,6 @@ public class MarketMgmUI extends JFrame {
 		chatPane.setVisible(false);
 		myPagePane.setVisible(false);
 	}
-
 
 	public void switchPane(int menu) {
 		resetPane();
@@ -405,8 +403,8 @@ public class MarketMgmUI extends JFrame {
 						//서버와 연결 시 server_state 1로 변경
 						system.server_state(vo,1);
 					}
-				}
 					start();
+				}
 //					start();
 			} else if (btnJoin == obj) {
 				new MarketMgmJoin(main).join();
