@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +18,7 @@ import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
 
@@ -30,12 +34,20 @@ public class MarketChat {
 	JScrollPane scrollPane;
 	JTextArea content;
 	
+	ObjectInputStream ois;
+	ObjectOutputStream oos;
+	
+	
 //Constructor
 public MarketChat() {}
 public MarketChat(MarketMgmUI  main) {
 	this.main = main;
 	this.chatPane = main.chatPane;
 	this.mvo=main.vo;
+	this.content =main.content;
+	this.input = main.input;
+	this.ois=main.ois;
+	this.oos=main.oos;
 }	
 
 //Method
@@ -117,7 +129,7 @@ public void chat() {
 	list_chatlist.setBounds(23, 266, 112, 142);
 	panel.add(list_chatlist);
 	
-	input = new JTextField();
+//	input = new JTextField();
 	input.setBounds(147, 445, 481, 30);
 	panel.add(input);
 	input.setColumns(10);
@@ -133,12 +145,14 @@ public void chat() {
 	scrollPane.setBounds(147, 19, 566, 417);
 	panel.add(scrollPane);
 	
-	content = new JTextArea();
+//	content = new JTextArea();
 	scrollPane.setViewportView(content);
 	main.setVisible(true);
 		
 	//리스너
 	MemberChatEvent chatEvent = new MemberChatEvent();
+	input.addActionListener(chatEvent);
+	send.addActionListener(chatEvent);
 
 	
 	}//chat method
@@ -147,9 +161,13 @@ public void chat() {
 //chatFormCheck
 public boolean chatFormCheck() {
 	boolean result = false;
-	
+	if(input.getText().equals("")) {
+		result=true;
+	}
 	return result;
 }
+
+
 
 public void chatProc() {
 
@@ -161,15 +179,28 @@ class MemberChatEvent implements ActionListener{
 	
 	public void actionPerformed(ActionEvent ae) {
 		Object obj = ae.getSource();
-//		if(btnReg == obj) {
-//			if(chatFormCheck()) chatFormCheck(); 
-//		}else if(btnReset == obj) {
-//			jt_name.setText("");
-//			jt_price.setText("");
-//			jt_explain.setText("");
-//			jt_pphone.setText("");
-//			jt_name.requestFocus();
-//		}
+		if(send == obj || input == obj) {
+				try {
+					String msg = input.getText().trim();
+					if(msg.equals("")) {
+						JOptionPane.showMessageDialog(null,"메시지를 입력해주세요");
+						input.requestFocus();
+					}else {
+						//대화중~
+						MessageVO msgVO= new MessageVO();
+						msgVO.setName(mvo.getId());
+						msgVO.setMsg(msg);
+						msgVO.setStatus(MultiChatClient.TALKING);
+						oos.writeObject(msgVO);
+						
+					
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			
+		}
 	}
 	
 }//event class

@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -20,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -33,7 +37,11 @@ public class MarketMgmUI extends JFrame {
 	public static final int DELETE = 4;
 	public static final int CHAT = 5;
 	public static final int MYHOME = 6;
-
+	
+	public static final int CONNECT = 0; // 처음접속 MulltiChatClient.CONNECT
+	public static final int TALKING =1; // 대화중
+	public static final int EXIT = -1;//종료
+	
 	ImagePanel showPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
 	JPanel mainPane, contentsPane, menuPane;
@@ -41,6 +49,12 @@ public class MarketMgmUI extends JFrame {
 	JLabel jl_title, jl_img;
 	JTextField jtf_id; // 아이디 입력 JTextField
 	JPasswordField jtf_pass; // 비밀번호 입력 JPasswordField
+	
+	JTextArea content= new JTextArea();
+	JTextField input= new JTextField();
+	Socket socket;
+	ObjectInputStream ois;
+	ObjectOutputStream oos;
 
 	JPanel regPane = new JPanel();
 	JPanel searchPane = new JPanel();
@@ -236,6 +250,30 @@ public class MarketMgmUI extends JFrame {
 		btnMyPage.addActionListener(eventObj);
 	}// start method
 
+	//서버와 연결
+	public void serverConnect() {
+		try {
+			socket = new Socket("localhost",5777);
+			oos = new ObjectOutputStream(socket.getOutputStream());
+			ois = new ObjectInputStream(socket.getInputStream());
+			
+			//처음접속 메시지 전송
+			MessageVO msgVO = new MessageVO();
+			msgVO.setName(vo.id);
+			msgVO.setStatus(MultiChatClient.CONNECT);
+			
+			
+			oos.writeObject(msgVO);
+			
+			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
+			ClientThread ct = new ClientThread(ois,content,input);
+			ct.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	// 메뉴 이동 제어
 	public void resetPane() {
 		showPane.setVisible(false);
@@ -315,6 +353,9 @@ public class MarketMgmUI extends JFrame {
 		label.setFont(font);
 		return label;
 	}
+	
+	
+	
 
 	// 이벤트 처리 클래스
 	class MarketMgmUIEvent extends WindowAdapter implements ActionListener {
@@ -358,12 +399,14 @@ public class MarketMgmUI extends JFrame {
 		// 액션 이벤트 처리
 		public void actionPerformed(ActionEvent ae) {
 			Object obj = ae.getSource();
+			MarketChat mc=new MarketChat(main);
+
 			if (btnLogin == obj || jtf_pass == obj) {
 				if (login())
 					system.login_state(vo,1);//로그인 시 login_state를 1로 변경
 					if(system.SellCkeck(vo)){// 판매 게시물이 있으면 true 없으면 false
 						//server와 연결하기
-						
+						main.serverConnect();
 						//서버와 연결 시 server_state 1로 변경
 						system.server_state(vo,1);
 					}
