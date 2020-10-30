@@ -14,7 +14,6 @@ import java.awt.event.WindowEvent;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,8 +22,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 public class MarketMgmUI extends JFrame {
@@ -56,12 +57,14 @@ public class MarketMgmUI extends JFrame {
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
 
+	JFrame frame = new JFrame();
 	JPanel regPane = new JPanel();
 	JPanel searchPane = new JPanel();
 	JPanel updatePane = new JPanel();
 	JPanel deletePane = new JPanel();
 	JPanel chatPane = new JPanel();
 	JPanel myPagePane = new JPanel();
+	JScrollPane jScrollPane;
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //¿µÀç
 
@@ -236,6 +239,13 @@ public class MarketMgmUI extends JFrame {
 		int width = (int) (scsize.getWidth() - fsize.getWidth()) / 2;
 		int height = (int) (scsize.getHeight() - fsize.getHeight()) / 2;
 
+//		mainPane.setPreferredSize(fsize);
+//		jScrollPane = new JScrollPane(mainPane,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, 
+//				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//		jScrollPane.setPreferredSize(new Dimension(600, 600));
+//		frame.add(comp)
+//	    frame.add(jScrollPane);
+//		
 		setLocation(width, height);
 		setVisible(true);
 
