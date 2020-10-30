@@ -268,7 +268,7 @@ public class MarketMgmUI extends JFrame {
 			oos.writeObject(msgVO);
 			
 			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
-			ClientThread ct = new ClientThread(ois,content,input, system.chat_list(vo.id));
+			ClientThread ct = new ClientThread(ois,content,input);
 			ct.start();
 		} catch (Exception e) {
 			e.printStackTrace();

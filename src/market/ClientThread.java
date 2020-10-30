@@ -16,7 +16,7 @@ public class ClientThread extends Thread {
 	ArrayList<MessageVO> room_chat_list=new ArrayList<MessageVO>();
 	
 	//Constructor
-	public ClientThread(ObjectInputStream ois,JTextArea content, JTextField input ,ArrayList<String> user_room_list) {
+	public ClientThread(ObjectInputStream ois,JTextArea content, JTextField input ) {
 		this.ois=ois;
 		this.content=content;
 		this.input=input;
