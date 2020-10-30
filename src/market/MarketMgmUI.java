@@ -14,7 +14,6 @@ import java.awt.event.WindowEvent;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,8 +22,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 public class MarketMgmUI extends JFrame {
@@ -56,14 +57,15 @@ public class MarketMgmUI extends JFrame {
 	Socket socket;
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
-	ArrayList<String> chat_list=new ArrayList<String>();
 
+	JFrame frame = new JFrame();
 	JPanel regPane = new JPanel();
 	JPanel searchPane = new JPanel();
 	JPanel updatePane = new JPanel();
 	JPanel deletePane = new JPanel();
 	JPanel chatPane = new JPanel();
 	JPanel myPagePane = new JPanel();
+	JScrollPane jScrollPane;
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 
@@ -92,7 +94,8 @@ public class MarketMgmUI extends JFrame {
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage());
 
 		// 영재-C:/java_workspace/market/images/login_main.png
 		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
@@ -238,6 +241,13 @@ public class MarketMgmUI extends JFrame {
 		int width = (int) (scsize.getWidth() - fsize.getWidth()) / 2;
 		int height = (int) (scsize.getHeight() - fsize.getHeight()) / 2;
 
+//		mainPane.setPreferredSize(fsize);
+//		jScrollPane = new JScrollPane(mainPane,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, 
+//				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//		jScrollPane.setPreferredSize(new Dimension(600, 600));
+//		frame.add(comp)
+//	    frame.add(jScrollPane);
+//		
 		setLocation(width, height);
 		setVisible(true);
 
@@ -263,7 +273,7 @@ public class MarketMgmUI extends JFrame {
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
 			msgVO.setStatus(CONNECT);
-			msgVO.setRoom_num(system.login_room_num(vo.id));
+
 			
 			oos.writeObject(msgVO);
 			
@@ -274,7 +284,6 @@ public class MarketMgmUI extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	// 메뉴 이동 제어
 	public void resetPane() {
@@ -287,7 +296,6 @@ public class MarketMgmUI extends JFrame {
 		chatPane.setVisible(false);
 		myPagePane.setVisible(false);
 	}
-
 
 	public void switchPane(int menu) {
 		resetPane();
@@ -399,6 +407,7 @@ public class MarketMgmUI extends JFrame {
 					}
 					start();
 				}
+
 			} else if (btnJoin == obj) {
 				new MarketMgmJoin(main).join();
 			} else if (btnReg == obj) {
