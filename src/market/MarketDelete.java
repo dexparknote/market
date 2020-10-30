@@ -180,6 +180,8 @@ public class MarketDelete {
 					if (result == 0)
 						deleteProc(name);
 						jt_deleteSearch.setText("");
+						deletePane.setVisible(false);
+						delete();
 				} else {
 					// 삭제할 데이터 없음
 					JOptionPane.showMessageDialog(null, main.getMsg("삭제할 데이터가 존재하지 않습니다."));
