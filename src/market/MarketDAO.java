@@ -25,6 +25,53 @@ class MarketDAO extends DBConn{
 		
 		return result;
 	}
+	/**
+	 * login_room_num
+	 */
+	public int login_room_num(String id) {
+		int room_num=0;
+		
+		try {
+			String sql = "select pid from product where mid=? order by pid ";
+			getPreparedStatement(sql);
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				room_num=rs.getInt(1);
+			}			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return room_num;
+	}
+	
+	/**
+	 * chat_list
+	 */
+	public ArrayList<String> chat_list(String id) {
+		ArrayList<String> list=new ArrayList<String>();
+		
+		try {
+			String sql = "select pid from product where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				list.add(rs.getString(1));
+			}			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 	
 	/**
 	 *	server_state 

@@ -38,6 +38,7 @@ public class MarketMgmUI extends JFrame {
 	public static final int CHAT = 5;
 	public static final int MYHOME = 6;
 	
+	
 	public static final int CONNECT = 0; // 처음접속 MulltiChatClient.CONNECT
 	public static final int TALKING =1; // 대화중
 	public static final int EXIT = -1;//종료
@@ -55,6 +56,7 @@ public class MarketMgmUI extends JFrame {
 	Socket socket;
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
+	ArrayList<String> chat_list=new ArrayList<String>();
 
 	JPanel regPane = new JPanel();
 	JPanel searchPane = new JPanel();
@@ -260,13 +262,13 @@ public class MarketMgmUI extends JFrame {
 			//처음접속 메시지 전송
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
-			msgVO.setStatus(MultiChatClient.CONNECT);
-			
+			msgVO.setStatus(CONNECT);
+			msgVO.setRoom_num(system.login_room_num(vo.id));
 			
 			oos.writeObject(msgVO);
 			
 			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
-			ClientThread ct = new ClientThread(ois,content,input);
+			ClientThread ct = new ClientThread(ois,content,input, system.chat_list(vo.id));
 			ct.start();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -352,7 +354,7 @@ public class MarketMgmUI extends JFrame {
 			// JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
-			msgVO.setStatus(MultiChatClient.EXIT);
+			msgVO.setStatus(EXIT);
 			try {
 				oos.writeObject(msgVO);				
 			} catch (Exception e) {
@@ -416,7 +418,7 @@ public class MarketMgmUI extends JFrame {
 					system.server_state(vo,0);//로그아웃 시 server_state 0으로
 					MessageVO msgVO = new MessageVO();
 					msgVO.setName(vo.id);
-					msgVO.setStatus(MultiChatClient.EXIT);
+					msgVO.setStatus(EXIT);
 					try {
 						oos.writeObject(msgVO);				
 					} catch (Exception e) {

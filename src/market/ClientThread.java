@@ -1,6 +1,7 @@
 package market;
 
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -10,12 +11,16 @@ public class ClientThread extends Thread {
 	ObjectInputStream ois;
 	JTextArea content;
 	JTextField input;
+	ArrayList<String> user_room_list=new ArrayList<String>();
+	
+	ArrayList<MessageVO> room_chat_list=new ArrayList<MessageVO>();
 	
 	//Constructor
-	public ClientThread(ObjectInputStream ois,JTextArea content, JTextField input) {
+	public ClientThread(ObjectInputStream ois,JTextArea content, JTextField input ,ArrayList<String> user_room_list) {
 		this.ois=ois;
 		this.content=content;
 		this.input=input;
+		this.user_room_list=user_room_list;
 	}
 	//Method
 	
