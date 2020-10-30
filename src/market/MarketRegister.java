@@ -223,7 +223,9 @@ public class MarketRegister {
 		boolean result =main.system.register(vo);
 		
 		//서버와 연결이 되있지 않다면 서버와 연결
-		
+		if(mvo.getServer_state()==0) {
+			main.serverConnect(); //server_state vo에서 int로 바꿔야함 ㅠ
+		}else
 		
 		if(result) {
 			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));

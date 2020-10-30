@@ -1,22 +1,23 @@
 package market;
 
 public class MemberVO {
-	String id, pass, name, addr, phone, email, login_state, server_state;
+	String id, pass, name, addr, phone, email;
+	int login_state, server_state;
 
-	
-	public String getLogin_state() {
+
+	public int getLogin_state() {
 		return login_state;
 	}
 
-	public void setLogin_state(String login_state) {
+	public void setLogin_state(int login_state) {
 		this.login_state = login_state;
 	}
 
-	public String getServer_state() {
+	public int getServer_state() {
 		return server_state;
 	}
 
-	public void setServer_state(String server_state) {
+	public void setServer_state(int server_state) {
 		this.server_state = server_state;
 	}
 
