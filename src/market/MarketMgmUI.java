@@ -285,63 +285,38 @@ public class MarketMgmUI extends JFrame {
 		myPagePane.setVisible(false);
 	}
 
-	public void switchPane(String menu) {
-		resetPane();
-		if (menu.equals("register")) {
-			regPane.removeAll();
-			regPane.setVisible(true);
-			regPane.setSize(1200, 650);
-		} else if (menu.equals("search")) {
-			searchPane.removeAll();
-			searchPane.setVisible(true);
-			searchPane.setSize(1200, 650);
-		} else if (menu.equals("update")) {
-			updatePane.removeAll();
-			updatePane.setVisible(true);
-			updatePane.setSize(1200, 650);
-		} else if (menu.equals("delete")) {
-			deletePane.removeAll();
-			deletePane.setVisible(true);
-			deletePane.setSize(1200, 650);
-		} else if (menu.equals("chat")) {
-			chatPane.removeAll();
-			chatPane.setVisible(true);
-			chatPane.setSize(1200, 650);
-		}
-	}
-
 	public void switchPane(int menu) {
 		resetPane();
 		switch (menu) {
 		case 1:
 			regPane.removeAll();
 			regPane.setVisible(true);
-			regPane.setBounds(200, 130, 1000, 650);
+			regPane.setBounds(200, 130, 1200, 650);
 			break;
 		case 2:
 			searchPane.removeAll();
 			searchPane.setVisible(true);
-			searchPane.setBounds(200, 130, 1000, 650);
+			searchPane.setBounds(200, 130, 1200, 650);
 			break;
 		case 3:
 			updatePane.removeAll();
 			updatePane.setVisible(true);
-			updatePane.setBounds(200, 130, 1000, 650);
+			updatePane.setBounds(200, 130, 1200, 650);
 			break;
 		case 4:
 			deletePane.removeAll();
 			deletePane.setVisible(true);
-			deletePane.setBounds(200, 130, 1000, 650);
+			deletePane.setBounds(200, 130, 1200, 650);
 			break;
 		case 5:
 			chatPane.removeAll();
 			chatPane.setVisible(true);
-			chatPane.setBounds(200, 130, 1000, 650);
+			chatPane.setBounds(200, 130, 1200, 650);
 			break;
 		case 6:
 			myPagePane.removeAll();
 			myPagePane.setVisible(true);
-			myPagePane.setBounds(200, 130, 1000, 650);
+			myPagePane.setBounds(200, 130, 1200, 650);
 			break;
 		}
 	}// switchPane method
