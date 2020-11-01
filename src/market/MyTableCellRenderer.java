@@ -38,15 +38,20 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 					 int review_result = JOptionPane.showConfirmDialog(null, "리뷰하시겠습니까?");
 					 if(result == 0) {
 						 ProductVO vo = market_s.plist.get(row);
-//						 main.reviewForm(vo);
-						 
-						 
+//						 main.REVIEW
+						  String comm=JOptionPane.showInputDialog(null, "리뷰를 입력해주세요");
+						  
+						  main.system.review_list(comm);
+						  System.out.println("comm="+comm+"  row="+row+"제품="+ vo.getPname());
+						  
+//						  main.system.review_list(comm, vo);
+						    
 					 }else {
-						 JOptionPane.showMessageDialog(null,"취소되었습니다.");
+						 JOptionPane.showMessageDialog(null,"리뷰 등록이 취소되었습니다.");
 					 }
 					 
 				}else {
-					JOptionPane.showMessageDialog(null,"취소되었습니다.");
+					JOptionPane.showMessageDialog(null,"상품 구매가 취소되었습니다.");
 				}
 			}			
 		});

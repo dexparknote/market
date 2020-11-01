@@ -161,6 +161,23 @@ class MarketDAO extends DBConn{
 	}
 	
 	
+	public boolean review_list(String comm){
+			boolean result= false;
+		try {
+			String sql = "insert into review values(mid,pid,rating,?)";
+		getPreparedStatement(sql);
+		
+		pstmt.setString(4, comm);
+		int count=pstmt.executeUpdate();
+		if(count!=0) 	result =true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	
 	/** 
 	 * delete select -¹Î¼®

@@ -34,6 +34,16 @@ public class MarketMgmSystem {
 		return dao.select(pname);
 	}
 	
+//	/**리뷰 - 기림**/
+//	public boolean review_list(String comm,ReviewVO vo){	//리뷰 vo로 가져와
+//		return dao.review_list(comm,vo);
+//	}
+
+	/**리뷰 - 기림**/
+	public boolean review_list(String comm){	//리뷰 vo로 가져와
+		return dao.review_list(comm);
+	}
+	
 	/** 물품 정보 삭제 검색 - 민석 **/
 	public boolean delselect(String pname) {
 		return dao.delselect(pname);

@@ -33,8 +33,8 @@ public class MarketMgmUI extends JFrame {
 	public static final int UPDATE = 3;
 	public static final int DELETE = 4;
 	public static final int CHAT = 5;
-	public static final int JOIN = 7;
 	public static final int REVIEW =6;
+	public static final int JOIN = 7;
 	
 	ImagePanel showPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
@@ -171,7 +171,7 @@ public class MarketMgmUI extends JFrame {
 			btnChat.setBounds(40, 400, 119, 55);
 			btnReview = new JButton("리뷰하기");
 			btnReview.setForeground(Color.WHITE);
-			btnReview.setBounds(40, 400, 119, 55);
+			btnReview.setBounds(40, 490, 119, 55);
 		
 			
 			btnReg.setBackground(new Color(102, 153, 204));
@@ -382,7 +382,6 @@ public class MarketMgmUI extends JFrame {
 					new MarketUpdate(main).update();
 				}else if(btnChat == obj) {
 					new MarketChat(main).chat();
-					
 				}else if(btnReview == obj) {
 					new MarketReview(main).review();
 					
