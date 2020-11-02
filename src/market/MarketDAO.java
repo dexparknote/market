@@ -47,8 +47,27 @@ class MarketDAO extends DBConn{
 		
 		return room_num;
 	}
-	
-	
+	/**
+ 	* get_pname
+ 	*/
+	public String get_pname(String id) {
+		String pname="";
+		try {
+			String sql = "select pname from product where pid=?  ";
+			getPreparedStatement(sql);
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				pname=rs.getString(1);
+			}			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return pname;
+	}
 	/**
 	 * login_room_num
 	 */
