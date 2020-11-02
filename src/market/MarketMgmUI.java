@@ -557,7 +557,7 @@ public class MarketMgmUI extends JFrame {
 			} else if (btnChat == obj) {
 				new MarketChat(main).chat();
 			} else if (btnReview == obj) {
-				new MarketReview(main).review();
+				new MarketReview(main, system.dao).review();
 			} else if (btnLogout == obj) {
 				int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
 				if (result == 0) {

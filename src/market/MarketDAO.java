@@ -221,7 +221,47 @@ class MarketDAO extends DBConn{
 	}
 	
 	/**
-	 * select - 기림
+	 *  search 데이터 유효성 체크  - 기림
+	 */
+	public boolean searchDataCheck(String pname) {
+		boolean result = false;
+		
+		try {
+			String sql = "select count(*) from product where pname = ?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, pname);
+			rs =pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) != 0) result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**
+	 *  review 데이터 유효성 체크 -기림
+	 */
+	public boolean reviewDataCheck(String mid) {
+		boolean result = false;
+			
+			try {
+				String sql = "select count(*) from review where mid = ?";
+				getPreparedStatement(sql);
+				pstmt.setString(1, mid);
+				rs =pstmt.executeQuery();
+				if(rs.next()) {
+					if(rs.getInt(1) != 0) result = true;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+	}
+	
+	/**
+	 * search_list - 기림
 	 */
 	public ArrayList<ProductVO> search_list(){
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
@@ -290,7 +330,7 @@ class MarketDAO extends DBConn{
 	
 	
 	/**
-	 * select(String name) - 기림
+	 * search_list(String name) - 기림
 	 */
 	public ArrayList<ProductVO> search_list(String pname){
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
@@ -371,7 +411,7 @@ class MarketDAO extends DBConn{
 	}
 	
 	/**
-	 * review 출력 - 기림
+	 * review_list - 기림
 	 */
 	public ArrayList <ReviewVO> review_list(String id)
 	{
@@ -399,7 +439,7 @@ class MarketDAO extends DBConn{
 	}
 	
 	/**
-	 * 리뷰 등록후 물품 삭제
+	 * delete_review  -기림
 	 */
 	public boolean delete_review(String pname) {
 		boolean result = false;
@@ -415,8 +455,7 @@ class MarketDAO extends DBConn{
 		}
 
 		return result;
-	}
-	
+	}	
 	
 	/** 
 	 * delete select -민석

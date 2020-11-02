@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -142,18 +143,27 @@ public class MarketSearch  implements TableModelListener{
 		table.getModel().addTableModelListener(this);	
 		btn_search.addActionListener(new MemberSearchEvent());
 		jt_search.addActionListener(new MemberSearchEvent());			
-	}//search method
-		    
+	}//search method		
+	
+	//이벤트 처리 클래스
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
-				if(obj == jt_search || obj == btn_search) {
-					String pname = jt_search.getText();
-					search(pname);		
-				}
+				if(!jt_search.getText().equals("") || obj == btn_search) {
+					String pname = jt_search.getText().trim();					
+						if (dao.searchDataCheck(pname)) {						
+							search(pname);		
+							jt_search.setText("");			                  
+						} else {
+							JOptionPane.showMessageDialog(null, "해당 물품이 존재하지 않습니다.");
+						}
+			     } else {
+			    	 	JOptionPane.showMessageDialog(null,"물품명을 입력해주세요.");
+			            jt_search.requestFocus();
+			     }			
 			}
-		}
-		
+		}		
+					
 	    public void tableChanged(TableModelEvent e) { 
 	    	System.out.println(e.getSource());
 	        int row = e.getFirstRow();

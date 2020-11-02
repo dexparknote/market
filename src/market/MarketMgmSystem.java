@@ -49,6 +49,16 @@ public class MarketMgmSystem {
 		return dao.insert(vo);
 	}
 	
+	/**검색 데이터 유효성 체크 -기림**/
+	public boolean searchDataCheck(String pname) {
+		return dao.searchDataCheck(pname);
+	}
+	
+	/**검색 데이터 유효성 체크 -기림**/
+	public boolean reviewDataCheck(String mid) {
+		return dao.searchDataCheck(mid);
+	}
+	
 	/**전체 조회 리스트 - 기림**/
 	public ArrayList <ProductVO> search_list() {
 		return dao.search_list();
@@ -75,7 +85,7 @@ public class MarketMgmSystem {
 		return dao.review_list(id);	
 	}
 	
-	/**구매후 물품정보 삭제**/
+	/**구매후 물품삭제 -기림**/
 	public boolean delete_review(String pname) {
 		return dao.delete_review(pname);
 	}

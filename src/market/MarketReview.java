@@ -34,11 +34,13 @@ public class MarketReview {
    Object[] row =new Object[4];  
    DefaultTableModel model =new DefaultTableModel(columns,0);   
    JTable table= new JTable(model); 
+   MarketDAO dao;
    
    // Constructor
-   public MarketReview(MarketMgmUI main) {
+   public MarketReview(MarketMgmUI main,MarketDAO dao) {
       this.main = main;
       this.reviewPane = main.reviewPane;
+      this.dao = dao;
    }
  //Method
    /**
@@ -85,7 +87,6 @@ public class MarketReview {
       search_pack.add(new JLabel("  "));
       search_pack.setLayout(new GridLayout(3,1));
       
-
       reviewPane.add(search_pack); 
       
       model.setColumnIdentifiers(columns);
@@ -111,13 +112,11 @@ public class MarketReview {
       table.getColumn(table.getColumnName(1)).setPreferredWidth(20);
       table.getColumn(table.getColumnName(2)).setPreferredWidth(300);
       table.getColumn(table.getColumnName(3)).setPreferredWidth(50);
-
-      
+  
       table.setPreferredScrollableViewportSize(new Dimension(1200, 535));
       table.setRowHeight(table.getRowHeight() + 70);
       table.setFillsViewportHeight(true);
       
-   
       reviewPane.setLayout(new BorderLayout());         
          
       reviewPane.add(BorderLayout.SOUTH,pane);
@@ -131,8 +130,8 @@ public class MarketReview {
 	}//review method
 			
 		//특정값 JTableDate
-		public void crateJTableData(String id){
-			ArrayList <ReviewVO> rlist = main.system.review_list(id);
+		public void crateJTableData(String mid){
+			ArrayList <ReviewVO> rlist = dao.review_list(mid);
 			model.setNumRows(0);			
 			for(ReviewVO rvo :rlist) {
 				if(rvo != null) {
@@ -145,29 +144,25 @@ public class MarketReview {
 				table.repaint();		
 			model.fireTableDataChanged();
 			}
-		}
-		//searchProc 
-		public void searchProc() {			
-			String id =  jt_search.getText().trim();	
-			if (! jt_search.getText().equals("")) {
-				
-				if ( jt_search.getText().trim().equals(id)) {		
-						crateJTableData(id);
-				} else {
-					JOptionPane.showMessageDialog(null, "ID가 존재하지 않습니다.");
-				}
-			} else {
-				JOptionPane.showMessageDialog(null, "ID를 입력해주세요");
-				jt_search.requestFocus();
-			}
-		}			
+		}		
 		
 		//이벤트 처리 클래스
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
-				if(obj == jt_search || obj == btn_search) {
-					searchProc(); 
+				if(!jt_search.getText().equals("") || obj == btn_search) {
+					String mid = jt_search.getText().trim();					
+					if (dao.reviewDataCheck(mid)) {
+						crateJTableData(mid);
+						jt_search.setText("");				
+					} else {
+						JOptionPane.showMessageDialog(null, "해당 ID가 존재하지 않습니다.");
+						jt_search.setText("");	
+						jt_search.requestFocus();
+					}
+		     } else {
+		    	 	JOptionPane.showMessageDialog(null,"판매자 ID 입력해주세요.");
+		            jt_search.requestFocus();
 				} 						
 			}
 		}
