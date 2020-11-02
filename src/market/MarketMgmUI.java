@@ -360,7 +360,7 @@ public class MarketMgmUI extends JFrame {
 		welcome_member.setBounds(819, 10, 131, 25);
 		northPane.add(welcome_member);
 
-		setSize(1230, 780);
+		setSize(1350, 820);
 
 		Dimension fsize = getSize();
 		Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize();

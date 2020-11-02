@@ -81,8 +81,9 @@ import javax.swing.table.TableModel;
 			table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
 			table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
 			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
-			table.getColumn(table.getColumnName(6)).setPreferredWidth(80);
+			table.getColumn(table.getColumnName(6)).setPreferredWidth(50);
 			table.getColumn(table.getColumnName(8)).setPreferredWidth(200);
+			table.getColumn(table.getColumnName(10)).setPreferredWidth(50);
 			
 			table.setPreferredScrollableViewportSize(new Dimension(1000,1000));
 
