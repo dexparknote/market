@@ -56,10 +56,10 @@ public class MarketSearch  implements TableModelListener{
 		block1 = new JLabel();
 		jp_search.add(block1);
 			
-		jl_searchName = new JLabel("[ 검색 ID ]  ");
+		jl_searchName = new JLabel("[ 상품이름 ]  ");
 		jl_searchName.setFont(new Font("제주고딕", Font.PLAIN, 16));
 		jl_searchName.setBounds(205, 28, 58, 15);
-		jp_search.add(jl_searchName);//
+		jp_search.add(jl_searchName);
 		      
 		block2 = new JLabel("  ");
 		jp_search.add(block2);

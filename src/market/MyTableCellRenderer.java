@@ -51,11 +51,11 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 						  rvo.setPid(vo.getPid());
 						  rvo.setEvaluation(comm);				  
 						  
-						  main.system.product_row(vo);
-						  main.system.review_insert(comm,vo);
-						  main.system.delete_review(vo.getPid());	
+						  market_s.dao.product_row(vo);
+						  market_s.dao.review_insert(comm,vo);
+						  market_s.dao.delete_review(vo.getPid());	
 						  
-						  new MarketSearch(main, main.system.dao).search("show_all");	
+						  new MarketSearch(main, market_s.dao).search("show_all");	
 					 }else {
 						 JOptionPane.showMessageDialog(null,"리뷰 등록이 취소되었습니다.");
 					 }
@@ -66,7 +66,6 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 		});
 			return btn_buy;	
 	}
-	
 	
 	public Object getCellEditorValue() {
 		return null;

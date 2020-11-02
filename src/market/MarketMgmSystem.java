@@ -54,7 +54,7 @@ public class MarketMgmSystem {
 		return dao.searchDataCheck(pname);
 	}
 	
-	/**검색 데이터 유효성 체크 -기림**/
+	/**리뷰ID 데이터 유효성 체크 -기림**/
 	public boolean reviewDataCheck(String mid) {
 		return dao.searchDataCheck(mid);
 	}
