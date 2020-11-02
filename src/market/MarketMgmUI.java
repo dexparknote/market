@@ -272,11 +272,10 @@ public class MarketMgmUI extends JFrame {
 			msgVO.setStatus(CONNECT);
 			msgVO.setRoom_num(now_room);
 
-			
 			oos.writeObject(msgVO);
 			
 			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
-			ClientThread ct = new ClientThread(ois,content,input);
+			ClientThread ct = new ClientThread(ois,content,input,this);
 			ct.start();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -397,13 +396,13 @@ public class MarketMgmUI extends JFrame {
 				if (login()) {
 					system.login_state(vo,1);//로그인 시 login_state를 1로 변경
 					if(system.SellCkeck(vo)){// 판매 게시물이 있으면 true 없으면 false
+						//now_room defualt 설정
+						ArrayList<String> list=main.system.chat_list(vo.id);
+						now_room=Integer.parseInt(list.get(0));
 						//server와 연결하기
 						main.serverConnect();
 						//서버와 연결 시 server_state 1로 변경
 						system.server_state(vo,1);
-						//now_room defualt 설정
-						ArrayList<String> list=main.system.chat_list(vo.id);
-						now_room=Integer.parseInt(list.get(0));
 						
 					}
 					start();

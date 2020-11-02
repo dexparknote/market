@@ -166,9 +166,9 @@ class MemberChatEvent implements ActionListener, ListSelectionListener{
 	public void valueChanged(ListSelectionEvent e) {
 		if(!e.getValueIsAdjusting()) {// 메소드가 두번 호출 조정하기
 				//클릭된 번호 갖어오기
+				content.setText(null);
 				String clike_room = (String) list_chatlist.getSelectedValue();
 				main.now_room=Integer.parseInt(clike_room);
-				System.out.println(clike_room);
 				MessageVO msgVO = new MessageVO();
 				msgVO.setName(main.vo.id);
 				msgVO.setStatus(main.CONNECT);
@@ -215,6 +215,7 @@ class MemberChatEvent implements ActionListener, ListSelectionListener{
 				msgVO.setName(main.vo.id);
 				msgVO.setStatus(main.CONNECT);
 				msgVO.setRoom_num(main.now_room);
+				content.setText(null);
 				
 				try {
 					main.oos.writeObject(msgVO);

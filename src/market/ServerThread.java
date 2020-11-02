@@ -32,16 +32,17 @@ public class ServerThread extends Thread {
 			boolean flag = true;
 			while(flag) {
 				MessageVO msgVO = (MessageVO)ois.readObject();
-				
+				RoomVO roomVO=new RoomVO();
 				//메시지가 오면 해당 방이 room_list에 있는지 확인
-				//1.있으면 RoomVO 추가
-				//2. 없으면 RoomVO 추가
+				//1.있으면 해당 RoomVO.getChat_content 에 msgVO.msg 내용을 추가하여 저장 , 없으면 RoomVO 추가
+				//2. 
 				
 				
 				if(msgVO.getStatus() ==MarketMgmUI.CONNECT) {
 					msgVO.setMsg(msgVO.getName() + "님이 입장 ~~");
 					broadCastring(msgVO);
 				}else if(msgVO.getStatus() ==MarketMgmUI.TALKING) {
+					System.out.println("서버 스레드에서 토킹 채크 - 현재 방번호: "+msgVO.getRoom_num());
 					broadCastring(msgVO);
 				}else if(msgVO.getStatus() ==MarketMgmUI.EXIT) {
 					MultiChatServer.st_list.remove(this);
@@ -73,6 +74,7 @@ public class ServerThread extends Thread {
 			e.printStackTrace();
 		}
 	}
+
 	
 	
 }//class
