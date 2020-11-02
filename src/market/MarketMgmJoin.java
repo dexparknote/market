@@ -47,10 +47,11 @@ public class MarketMgmJoin {
 	 */
 	public void join() {
 		joinOff();
-        main.showPane.setVisible(false);
+//        main.showPane.setVisible(false);
 
 
         joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\join_back.png").getImage());
+
 
 
 // ¿µÀç-"C:/java_workspace/market/images/join_back.png").getImage());

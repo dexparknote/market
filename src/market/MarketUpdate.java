@@ -33,7 +33,6 @@ public class MarketUpdate {
 	JPanel img_update;
 	JPanel updatePane, mainPane; //전체 업데이트 패널
 	int idx = -1;
-	String[] form_names = {"물품명","주소","설명","가격"};
 	
 	JPanel update_top, search_panel, update_bottom;
 //	JLabel id_label;
@@ -41,6 +40,7 @@ public class MarketUpdate {
 	JButton  update_search; // btnUpdate, btnUpdateReset; // 
 	ArrayList<String> tf_update_list;
 	
+//	ImagePanel img_update;
 	
 	MarketUpdateEvent eventObj = new MarketUpdateEvent();
 	JTextField tf_update;
@@ -74,25 +74,26 @@ public class MarketUpdate {
 		main.switchPane(MarketMgmUI.UPDATE);
 		updatePane.setLayout(null);
 
-//		img_update = new JPanel();
+//		updatePane = new JPanel();
+//		updatePane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());
 //		img_update = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage());
 //		ImagePanel updatePane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage());
 		
 //		updatePane.add(img_update);
 //		updatePane.add(lblNewLabel);
 		
-		JLabel title_label = new JLabel("\u203B  \uC218\uC815\uD560 \uBB3C\uD488\uC758 \uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694  \u203B");
+		JLabel title_label = new JLabel("※ 수정할 게시물의 번호를 입력해주세요 ※");
 		title_label.setFont(new Font("제주고딕", Font.PLAIN, 13));
 		title_label.setBounds(363, 59, 245, 32);
 		updatePane.add(title_label);
 		
-		JLabel id_label = new JLabel("[  \uBB3C\uD488\uBC88\uD638  ]");
+		JLabel id_label = new JLabel("[ 게시물 번호 ]");
 		id_label.setFont(new Font("제주고딕", Font.PLAIN, 20));
-		id_label.setBounds(139, 20, 110, 40);
+		id_label.setBounds(142, 20, 150, 40);
 		updatePane.add(id_label);
 		
 		tf_update = new JTextField();
-		tf_update.setBounds(302, 30, 365, 25);
+		tf_update.setBounds(292, 30, 375, 25);
 		tf_update.setColumns(10);
 		updatePane.add(tf_update);
 		
@@ -104,41 +105,6 @@ public class MarketUpdate {
 		updatePane.add(update_search);
 		
 
-
-		
-		main.getContentPane().add(updatePane);
-		main.setLocationRelativeTo(null);
-		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		main.setVisible(true);
-		
-		
-		tf_update.addActionListener(eventObj);
-		update_search.addActionListener(eventObj);
-//		
-	}
-	
-	/** 수정 검색 처리 */
-	public void updateSearchProc() {
-		pid = tf_update.getText().trim();
-		if(pid.equals("")) {
-			JOptionPane.showMessageDialog(null, "물품번호를 입력해주세요");
-			tf_update.requestFocus();
-		} else {
-			idx = main.system.SearchPid(pid);
-			if(idx != 0) {
-				ProductVO pvo = main.system.selectProduct(pid);
-				updateOkForm(pvo);
-				
-			} else {
-				updateFailForm();
-			}
-		}
-	}
-	
-	/** 수정 데이터 등록 폼 : 물품명, 주소, 설명, 가격 **/
-	public void updateOkForm(ProductVO pvo) {
-		update();
-		
 		label_pname = new JLabel("-   \uC0C1\uD488 \uC774\uB984");
 		label_pname.setFont(new Font("제주고딕", Font.PLAIN, 18));
 		label_pname.setBounds(181, 85, 101, 40);
@@ -210,12 +176,14 @@ public class MarketUpdate {
 		updatePane.add(label_explain);
 		
 		btn_use = new JRadioButton(" \uC0AC\uC6A9\uAC10 \uC788\uC74C");
+		btn_use.setBackground(Color.WHITE);
 		btn_use.setFont(new Font("제주고딕", Font.PLAIN, 14));
 		btn_use.setBounds(373, 230, 107, 23);
 		btn_use.setActionCommand("사용감 있음");
 		updatePane.add(btn_use);
 		
 		btn_unuse = new JRadioButton(" \uC0AC\uC6A9\uAC10 \uC5C6\uC74C");
+		btn_unuse.setBackground(Color.WHITE);
 		btn_unuse.setFont(new Font("제주고딕", Font.PLAIN, 14));
 		btn_unuse.setBounds(501, 230, 107, 23);
 		btn_unuse.setActionCommand("사용감 없음");
@@ -232,16 +200,53 @@ public class MarketUpdate {
 		updatePane.add(label_area);
 		
 		combo_method = new JComboBox();
+		combo_method.setBackground(Color.WHITE);
 		combo_method.setModel(new DefaultComboBoxModel(new String[] {"\uC9C1\uAC70\uB798", "\uBC30\uC1A1", "\uC9C1\uAC70\uB798 \uB610\uB294 \uBC30\uC1A1"}));
 		combo_method.setFont(new Font("제주고딕", Font.PLAIN, 14));
 		combo_method.setBounds(373, 275, 127, 23);
 		updatePane.add(combo_method);
 		
 		combo_area = new JComboBox();
+		combo_area.setBackground(Color.WHITE);
 		combo_area.setModel(new DefaultComboBoxModel(new String[] {"\uAC15\uC6D0\uB3C4", "\uACBD\uAE30\uB3C4", "\uACBD\uC0C1\uB0A8\uB3C4", "\uACBD\uC0C1\uBD81\uB3C4", "\uAD11\uC8FC\uAD11\uC5ED\uC2DC", "\uB300\uAD6C\uAD11\uC5ED\uC2DC", "\uB300\uC804\uAD11\uC5ED\uC2DC", "\uBD80\uC0B0\uAD11\uC5ED\uC2DC", "\uC11C\uC6B8\uD2B9\uBCC4\uC2DC", "\uC138\uC885\uD2B9\uBCC4\uC790\uCE58\uC2DC", "\uC6B8\uC0B0\uAD11\uC5ED\uC2DC", "\uC778\uCC9C\uAD11\uC5ED\uC2DC", "\uC804\uB77C\uB0A8\uB3C4", "\uC804\uB77C\uBD81\uB3C4", "\uC81C\uC8FC\uD2B9\uBCC4\uC790\uCE58\uB3C4", "\uCDA9\uCCAD\uB0A8\uB3C4", "\uCDA9\uCCAD\uB0A8\uB3C4"}));
 		combo_area.setFont(new Font("제주고딕", Font.PLAIN, 14));
 		combo_area.setBounds(373, 320, 127, 23);
 		updatePane.add(combo_area);
+
+		
+		main.getContentPane().add(updatePane);
+		main.setLocationRelativeTo(null);
+		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		main.setVisible(true);
+		
+		
+		tf_update.addActionListener(eventObj);
+		update_search.addActionListener(eventObj);
+//		
+	}
+	
+	/** 수정 검색 처리 */
+	public void updateSearchProc() {
+		pid = tf_update.getText().trim();
+		if(pid.equals("")) {
+			JOptionPane.showMessageDialog(null, "물품번호를 입력해주세요");
+			tf_update.requestFocus();
+		} else {
+			idx = main.system.SearchPid(pid);
+			if(idx != 0) {
+				ProductVO pvo = main.system.selectProduct(pid);
+				updateOkForm(pvo);
+				
+			} else {
+				updateFailForm();
+			}
+		}
+	}
+	
+	/** 수정 데이터 등록 폼 : 물품명, 주소, 설명, 가격 **/
+	public void updateOkForm(ProductVO pvo) {
+		update();
+		
 		
 		String[] data_list = new String[20];
 		data_list[0] = pvo.getPname();

@@ -14,7 +14,6 @@ import java.awt.event.WindowEvent;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,8 +22,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 public class MarketMgmUI extends JFrame {
@@ -37,6 +38,7 @@ public class MarketMgmUI extends JFrame {
 	public static final int DELETE = 4;
 	public static final int CHAT = 5;
 	public static final int MYHOME = 6;
+	
 	
 	public static final int CONNECT = 0; // 처음접속 MulltiChatClient.CONNECT
 	public static final int TALKING =1; // 대화중
@@ -56,12 +58,14 @@ public class MarketMgmUI extends JFrame {
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
 
+	JFrame frame = new JFrame();
 	JPanel regPane = new JPanel();
 	JPanel searchPane = new JPanel();
 	JPanel updatePane = new JPanel();
 	JPanel deletePane = new JPanel();
 	JPanel chatPane = new JPanel();
 	JPanel myPagePane = new JPanel();
+	JScrollPane jScrollPane;
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 
@@ -88,11 +92,6 @@ public class MarketMgmUI extends JFrame {
 		public void showMain() {  //10.22 영재 수정
 			
 			showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage());
-
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-
 
 		// 영재-C:/java_workspace/market/images/login_main.png
 		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
@@ -238,6 +237,13 @@ public class MarketMgmUI extends JFrame {
 		int width = (int) (scsize.getWidth() - fsize.getWidth()) / 2;
 		int height = (int) (scsize.getHeight() - fsize.getHeight()) / 2;
 
+//		mainPane.setPreferredSize(fsize);
+//		jScrollPane = new JScrollPane(mainPane,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, 
+//				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//		jScrollPane.setPreferredSize(new Dimension(600, 600));
+//		frame.add(comp)
+//	    frame.add(jScrollPane);
+//		
 		setLocation(width, height);
 		setVisible(true);
 
@@ -262,8 +268,8 @@ public class MarketMgmUI extends JFrame {
 			//처음접속 메시지 전송
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
-			msgVO.setStatus(MultiChatClient.CONNECT);
-			
+			msgVO.setStatus(CONNECT);
+
 			
 			oos.writeObject(msgVO);
 			
@@ -274,7 +280,6 @@ public class MarketMgmUI extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	// 메뉴 이동 제어
 	public void resetPane() {
@@ -287,7 +292,6 @@ public class MarketMgmUI extends JFrame {
 		chatPane.setVisible(false);
 		myPagePane.setVisible(false);
 	}
-
 
 	public void switchPane(int menu) {
 		resetPane();
@@ -354,7 +358,7 @@ public class MarketMgmUI extends JFrame {
 			// JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
-			msgVO.setStatus(MultiChatClient.EXIT);
+			msgVO.setStatus(EXIT);
 			try {
 				oos.writeObject(msgVO);				
 			} catch (Exception e) {
@@ -379,35 +383,6 @@ public class MarketMgmUI extends JFrame {
 			} else {
 				JOptionPane.showMessageDialog(null, "아이디/비밀번호가 틀렸습니다. 다시한번 확인해주세요");
 			}
-<<<<<<< HEAD
-			
-			//액션 이벤트 처리
-			public void actionPerformed(ActionEvent ae) {
-				Object obj = ae.getSource();
-				if(btnLogin == obj || jtf_pass == obj) {
-					if(login()) start();
-//					start();
-				}else if(btnJoin == obj) {
-					new MarketMgmJoin(main).join();
-				}else if(btnReg == obj) {
-					new MarketRegister(main).register();
-				}else if(btnSearch == obj) {
-					new MarketSearch(main, system.dao).search("show_all");
-				}else if(btnDelete == obj) {
-					new MarketDelete(main).delete();
-				}else if(btnUpdate == obj) {
-					new MarketUpdate(main).update();
-				}else if(btnChat == obj) {
-					new MarketChat(main).chat();
-				}else if(btnLogout == obj) {
-					int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
-					if (result == 0) {
-						mainPane.setVisible(false);
-						menuPane.setVisible(false);
-						resetPane();
-						showMain();
-=======
-
 			return result;
 		}
 
@@ -424,17 +399,16 @@ public class MarketMgmUI extends JFrame {
 						main.serverConnect();
 						//서버와 연결 시 server_state 1로 변경
 						system.server_state(vo,1);
->>>>>>> branch 'master' of https://github.com/lyj6054/market.git
 					}
-				}
 					start();
-//					start();
+				}
+
 			} else if (btnJoin == obj) {
 				new MarketMgmJoin(main).join();
 			} else if (btnReg == obj) {
 				new MarketRegister(main).register();
 			} else if (btnSearch == obj) {
-				new MarketSearch(main).search();
+				new MarketSearch(main, system.dao).search("show_all");
 			} else if (btnDelete == obj) {
 				new MarketDelete(main).delete();
 			} else if (btnUpdate == obj) {
@@ -448,7 +422,7 @@ public class MarketMgmUI extends JFrame {
 					system.server_state(vo,0);//로그아웃 시 server_state 0으로
 					MessageVO msgVO = new MessageVO();
 					msgVO.setName(vo.id);
-					msgVO.setStatus(MultiChatClient.EXIT);
+					msgVO.setStatus(EXIT);
 					try {
 						oos.writeObject(msgVO);				
 					} catch (Exception e) {

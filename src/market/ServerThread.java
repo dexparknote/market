@@ -31,12 +31,12 @@ public class ServerThread extends Thread {
 			while(flag) {
 				MessageVO msgVO = (MessageVO)ois.readObject();
 				
-				if(msgVO.getStatus() ==MultiChatClient.CONNECT) {
+				if(msgVO.getStatus() ==MarketMgmUI.CONNECT) {
 					msgVO.setMsg(msgVO.getName() + "¥‘¿Ã ¿‘¿Â ~~");
 					broadCastring(msgVO);
-				}else if(msgVO.getStatus() ==MultiChatClient.TALKING) {
+				}else if(msgVO.getStatus() ==MarketMgmUI.TALKING) {
 					broadCastring(msgVO);
-				}else if(msgVO.getStatus() ==MultiChatClient.EXIT) {
+				}else if(msgVO.getStatus() ==MarketMgmUI.EXIT) {
 					MultiChatServer.st_list.remove(this);
 					msgVO.setMsg(msgVO.getName() + "¥‘¿Ã ≈¿Â ~~");
 					broadCastring(msgVO);

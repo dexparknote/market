@@ -25,6 +25,53 @@ class MarketDAO extends DBConn{
 		
 		return result;
 	}
+	/**
+	 * login_room_num
+	 */
+	public int login_room_num(String id) {
+		int room_num=0;
+		
+		try {
+			String sql = "select pid from product where mid=? order by pid ";
+			getPreparedStatement(sql);
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				room_num=rs.getInt(1);
+			}			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return room_num;
+	}
+	
+	/**
+	 * chat_list
+	 */
+	public ArrayList<String> chat_list(String id) {
+		ArrayList<String> list=new ArrayList<String>();
+		
+		try {
+			String sql = "select pid from product where mid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				list.add(rs.getString(1));
+			}			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 	
 	/**
 	 *	server_state 
@@ -172,7 +219,7 @@ class MarketDAO extends DBConn{
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
-			String sql = " select pid, pname, price, pphone, state, method, area, explain " + 
+			String sql = " select pid, pname, price, pphone, state, method, area, explain, pdate" + 
 						" from (select pid, pname, price, pphone, state, method, area, explain, pdate from product p, market_member m " + 
 						" where m.mid=p.mid and m.mid=? order by pid desc)";
 			getPreparedStatement(sql);
@@ -186,8 +233,9 @@ class MarketDAO extends DBConn{
 				vo.setPphone(rs.getString(4));
 				vo.setState(rs.getString(5));
 				vo.setMethod(rs.getString(6));
-				vo.setExplain(rs.getString(7));
-				vo.setPdate(rs.getString(8));
+				vo.setArea(rs.getString(7));
+				vo.setExplain(rs.getString(8));
+				vo.setPdate(rs.getString(9));
 				list.add(vo);
 			}
 			
