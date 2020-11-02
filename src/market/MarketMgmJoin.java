@@ -50,13 +50,13 @@ public class MarketMgmJoin {
 //        main.showPane.setVisible(false);
 
 
-        joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\eclipse_workspace\\market\\images\\join_back.png").getImage());
+        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/join_back.png").getImage());
 
 
 
 // 영재-"C:/java_workspace/market/images/join_back.png").getImage());
 //민석 - C:/dev/se_workspace/sist_project_1/images/join_back.png").getImage();
-//기림 -"C:\\dev\\eclipse_workspace\\market\\images\\join_back.png"  
+//기림 -"C:/dev/eclipse_workspace/market/images/join_back.png"  
 //영화-C:\\dev\\se_workspace\\market\\images\\join_back.png
 		main.setSize(joinBackPane.getWidth(), joinBackPane.getHeight() + 38);
 		main.getContentPane().add(joinBackPane);

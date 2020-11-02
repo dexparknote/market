@@ -105,9 +105,6 @@ public class MarketMgmSystem {
 		return dao.loginCheck(mid, mpass);
 	}
 	
-<<<<<<< HEAD
-	
-=======
 	/** 현재 로그인 아이디 */
 	public boolean loginIng(String mid) {
 		return dao.loginIng(mid);
@@ -126,5 +123,5 @@ public class MarketMgmSystem {
 	public boolean update_info(MemberVO mvo) {
 		return dao.update_info(mvo);
 	}
->>>>>>> refs/heads/master
+
 } // class

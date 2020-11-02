@@ -293,8 +293,8 @@ class MarketDAO extends DBConn{
 		pstmt.setString(2, vo.getMid());
 		pstmt.setString(3, vo.getMid());
 		pstmt.setString(4, vo.getMid());
-		pstmt.setInt(5, vo.getPid());
-		pstmt.setInt(6, vo.getRating());
+//		pstmt.setInt(5, vo.getPid());
+//		pstmt.setInt(6, vo.getRating());
 		pstmt.setString(7, comm);
 		pstmt.setString(7, comm);
 
