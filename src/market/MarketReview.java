@@ -29,21 +29,18 @@ public class MarketReview {
    JPanel jp_search , search_pack;
    JLabel jl_reviewName, block1, block2, block3, block4;
    JButton btn_search;
-   JTextField jt_Search;
+   JTextField jt_search;
    Object[] columns = {"ID","게시물번호","리뷰","리뷰등록일"};
    Object[] row =new Object[4];  
    DefaultTableModel model =new DefaultTableModel(columns,0);   
    JTable table= new JTable(model); 
    
    // Constructor
-   public MarketReview() {
-   }
-
    public MarketReview(MarketMgmUI main) {
       this.main = main;
       this.reviewPane = main.reviewPane;
    }
-
+ //Method
    /**
     * @wbp.parser.entryPoint
     */
@@ -65,10 +62,10 @@ public class MarketReview {
       block2 = new JLabel("  ");
       jp_search.add(block2);
       
-      jt_Search = new JTextField();
-      jt_Search.setBounds(284, 25, 156, 21);
-      jp_search.add(jt_Search);
-      jt_Search.setColumns(20);
+      jt_search = new JTextField();
+      jt_search.setBounds(284, 25, 156, 21);
+      jp_search.add(jt_search);
+      jt_search.setColumns(20);
       
       block3 = new JLabel("   ");
       jp_search.add(block3);
@@ -129,9 +126,9 @@ public class MarketReview {
       
       main.setVisible(true);
 
-      jt_Search.addActionListener(new MemberSearchEvent());
+      jt_search.addActionListener(new MemberSearchEvent());
       btn_search.addActionListener(new MemberSearchEvent());
-		}//search method
+	}//review method
 			
 		//특정값 JTableDate
 		public void crateJTableData(String id){
@@ -151,17 +148,17 @@ public class MarketReview {
 		}
 		//searchProc 
 		public void searchProc() {			
-			String id =  jt_Search.getText().trim();	
-			if (! jt_Search.getText().equals("")) {
+			String id =  jt_search.getText().trim();	
+			if (! jt_search.getText().equals("")) {
 				
-				if ( jt_Search.getText().trim().equals(id)) {		
+				if ( jt_search.getText().trim().equals(id)) {		
 						crateJTableData(id);
 				} else {
 					JOptionPane.showMessageDialog(null, "ID가 존재하지 않습니다.");
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "ID를 입력해주세요");
-				jt_Search.requestFocus();
+				jt_search.requestFocus();
 			}
 		}			
 		
@@ -169,7 +166,7 @@ public class MarketReview {
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
-				if(obj == jt_Search || obj == btn_search) {
+				if(obj == jt_search || obj == btn_search) {
 					searchProc(); 
 				} 						
 			}

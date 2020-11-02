@@ -3,6 +3,8 @@ package market;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,12 +23,12 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
-	public class MarketSearch  implements TableModelListener{
+public class MarketSearch  implements TableModelListener{
 //Field
 		MarketMgmUI main;
 		JPanel searchPane; 
-		JPanel jp_search;
-		JLabel jl_searchName;
+		JPanel jp_search,search_pack;
+		JLabel jl_searchName, block1, block2, block3, block4;
 		JButton btn_search;
 		JTextField jt_search;
 		ArrayList<ProductVO> plist;
@@ -34,85 +36,113 @@ import javax.swing.table.TableModel;
 		MarketDAO dao;
 		
 //Constructor
-		public MarketSearch(MarketMgmUI main, MarketDAO dao) {
-			this.main = main;
-			this.searchPane = main.searchPane;	
-			this.dao = dao;
+	public MarketSearch(MarketMgmUI main, MarketDAO dao) {
+		this.main = main;
+		this.searchPane = main.searchPane;	
+		this.dao = dao;
 				}
-		
 //Method
-		/**
-		 * @wbp.parser.entryPoint
-		 */
-		public void search(String pname) {	
-//			JPanel searchPane = new JPanel();
-			main.switchPane(MarketMgmUI.SEARCH);
-			searchPane.setLayout(null);
+	/**
+	 * @wbp.parser.entryPoint
+	 */
+	public void search(String pname) {	
+		main.switchPane(MarketMgmUI.SEARCH);
+		searchPane.setLayout(null);
 			
-			jp_search = new JPanel();
-			jl_searchName = new JLabel("물품명");
-			btn_search = new JButton("검색");
-			jt_search = new JTextField(20);
+		jp_search = new JPanel();
+		search_pack = new JPanel();	
 			
-			jp_search.add(jl_searchName);
-			jp_search.add(jt_search);
-			jp_search.add(btn_search);
-		
-			searchPane.add(jp_search);
+		block1 = new JLabel();
+		jp_search.add(block1);
 			
-			DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-			dtcr.setHorizontalAlignment(SwingConstants.CENTER);	
+		jl_searchName = new JLabel("[ 검색 ID ]  ");
+		jl_searchName.setFont(new Font("제주고딕", Font.PLAIN, 16));
+		jl_searchName.setBounds(205, 28, 58, 15);
+		jp_search.add(jl_searchName);//
+		      
+		block2 = new JLabel("  ");
+		jp_search.add(block2);
+		      
+		jt_search = new JTextField();
+		jt_search.setBounds(284, 25, 156, 21);
+		jp_search.add(jt_search);
+		jt_search.setColumns(20);
+		      
+		block3 = new JLabel("   ");
+		jp_search.add(block3);
+		      
+		btn_search = new JButton("검 색");
+		btn_search.setForeground(new Color(160, 204, 255));
+		btn_search.setBackground(Color.DARK_GRAY);
+		btn_search.setFont(new Font("제주고딕", Font.PLAIN, 16));
+		btn_search.setBounds(452, 24, 64, 23);
+		jp_search.add(btn_search);
+		      
+		block4 = new JLabel();
+		jp_search.add(block4);
+		      
+		search_pack.add(new JLabel("  "));
+		search_pack.add(jp_search);
+		search_pack.add(new JLabel("  "));
+		search_pack.setLayout(new GridLayout(3,1));
+		      
+		searchPane.add(search_pack); 
+			
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+		dtcr.setHorizontalAlignment(SwingConstants.CENTER);	
 
-			if(pname.equals("show_all")){
+		if(pname.equals("show_all")){
 			plist = dao.search_list();
-			}else {
+		}else {
 			plist = dao.search_list(pname);
-			}		
-			model = new MyTableModel(plist);	
-			JTable table = new JTable(model);	
+		}		
+		model = new MyTableModel(plist);	
+		JTable table = new JTable(model);	
 			
-			table.getColumn("구매").setCellRenderer(dtcr);
+		table.getColumn("구매").setCellRenderer(dtcr);
 		    
-		    JTableHeader header = table.getTableHeader();
-		    header.setBackground(Color.DARK_GRAY);
-		    header.setForeground(Color.white);  jp_search.setBackground(Color.white);
+		JTableHeader header = table.getTableHeader();
+		header.setBackground(Color.DARK_GRAY);
+		header.setForeground(Color.white);  jp_search.setBackground(Color.white);
 			
-			table.getColumn(table.getColumnName(0)).setPreferredWidth(50);	
-			table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
-			table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
-			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
-			table.getColumn(table.getColumnName(6)).setPreferredWidth(50);
-			table.getColumn(table.getColumnName(8)).setPreferredWidth(200);
-			table.getColumn(table.getColumnName(10)).setPreferredWidth(50);
+		search_pack.setBackground(Color.white);
+		    
+		table.getColumn(table.getColumnName(0)).setPreferredWidth(50);	
+		table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
+		table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
+		table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
+		table.getColumn(table.getColumnName(6)).setPreferredWidth(50);
+		table.getColumn(table.getColumnName(8)).setPreferredWidth(200);
+		table.getColumn(table.getColumnName(10)).setPreferredWidth(50);
 			
-			table.setPreferredScrollableViewportSize(new Dimension(1000,1000));
+		table.setPreferredScrollableViewportSize(new Dimension(1200,535));
 
-			MyTableCellRenderer tcr = new MyTableCellRenderer(this,main);
-			table.getColumnModel().getColumn(10).setCellEditor(tcr);
-			table.getColumnModel().getColumn(10).setCellRenderer(tcr);
+		MyTableCellRenderer tcr = new MyTableCellRenderer(this,main);
+		table.getColumnModel().getColumn(10).setCellEditor(tcr);
+		table.getColumnModel().getColumn(10).setCellRenderer(tcr);
 			
-			TableColumnModel tcm = table.getColumnModel();			
+		TableColumnModel tcm = table.getColumnModel();			
 			
-			for(int i=0;i<table.getColumnCount();i++) {
-				if(i==0 || i==1 || i==2 || i==3 || i==4 || i==5 || i==6 || i==7 || i==8 || i==9) {
-					tcm.getColumn(i).setCellRenderer(dtcr); 
-				}
+		for(int i=0;i<table.getColumnCount();i++) {
+			if(i==0 || i==1 || i==2 || i==3 || i==4 || i==5 || i==6 || i==7 || i==8 || i==9) {
+				tcm.getColumn(i).setCellRenderer(dtcr); 
 			}
-			JScrollPane pane=new JScrollPane(table);	   
-			
-			table.setRowHeight(table.getRowHeight() + 70);
-			table.setFillsViewportHeight(true);
-			
-			searchPane.setLayout(new BorderLayout());			
-			searchPane.add(BorderLayout.CENTER,pane);
-			searchPane.add(BorderLayout.NORTH,jp_search);
-			main.add(searchPane, BorderLayout.CENTER);
-			main.setVisible(true);	
-			
-			table.getModel().addTableModelListener(this);	
-			btn_search.addActionListener(new MemberSearchEvent());
-			jt_search.addActionListener(new MemberSearchEvent());			
 		}
+		JScrollPane pane=new JScrollPane(table);	   
+			
+		table.setRowHeight(table.getRowHeight() + 70);
+		table.setFillsViewportHeight(true);
+			
+		searchPane.setLayout(new BorderLayout());			
+		searchPane.add(BorderLayout.SOUTH,pane);		
+		searchPane.add(BorderLayout.NORTH,search_pack);
+		main.add(searchPane, BorderLayout.CENTER);
+		main.setVisible(true);	
+			
+		table.getModel().addTableModelListener(this);	
+		btn_search.addActionListener(new MemberSearchEvent());
+		jt_search.addActionListener(new MemberSearchEvent());			
+	}//search method
 		    
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
