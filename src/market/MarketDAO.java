@@ -352,6 +352,26 @@ class MarketDAO extends DBConn{
 		return rlist;
 	}
 	
+	/**
+	 * 리뷰 등록후 물품 삭제
+	 */
+	public boolean delete_review(String pname) {
+		boolean result = false;
+		
+		try {
+			String sql = "delete from product where pid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, pname);
+			int count = pstmt.executeUpdate();
+			if(count != 0) result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
+	
 	/** 
 	 * delete select -민석
 	 */
@@ -614,4 +634,5 @@ class MarketDAO extends DBConn{
 		
 		return result;
 	}
+
 }

@@ -71,7 +71,10 @@ public class MarketMgmSystem {
 		return dao.review_s(id);	
 	}
 	
-	
+	/**구매후 물품정보 삭제**/
+	public boolean delete_review(String pname) {
+		return dao.delete_review(pname);
+	}
 	
 	/** 물품 정보 삭제 검색 - 민석 **/
 	public boolean delselect(String pname) {

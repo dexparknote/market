@@ -17,6 +17,7 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 	MarketMgmUI main;
 	ProductVO vo;
 	MemberVO mvo = new MemberVO();
+
 	
 	public MyTableCellRenderer(MarketSearch market_s,MarketMgmUI main) {
 		this.market_s = market_s ;
@@ -40,7 +41,7 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 				int result = JOptionPane.showConfirmDialog(null, "정말로 구매하시겠습니까?");
 				 if (result == 0) {
 					 int review_result = JOptionPane.showConfirmDialog(null, "리뷰하시겠습니까?");
-					 if(result == 0) {
+					 if(review_result == 0) {
 						  String comm=JOptionPane.showInputDialog(null, "리뷰를 입력해주세요");
 						  ProductVO vo = market_s.plist.get(row);
 						  vo.setMid(mvo.getId());	//mvo로 mid 넘김
@@ -53,15 +54,11 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 						  
 						  main.system.review_row(vo);
 						  main.system.review_list(comm,vo);
-						  
-						  
-						  
-//						  main.system.review_list(comm, vo);
-						    
+						  main.system.delete_review(vo.getPid());						  
+						  new MarketSearch(main, main.system.dao).search("show_all");	
 					 }else {
 						 JOptionPane.showMessageDialog(null,"리뷰 등록이 취소되었습니다.");
 					 }
-					 
 				}else {
 					JOptionPane.showMessageDialog(null,"상품 구매가 취소되었습니다.");
 				}
@@ -69,6 +66,7 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 		});
 			return btn_buy;	
 	}
+	
 	
 	public Object getCellEditorValue() {
 		return null;
