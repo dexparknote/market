@@ -131,7 +131,7 @@ class MarketDAO extends DBConn{
 		boolean result = false;
 		
 		try {
-			String sql = "insert into market_member values(?,?,?,?,?,?,sysdate)";
+			String sql = "insert into market_member values(?,?,?,?,?,?,sysdate,0,0)";
 			getPreparedStatement(sql);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPass());
