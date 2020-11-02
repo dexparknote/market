@@ -27,6 +27,49 @@ class MarketDAO extends DBConn{
 		return result;
 	}
 	/**
+	 * dao.get_pid(id)
+	 */
+	public int get_pid(int id) {
+		int room_num = -1;
+		try {
+			String sql = "select pid from product where mid=? ";
+			getPreparedStatement(sql);
+			pstmt.setInt(1,id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				room_num=rs.getInt(1);
+			}			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		
+		return room_num;
+	}
+	/**
+ 	* get_pname
+ 	*/
+	public String get_pname(String id) {
+		String pname="";
+		try {
+			String sql = "select pname from product where pid=?  ";
+			getPreparedStatement(sql);
+			pstmt.setString(1,id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				pname=rs.getString(1);
+			}			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return pname;
+	}
+	/**
 	 * login_room_num
 	 */
 	public int login_room_num(String id) {
@@ -57,7 +100,7 @@ class MarketDAO extends DBConn{
 		ArrayList<String> list=new ArrayList<String>();
 		
 		try {
-			String sql = "select pid from product where mid=?";
+			String sql = "select pid from product where mid=? order by pid ";
 			getPreparedStatement(sql);
 			pstmt.setString(1,id);
 			rs = pstmt.executeQuery();
@@ -125,6 +168,7 @@ class MarketDAO extends DBConn{
 		
 		return result;
 	}
+
 	   /**
 	    *   join 
 	    */
@@ -149,7 +193,7 @@ class MarketDAO extends DBConn{
 	      
 	      return result;
 	   }
-	
+
 	/**
 	 *  insert
 	 */
@@ -377,13 +421,14 @@ class MarketDAO extends DBConn{
 	/** 
 	 * delete select -¹Î¼®
 	 */
-	public boolean delselect(String pname) {
+	public boolean delselect(String pname, MemberVO mvo) {
 		boolean result = false;
 
 		try {
-			String sql = "select count(*) from product where pid=?";
+			String sql = "select count(*) from product where pid=? and mid=?";
 			getPreparedStatement(sql);
 			pstmt.setString(1, pname);
+			pstmt.setString(2, mvo.getId());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getInt(1) != 0) result = true;

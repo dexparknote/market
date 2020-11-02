@@ -230,12 +230,14 @@ public class MarketRegister {
 		//서버와 연결이 되있지 않다면 서버와 연결
 		if(mvo.getServer_state()==0) {
 			main.serverConnect(); //server_state vo에서 int로 바꿔야함 ㅠ
+			main.now_room=main.system.get_pid(Integer.parseInt(main.vo.getId()));
+			System.out.println(main.now_room);
 		}
 		
 		if(result) {
-			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
+			JOptionPane.showMessageDialog(null,"등록 성공!!");
 		}else {
-			JOptionPane.showMessageDialog(null, main.getMsg("등록 실패!!"));
+			JOptionPane.showMessageDialog(null,"등록 실패!!");
 		}
 		
 		

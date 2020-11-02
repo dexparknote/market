@@ -10,9 +10,18 @@ public class MarketMgmSystem {
 	public MarketMgmSystem() {
 		dao = new MarketDAO();
 	}
+	//get_pname
+	public String get_pname(String id) {
+		return dao.get_pname(id);
+	}
+	
 	//로그인 했을때 방번호 지정(가장 먼저 생성 되었던 방으로)
 		public int login_room_num(String id) {
 			return dao.login_room_num(id);
+		}
+	//get_pid(main.vo.getId()
+		public int get_pid(int id) {
+			return dao.get_pid(id);
 		}
 	
 	//채팅 리스트 받아오기
@@ -77,8 +86,8 @@ public class MarketMgmSystem {
 	}
 	
 	/** 물품 정보 삭제 검색 - 민석 **/
-	public boolean delselect(String pname) {
-		return dao.delselect(pname);
+	public boolean delselect(String pname, MemberVO mvo) {
+		return dao.delselect(pname, mvo);
 	}
 	
 	/** 물품 정보 삭제 - 민석 **/

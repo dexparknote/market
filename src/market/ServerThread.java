@@ -3,6 +3,7 @@ package market;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServerThread extends Thread {
 	//Field
@@ -30,11 +31,13 @@ public class ServerThread extends Thread {
 			boolean flag = true;
 			while(flag) {
 				MessageVO msgVO = (MessageVO)ois.readObject();
-				
+				RoomVO roomVO=new RoomVO();
+
 				if(msgVO.getStatus() ==MarketMgmUI.CONNECT) {
 					msgVO.setMsg(msgVO.getName() + "님이 입장 ~~");
 					broadCastring(msgVO);
 				}else if(msgVO.getStatus() ==MarketMgmUI.TALKING) {
+					System.out.println("서버 스레드에서 토킹 채크 - 현재 방번호: "+msgVO.getRoom_num());
 					broadCastring(msgVO);
 				}else if(msgVO.getStatus() ==MarketMgmUI.EXIT) {
 					MultiChatServer.st_list.remove(this);
@@ -66,6 +69,7 @@ public class ServerThread extends Thread {
 			e.printStackTrace();
 		}
 	}
+
 	
 	
 }//class
