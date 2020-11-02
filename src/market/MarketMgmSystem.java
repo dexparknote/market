@@ -56,14 +56,22 @@ public class MarketMgmSystem {
 	}
 	
 	/**리뷰 - 기림**/
-	public boolean review_list(String comm,ReviewVO vo){	//리뷰 vo로 가져와
+	public boolean review_list(String comm,ProductVO vo){	//리뷰 vo로 가져와
 		return dao.review_list(comm,vo);
 	}
-
-//	/**리뷰 - 기림**/
-//	public boolean review_list(String comm){	//리뷰 vo로 가져와
-//		return dao.review_list(comm);
-//	}
+	
+	/**리뷰 저장 row_pid 기림**/
+	public boolean review_row(ProductVO vo) {
+		return dao.review_row(vo);
+	}
+	
+	/**리뷰 출력**/
+	public ArrayList<ReviewVO> review_s(String id)
+	{
+		return dao.review_s(id);	
+	}
+	
+	
 	
 	/** 물품 정보 삭제 검색 - 민석 **/
 	public boolean delselect(String pname) {

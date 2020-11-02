@@ -1,15 +1,11 @@
-
 package market;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.EventObject;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,128 +14,139 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellEditor;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
 
 
-	public class MarketReview  implements TableModelListener{
+public class MarketReview {
 //Field
-		JPanel reviewPane; 
-		JPanel jp_review;
+		JPanel reviewPane, jp_review, jp_reviewResult;
 		JLabel jl_reviewName;
 		JButton btn_review;
 		JTextField jt_review;
 		MarketMgmUI main;
-		ArrayList<ProductVO> plist;
-		ArrayList<ReviewVO> rlist;
-		MyTableModel model;
-		MarketDAO dao;
+		Object[] columns = {"ID","게시물번호","리뷰"};	
+		Object[] row =new Object[3];  
+		DefaultTableModel model =new DefaultTableModel(columns,0);	
+		JTable table= new JTable(model); 	
 		
 //Constructor
+
 		public MarketReview(MarketMgmUI main) {
 			this.main = main;
-			this.reviewPane = main.reviewPane;	
-				}
+			reviewPane = main.reviewPane;	
+		}
 		
 //Method
-		/**
-		 * @wbp.parser.entryPoint
-		 */
-		public void review() {	
-//			JPanel searchPane = new JPanel();
-			main.switchPane(MarketMgmUI.REVIEW);
-			reviewPane.setLayout(null);
+		public void review() {		
 			
+			main.switchPane(MarketMgmUI.REVIEW);
 			jp_review = new JPanel();
-			jl_reviewName = new JLabel("조회 ID");
+			jp_reviewResult = new JPanel();
+			jl_reviewName = new JLabel("ID");
 			btn_review = new JButton("검색");
 			jt_review = new JTextField(20);
+			jl_reviewName.setFont(MarketMgmUI.font);
 			
 			jp_review.add(jl_reviewName);
 			jp_review.add(jt_review);
 			jp_review.add(btn_review);
-		
 			reviewPane.add(jp_review);
+			reviewPane.add(jp_reviewResult);
+			
+			jp_review.setBackground(Color.getHSBColor(100, 100, 82));
+			jp_reviewResult.setBackground(Color.getHSBColor(100, 100, 82));		
+					
+//			crateJTableData();	
+			model.setColumnIdentifiers(columns);
+			table.setModel(model);
 			
 			DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-			dtcr.setHorizontalAlignment(SwingConstants.CENTER);	
-
-//			if(mid.equals("show_review")){
-//			rlist = dao.review_list(comm,vo);
-//			}	
-//			rlist = dao.review_list(comm, vo);
-			
-			rlist = dao.review_list(comm, vo);
-			model = new MyTableModel(rlist,String comm);	
-			JTable table = new JTable(model);	
-		
-//			table.getColumn("구매").setCellRenderer(dtcr);
+		    TableColumnModel tcm = table.getColumnModel();
 		    
-		    JTableHeader header = table.getTableHeader();
-		    header.setBackground(Color.DARK_GRAY);
-		    header.setForeground(Color.white);  jp_review.setBackground(Color.white);
+		    table.getColumn("ID").setCellRenderer(dtcr);
+		    table.getColumn("게시물번호").setCellRenderer(dtcr);
+		    table.getColumn("리뷰").setCellRenderer(dtcr);
+		   
+		    JScrollPane pane=new JScrollPane(table);
+			pane.setBounds(50,100,100,100);
 			
-//			table.getColumn(table.getColumnName(0)).setPreferredWidth(50);	
-//			table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
-//			table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
-//			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
-//			table.getColumn(table.getColumnName(6)).setPreferredWidth(80);
-//			table.getColumn(table.getColumnName(7)).setPreferredWidth(200);
-			
-			table.setPreferredScrollableViewportSize(new Dimension(1000,1000));
+			jp_reviewResult.setLayout(new BorderLayout());
+			jp_reviewResult.add(BorderLayout.NORTH, new Label("물품 조회"));
+			jp_reviewResult.add(BorderLayout.SOUTH,pane);
+			main.add(reviewPane, BorderLayout.NORTH); 
+			reviewPane.add(jp_reviewResult);
 
-//			MyTableCellRenderer tcr = new MyTableCellRenderer(this,main);
-//			table.getColumnModel().getColumn(9).setCellEditor(tcr);
-//			table.getColumnModel().getColumn(9).setCellRenderer(tcr);
-			
-			TableColumnModel tcm = table.getColumnModel();			
-			
-			for(int i=0;i<table.getColumnCount();i++) {
-				if(i==0 || i==1 || i==2 || i==3 || i==4 || i==5 || i==6 || i==7 || i==8) {
-					tcm.getColumn(i).setCellRenderer(dtcr); 
-				}
-			}
-			JScrollPane pane=new JScrollPane(table);	   
-			
-			table.setRowHeight(table.getRowHeight() + 70);
-			table.setFillsViewportHeight(true);
-			
-			reviewPane.setLayout(new BorderLayout());			
-			reviewPane.add(BorderLayout.CENTER,pane);
-			reviewPane.add(BorderLayout.NORTH,jp_review);
-			main.add(reviewPane, BorderLayout.CENTER);
 			main.setVisible(true);	
-			
-			table.getModel().addTableModelListener(this);	
+			main.add(reviewPane);
 			btn_review.addActionListener(new MemberSearchEvent());
-			jt_review.addActionListener(new MemberSearchEvent());			
+			jt_review.addActionListener(new MemberSearchEvent());
+		}//search method
+		
+//		//전체리스트 JTableDate
+//		public void crateJTableData(){
+//			ArrayList<ProductVO> plist = main.system.list();
+//			model.setNumRows(0);
+//			
+//			for(ProductVO vo: plist) {
+//				if(vo != null) {
+//					row[0]=vo.getPid();
+//					row[1]=vo.getPname();
+//					row[2]=vo.getPrice();
+//					row[3]=vo.getAddress();
+//					row[4]=vo.getExplain();
+//					row[5]=vo.getPdate();
+//				
+//					model.addRow(row);
+//				}
+//				table.repaint();
+//			}
+//			model.fireTableDataChanged();
+//		}
+		
+		//특정값 JTableDate
+		public void crateJTableData(String id){
+			ArrayList <ReviewVO> rlist = main.system.review_s(id);
+			model.setNumRows(0);			
+			for(ReviewVO rvo :rlist) {
+				if(rvo != null) {
+					row[0]=rvo.getMid();
+					row[1]=rvo.getPid();
+					row[2]=rvo.getEvaluation();
+					model.addRow(row);
+				}
+				table.repaint();		
+			model.fireTableDataChanged();
+			}
 		}
-		    
+		//searchProc 
+		public void searchProc() {			
+			String id = jt_review.getText().trim();	
+			if (!jt_review.getText().equals("")) {
+				
+				/**추후 문자열 비교 필요함**/
+				if (jt_review.getText().trim().equals(id)) {		
+//						ReviewVO vo = new ReviewVO();
+					
+						crateJTableData(id);
+				} else {
+					JOptionPane.showMessageDialog(null, "등록된 물품이 존재하지 않습니다.");
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "물품명을 입력해주세요");
+				jt_review.requestFocus();
+			}
+		}			
+		
+		//이벤트 처리 클래스
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
 				if(obj == jt_review || obj == btn_review) {
-					String pname = jt_review.getText();
-//					search(pname);		
-				}
+					searchProc(); 
+				} 						
 			}
 		}
-		
-	    public void tableChanged(TableModelEvent e) { 
-	    	System.out.println(e.getSource());
-	        int row = e.getFirstRow();
-	        int column = e.getColumn();
-
-	       TableModel model = (TableModel)e.getSource();
-	        String columnName = model.getColumnName(column);
-	        Object data = model.getValueAt(row, column);       
-	    }
-	
+					
 }

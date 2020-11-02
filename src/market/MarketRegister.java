@@ -237,6 +237,8 @@ public class MarketRegister {
 		}else {
 			JOptionPane.showMessageDialog(null, main.getMsg("등록 실패!!"));
 		}
+		
+		
 	}
 
 	//이벤트 처리 클래스

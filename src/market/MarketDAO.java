@@ -1,3 +1,4 @@
+
 package market;
 import java.awt.print.Printable;
 //backup
@@ -124,30 +125,30 @@ class MarketDAO extends DBConn{
 		
 		return result;
 	}
-	/**
-	 *	join 
-	 */
-	public boolean join(MemberVO vo) {
-		boolean result = false;
-		
-		try {
-			String sql = "insert into market_member values(?,?,?,?,?,?,sysdate)";
-			getPreparedStatement(sql);
-			pstmt.setString(1, vo.getId());
-			pstmt.setString(2, vo.getPass());
-			pstmt.setString(3, vo.getName());
-			pstmt.setString(4, vo.getAddr());
-			pstmt.setString(5, vo.getPhone());
-			pstmt.setString(6, vo.getEmail());
-			int count = pstmt.executeUpdate();
-			if(count != 0) result = true;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
+	   /**
+	    *   join 
+	    */
+	   public boolean join(MemberVO vo) {
+	      boolean result = false;
+	      
+	      try {
+	         String sql = "insert into market_member values(?,?,?,?,?,?,sysdate,0,0)";
+	         getPreparedStatement(sql);
+	         pstmt.setString(1, vo.getId());
+	         pstmt.setString(2, vo.getPass());
+	         pstmt.setString(3, vo.getName());
+	         pstmt.setString(4, vo.getAddr());
+	         pstmt.setString(5, vo.getPhone());
+	         pstmt.setString(6, vo.getEmail());
+	         int count = pstmt.executeUpdate();
+	         if(count != 0) result = true;
+	         
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      
+	      return result;
+	   }
 	
 	/**
 	 *  insert
@@ -155,7 +156,7 @@ class MarketDAO extends DBConn{
 	public boolean insert(ProductVO vo) {
 		boolean result = false;
 		try {
-			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,?,sysdate)";
+			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,?,sysdate,999)";
 			getPreparedStatement(sql);
 			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getPname());
@@ -192,16 +193,12 @@ class MarketDAO extends DBConn{
 				vo.setPid(rs.getString(1));
 				vo.setPname(rs.getString(2));
 				vo.setPrice(rs.getInt(3));
-//				vo.setAddress(rs.getString(4));
-				vo.setExplain(rs.getString(5));
-				vo.setPdate(rs.getString(6));
 				vo.setPphone(rs.getString(4));
 				vo.setState(rs.getString(5));
 				vo.setMethod(rs.getString(6));
 				vo.setArea(rs.getString(7));
 				vo.setExplain(rs.getString(8));
 				vo.setPdate(rs.getString(9));
-//				vo.setRating(rs.getString(10));	//평점
 					
 				list.add(vo);
 			}
@@ -282,21 +279,19 @@ class MarketDAO extends DBConn{
 		return list;
 	}
 	
-	
+	/**
+	 * review comm 저장 
+	 */
 	public boolean review_list(String comm,ProductVO vo){
 			boolean result= false;
 		try {
-			String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into review values(?,?,?)";
 		getPreparedStatement(sql);
 		
 		pstmt.setString(1, vo.getMid());
-		pstmt.setString(2, vo.getMid());
-		pstmt.setString(3, vo.getMid());
-		pstmt.setString(4, vo.getMid());
-//		pstmt.setInt(5, vo.getPid());
-//		pstmt.setInt(6, vo.getRating());
-		pstmt.setString(7, comm);
-		pstmt.setString(7, comm);
+		pstmt.setString(2, vo.getPid());
+		pstmt.setString(3, comm);
+
 
 		int count=pstmt.executeUpdate();
 		if(count!=0) 	result =true;
@@ -304,10 +299,59 @@ class MarketDAO extends DBConn{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return result;
 	}
 	
+	/**
+	 * review row-기림
+	 */
+	public boolean review_row(ProductVO vo) {
+		boolean result  = false;
+		
+		try {
+			String sql =" update product set t_row =? where pid = ? ";
+			getPreparedStatement(sql);
+			
+			pstmt.setString(1,vo.getPid());
+			pstmt.setString(2,vo.getPid());
+			
+			int count=pstmt.executeUpdate();
+			if(count!=0) 	result =true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return  result;
+	}
+	/**
+	 * review 출력 - 기림
+	 */
+	/**리뷰 출력**/
+	public ArrayList <ReviewVO> review_s(String id)
+	{
+		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
+//			ArrayList <ReviewVO> vo = new  ArrayReviewVO ();
+			try {
+				String sql = " select mid,pid,evaluation from review where mid = ?";
+				getPreparedStatement(sql);
+				
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					ReviewVO vo = new ReviewVO();
+					vo.setMid(rs.getString(1));
+					vo.setPid(rs.getString(2));
+					vo.setEvaluation(rs.getString(3));
+					
+					rlist.add(vo);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rlist;
+	}
 	
 	/** 
 	 * delete select -민석
