@@ -14,6 +14,7 @@ import java.awt.event.WindowEvent;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -57,6 +58,7 @@ public class MarketMgmUI extends JFrame {
 	Socket socket;
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
+	int now_room;
 
 	JFrame frame = new JFrame();
 	JPanel regPane = new JPanel();
@@ -90,12 +92,7 @@ public class MarketMgmUI extends JFrame {
 
 	// Method
 	public void showMain() { // 10.22 영재 수정
-
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage());
+		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 
 		// 영재-C:/java_workspace/market/images/login_main.png
 		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
@@ -273,6 +270,7 @@ public class MarketMgmUI extends JFrame {
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
 			msgVO.setStatus(CONNECT);
+			msgVO.setRoom_num(now_room);
 
 			
 			oos.writeObject(msgVO);
@@ -404,6 +402,10 @@ public class MarketMgmUI extends JFrame {
 						main.serverConnect();
 						//서버와 연결 시 server_state 1로 변경
 						system.server_state(vo,1);
+						//now_room defualt 설정
+						ArrayList<String> list=main.system.chat_list(vo.id);
+						now_room=Integer.parseInt(list.get(0));
+						
 					}
 					start();
 				}

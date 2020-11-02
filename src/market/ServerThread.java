@@ -10,6 +10,7 @@ public class ServerThread extends Thread {
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
 	
+	
 	//Constructor
 	public ServerThread(Socket socket) {
 		try {

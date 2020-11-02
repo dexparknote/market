@@ -14,6 +14,10 @@ public class MarketMgmSystem {
 		public int login_room_num(String id) {
 			return dao.login_room_num(id);
 		}
+	//get_pid(main.vo.getId()
+		public int get_pid(int id) {
+			return dao.get_pid(id);
+		}
 	
 	//채팅 리스트 받아오기
 	public ArrayList<String> chat_list(String id) {

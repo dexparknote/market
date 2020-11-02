@@ -164,8 +164,9 @@ class MemberChatEvent implements ActionListener, ListSelectionListener{
 	
 	public void valueChanged(ListSelectionEvent e) {
 		//클릭된 번호 갖어오기
-		String name = (String) list_chatlist.getSelectedValue();
-		System.out.println(name);
+		String clike_room = (String) list_chatlist.getSelectedValue();
+		main.now_room=Integer.parseInt(clike_room);
+		System.out.println(clike_room);
 		//arraylist에 채팅방 별로 내용 저장하기
 		//채팅방 내용 textarea에 보여주기
 		
@@ -185,6 +186,7 @@ class MemberChatEvent implements ActionListener, ListSelectionListener{
 						msgVO.setName(mvo.getId());
 						msgVO.setMsg(msg);
 						msgVO.setStatus(MarketMgmUI.TALKING);
+						msgVO.setRoom_num(main.now_room);
 						oos.writeObject(msgVO);
 						
 					
