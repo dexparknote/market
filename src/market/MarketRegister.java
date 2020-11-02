@@ -3,19 +3,20 @@ package market;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -32,6 +33,7 @@ public class MarketRegister {
 		JComboBox jc_area,jc_method;
 		MemberVO mvo = new MemberVO();
 		ButtonGroup group;
+		JScrollPane jScrollPane = new JScrollPane();
 		
 	//Constructor
 	public MarketRegister() {}
@@ -47,75 +49,75 @@ public class MarketRegister {
     */
 	public void register() {
 		main.switchPane(MarketMgmUI.REGISTER);
-//		ImagePanel regPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/register_back.png").getImage());
+//		JPanel regPane = new JPanel();
 		regPane.setLayout(null);
 		
 		JLabel jl_name = new JLabel("-  \uC0C1\uD488 \uC774\uB984 ");
 		jl_name.setFont(new Font("제주고딕", Font.PLAIN, 19));
 		jl_name.setHorizontalAlignment(SwingConstants.CENTER);
-		jl_name.setBounds(58, 46, 410, 34);
+		jl_name.setBounds(58, 32, 410, 34);
 		regPane.add(jl_name);
 		
 		JLabel jl_price = new JLabel("- \uC0C1\uD488 \uAC00\uACA9");
 		jl_price.setHorizontalAlignment(SwingConstants.CENTER);
 		jl_price.setFont(new Font("제주고딕", Font.PLAIN, 19));
-		jl_price.setBounds(58, 109, 410, 34);
+		jl_price.setBounds(58, 76, 410, 34);
 		regPane.add(jl_price);
 		
 		JLabel jl_pphone = new JLabel("- \uAC70\uB798 \uC2DC \uC5F0\uB77D\uCC98");
 		jl_pphone.setHorizontalAlignment(SwingConstants.CENTER);
 		jl_pphone.setFont(new Font("제주고딕", Font.PLAIN, 19));
-		jl_pphone.setBounds(45, 175, 436, 34);
+		jl_pphone.setBounds(58, 120, 436, 34);
 		regPane.add(jl_pphone);
 		
 		JLabel jl_explain = new JLabel("- \uC0C1\uD488 \uC815\uBCF4");
 		jl_explain.setHorizontalAlignment(SwingConstants.CENTER);
 		jl_explain.setFont(new Font("제주고딕", Font.PLAIN, 19));
-		jl_explain.setBounds(58, 462, 410, 34);
+		jl_explain.setBounds(58, 321, 410, 34);
 		regPane.add(jl_explain);
 		
 		JLabel jl_state = new JLabel("- \uC0C1\uD488 \uC0C1\uD0DC ");
 		jl_state.setHorizontalAlignment(SwingConstants.CENTER);
 		jl_state.setFont(new Font("제주고딕", Font.PLAIN, 19));
-		jl_state.setBounds(58, 248, 410, 34);
+		jl_state.setBounds(58, 164, 410, 34);
 		regPane.add(jl_state);
 		
 		JLabel jl_mehod = new JLabel("- \uAC70\uB798 \uBC29\uBC95 ");
 		jl_mehod.setHorizontalAlignment(SwingConstants.CENTER);
 		jl_mehod.setFont(new Font("제주고딕", Font.PLAIN, 19));
-		jl_mehod.setBounds(58, 318, 410, 34);
+		jl_mehod.setBounds(58, 214, 410, 34);
 		regPane.add(jl_mehod);
 		
 		JLabel jl_area = new JLabel("- \uAC70\uB798 \uC9C0\uC5ED");
 		jl_area.setHorizontalAlignment(SwingConstants.CENTER);
 		jl_area.setFont(new Font("제주고딕", Font.PLAIN, 19));
-		jl_area.setBounds(58, 390, 410, 34);
+		jl_area.setBounds(58, 266, 410, 34);
 		regPane.add(jl_area);
 		
 		jt_name = new JTextField();
-		jt_name.setBounds(399, 52, 130, 27);
+		jt_name.setBounds(399, 38, 130, 27);
 		regPane.add(jt_name);
 		jt_name.setColumns(10);
 		
 		jt_price = new JTextField();
 		jt_price.setColumns(10);
-		jt_price.setBounds(399, 115, 130, 27);
+		jt_price.setBounds(399, 82, 130, 27);
 		regPane.add(jt_price);
 		
 		jt_pphone = new JTextField();
 		jt_pphone.setColumns(10);
-		jt_pphone.setBounds(398, 181, 182, 27);
+		jt_pphone.setBounds(399, 126, 182, 27);
 		regPane.add(jt_pphone);
 		
 		jt_explain = new JTextField();
 		jt_explain.setColumns(10);
-		jt_explain.setBounds(399, 462, 343, 90);
+		jt_explain.setBounds(399, 321, 343, 90);
 		regPane.add(jt_explain);
 		
 		jr_no = new JRadioButton("사용감 없음");
 		jr_no.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		jr_no.setBackground(Color.WHITE);
-		jr_no.setBounds(554, 249, 119, 34);
+		jr_no.setBounds(555, 165, 119, 34);
 		regPane.add(jr_no);
 		jr_no.setActionCommand("사용감 없음");
 		
@@ -124,7 +126,7 @@ public class MarketRegister {
 		jr_yes = new JRadioButton("사용감 있음");
 		jr_yes.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		jr_yes.setBackground(Color.WHITE);
-		jr_yes.setBounds(399, 249, 119, 34);
+		jr_yes.setBounds(399, 165, 119, 34);
 		
 		regPane.add(jr_yes);
 		jr_yes.setActionCommand("사용감 있음");
@@ -137,30 +139,33 @@ public class MarketRegister {
 		jc_method.setModel(new DefaultComboBoxModel(new String[] {"직거래","배송","직거래 또는 배송"}));
 		jc_method.setFont(new Font("제주고딕", Font.PLAIN, 19));
 		jc_method.setBackground(Color.WHITE);
-		jc_method.setBounds(399, 324, 152, 23);
+		jc_method.setBounds(399, 220, 152, 23);
 		regPane.add(jc_method);
 
 		jc_area = new JComboBox();
 		jc_area.setModel(new DefaultComboBoxModel(new String[] {"강원도","경기도","경상남도","경상북도","광주광역시", "대구광역시","대전광역시", "부산광역시","서울특별시", "세종특별자치시","울산광역시", "인천광역시",  "전라남도","전라북도","제주도특별자치도","충청남도","충청북도"}));
 		jc_area.setFont(new Font("제주고딕", Font.PLAIN, 19));
 		jc_area.setBackground(Color.WHITE);
-		jc_area.setBounds(399, 396, 152, 23);
+		jc_area.setBounds(399, 272, 152, 23);
 		regPane.add(jc_area);
 		
 		btnReg = new JButton("\uC0C1\uD488 \uB4F1\uB85D");
 		btnReg.setFont(new Font("제주고딕", Font.PLAIN, 19));
 		btnReg.setForeground(new Color(153, 204, 255));
 		btnReg.setBackground(Color.DARK_GRAY);
-		btnReg.setBounds(604, 570, 119, 34);
+		btnReg.setBounds(597, 433, 119, 34);
 		regPane.add(btnReg);
 		
 		btnReset = new JButton("\uC0C1\uD488 \uCDE8\uC18C");
 		btnReset.setFont(new Font("제주고딕", Font.PLAIN, 19));
 		btnReset.setForeground(new Color(153, 204, 255));
 		btnReset.setBackground(Color.DARK_GRAY);
-		btnReset.setBounds(747, 570, 119, 34);
+		btnReset.setBounds(745, 433, 119, 34);
 		regPane.add(btnReset);
 			
+		
+		
+		
 		main.getContentPane().add(regPane, BorderLayout.CENTER);
 		main.setVisible(true);
 			
@@ -222,15 +227,16 @@ public class MarketRegister {
 		//member 테이블에 등록
 		boolean result =main.system.register(vo);
 		
+		//서버와 연결이 되있지 않다면 서버와 연결
+		if(mvo.getServer_state()==0) {
+			main.serverConnect(); //server_state vo에서 int로 바꿔야함 ㅠ
+		}
+		
 		if(result) {
 			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
 		}else {
 			JOptionPane.showMessageDialog(null, main.getMsg("등록 실패!!"));
 		}
-		
-//		if(MemberMgmUI.list.add(vo))
-//			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
-		
 	}
 
 	//이벤트 처리 클래스

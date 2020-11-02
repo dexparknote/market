@@ -10,6 +10,27 @@ public class MarketMgmSystem {
 	public MarketMgmSystem() {
 		dao = new MarketDAO();
 	}
+	//로그인 했을때 방번호 지정(가장 먼저 생성 되었던 방으로)
+		public int login_room_num(String id) {
+			return dao.login_room_num(id);
+		}
+	
+	//채팅 리스트 받아오기
+	public ArrayList<String> chat_list(String id) {
+		return dao.chat_list(id);
+	}
+	
+	public boolean login_state(MemberVO vo,int login_state) {
+		return dao.login_state(vo,login_state);
+	}
+	
+	public boolean server_state(MemberVO vo,int server_state) {
+		return dao.server_state(vo,server_state);
+	}
+	
+	public boolean SellCkeck(MemberVO vo) {
+		return dao.SellCkeck(vo);
+	}
 	
 	public boolean join(MemberVO vo) {
 		return dao.join(vo);
@@ -84,5 +105,26 @@ public class MarketMgmSystem {
 		return dao.loginCheck(mid, mpass);
 	}
 	
+<<<<<<< HEAD
 	
+=======
+	/** 현재 로그인 아이디 */
+	public boolean loginIng(String mid) {
+		return dao.loginIng(mid);
+	}
+	
+	/** 회원 정보 찾기 */
+	public int searchMember(String mid) {
+		return dao.searchMember(mid);
+	}
+	
+	/** 회원 조회 */
+	public MemberVO selectMember(String mpass) {
+		return dao.selectMember(mpass);
+	}
+	
+	public boolean update_info(MemberVO mvo) {
+		return dao.update_info(mvo);
+	}
+>>>>>>> refs/heads/master
 } // class
