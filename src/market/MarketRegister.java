@@ -235,9 +235,9 @@ public class MarketRegister {
 		}
 		
 		if(result) {
-			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
+			JOptionPane.showMessageDialog(null,"등록 성공!!");
 		}else {
-			JOptionPane.showMessageDialog(null, main.getMsg("등록 실패!!"));
+			JOptionPane.showMessageDialog(null,"등록 실패!!");
 		}
 	}
 
