@@ -157,7 +157,7 @@ public class MarketMgmUI extends JFrame {
 		menuPane = new JPanel();
 		menuPane.setBounds(0, 130, 200, 650);
 		mainPane.setBounds(200, 130, 1000, 650);
-		jl_title = new JLabel("null\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4");
+		jl_title = new JLabel(vo.getId() + "\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4");
 		jl_title.setBounds(270, 32, 405, 22);
 		jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 		jl_img.setBounds(299, 16, -1, -1);
@@ -395,7 +395,7 @@ public class MarketMgmUI extends JFrame {
 			msgVO.setRoom_num(now_room);
 
 			oos.writeObject(msgVO);
-			
+			 
 			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
 			ClientThread ct = new ClientThread(ois,content,input,this);
 			ct.start();
