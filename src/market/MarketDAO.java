@@ -418,7 +418,7 @@ class MarketDAO extends DBConn{
 		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
 //			ArrayList <ReviewVO> vo = new  ArrayReviewVO ();
 			try {
-				String sql = " select mid,pid,evaluation,rdate from review where mid = ?";
+				String sql = " select mid,pid,evaluation,rdate from review where mid = ? order by rdate desc";
 				getPreparedStatement(sql);
 				
 				pstmt.setString(1, id);
