@@ -161,13 +161,21 @@ class MarketDAO extends DBConn{
 	}
 	
 	
-	public boolean review_list(String comm){
+	public boolean review_list(String comm,ProductVO vo){
 			boolean result= false;
 		try {
-			String sql = "insert into review values(mid,pid,rating,?)";
+			String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?,?)";
 		getPreparedStatement(sql);
 		
-		pstmt.setString(4, comm);
+		pstmt.setString(1, vo.getMid());
+		pstmt.setString(2, vo.getMid());
+		pstmt.setString(3, vo.getMid());
+		pstmt.setString(4, vo.getMid());
+		pstmt.setInt(5, vo.getPid());
+		pstmt.setInt(6, vo.getRating());
+		pstmt.setString(7, comm);
+		pstmt.setString(7, comm);
+
 		int count=pstmt.executeUpdate();
 		if(count!=0) 	result =true;
 			

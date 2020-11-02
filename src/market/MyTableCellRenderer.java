@@ -41,9 +41,10 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 //						 main.REVIEW
 						  String comm=JOptionPane.showInputDialog(null, "리뷰를 입력해주세요");
 						  
-						  main.system.review_list(comm);
+
 						  System.out.println("comm="+comm+"  row="+row+"제품="+ vo.getPname());
 						  
+						  main.system.review_list(comm);
 //						  main.system.review_list(comm, vo);
 						    
 					 }else {

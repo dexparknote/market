@@ -75,6 +75,7 @@ import javax.swing.table.TableModel;
 //			rlist = dao.review_list(comm,vo);
 //			}	
 //			rlist = dao.review_list(comm, vo);
+			
 			rlist = dao.review_list(comm, vo);
 			model = new MyTableModel(rlist,String comm);	
 			JTable table = new JTable(model);	
