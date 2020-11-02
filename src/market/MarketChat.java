@@ -108,7 +108,9 @@ public void chat() {
 	DefaultListModel model = new DefaultListModel();
 	list_chatlist = new JList(model);
 	list_chatlist.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
-	for(String id:main.system.chat_list(mvo.id)) model.addElement(id);
+	for(String id:main.system.chat_list(mvo.id)) {
+		model.addElement("["+id+"] "+main.system.get_pname(id));
+	}
 	list_chatlist.setBounds(23, 48, 112, 241);
 	panel.add(list_chatlist);
 	

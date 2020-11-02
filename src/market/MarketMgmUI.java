@@ -324,6 +324,8 @@ public class MarketMgmUI extends JFrame {
 		
 
 		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
+//		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage());
+		//영재 "C:/java_workspace/market/images/north.png"
 
 //		north_panel = new JPanel();
 //		north_panel.setBackground(new Color(153, 204, 255));

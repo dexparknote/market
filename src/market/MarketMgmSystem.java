@@ -10,6 +10,11 @@ public class MarketMgmSystem {
 	public MarketMgmSystem() {
 		dao = new MarketDAO();
 	}
+	//get_pname
+	public String get_pname(String id) {
+		return dao.get_pname(id);
+	}
+	
 	//로그인 했을때 방번호 지정(가장 먼저 생성 되었던 방으로)
 		public int login_room_num(String id) {
 			return dao.login_room_num(id);
