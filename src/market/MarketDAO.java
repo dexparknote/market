@@ -179,26 +179,27 @@ class MarketDAO extends DBConn{
 	/**
 	 * select - 기림
 	 */
-	public ArrayList<ProductVO> select(){
+	public ArrayList<ProductVO> search_list(){
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
-			String sql = " select pid, pname, price, pphone, state, method, area, explain, pdate  " + 
-						" from (select pid, pname, price, pphone, state, method, area, explain, pdate from product " + 
+			String sql = " select pid, mid, pname, price, pphone, state, method, area, explain, pdate  " + 
+						" from (select pid,mid, pname, price, pphone, state, method, area, explain, pdate from product " + 
 						"      order by pid desc)";
 			getPreparedStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ProductVO vo = new ProductVO();
 				vo.setPid(rs.getString(1));
-				vo.setPname(rs.getString(2));
-				vo.setPrice(rs.getInt(3));
-				vo.setPphone(rs.getString(4));
-				vo.setState(rs.getString(5));
-				vo.setMethod(rs.getString(6));
-				vo.setArea(rs.getString(7));
-				vo.setExplain(rs.getString(8));
-				vo.setPdate(rs.getString(9));
+				vo.setMid(rs.getString(2));
+				vo.setPname(rs.getString(3));
+				vo.setPrice(rs.getInt(4));
+				vo.setPphone(rs.getString(5));
+				vo.setState(rs.getString(6));
+				vo.setMethod(rs.getString(7));
+				vo.setArea(rs.getString(8));
+				vo.setExplain(rs.getString(9));
+				vo.setPdate(rs.getString(10));
 					
 				list.add(vo);
 			}
@@ -247,11 +248,11 @@ class MarketDAO extends DBConn{
 	/**
 	 * select(String name) - 기림
 	 */
-	public ArrayList<ProductVO> select(String pname){
+	public ArrayList<ProductVO> search_list(String pname){
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
-			String sql = "select pid, pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%'";
+			String sql = "select pid,mid,pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%'";
 			getPreparedStatement(sql);
 			pstmt.setString(1, pname);
 			rs = pstmt.executeQuery();
@@ -259,14 +260,15 @@ class MarketDAO extends DBConn{
 			while(rs.next()) {
 				ProductVO vo = new ProductVO();
 				vo.setPid(rs.getString(1));
-				vo.setPname(rs.getString(2));
-				vo.setPrice(rs.getInt(3));
-				vo.setPphone(rs.getString(4));
-				vo.setState(rs.getString(5));
-				vo.setMethod(rs.getString(6));
-				vo.setArea(rs.getString(7));
-				vo.setExplain(rs.getString(8));
-				vo.setPdate(rs.getString(9));
+				vo.setMid(rs.getString(2));
+				vo.setPname(rs.getString(3));
+				vo.setPrice(rs.getInt(4));
+				vo.setPphone(rs.getString(5));
+				vo.setState(rs.getString(6));
+				vo.setMethod(rs.getString(7));
+				vo.setArea(rs.getString(8));
+				vo.setExplain(rs.getString(9));
+				vo.setPdate(rs.getString(10));
 					
 				list.add(vo);
 			}
@@ -279,9 +281,9 @@ class MarketDAO extends DBConn{
 	}
 	
 	/**
-	 * review comm 저장 
+	 * review_insert -기림 
 	 */
-	public boolean review_list(String comm,ProductVO vo){
+	public boolean review_insert(String comm,ProductVO vo){
 			boolean result= false;
 		try {
 			String sql = "insert into review values(?,?,?,sysdate)";
@@ -302,9 +304,9 @@ class MarketDAO extends DBConn{
 	}
 	
 	/**
-	 * review row-기림
+	 * product_row -기림
 	 */
-	public boolean review_row(ProductVO vo) {
+	public boolean product_row(ProductVO vo) {
 		boolean result  = false;
 		
 		try {
@@ -323,11 +325,11 @@ class MarketDAO extends DBConn{
 		
 		return  result;
 	}
+	
 	/**
 	 * review 출력 - 기림
 	 */
-	/**리뷰 출력**/
-	public ArrayList <ReviewVO> review_s(String id)
+	public ArrayList <ReviewVO> review_list(String id)
 	{
 		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
 //			ArrayList <ReviewVO> vo = new  ArrayReviewVO ();

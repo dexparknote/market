@@ -10,33 +10,21 @@ class MyTableModel extends AbstractTableModel {
 	//Field
     boolean DEBUG = true;
     ImageIcon [] icon = new ImageIcon[6];
-    String[] columnNames= new String[]{"게시물번호","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일","구매"};
+    String[] columnNames= new String[]{"게시물번호","판매자ID","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일","구매"};
     private Object[][] data;
-    Object value;
-    
-//    String[] rcolumnNames= new String[]{"ID","가격","상태","거래방법","거래지역","상품정보","구매평","등록일"};
+    Object value;   
     
     //Constructor
     MyTableModel(ArrayList<ProductVO> plist) {  
     	int i=0;	
     	data = new Object[plist.size()][];      	
     	for(ProductVO vo : plist) {
-//    		icon[i] = newImageIcon("이미지파일"+vo.getSimg());
-    		data[i] = new Object[]{vo.getPid(),vo.getPname(),vo.getPrice(),vo .getPphone(),vo.getState(),vo.getMethod(),vo.getArea(),vo.getExplain(),vo.getPdate(),null};
+//    		icon[i] = newImageIcon("이미지파일"+vo.getSimg());  추후에 이미지 파일 작업시 
+    		data[i] = new Object[]{vo.getPid(),vo.getMid(),vo.getPname(),vo.getPrice(),vo .getPphone(),vo.getState(),vo.getMethod(),vo.getArea(),vo.getExplain(),vo.getPdate(),null};
     		i++;	   	
     		
     	}
     }   
-    
-//    MyTableModel(ArrayList<ReviewVO>rlist,String comm) {  
-//    	int i=0;	
-//    	data = new Object[rlist.size()][];      	
-//    	for(ReviewVO vo : rlist) {
-////    		icon[i] = new ImageIcon("이미지파일"+vo.getSimg());
-//    		data[i] = new Object[]{vo.getMid(),vo.getPrice(),vo.getState(),vo.getArea(),vo.getMethod(),vo.getEvaluation(),vo.getRdate()};
-//    		i++;	   	
-//    	}
-//    }
     
     public int getColumnCount() {	
         return columnNames.length;
@@ -59,7 +47,7 @@ class MyTableModel extends AbstractTableModel {
     }
 
     public boolean isCellEditable(int row, int col) {
-        return col==1 || col==9 ? true : false;	
+        return col==1 || col==10 ? true : false;	
     }
 
     public void setValue(Object value) {
@@ -75,11 +63,5 @@ class MyTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col);
         setValue(value);       
     }
-    
-    
-    
-    
-    
-    
-    
+        
 } 

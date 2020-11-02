@@ -1,4 +1,3 @@
-
 package market;
 
 import java.awt.BorderLayout;
@@ -22,15 +21,14 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
-
 	public class MarketSearch  implements TableModelListener{
 //Field
+		MarketMgmUI main;
 		JPanel searchPane; 
 		JPanel jp_search;
 		JLabel jl_searchName;
 		JButton btn_search;
 		JTextField jt_search;
-		MarketMgmUI main;
 		ArrayList<ProductVO> plist;
 		MyTableModel model;
 		MarketDAO dao;
@@ -66,9 +64,9 @@ import javax.swing.table.TableModel;
 			dtcr.setHorizontalAlignment(SwingConstants.CENTER);	
 
 			if(pname.equals("show_all")){
-			plist = dao.select();
+			plist = dao.search_list();
 			}else {
-			plist = dao.select(pname);
+			plist = dao.search_list(pname);
 			}		
 			model = new MyTableModel(plist);	
 			JTable table = new JTable(model);	
@@ -84,18 +82,18 @@ import javax.swing.table.TableModel;
 			table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
 			table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
 			table.getColumn(table.getColumnName(6)).setPreferredWidth(80);
-			table.getColumn(table.getColumnName(7)).setPreferredWidth(200);
+			table.getColumn(table.getColumnName(8)).setPreferredWidth(200);
 			
 			table.setPreferredScrollableViewportSize(new Dimension(1000,1000));
 
 			MyTableCellRenderer tcr = new MyTableCellRenderer(this,main);
-			table.getColumnModel().getColumn(9).setCellEditor(tcr);
-			table.getColumnModel().getColumn(9).setCellRenderer(tcr);
+			table.getColumnModel().getColumn(10).setCellEditor(tcr);
+			table.getColumnModel().getColumn(10).setCellRenderer(tcr);
 			
 			TableColumnModel tcm = table.getColumnModel();			
 			
 			for(int i=0;i<table.getColumnCount();i++) {
-				if(i==0 || i==1 || i==2 || i==3 || i==4 || i==5 || i==6 || i==7 || i==8) {
+				if(i==0 || i==1 || i==2 || i==3 || i==4 || i==5 || i==6 || i==7 || i==8 || i==9) {
 					tcm.getColumn(i).setCellRenderer(dtcr); 
 				}
 			}

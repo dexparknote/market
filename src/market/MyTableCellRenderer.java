@@ -18,7 +18,6 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 	ProductVO vo;
 	MemberVO mvo = new MemberVO();
 
-	
 	public MyTableCellRenderer(MarketSearch market_s,MarketMgmUI main) {
 		this.market_s = market_s ;
 		this.main = main;
@@ -27,7 +26,7 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 	
 	public Component getTableCellRendererComponent(JTable table,Object value,	boolean isSelected,boolean hasFocus,int row,	int column) {
 		JButton comp =null;
-		if(column ==9) {
+		if(column ==10) {
 			 comp = new JButton("구매");
 		}
 		return comp;
@@ -43,18 +42,19 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 					 int review_result = JOptionPane.showConfirmDialog(null, "리뷰하시겠습니까?");
 					 if(review_result == 0) {
 						  String comm=JOptionPane.showInputDialog(null, "리뷰를 입력해주세요");
+						  
 						  ProductVO vo = market_s.plist.get(row);
-						  vo.setMid(mvo.getId());	//mvo로 mid 넘김
+						  vo.setMid(mvo.getId());	
+						  
 						  ReviewVO rvo = new ReviewVO();
 						  rvo.setMid(mvo.getId());
 						  rvo.setPid(vo.getPid());
-						  rvo.setEvaluation(comm);
+						  rvo.setEvaluation(comm);				  
 						  
-						  System.out.println("comm="+comm+"  row="+row+"제품="+ vo.getMid());	//test code
+						  main.system.product_row(vo);
+						  main.system.review_insert(comm,vo);
+						  main.system.delete_review(vo.getPid());	
 						  
-						  main.system.review_row(vo);
-						  main.system.review_list(comm,vo);
-						  main.system.delete_review(vo.getPid());						  
 						  new MarketSearch(main, main.system.dao).search("show_all");	
 					 }else {
 						 JOptionPane.showMessageDialog(null,"리뷰 등록이 취소되었습니다.");
@@ -79,6 +79,5 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 	public boolean shouldSelectCell(EventObject anEvent) {
 		return true;
 	}
-	
 	
 }

@@ -26,10 +26,10 @@ public class MarketReview {
    // Field
    MarketMgmUI main;
    JPanel reviewPane;
-   JPanel jp_review_search, jp_reviewResult , search_pack;
-   JTextField jt_reviewSearch;
-   JButton reviewSearch;
-   JLabel jl_deleteSearchName, block1, block2, block3, block4;
+   JPanel jp_search , search_pack;
+   JLabel jl_reviewName, block1, block2, block3, block4;
+   JButton btn_search;
+   JTextField jt_Search;
    Object[] columns = {"ID","게시물번호","리뷰","리뷰등록일"};
    Object[] row =new Object[4];  
    DefaultTableModel model =new DefaultTableModel(columns,0);   
@@ -51,45 +51,44 @@ public class MarketReview {
       main.switchPane(MarketMgmUI.REVIEW);
       reviewPane.setLayout(null);
       
-      jp_review_search = new JPanel();
-      jp_reviewResult = new JPanel();
+      jp_search = new JPanel();
       search_pack = new JPanel();
       
       block1 = new JLabel();
-      jp_review_search.add(block1);
+      jp_search.add(block1);
       
-      jl_deleteSearchName = new JLabel("[ 검색 ID ]  ");
-      jl_deleteSearchName.setFont(new Font("제주고딕", Font.PLAIN, 16));
-      jl_deleteSearchName.setBounds(205, 28, 58, 15);
-      jp_review_search.add(jl_deleteSearchName);
+      jl_reviewName = new JLabel("[ 검색 ID ]  ");
+      jl_reviewName.setFont(new Font("제주고딕", Font.PLAIN, 16));
+      jl_reviewName.setBounds(205, 28, 58, 15);
+      jp_search.add(jl_reviewName);
       
       block2 = new JLabel("  ");
-      jp_review_search.add(block2);
+      jp_search.add(block2);
       
-      jt_reviewSearch = new JTextField();
-      jt_reviewSearch.setBounds(284, 25, 156, 21);
-      jp_review_search.add(jt_reviewSearch);
-      jt_reviewSearch.setColumns(20);
+      jt_Search = new JTextField();
+      jt_Search.setBounds(284, 25, 156, 21);
+      jp_search.add(jt_Search);
+      jt_Search.setColumns(20);
       
       block3 = new JLabel("   ");
-      jp_review_search.add(block3);
+      jp_search.add(block3);
       
-      reviewSearch = new JButton("검 색");
-      reviewSearch.setForeground(new Color(160, 204, 255));
-      reviewSearch.setBackground(Color.DARK_GRAY);
-      reviewSearch.setFont(new Font("제주고딕", Font.PLAIN, 16));
-      reviewSearch.setBounds(452, 24, 64, 23);
-      jp_review_search.add(reviewSearch);
+      btn_search = new JButton("검 색");
+      btn_search.setForeground(new Color(160, 204, 255));
+      btn_search.setBackground(Color.DARK_GRAY);
+      btn_search.setFont(new Font("제주고딕", Font.PLAIN, 16));
+      btn_search.setBounds(452, 24, 64, 23);
+      jp_search.add(btn_search);
       
       block4 = new JLabel();
-      jp_review_search.add(block4);
+      jp_search.add(block4);
       
       search_pack.add(new JLabel("  "));
-      search_pack.add(jp_review_search);
+      search_pack.add(jp_search);
       search_pack.add(new JLabel("  "));
       search_pack.setLayout(new GridLayout(3,1));
       
-      reviewPane.add(jp_reviewResult);
+
       reviewPane.add(search_pack); 
       
       model.setColumnIdentifiers(columns);
@@ -100,7 +99,8 @@ public class MarketReview {
        TableColumnModel tcm = table.getColumnModel();
        JTableHeader header = table.getTableHeader();
        header.setBackground(Color.DARK_GRAY);
-       header.setForeground(Color.white);  jp_review_search.setBackground(Color.white); jp_reviewResult.setBackground(Color.white);
+       header.setForeground(Color.white);  jp_search.setBackground(Color.white);
+
        search_pack.setBackground(Color.white);
        
        table.getColumn("ID").setCellRenderer(dtcr);
@@ -120,24 +120,22 @@ public class MarketReview {
       table.setRowHeight(table.getRowHeight() + 70);
       table.setFillsViewportHeight(true);
       
-      
-      jp_reviewResult.setLayout(new BorderLayout());
+   
       reviewPane.setLayout(new BorderLayout());         
          
-      reviewPane.add(BorderLayout.CENTER,jp_reviewResult);
       reviewPane.add(BorderLayout.SOUTH,pane);
       reviewPane.add(BorderLayout.NORTH,search_pack);
       main.add(reviewPane, BorderLayout.CENTER);
       
       main.setVisible(true);
 
-      jt_reviewSearch.addActionListener(new MemberSearchEvent());
-      reviewSearch.addActionListener(new MemberSearchEvent());
+      jt_Search.addActionListener(new MemberSearchEvent());
+      btn_search.addActionListener(new MemberSearchEvent());
 		}//search method
 			
 		//특정값 JTableDate
 		public void crateJTableData(String id){
-			ArrayList <ReviewVO> rlist = main.system.review_s(id);
+			ArrayList <ReviewVO> rlist = main.system.review_list(id);
 			model.setNumRows(0);			
 			for(ReviewVO rvo :rlist) {
 				if(rvo != null) {
@@ -153,17 +151,17 @@ public class MarketReview {
 		}
 		//searchProc 
 		public void searchProc() {			
-			String id =  jt_reviewSearch.getText().trim();	
-			if (! jt_reviewSearch.getText().equals("")) {
+			String id =  jt_Search.getText().trim();	
+			if (! jt_Search.getText().equals("")) {
 				
-				if ( jt_reviewSearch.getText().trim().equals(id)) {		
+				if ( jt_Search.getText().trim().equals(id)) {		
 						crateJTableData(id);
 				} else {
 					JOptionPane.showMessageDialog(null, "ID가 존재하지 않습니다.");
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "ID를 입력해주세요");
-				 jt_reviewSearch.requestFocus();
+				jt_Search.requestFocus();
 			}
 		}			
 		
@@ -171,7 +169,7 @@ public class MarketReview {
 		class MemberSearchEvent implements ActionListener{
 			public void actionPerformed(ActionEvent ae) {
 				Object obj = ae.getSource();
-				if(obj == jt_reviewSearch || obj == reviewSearch) {
+				if(obj == jt_Search || obj == btn_search) {
 					searchProc(); 
 				} 						
 			}

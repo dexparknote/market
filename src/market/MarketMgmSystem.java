@@ -40,40 +40,40 @@ public class MarketMgmSystem {
 		return dao.insert(vo);
 	}
 	
-	/**전체 리스트 - 기림**/
-	public ArrayList <ProductVO> list() {
-		return dao.select();
+	/**전체 조회 리스트 - 기림**/
+	public ArrayList <ProductVO> search_list() {
+		return dao.search_list();
 	}
 	
-	/**삭제 리스트 - 민석**/
-	public ArrayList <ProductVO> delete_list(MemberVO mvo) {
-		return dao.delete_select(mvo);
-	}
-
-	/**검색 - 기림**/
-	public ArrayList<ProductVO> search(String pname) {
-		return dao.select(pname);
+	/**제품 이름 검색리스트 - 기림**/
+	public ArrayList<ProductVO> search_list(String pname) {
+		return dao.search_list(pname);
 	}
 	
-	/**리뷰 - 기림**/
-	public boolean review_list(String comm,ProductVO vo){	//리뷰 vo로 가져와
-		return dao.review_list(comm,vo);
+	/**리뷰 정보 저장 - 기림**/
+	public boolean review_insert(String comm,ProductVO vo){
+		return dao.review_insert(comm,vo);
 	}
 	
-	/**리뷰 저장 row_pid 기림**/
-	public boolean review_row(ProductVO vo) {
-		return dao.review_row(vo);
+	/**리뷰 row,pid 일치 - 기림**/
+	public boolean product_row(ProductVO vo) {
+		return dao.product_row(vo);
 	}
 	
-	/**리뷰 출력**/
-	public ArrayList<ReviewVO> review_s(String id)
+	/**리뷰 출력 - 기림**/
+	public ArrayList<ReviewVO> review_list(String id)
 	{
-		return dao.review_s(id);	
+		return dao.review_list(id);	
 	}
 	
 	/**구매후 물품정보 삭제**/
 	public boolean delete_review(String pname) {
 		return dao.delete_review(pname);
+	}
+	
+	/**삭제 리스트 - 민석**/
+	public ArrayList <ProductVO> delete_list(MemberVO mvo) {
+		return dao.delete_select(mvo);
 	}
 	
 	/** 물품 정보 삭제 검색 - 민석 **/

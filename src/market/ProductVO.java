@@ -5,8 +5,6 @@ public class ProductVO {
 	String mid, pid, pname, explain, pdate, pphone, state, method, area,t_row;
 	int price;
 	
-
-
 	public String getT_row() {
 		return t_row;
 	}

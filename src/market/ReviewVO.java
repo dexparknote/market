@@ -3,7 +3,6 @@ package market;
 public class ReviewVO {
 	String mid,evaluation,pid,rdate;
 	
-
 	public String getRdate() {
 		return rdate;
 	}
