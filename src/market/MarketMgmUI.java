@@ -92,7 +92,8 @@ public class MarketMgmUI extends JFrame {
 
 	// Method
 	public void showMain() { // 10.22 영재 수정4i
-		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); // 영화
 
 
 		// 영재-C:/java_workspace/market/images/login_main.png
@@ -155,7 +156,7 @@ public class MarketMgmUI extends JFrame {
 		menuPane = new JPanel();
 		menuPane.setBounds(0, 130, 200, 650);
 		mainPane.setBounds(200, 130, 1000, 650);
-		jl_title = new JLabel("null\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4");
+		jl_title = new JLabel(vo.getId()  + "\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4");
 		jl_title.setBounds(270, 32, 405, 22);
 		jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 		jl_img.setBounds(299, 16, -1, -1);
@@ -322,7 +323,7 @@ public class MarketMgmUI extends JFrame {
 
 		
 
-		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage());
+		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
 
 //		north_panel = new JPanel();
 //		north_panel.setBackground(new Color(153, 204, 255));
