@@ -92,11 +92,7 @@ public class MarketMgmUI extends JFrame {
 
 	// Method
 	public void showMain() { // 10.22 영재 수정
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage());
+		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 
 		// 영재-C:/java_workspace/market/images/login_main.png
 		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
@@ -277,7 +273,7 @@ public class MarketMgmUI extends JFrame {
 			msgVO.setRoom_num(now_room);
 
 			oos.writeObject(msgVO);
-			
+			 
 			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
 			ClientThread ct = new ClientThread(ois,content,input,this);
 			ct.start();
