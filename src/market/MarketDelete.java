@@ -176,8 +176,8 @@ public class MarketDelete {
 
    // deleteDataCheck
 
-   public boolean deleteDataCheck(String name) {
-      return main.system.delselect(name);
+   public boolean deleteDataCheck(String name, MemberVO mvo) {
+      return main.system.delselect(name, mvo);
    }
    
    // deleteProc
@@ -198,7 +198,7 @@ public class MarketDelete {
          if (!jt_deleteSearch.getText().equals("") || obj == deleteSearch) {
             String name = jt_deleteSearch.getText().trim();
 
-            if (deleteDataCheck(name)) {
+            if (deleteDataCheck(name, mvo)) {
                int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 삭제하시겠습니까?"));
                if (result == 0)
                   deleteProc(name);

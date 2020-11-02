@@ -60,8 +60,8 @@ public class MarketMgmSystem {
 	}
 	
 	/** 물품 정보 삭제 검색 - 민석 **/
-	public boolean delselect(String pname) {
-		return dao.delselect(pname);
+	public boolean delselect(String pname, MemberVO mvo) {
+		return dao.delselect(pname, mvo);
 	}
 	
 	/** 물품 정보 삭제 - 민석 **/

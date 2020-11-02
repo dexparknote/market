@@ -307,13 +307,14 @@ class MarketDAO extends DBConn{
 	/** 
 	 * delete select -¹Î¼®
 	 */
-	public boolean delselect(String pname) {
+	public boolean delselect(String pname, MemberVO mvo) {
 		boolean result = false;
 
 		try {
-			String sql = "select count(*) from product where pid=?";
+			String sql = "select count(*) from product where pid=? and mid=?";
 			getPreparedStatement(sql);
 			pstmt.setString(1, pname);
+			pstmt.setString(2, mvo.getId());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getInt(1) != 0) result = true;
