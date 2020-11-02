@@ -14,6 +14,7 @@ import java.awt.event.WindowEvent;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -57,6 +58,7 @@ public class MarketMgmUI extends JFrame {
 	Socket socket;
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
+	int now_room;
 
 	JFrame frame = new JFrame();
 	JPanel regPane = new JPanel();
@@ -90,7 +92,6 @@ public class MarketMgmUI extends JFrame {
 
 	// Method
 	public void showMain() { // 10.22 영재 수정
-
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
@@ -273,12 +274,12 @@ public class MarketMgmUI extends JFrame {
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
 			msgVO.setStatus(CONNECT);
+			msgVO.setRoom_num(now_room);
 
-			
 			oos.writeObject(msgVO);
 			
 			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
-			ClientThread ct = new ClientThread(ois,content,input);
+			ClientThread ct = new ClientThread(ois,content,input,this);
 			ct.start();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -347,19 +348,16 @@ public class MarketMgmUI extends JFrame {
 	class MarketMgmUIEvent extends WindowAdapter implements ActionListener {
 		// Field
 		MarketMgmUI main;
-		ObjectOutputStream oos;
 		// Constructor
 		public MarketMgmUIEvent() {
 		}
 
 		public MarketMgmUIEvent(MarketMgmUI main) {
 			this.main = main;
-			this.oos=main.oos;
 		}
 
 		// 윈도우 이벤트 처리
 		public void windowClosing(WindowEvent we) {
-			// JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
 			msgVO.setStatus(EXIT);
@@ -368,9 +366,11 @@ public class MarketMgmUI extends JFrame {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 			system.login_state(vo,0); //종료 시 login_state 0으로
 			system.server_state(vo,0);//종료 시 server_state 0으로
 			system.dao.close();
+			JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
 			System.exit(0);
 		}
 
@@ -400,10 +400,14 @@ public class MarketMgmUI extends JFrame {
 				if (login()) {
 					system.login_state(vo,1);//로그인 시 login_state를 1로 변경
 					if(system.SellCkeck(vo)){// 판매 게시물이 있으면 true 없으면 false
+						//now_room defualt 설정
+						ArrayList<String> list=main.system.chat_list(vo.id);
+						now_room=Integer.parseInt(list.get(0));
 						//server와 연결하기
 						main.serverConnect();
 						//서버와 연결 시 server_state 1로 변경
 						system.server_state(vo,1);
+						
 					}
 					start();
 				}

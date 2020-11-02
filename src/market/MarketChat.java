@@ -33,6 +33,7 @@ public class MarketChat {
 	JScrollPane scrollPane;
 	JTextArea content;
 	JList list_chatlist;
+	JLabel now_room_num;
 	
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
@@ -126,11 +127,17 @@ public void chat() {
 	panel.add(send);
 	
 	scrollPane = new JScrollPane();
-	scrollPane.setBounds(147, 19, 566, 417);
+	scrollPane.setBounds(147, 48, 566, 388);
 	panel.add(scrollPane);
 	
 	content.setFont(new Font("제주고딕", Font.PLAIN, 15));
 	scrollPane.setViewportView(content);
+	
+	now_room_num = new JLabel("현재 채팅방 번호 : "+main.now_room);
+	now_room_num.setHorizontalAlignment(SwingConstants.LEFT);
+	now_room_num.setFont(new Font("제주고딕", Font.PLAIN, 17));
+	now_room_num.setBounds(159, 14, 213, 28);
+	panel.add(now_room_num);
 	main.setVisible(true);
 		
 	//리스너
@@ -138,6 +145,8 @@ public void chat() {
 	list_chatlist.addListSelectionListener(chatEvent);
 	input.addActionListener(chatEvent);
 	send.addActionListener(chatEvent);
+	btnChat_select.addActionListener(chatEvent);
+	jt_chat_select.addActionListener(chatEvent);
 
 	
 	}//chat method
@@ -163,13 +172,24 @@ public void chatProc() {
 class MemberChatEvent implements ActionListener, ListSelectionListener{
 	
 	public void valueChanged(ListSelectionEvent e) {
-		//클릭된 번호 갖어오기
-		String name = (String) list_chatlist.getSelectedValue();
-		System.out.println(name);
-		//arraylist에 채팅방 별로 내용 저장하기
-		//채팅방 내용 textarea에 보여주기
-		
-		
+		if(!e.getValueIsAdjusting()) {// 메소드가 두번 호출 조정하기
+				//클릭된 번호 갖어오기
+				content.setText(null);
+				String clike_room = (String) list_chatlist.getSelectedValue();
+				main.now_room=Integer.parseInt(clike_room);
+				now_room_num.setText("현재 채팅방 번호 : "+main.now_room);
+				MessageVO msgVO = new MessageVO();
+				msgVO.setName(main.vo.id);
+				msgVO.setStatus(main.CONNECT);
+				msgVO.setRoom_num(main.now_room);
+				try {
+					oos.writeObject(msgVO);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				//채팅방 내용 textarea에 보여주기
+				
+			}
 		}
 	public void actionPerformed(ActionEvent ae) {
 		Object obj = ae.getSource();
@@ -185,6 +205,7 @@ class MemberChatEvent implements ActionListener, ListSelectionListener{
 						msgVO.setName(mvo.getId());
 						msgVO.setMsg(msg);
 						msgVO.setStatus(MarketMgmUI.TALKING);
+						msgVO.setRoom_num(main.now_room);
 						oos.writeObject(msgVO);
 						
 					
@@ -195,7 +216,28 @@ class MemberChatEvent implements ActionListener, ListSelectionListener{
 		}else if(btn_chatjoin ==obj) {
 			//채팅하기를 눌럿을때
 			
+		}else if(btnChat_select ==obj ||jt_chat_select ==obj) {
+			//검색을 눌럿을때
+			if(!jt_chat_select.getText().equals("")) {
+				main.now_room=Integer.parseInt(jt_chat_select.getText());
+				now_room_num.setText("현재 채팅방 번호 : "+main.now_room);
+				MessageVO msgVO = new MessageVO();
+				msgVO.setName(main.vo.id);
+				msgVO.setStatus(main.CONNECT);
+				msgVO.setRoom_num(main.now_room);
+				content.setText(null);
+				
+				try {
+					main.oos.writeObject(msgVO);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else {
+				JOptionPane.showMessageDialog(null,"게시물번호를 입력해주세요");
+			}
+			
 		}
+		
 	}
 	
 	
