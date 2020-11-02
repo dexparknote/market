@@ -43,8 +43,6 @@ class MarketDAO extends DBConn{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-
-		
 		return room_num;
 	}
 	

@@ -226,6 +226,11 @@ public class MarketRegister {
 		
 		//member 테이블에 등록
 		boolean result =main.system.register(vo);
+		if(result) {
+			JOptionPane.showMessageDialog(null, "등록 성공!!");
+		}else {
+			JOptionPane.showMessageDialog(null, "등록 실패!!");
+		}
 		
 		//서버와 연결이 되있지 않다면 서버와 연결
 		if(mvo.getServer_state()==0) {
@@ -234,11 +239,6 @@ public class MarketRegister {
 			System.out.println(main.now_room);
 		}
 		
-		if(result) {
-			JOptionPane.showMessageDialog(null, main.getMsg("등록 성공!!"));
-		}else {
-			JOptionPane.showMessageDialog(null, main.getMsg("등록 실패!!"));
-		}
 	}
 
 	//이벤트 처리 클래스
