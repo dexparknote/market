@@ -138,6 +138,7 @@ public void chat() {
 	list_chatlist.addListSelectionListener(chatEvent);
 	input.addActionListener(chatEvent);
 	send.addActionListener(chatEvent);
+	btnChat_select.addActionListener(chatEvent);
 
 	
 	}//chat method
@@ -163,14 +164,23 @@ public void chatProc() {
 class MemberChatEvent implements ActionListener, ListSelectionListener{
 	
 	public void valueChanged(ListSelectionEvent e) {
-		//클릭된 번호 갖어오기
-		String clike_room = (String) list_chatlist.getSelectedValue();
-		main.now_room=Integer.parseInt(clike_room);
-		System.out.println(clike_room);
-		//arraylist에 채팅방 별로 내용 저장하기
-		//채팅방 내용 textarea에 보여주기
-		
-		
+		if(!e.getValueIsAdjusting()) {// 메소드가 두번 호출 조정하기
+				//클릭된 번호 갖어오기
+				String clike_room = (String) list_chatlist.getSelectedValue();
+				main.now_room=Integer.parseInt(clike_room);
+				System.out.println(clike_room);
+				MessageVO msgVO = new MessageVO();
+				msgVO.setName(main.vo.id);
+				msgVO.setStatus(main.CONNECT);
+				msgVO.setRoom_num(main.now_room);
+				try {
+					oos.writeObject(msgVO);
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				//채팅방 내용 textarea에 보여주기
+				
+			}
 		}
 	public void actionPerformed(ActionEvent ae) {
 		Object obj = ae.getSource();
@@ -197,7 +207,26 @@ class MemberChatEvent implements ActionListener, ListSelectionListener{
 		}else if(btn_chatjoin ==obj) {
 			//채팅하기를 눌럿을때
 			
+		}else if(btnChat_select ==obj) {
+			//검색을 눌럿을때
+			if(!jt_chat_select.getText().equals("")) {
+				main.now_room=Integer.parseInt(jt_chat_select.getText());
+				MessageVO msgVO = new MessageVO();
+				msgVO.setName(main.vo.id);
+				msgVO.setStatus(main.CONNECT);
+				msgVO.setRoom_num(main.now_room);
+				
+				try {
+					main.oos.writeObject(msgVO);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else {
+				JOptionPane.showMessageDialog(null,"게시물번호를 입력해주세요");
+			}
+			
 		}
+		
 	}
 	
 	

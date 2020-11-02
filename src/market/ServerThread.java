@@ -3,13 +3,14 @@ package market;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServerThread extends Thread {
 	//Field
 	Socket socket;
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
-	
+	ArrayList<RoomVO> room_list=new ArrayList<RoomVO>();
 	
 	//Constructor
 	public ServerThread(Socket socket) {
@@ -31,6 +32,11 @@ public class ServerThread extends Thread {
 			boolean flag = true;
 			while(flag) {
 				MessageVO msgVO = (MessageVO)ois.readObject();
+				
+				//메시지가 오면 해당 방이 room_list에 있는지 확인
+				//1.있으면 RoomVO 추가
+				//2. 없으면 RoomVO 추가
+				
 				
 				if(msgVO.getStatus() ==MarketMgmUI.CONNECT) {
 					msgVO.setMsg(msgVO.getName() + "님이 입장 ~~");

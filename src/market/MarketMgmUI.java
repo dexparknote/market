@@ -345,19 +345,16 @@ public class MarketMgmUI extends JFrame {
 	class MarketMgmUIEvent extends WindowAdapter implements ActionListener {
 		// Field
 		MarketMgmUI main;
-		ObjectOutputStream oos;
 		// Constructor
 		public MarketMgmUIEvent() {
 		}
 
 		public MarketMgmUIEvent(MarketMgmUI main) {
 			this.main = main;
-			this.oos=main.oos;
 		}
 
 		// 윈도우 이벤트 처리
 		public void windowClosing(WindowEvent we) {
-			// JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
 			msgVO.setStatus(EXIT);
@@ -366,9 +363,11 @@ public class MarketMgmUI extends JFrame {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 			system.login_state(vo,0); //종료 시 login_state 0으로
 			system.server_state(vo,0);//종료 시 server_state 0으로
 			system.dao.close();
+			JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
 			System.exit(0);
 		}
 
