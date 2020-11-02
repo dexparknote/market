@@ -32,7 +32,7 @@ import javax.swing.table.TableModel;
 		JTextField jt_search;
 		MarketMgmUI main;
 		ArrayList<ProductVO> plist;
-		ArrayList<ReviewVO> rlist;
+//		ArrayList<ReviewVO> rlist;
 		MyTableModel model;
 		MarketDAO dao;
 		

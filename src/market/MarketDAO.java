@@ -267,7 +267,6 @@ class MarketDAO extends DBConn{
 				vo.setArea(rs.getString(7));
 				vo.setExplain(rs.getString(8));
 				vo.setPdate(rs.getString(9));
-//				vo.setRating(rs.getString(10));	//∆Ú¡°
 					
 				list.add(vo);
 			}
@@ -285,7 +284,7 @@ class MarketDAO extends DBConn{
 	public boolean review_list(String comm,ProductVO vo){
 			boolean result= false;
 		try {
-			String sql = "insert into review values(?,?,?)";
+			String sql = "insert into review values(?,?,?,sysdate)";
 		getPreparedStatement(sql);
 		
 		pstmt.setString(1, vo.getMid());
@@ -333,7 +332,7 @@ class MarketDAO extends DBConn{
 		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
 //			ArrayList <ReviewVO> vo = new  ArrayReviewVO ();
 			try {
-				String sql = " select mid,pid,evaluation from review where mid = ?";
+				String sql = " select mid,pid,evaluation,rdate from review where mid = ?";
 				getPreparedStatement(sql);
 				
 				pstmt.setString(1, id);
@@ -343,7 +342,7 @@ class MarketDAO extends DBConn{
 					vo.setMid(rs.getString(1));
 					vo.setPid(rs.getString(2));
 					vo.setEvaluation(rs.getString(3));
-					
+					vo.setRdate(rs.getString(4));
 					rlist.add(vo);
 			}
 			
