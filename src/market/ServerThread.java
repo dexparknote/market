@@ -10,7 +10,6 @@ public class ServerThread extends Thread {
 	Socket socket;
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
-	ArrayList<RoomVO> room_list=new ArrayList<RoomVO>();
 	
 	//Constructor
 	public ServerThread(Socket socket) {
@@ -33,11 +32,7 @@ public class ServerThread extends Thread {
 			while(flag) {
 				MessageVO msgVO = (MessageVO)ois.readObject();
 				RoomVO roomVO=new RoomVO();
-				//메시지가 오면 해당 방이 room_list에 있는지 확인
-				//1.있으면 해당 RoomVO.getChat_content 에 msgVO.msg 내용을 추가하여 저장 , 없으면 RoomVO 추가
-				//2. 
-				
-				
+
 				if(msgVO.getStatus() ==MarketMgmUI.CONNECT) {
 					msgVO.setMsg(msgVO.getName() + "님이 입장 ~~");
 					broadCastring(msgVO);
