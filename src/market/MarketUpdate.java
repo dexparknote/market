@@ -105,6 +105,41 @@ public class MarketUpdate {
 		updatePane.add(update_search);
 		
 
+		
+		
+		main.getContentPane().add(updatePane);
+		main.setLocationRelativeTo(null);
+		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		main.setVisible(true);
+		
+		
+		tf_update.addActionListener(eventObj);
+		update_search.addActionListener(eventObj);
+//		
+	}
+	
+	/** 수정 검색 처리 */
+	public void updateSearchProc() {
+		pid = tf_update.getText().trim();
+		if(pid.equals("")) {
+			JOptionPane.showMessageDialog(null, "물품번호를 입력해주세요");
+			tf_update.requestFocus();
+		} else {
+			idx = main.system.SearchPid(pid);
+			if(idx != 0) {
+				ProductVO pvo = main.system.selectProduct(pid);
+				updateOkForm(pvo);
+				
+			} else {
+				updateFailForm();
+			}
+		}
+	}
+	
+	/** 수정 데이터 등록 폼 : 물품명, 주소, 설명, 가격 **/
+	public void updateOkForm(ProductVO pvo) {
+		update();
+		
 		label_pname = new JLabel("-   \uC0C1\uD488 \uC774\uB984");
 		label_pname.setFont(new Font("제주고딕", Font.PLAIN, 18));
 		label_pname.setBounds(181, 85, 101, 40);
@@ -213,41 +248,6 @@ public class MarketUpdate {
 		combo_area.setBounds(373, 320, 127, 23);
 		updatePane.add(combo_area);
 
-		
-		main.getContentPane().add(updatePane);
-		main.setLocationRelativeTo(null);
-		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		main.setVisible(true);
-		
-		
-		tf_update.addActionListener(eventObj);
-		update_search.addActionListener(eventObj);
-//		
-	}
-	
-	/** 수정 검색 처리 */
-	public void updateSearchProc() {
-		pid = tf_update.getText().trim();
-		if(pid.equals("")) {
-			JOptionPane.showMessageDialog(null, "물품번호를 입력해주세요");
-			tf_update.requestFocus();
-		} else {
-			idx = main.system.SearchPid(pid);
-			if(idx != 0) {
-				ProductVO pvo = main.system.selectProduct(pid);
-				updateOkForm(pvo);
-				
-			} else {
-				updateFailForm();
-			}
-		}
-	}
-	
-	/** 수정 데이터 등록 폼 : 물품명, 주소, 설명, 가격 **/
-	public void updateOkForm(ProductVO pvo) {
-		update();
-		
-		
 		String[] data_list = new String[20];
 		data_list[0] = pvo.getPname();
 		data_list[1] = String.valueOf(pvo.getPrice());
@@ -331,6 +331,8 @@ public class MarketUpdate {
 //		for(JTextField tf : tf_update_list) {
 //			dataList.add(tf.getText().trim());
 //		}
+		
+		
 		
 		dataList.add(tf_pname.getText().trim());
 		dataList.add(tf_price.getText().trim());

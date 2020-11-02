@@ -238,7 +238,6 @@ public class MarketRegister {
 			main.now_room=main.system.get_pid(Integer.parseInt(main.vo.getId()));
 			System.out.println(main.now_room);
 		}
-		
 	}
 
 	//이벤트 처리 클래스
