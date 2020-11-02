@@ -56,7 +56,7 @@ class MarketDAO extends DBConn{
 		ArrayList<String> list=new ArrayList<String>();
 		
 		try {
-			String sql = "select pid from product where mid=?";
+			String sql = "select pid from product where mid=? ";
 			getPreparedStatement(sql);
 			pstmt.setString(1,id);
 			rs = pstmt.executeQuery();

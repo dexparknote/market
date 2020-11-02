@@ -14,6 +14,7 @@ import java.awt.event.WindowEvent;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -44,13 +45,14 @@ public class MarketMgmUI extends JFrame {
 	public static final int TALKING =1; // 대화중
 	public static final int EXIT = -1;//종료
 	
-	ImagePanel showPane;
+	ImagePanel showPane, northPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
 	JPanel mainPane, contentsPane, menuPane;
 	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout, btnMyPage;
 	JLabel jl_title, jl_img;
 	JTextField jtf_id; // 아이디 입력 JTextField
 	JPasswordField jtf_pass; // 비밀번호 입력 JPasswordField
+	int now_room;
 	
 	JTextArea content= new JTextArea();
 	JTextField input= new JTextField();
@@ -151,6 +153,7 @@ public class MarketMgmUI extends JFrame {
 	public void start() { // 임시용
 		showPane.setVisible(false);
 		getContentPane().setLayout(null);
+		
 
 		mainPane = new JPanel();
 		menuPane = new JPanel();
@@ -209,15 +212,18 @@ public class MarketMgmUI extends JFrame {
 		getContentPane().add(menuPane);
 		getContentPane().add(mainPane);
 
-		north_panel = new JPanel();
-		north_panel.setBackground(new Color(153, 204, 255));
-		north_panel.setBounds(0, 0, 1200, 130);
-		getContentPane().add(north_panel);
-		north_panel.setLayout(null);
+		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage());
+
+//		north_panel = new JPanel();
+//		north_panel.setBackground(new Color(153, 204, 255));
+		northPane.setBounds(0, 0, 1200, 130);
+		getContentPane().add(northPane);
+		northPane.setLayout(null);
+		
 		btnLogout = new JButton("로그아웃");
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setBounds(1081, 10, 93, 25);
-		north_panel.add(btnLogout);
+		northPane.add(btnLogout);
 		btnLogout.setBackground(new Color(102, 153, 204));
 		btnLogout.setFont(new Font("제주고딕", Font.BOLD, 14));
 
@@ -226,13 +232,13 @@ public class MarketMgmUI extends JFrame {
 		btnMyPage.setFont(new Font("제주고딕", Font.BOLD, 14));
 		btnMyPage.setBackground(new Color(102, 153, 204));
 		btnMyPage.setBounds(962, 10, 107, 25);
-		north_panel.add(btnMyPage);
+		northPane.add(btnMyPage);
 
 		JLabel welcome_member = new JLabel(vo.getId() + "님");
 		welcome_member.setFont(new Font("제주고딕", Font.PLAIN, 13));
 		welcome_member.setHorizontalAlignment(SwingConstants.RIGHT);
 		welcome_member.setBounds(819, 10, 131, 25);
-		north_panel.add(welcome_member);
+		northPane.add(welcome_member);
 
 		setSize(1200, 780);
 
@@ -404,6 +410,9 @@ public class MarketMgmUI extends JFrame {
 						main.serverConnect();
 						//서버와 연결 시 server_state 1로 변경
 						system.server_state(vo,1);
+						//now_room default 설정
+						ArrayList<String> list = main.system.chat_list(vo.id);
+						now_room = Integer.parseInt(list.get(0));
 					}
 					start();
 				}
@@ -435,7 +444,7 @@ public class MarketMgmUI extends JFrame {
 					}
 					mainPane.setVisible(false);
 					menuPane.setVisible(false);
-					north_panel.setVisible(false);
+					northPane.setVisible(false);
 					resetPane();
 					showMain();
 				}
