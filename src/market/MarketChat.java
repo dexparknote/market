@@ -178,7 +178,10 @@ class MemberChatEvent implements ActionListener, ListSelectionListener{
 				//클릭된 번호 갖어오기
 				content.setText(null);
 				String clike_room = (String) list_chatlist.getSelectedValue();
-				main.now_room=Integer.parseInt(clike_room);
+				int idx = clike_room.indexOf("]");
+				String clike_room_num = clike_room.substring(1, idx);
+				System.out.println("clike_room_num");
+				main.now_room=Integer.parseInt(clike_room_num);
 				now_room_num.setText("현재 채팅방 번호 : "+main.now_room);
 				MessageVO msgVO = new MessageVO();
 				msgVO.setName(main.vo.id);
