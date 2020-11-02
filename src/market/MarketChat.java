@@ -87,7 +87,7 @@ public void chat() {
 	
 	JPanel panel = new JPanel();
 	panel.setBackground(SystemColor.activeCaption);
-	panel.setBounds(120, 90, 743, 485);
+	panel.setBounds(120, 90, 743, 366);
 	chatPane.add(panel);
 	panel.setLayout(null);
 	
@@ -102,20 +102,20 @@ public void chat() {
 	btn_chatjoin.setBackground(Color.DARK_GRAY);
 	btn_chatjoin.setForeground(Color.WHITE);
 	btn_chatjoin.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	btn_chatjoin.setBounds(23, 419, 112, 54);
+	btn_chatjoin.setBounds(23, 299, 112, 54);
 	panel.add(btn_chatjoin);
 	
 	DefaultListModel model = new DefaultListModel();
 	list_chatlist = new JList(model);
 	list_chatlist.setFont(new Font("力林绊雕", Font.PLAIN, 13));
 	for(String id:main.system.chat_list(mvo.id)) model.addElement(id);
-	list_chatlist.setBounds(23, 48, 112, 360);
+	list_chatlist.setBounds(23, 48, 112, 241);
 	panel.add(list_chatlist);
 	
 	
 	
 //	input = new JTextField();
-	input.setBounds(147, 445, 481, 30);
+	input.setBounds(147, 322, 481, 30);
 	panel.add(input);
 	input.setColumns(10);
 	
@@ -123,11 +123,11 @@ public void chat() {
 	send.setBackground(Color.DARK_GRAY);
 	send.setForeground(Color.WHITE);
 	send.setFont(new Font("力林绊雕", Font.PLAIN, 15));
-	send.setBounds(634, 445, 80, 28);
+	send.setBounds(633, 325, 80, 28);
 	panel.add(send);
 	
 	scrollPane = new JScrollPane();
-	scrollPane.setBounds(147, 48, 566, 388);
+	scrollPane.setBounds(147, 48, 566, 263);
 	panel.add(scrollPane);
 	
 	content.setFont(new Font("力林绊雕", Font.PLAIN, 15));
