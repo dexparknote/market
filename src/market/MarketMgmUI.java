@@ -140,7 +140,8 @@ public class MarketMgmUI extends JFrame {
 		showPane.add(btnJoin);
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Image img = toolkit.getImage("C:\\dev\\se_workspace\\market\\images\\icon.png");
+		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
+		// 영재 "C:/java_workspace/market/images/icon.png"
 		setIconImage(img);
 
 
@@ -336,7 +337,6 @@ public class MarketMgmUI extends JFrame {
 		mainPane.add(lblNewLabel_1_1_2_4_1_2);
 		
 
-		
 
 //		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
 		northPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/north.png").getImage()); //영화
