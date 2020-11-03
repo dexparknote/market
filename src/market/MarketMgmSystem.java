@@ -20,7 +20,7 @@ public class MarketMgmSystem {
 			return dao.login_room_num(id);
 		}
 	//get_pid(main.vo.getId()
-		public int get_pid(int id) {
+		public int get_pid(String id) {
 			return dao.get_pid(id);
 		}
 	

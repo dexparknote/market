@@ -30,6 +30,7 @@ import javax.swing.ButtonGroup;
 public class MarketUpdate {
 	//Field 
 	MarketMgmUI main;
+	MarketDAO dao;
 	JPanel img_update;
 	JPanel updatePane, mainPane; //전체 업데이트 패널
 	int idx = -1;
@@ -53,7 +54,6 @@ public class MarketUpdate {
 	ButtonGroup group;
 	MarketRegister rg;
 	String pid;
-	MarketDAO dao;
 	private JComboBox combo_method;
 	
 	
