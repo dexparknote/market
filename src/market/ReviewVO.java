@@ -1,9 +1,21 @@
 package market;
 
 public class ReviewVO {
-	String mid,evaluation;
-	int pid,rating;
+	String mid,evaluation,pid,rdate;
 	
+	public String getRdate() {
+		return rdate;
+	}
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
+	}
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+
 	public String getMid() {
 		return mid;
 	}
@@ -16,17 +28,6 @@ public class ReviewVO {
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
 	}
-	public int getPid() {
-		return pid;
-	}
-	public void setPid(int pid) {
-		this.pid = pid;
-	}
-	public int getRating() {
-		return rating;
-	}
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
+	
 	
 }

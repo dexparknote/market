@@ -2,10 +2,15 @@ package market;
 //Å×½ºÆ®
 public class ProductVO {
 	//Field
-	String mid, pid, pname, explain, pdate, pphone, state, method, area;
+	String mid, pid, pname, explain, pdate, pphone, state, method, area,t_row;
 	int price;
 	
-	
+	public String getT_row() {
+		return t_row;
+	}
+	public void setT_row(String t_row) {
+		this.t_row = t_row;
+	}
 	public String getMid() {
 		return mid;
 	}

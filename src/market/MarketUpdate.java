@@ -30,6 +30,7 @@ import javax.swing.ButtonGroup;
 public class MarketUpdate {
 	//Field 
 	MarketMgmUI main;
+	MarketDAO dao;
 	JPanel img_update;
 	JPanel updatePane, mainPane; //전체 업데이트 패널
 	int idx = -1;
@@ -58,9 +59,10 @@ public class MarketUpdate {
 	
 	//Constructor
 	public MarketUpdate() {}
-	public MarketUpdate(MarketMgmUI main) {
+	public MarketUpdate(MarketMgmUI main, MarketDAO dao) {
 		this.main = main;
 		this.updatePane = main.updatePane;
+		this.dao = dao;
 	}
 	
 	//Method
@@ -371,8 +373,8 @@ public class MarketUpdate {
 //				tf.setText("");
 //			}
 //			selectFormTable();
-			new MarketSearch(main).search();
-		} else {
+			new MarketSearch(main, main.system.dao).search("show_all");
+		} else { 
 			JOptionPane.showMessageDialog(null, "수정을 실패했습니다");
 		}
 		

@@ -39,6 +39,8 @@ public class MarketMgmUI extends JFrame {
 	public static final int DELETE = 4;
 	public static final int CHAT = 5;
 	public static final int MYHOME = 6;
+	public static final int REVIEW = 7;
+	
 	
 	
 	public static final int CONNECT = 0; // 처음접속 MulltiChatClient.CONNECT
@@ -48,7 +50,7 @@ public class MarketMgmUI extends JFrame {
 	ImagePanel showPane, northPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
 	JPanel mainPane, contentsPane, menuPane;
-	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout, btnMyPage;
+	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout, btnMyPage,btnReview;
 	JLabel jl_title, jl_img;
 	JTextField jtf_id; // 아이디 입력 JTextField
 	JPasswordField jtf_pass; // 비밀번호 입력 JPasswordField
@@ -67,6 +69,7 @@ public class MarketMgmUI extends JFrame {
 	JPanel deletePane = new JPanel();
 	JPanel chatPane = new JPanel();
 	JPanel myPagePane = new JPanel();
+	JPanel reviewPane = new JPanel();
 	JScrollPane jScrollPane;
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
@@ -93,8 +96,6 @@ public class MarketMgmUI extends JFrame {
 	// Method
 	public void showMain() { // 10.22 영재 수정4i
 		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage());
-
-
 		// 영재-C:/java_workspace/market/images/login_main.png
 		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
 		// 민석-C:/dev/se_workspace/sist_project_1/images/login_main.png
@@ -182,13 +183,17 @@ public class MarketMgmUI extends JFrame {
 		btnDelete.setBounds(40, 310, 120, 55);
 		btnChat = new JButton("채팅하기");
 		btnChat.setForeground(Color.WHITE);
-		btnChat.setBounds(40, 400, 119, 55);
+		btnChat.setBounds(40, 400, 120, 55);
+		btnReview = new JButton("리뷰조회");
+		btnReview.setForeground(Color.WHITE);
+		btnReview.setBounds(40, 490, 120, 55);
 
 		btnReg.setBackground(new Color(102, 153, 204));
 		btnSearch.setBackground(new Color(102, 153, 204));
 		btnUpdate.setBackground(new Color(102, 153, 204));
 		btnDelete.setBackground(new Color(102, 153, 204));
 		btnChat.setBackground(new Color(102, 153, 204));
+		btnReview.setBackground(new Color(102, 153, 204));
 
 		jl_title.setFont(new Font("제주고딕", Font.PLAIN, 20));
 		btnReg.setFont(new Font("제주고딕", Font.PLAIN, 17));
@@ -196,6 +201,7 @@ public class MarketMgmUI extends JFrame {
 		btnUpdate.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		btnDelete.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		btnChat.setFont(new Font("제주고딕", Font.PLAIN, 17));
+		btnReview.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		mainPane.setLayout(null);
 		mainPane.add(jl_img);
 		mainPane.add(jl_title);
@@ -206,6 +212,7 @@ public class MarketMgmUI extends JFrame {
 		menuPane.add(btnUpdate);
 		menuPane.add(btnDelete);
 		menuPane.add(btnChat);
+		menuPane.add(btnReview);
 //			add(menuPane, BorderLayout.WEST);
 //			add(mainPane, BorderLayout.CENTER);
 		getContentPane().add(menuPane);
@@ -351,7 +358,7 @@ public class MarketMgmUI extends JFrame {
 		welcome_member.setBounds(819, 10, 131, 25);
 		northPane.add(welcome_member);
 
-		setSize(1200, 780);
+		setSize(1350, 820);
 
 		Dimension fsize = getSize();
 		Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -377,6 +384,7 @@ public class MarketMgmUI extends JFrame {
 		btnChat.addActionListener(eventObj);
 		btnLogout.addActionListener(eventObj);
 		btnMyPage.addActionListener(eventObj);
+		btnReview.addActionListener(eventObj);
 	}// start method
 
 	//서버와 연결
@@ -412,6 +420,7 @@ public class MarketMgmUI extends JFrame {
 		deletePane.setVisible(false);
 		chatPane.setVisible(false);
 		myPagePane.setVisible(false);
+		reviewPane.setVisible(false);
 	}
 
 	public void switchPane(int menu) {
@@ -446,6 +455,11 @@ public class MarketMgmUI extends JFrame {
 			myPagePane.removeAll();
 			myPagePane.setVisible(true);
 			myPagePane.setBounds(200, 130, 1000, 650);
+			break;
+		case 7:
+			reviewPane.removeAll();
+			reviewPane.setVisible(true);
+			reviewPane.setBounds(200, 130, 1000, 650);
 			break;
 		}
 	}// switchPane method
@@ -533,13 +547,15 @@ public class MarketMgmUI extends JFrame {
 			} else if (btnReg == obj) {
 				new MarketRegister(main).register();
 			} else if (btnSearch == obj) {
-				new MarketSearch(main).search();
+				new MarketSearch(main, system.dao).search("show_all");	
 			} else if (btnDelete == obj) {
 				new MarketDelete(main).delete();
 			} else if (btnUpdate == obj) {
-				new MarketUpdate(main).update();
+				new MarketUpdate(main, system.dao).update();
 			} else if (btnChat == obj) {
 				new MarketChat(main).chat();
+			} else if (btnReview == obj) {
+				new MarketReview(main, system.dao).review();
 			} else if (btnLogout == obj) {
 				int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
 				if (result == 0) {
