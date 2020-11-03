@@ -108,7 +108,9 @@ public void chat() {
 	DefaultListModel model = new DefaultListModel();
 	list_chatlist = new JList(model);
 	list_chatlist.setFont(new Font("제주고딕", Font.PLAIN, 13));
-	for(String id:main.system.chat_list(mvo.id)) model.addElement(id);
+	for(String id:main.system.chat_list(mvo.id)) {
+		model.addElement("["+id+"] "+main.system.get_pname(id));
+	}
 	list_chatlist.setBounds(23, 48, 112, 241);
 	panel.add(list_chatlist);
 	
@@ -176,7 +178,10 @@ class MemberChatEvent implements ActionListener, ListSelectionListener{
 				//클릭된 번호 갖어오기
 				content.setText(null);
 				String clike_room = (String) list_chatlist.getSelectedValue();
-				main.now_room=Integer.parseInt(clike_room);
+				int idx = clike_room.indexOf("]");
+				String clike_room_num = clike_room.substring(1, idx);
+				System.out.println("clike_room_num");
+				main.now_room=Integer.parseInt(clike_room_num);
 				now_room_num.setText("현재 채팅방 번호 : "+main.now_room);
 				MessageVO msgVO = new MessageVO();
 				msgVO.setName(main.vo.id);
