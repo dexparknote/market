@@ -56,7 +56,7 @@ public class MarketMgmJoin {
 //        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/join_back.png").getImage()); //團戮
 //		main.showPane.setVisible(false);
 //        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/java_workspace/market/images/join_back.png").getImage());
-        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/join_back.png").getImage()); //團戮
+        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/join_back.png").getImage()); //團戮
 
 
 // 艙營-"C:/java_workspace/market/images/join_back.png").getImage());
