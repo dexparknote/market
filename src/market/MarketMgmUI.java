@@ -72,6 +72,7 @@ public class MarketMgmUI extends JFrame {
 	JPanel reviewPane = new JPanel();
 	JScrollPane jScrollPane;
 
+
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 
 //영재-C:/java_workspace/market/images/register_back.png
@@ -138,6 +139,13 @@ public class MarketMgmUI extends JFrame {
 		btnJoin.setBackground(new Color(240, 255, 240));
 		btnJoin.setBounds(178, 447, 91, 23);
 		showPane.add(btnJoin);
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image img = toolkit.getImage("C:\\dev\\se_workspace\\market\\images\\icon.png");
+		setIconImage(img);
+
+
+		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
