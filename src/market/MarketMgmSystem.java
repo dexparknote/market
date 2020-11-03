@@ -20,7 +20,7 @@ public class MarketMgmSystem {
 			return dao.login_room_num(id);
 		}
 	//get_pid(main.vo.getId()
-		public int get_pid(int id) {
+		public int get_pid(String id) {
 			return dao.get_pid(id);
 		}
 	
@@ -71,7 +71,7 @@ public class MarketMgmSystem {
 	
 	/**리뷰 정보 저장 - 기림**/
 	public boolean review_insert(String comm,ReviewVO rvo){
-		return dao.review_insert(comm,rvo);
+		return dao.review_insert(comm, rvo);
 	}
 	
 	/**리뷰 row,pid 일치 - 기림**/
@@ -80,8 +80,7 @@ public class MarketMgmSystem {
 	}
 	
 	/**리뷰 출력 - 기림**/
-	public ArrayList<ReviewVO> review_list(String mid)
-	{
+	public ArrayList<ReviewVO> review_list(String mid){
 		return dao.review_list(mid);	
 	}
 	

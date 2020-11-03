@@ -45,19 +45,17 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 					 int review_result = JOptionPane.showConfirmDialog(null, "리뷰하시겠습니까?");
 					 if(review_result == 0) {
 						  String comm=JOptionPane.showInputDialog(null, "리뷰를 입력해주세요");
-
+						  
 						  ProductVO vo = market_s.plist.get(row);
-						 					  
 						  ReviewVO rvo = new ReviewVO();
 						  rvo.setMid(vo.getMid());
-						  rvo.setPid(vo.getPid());		
+						  rvo.setPid(vo.getPid());
 						  rvo.setEvaluation(comm);				  
 						  
 						  market_s.dao.product_row(vo);
 						  market_s.dao.review_insert(comm,rvo);
 						  market_s.dao.delete_review(rvo.getPid());
 
-						
 						  new MarketSearch(main, market_s.dao).search("show_all");	
 					 }else {
 						 JOptionPane.showMessageDialog(null,"리뷰 등록이 취소되었습니다.");

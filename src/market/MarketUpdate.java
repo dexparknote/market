@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 public class MarketUpdate {
 	//Field 
 	MarketMgmUI main;
+	MarketDAO dao;
 	JPanel img_update;
 	JPanel updatePane, mainPane; //전체 업데이트 패널
 	int idx = -1;
@@ -46,7 +47,6 @@ public class MarketUpdate {
 	MarketRegister rg;
 	String pid;
 	private JComboBox combo_method;
-	MarketDAO dao;
 	
 	//Constructor
 	public MarketUpdate() {}
@@ -360,11 +360,8 @@ public class MarketUpdate {
 		
 		if(main.system.update_pr(pvo)) {
 			JOptionPane.showMessageDialog(null, "수정이 완료됐습니다");
-//			for(JTextField tf : tf_update_list) {
-//				tf.setText("");
-//			}
 //			selectFormTable();
-			new MarketSearch(main, system.dao).search("show_all");
+			new MarketSearch(main, main.system.dao).search("show_all");	
 		} else {
 			JOptionPane.showMessageDialog(null, "수정을 실패했습니다");
 		}

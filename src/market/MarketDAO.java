@@ -5,10 +5,12 @@ import java.awt.print.Printable;
 import java.util.ArrayList;
 
 class MarketDAO extends DBConn{
+	
+	
 	/**
 	 *	login_state 
 	 */
-	public boolean login_state(MemberVO vo,int login_state) {
+	public boolean login_state(MemberVO vo, int login_state) {
 		boolean result = false;
 		
 		try {
@@ -29,12 +31,12 @@ class MarketDAO extends DBConn{
 	/**
 	 * dao.get_pid(id)
 	 */
-	public int get_pid(int id) {
+	public int get_pid(String id) {
 		int room_num = -1;
 		try {
 			String sql = "select pid from product where mid=? ";
 			getPreparedStatement(sql);
-			pstmt.setInt(1,id);
+			pstmt.setString(1,id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
@@ -44,8 +46,6 @@ class MarketDAO extends DBConn{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-
-		
 		return room_num;
 	}
 	/**
@@ -366,8 +366,10 @@ class MarketDAO extends DBConn{
 	/**
 	 * review_insert -±â¸² 
 	 */
+
 	public boolean review_insert(String comm,ReviewVO rvo){
 			boolean result= false;
+			
 		try {
 			String sql = " insert into review values(?,?,?,sysdate)";
 		getPreparedStatement(sql);
@@ -375,6 +377,7 @@ class MarketDAO extends DBConn{
 		pstmt.setString(1, rvo.getMid());
 		pstmt.setString(2, rvo.getPid());
 		pstmt.setString(3, comm);
+//		System.out.println(rvo.getMid() +", "+ rvo.getPid() +", "+ comm);
 
 		int count=pstmt.executeUpdate();
 		if(count!=0) 	result =true;

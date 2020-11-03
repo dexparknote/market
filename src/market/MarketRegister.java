@@ -34,6 +34,7 @@ public class MarketRegister {
 		MemberVO mvo = new MemberVO();
 		ButtonGroup group;
 		JScrollPane jScrollPane = new JScrollPane();
+		private JLabel lblNewLabel;
 		
 	//Constructor
 	public MarketRegister() {}
@@ -153,20 +154,24 @@ public class MarketRegister {
 		btnReg.setFont(new Font("제주고딕", Font.PLAIN, 19));
 		btnReg.setForeground(new Color(153, 204, 255));
 		btnReg.setBackground(Color.DARK_GRAY);
-		btnReg.setBounds(597, 433, 119, 34);
+		btnReg.setBounds(598, 453, 119, 34);
 		regPane.add(btnReg);
 		
 		btnReset = new JButton("\uC0C1\uD488 \uCDE8\uC18C");
 		btnReset.setFont(new Font("제주고딕", Font.PLAIN, 19));
 		btnReset.setForeground(new Color(153, 204, 255));
 		btnReset.setBackground(Color.DARK_GRAY);
-		btnReset.setBounds(745, 433, 119, 34);
+		btnReset.setBounds(746, 453, 119, 34);
 		regPane.add(btnReset);
 			
 		
 		
 		
 		main.getContentPane().add(regPane, BorderLayout.CENTER);
+		
+		lblNewLabel = new JLabel("\u203B\uCC44\uD305 \uAC00\uB2A5\uC2DC\uAC04\uC744 \uC785\uB825\uD574 \uC8FC\uC138\uC694.");
+		lblNewLabel.setBounds(399, 421, 343, 15);
+		regPane.add(lblNewLabel);
 		main.setVisible(true);
 			
 		//리스너
@@ -226,21 +231,18 @@ public class MarketRegister {
 		
 		//member 테이블에 등록
 		boolean result =main.system.register(vo);
+		if(result) {
+			JOptionPane.showMessageDialog(null, "등록 성공!!");
+		}else {
+			JOptionPane.showMessageDialog(null, "등록 실패!!");
+		}
 		
 		//서버와 연결이 되있지 않다면 서버와 연결
 		if(mvo.getServer_state()==0) {
 			main.serverConnect(); //server_state vo에서 int로 바꿔야함 ㅠ
-			main.now_room=main.system.get_pid(Integer.parseInt(main.vo.getId()));
+			main.now_room = main.system.get_pid(main.vo.getId());
 			System.out.println(main.now_room);
 		}
-		
-		if(result) {
-			JOptionPane.showMessageDialog(null,"등록 성공!!");
-		}else {
-			JOptionPane.showMessageDialog(null,"등록 실패!!");
-		}
-		
-		
 	}
 
 	//이벤트 처리 클래스

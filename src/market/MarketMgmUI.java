@@ -40,9 +40,7 @@ public class MarketMgmUI extends JFrame {
 	public static final int CHAT = 5;
 	public static final int MYHOME = 6;
 	public static final int REVIEW = 7;
-	
-	
-	
+
 	public static final int CONNECT = 0; // 처음접속 MulltiChatClient.CONNECT
 	public static final int TALKING =1; // 대화중
 	public static final int EXIT = -1;//종료
@@ -72,6 +70,7 @@ public class MarketMgmUI extends JFrame {
 	JPanel reviewPane = new JPanel();
 	JScrollPane jScrollPane;
 
+
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 
 //영재-C:/java_workspace/market/images/register_back.png
@@ -93,9 +92,11 @@ public class MarketMgmUI extends JFrame {
 //		start(); //영재 테스트용
 	}
 
-	//Method
-		public void showMain() {  //10.22 영재 수정			
-			showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage());
+	// Method
+	public void showMain() { // 10.22 영재 수정4i
+//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+//		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); // 영화
+		showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage()); // 영화
 
 
 		// 영재-C:/java_workspace/market/images/login_main.png
@@ -137,6 +138,15 @@ public class MarketMgmUI extends JFrame {
 		btnJoin.setBackground(new Color(240, 255, 240));
 		btnJoin.setBounds(178, 447, 91, 23);
 		showPane.add(btnJoin);
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image img = toolkit.getImage("C:/dev/eclipse_workspace/market/images/icon.png");
+		// 기림 C:/dev/eclipse_workspace/market/images/icon.png
+		// 영재 "C:/java_workspace/market/images/icon.png"
+		setIconImage(img);
+
+
+		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -152,13 +162,12 @@ public class MarketMgmUI extends JFrame {
 	public void start() { // 임시용
 		showPane.setVisible(false);
 		getContentPane().setLayout(null);
-		
 
 		mainPane = new JPanel();
 		menuPane = new JPanel();
 		menuPane.setBounds(0, 130, 200, 650);
 		mainPane.setBounds(200, 130, 1000, 650);
-		jl_title = new JLabel(vo.getId()+"\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4");
+		jl_title = new JLabel(vo.getId()  + "\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4");
 		jl_title.setBounds(270, 32, 405, 22);
 		jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 		jl_img.setBounds(299, 16, -1, -1);
@@ -329,12 +338,14 @@ public class MarketMgmUI extends JFrame {
 		mainPane.add(lblNewLabel_1_1_2_4_1_2);
 		
 
-		
 
-		northPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/north.png").getImage());
+//		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
+//		northPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/north.png").getImage()); //영화
+		northPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/north.png").getImage());//기림
+
 		//영재 "C:/java_workspace/market/images/north.png"
+		//민석 C:/dev/se_workspace/sist_project_1/images/north.png
 		//기림 C:/dev/eclipse_workspace/market/images/north.png
-
 //		north_panel = new JPanel();
 //		north_panel.setBackground(new Color(153, 204, 255));
 		northPane.setBounds(0, 0, 1186, 130);
@@ -503,8 +514,10 @@ public class MarketMgmUI extends JFrame {
 			system.login_state(vo,0); //종료 시 login_state 0으로
 			system.server_state(vo,0);//종료 시 server_state 0으로
 			system.dao.close();
-			JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
-			System.exit(0);
+			int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 프로그램을 종료 하시겠습니까?"));
+			if (result == 0) {
+				System.exit(0);
+			}
 		}
 
 		public boolean login() {
@@ -554,7 +567,7 @@ public class MarketMgmUI extends JFrame {
 			} else if (btnDelete == obj) {
 				new MarketDelete(main).delete();
 			} else if (btnUpdate == obj) {
-				new MarketUpdate(main, system.dao).update();
+				new MarketUpdate(main, main.system.dao).update();
 			} else if (btnChat == obj) {
 				new MarketChat(main).chat();
 			} else if (btnReview == obj) {
