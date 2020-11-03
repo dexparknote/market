@@ -92,10 +92,10 @@ public class MarketMgmUI extends JFrame {
 //		start(); //영재 테스트용
 	}
 
-	// Method
-	public void showMain() { // 10.22 영재 수정4i
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); // 영화
+	//Method
+		public void showMain() {  //10.22 영재 수정			
+			showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+
 
 
 		// 영재-C:/java_workspace/market/images/login_main.png
@@ -139,7 +139,8 @@ public class MarketMgmUI extends JFrame {
 		showPane.add(btnJoin);
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Image img = toolkit.getImage("C:\\dev\\se_workspace\\market\\images\\icon.png");
+		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
+		// 영재 "C:/java_workspace/market/images/icon.png"
 		setIconImage(img);
 
 
@@ -335,10 +336,8 @@ public class MarketMgmUI extends JFrame {
 		mainPane.add(lblNewLabel_1_1_2_4_1_2);
 		
 
-		
 
-		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
-//		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage());
+		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage());
 
 		//영재 "C:/java_workspace/market/images/north.png"
 		//민석 C:/dev/se_workspace/sist_project_1/images/north.png
