@@ -365,15 +365,16 @@ class MarketDAO extends DBConn{
 	/**
 	 * review_insert -±â¸² 
 	 */
-	public boolean review_insert(String comm,ProductVO vo){
+	public boolean review_insert(String comm, ReviewVO rvo){
 			boolean result= false;
 		try {
 			String sql = "insert into review values(?,?,?,sysdate)";
 		getPreparedStatement(sql);
 		
-		pstmt.setString(1, vo.getMid());
-		pstmt.setString(2, vo.getPid());
+		pstmt.setString(1, rvo.getMid());
+		pstmt.setString(2, rvo.getPid());
 		pstmt.setString(3, comm);
+//		System.out.println(rvo.getMid() +", "+ rvo.getPid() +", "+ comm);
 
 		int count=pstmt.executeUpdate();
 		if(count!=0) 	result =true;

@@ -70,8 +70,8 @@ public class MarketMgmSystem {
 	}
 	
 	/**리뷰 정보 저장 - 기림**/
-	public boolean review_insert(String comm,ProductVO vo){
-		return dao.review_insert(comm,vo);
+	public boolean review_insert(String comm,ReviewVO rvo){
+		return dao.review_insert(comm, rvo);
 	}
 	
 	/**리뷰 row,pid 일치 - 기림**/

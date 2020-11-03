@@ -9,6 +9,7 @@ import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
@@ -44,16 +45,16 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 						  String comm=JOptionPane.showInputDialog(null, "리뷰를 입력해주세요");
 						  
 						  ProductVO vo = market_s.plist.get(row);
-						  vo.setMid(mvo.getId());	
-						  
 						  ReviewVO rvo = new ReviewVO();
-						  rvo.setMid(mvo.getId());
+						  rvo.setMid(vo.getMid());
 						  rvo.setPid(vo.getPid());
 						  rvo.setEvaluation(comm);				  
+//						  System.out.println(rvo.getMid() +", "+ rvo.getPid() +", "+ rvo.getEvaluation());
 						  
 						  market_s.dao.product_row(vo);
-						  market_s.dao.review_insert(comm,vo);
-						  market_s.dao.delete_review(vo.getPid());	
+						  market_s.dao.review_insert(comm,rvo);
+						  market_s.dao.delete_review(rvo.getPid());	
+						  
 						  
 						  new MarketSearch(main, market_s.dao).search("show_all");	
 					 }else {
