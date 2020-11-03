@@ -35,7 +35,7 @@ public class MarketReview {
 	   DefaultTableModel model =new DefaultTableModel(columns,0);   
 	   JTable table= new JTable(model); 
 	   MarketDAO dao;
-	   
+	
 // Constructor
 	   public MarketReview(MarketMgmUI main,MarketDAO dao) {
 	      this.main = main;
@@ -139,7 +139,7 @@ public class MarketReview {
 					row[1]=rvo.getPid();
 					row[2]=rvo.getEvaluation();
 					row[3]=rvo.getRdate();
-					model.addRow(row);
+ 					model.addRow(row);
 				}
 				table.repaint();		
 				model.fireTableDataChanged();

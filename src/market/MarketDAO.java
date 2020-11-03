@@ -267,9 +267,7 @@ class MarketDAO extends DBConn{
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
-			String sql = " select pid, mid, pname, price, pphone, state, method, area, explain, pdate  " + 
-						" from (select pid,mid, pname, price, pphone, state, method, area, explain, pdate from product " + 
-						"      order by pid desc)";
+			String sql = " select pid, mid, pname, price, pphone, state, method, area, explain, pdate from product order by pid desc";
 			getPreparedStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -336,7 +334,7 @@ class MarketDAO extends DBConn{
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
-			String sql = "select pid,mid,pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%'";
+			String sql = "select pid,mid,pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%' order by pid desc";
 			getPreparedStatement(sql);
 			pstmt.setString(1, pname);
 			rs = pstmt.executeQuery();
@@ -377,7 +375,6 @@ class MarketDAO extends DBConn{
 		pstmt.setString(2, vo.getPid());
 		pstmt.setString(3, comm);
 
-
 		int count=pstmt.executeUpdate();
 		if(count!=0) 	result =true;
 			
@@ -416,7 +413,6 @@ class MarketDAO extends DBConn{
 	public ArrayList <ReviewVO> review_list(String id)
 	{
 		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
-//			ArrayList <ReviewVO> vo = new  ArrayReviewVO ();
 			try {
 				String sql = " select mid,pid,evaluation,rdate from review where mid = ? order by rdate desc";
 				getPreparedStatement(sql);
