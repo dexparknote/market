@@ -53,14 +53,16 @@ public class MarketUpdate {
 	ButtonGroup group;
 	MarketRegister rg;
 	String pid;
+	MarketDAO dao;
 	private JComboBox combo_method;
 	
 	
 	//Constructor
 	public MarketUpdate() {}
-	public MarketUpdate(MarketMgmUI main) {
+	public MarketUpdate(MarketMgmUI main, MarketDAO dao) {
 		this.main = main;
 		this.updatePane = main.updatePane;
+		this.dao = dao;
 	}
 	
 	//Method
@@ -367,11 +369,8 @@ public class MarketUpdate {
 		
 		if(main.system.update_pr(pvo)) {
 			JOptionPane.showMessageDialog(null, "수정이 완료됐습니다");
-//			for(JTextField tf : tf_update_list) {
-//				tf.setText("");
-//			}
 //			selectFormTable();
-			new MarketSearch(main).search();
+			new MarketSearch(main, main.system.dao).search("show_all");	
 		} else {
 			JOptionPane.showMessageDialog(null, "수정을 실패했습니다");
 		}

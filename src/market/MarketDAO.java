@@ -1,3 +1,4 @@
+
 package market;
 import java.awt.print.Printable;
 //backup
@@ -167,38 +168,39 @@ class MarketDAO extends DBConn{
 		
 		return result;
 	}
-	/**
-	 *	join 
-	 */
-	public boolean join(MemberVO vo) {
-		boolean result = false;
-		
-		try {
-			String sql = "insert into market_member values(?,?,?,?,?,?,sysdate,0,0)";
-			getPreparedStatement(sql);
-			pstmt.setString(1, vo.getId());
-			pstmt.setString(2, vo.getPass());
-			pstmt.setString(3, vo.getName());
-			pstmt.setString(4, vo.getAddr());
-			pstmt.setString(5, vo.getPhone());
-			pstmt.setString(6, vo.getEmail());
-			int count = pstmt.executeUpdate();
-			if(count != 0) result = true;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
-	
+
+	   /**
+	    *   join 
+	    */
+	   public boolean join(MemberVO vo) {
+	      boolean result = false;
+	      
+	      try {
+	         String sql = "insert into market_member values(?,?,?,?,?,?,sysdate,0,0)";
+	         getPreparedStatement(sql);
+	         pstmt.setString(1, vo.getId());
+	         pstmt.setString(2, vo.getPass());
+	         pstmt.setString(3, vo.getName());
+	         pstmt.setString(4, vo.getAddr());
+	         pstmt.setString(5, vo.getPhone());
+	         pstmt.setString(6, vo.getEmail());
+	         int count = pstmt.executeUpdate();
+	         if(count != 0) result = true;
+	         
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      
+	      return result;
+	   }
+
 	/**
 	 *  insert
 	 */
 	public boolean insert(ProductVO vo) {
 		boolean result = false;
 		try {
-			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,?,sysdate)";
+			String sql="insert into product values(SEQ_PID.NEXTVAL,?,?,?,?,?,?,?,?,sysdate,999)";
 			getPreparedStatement(sql);
 			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getPname());
@@ -219,31 +221,67 @@ class MarketDAO extends DBConn{
 	}
 	
 	/**
-	 * select - 기림
+	 *  search 데이터 유효성 체크  - 기림
 	 */
-	public ArrayList<ProductVO> select(){
+	public boolean searchDataCheck(String pname) {
+		boolean result = false;
+		
+		try {
+			String sql = "select count(*) from product where pname = ?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, pname);
+			rs =pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(1) != 0) result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**
+	 *  review 데이터 유효성 체크 -기림
+	 */
+	public boolean reviewDataCheck(String mid) {
+		boolean result = false;
+			
+			try {
+				String sql = "select count(*) from review where mid = ?";
+				getPreparedStatement(sql);
+				pstmt.setString(1, mid);
+				rs =pstmt.executeQuery();
+				if(rs.next()) {
+					if(rs.getInt(1) != 0) result = true;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+	}
+	
+	/**
+	 * search_list - 기림
+	 */
+	public ArrayList<ProductVO> search_list(){
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
-			String sql = " select pid, pname, price, pphone, state, method, area, explain, pdate  " + 
-						" from (select pid, pname, price, pphone, state, method, area, explain, pdate from product " + 
-						"      order by pid desc)";
+			String sql = " select pid, mid, pname, price, pphone, state, method, area, explain, pdate from product order by pid desc";
 			getPreparedStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ProductVO vo = new ProductVO();
 				vo.setPid(rs.getString(1));
-				vo.setPname(rs.getString(2));
-				vo.setPrice(rs.getInt(3));
-//				vo.setAddress(rs.getString(4));
-				vo.setExplain(rs.getString(5));
-				vo.setPdate(rs.getString(6));
-				vo.setPphone(rs.getString(4));
-				vo.setState(rs.getString(5));
-				vo.setMethod(rs.getString(6));
-				vo.setArea(rs.getString(7));
-				vo.setExplain(rs.getString(8));
-				vo.setPdate(rs.getString(9));
+				vo.setMid(rs.getString(2));
+				vo.setPname(rs.getString(3));
+				vo.setPrice(rs.getInt(4));
+				vo.setPphone(rs.getString(5));
+				vo.setState(rs.getString(6));
+				vo.setMethod(rs.getString(7));
+				vo.setArea(rs.getString(8));
+				vo.setExplain(rs.getString(9));
+				vo.setPdate(rs.getString(10));
 					
 				list.add(vo);
 			}
@@ -289,39 +327,131 @@ class MarketDAO extends DBConn{
 	}
 	
 	
-	
 	/**
-	 * select(String name) - 기림
+	 * search_list(String name) - 기림
 	 */
-	public ProductVO select(String pname) {
-		ProductVO vo = new ProductVO();
+	public ArrayList<ProductVO> search_list(String pname){
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
-			String sql = "select pid, pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%'";
+			String sql = "select pid,mid,pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%' order by pid desc";
 			getPreparedStatement(sql);
-			pstmt.setString(1,pname);
+			pstmt.setString(1, pname);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
+				ProductVO vo = new ProductVO();
 				vo.setPid(rs.getString(1));
-				vo.setPname(rs.getString(2));
-				vo.setPrice(rs.getInt(3));
-				vo.setPphone(rs.getString(4));
-				vo.setState(rs.getString(5));
-				vo.setMethod(rs.getString(6));
-				vo.setArea(rs.getString(7));
-				vo.setExplain(rs.getString(8));
-				vo.setPdate(rs.getString(9));
-			}			
+				vo.setMid(rs.getString(2));
+				vo.setPname(rs.getString(3));
+				vo.setPrice(rs.getInt(4));
+				vo.setPphone(rs.getString(5));
+				vo.setState(rs.getString(6));
+				vo.setMethod(rs.getString(7));
+				vo.setArea(rs.getString(8));
+				vo.setExplain(rs.getString(9));
+				vo.setPdate(rs.getString(10));
+					
+				list.add(vo);
+			}
 			
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return vo;
+		return list;
 	}
 	
+	/**
+	 * review_insert -기림 
+	 */
+	public boolean review_insert(String comm,ProductVO vo){
+			boolean result= false;
+		try {
+			String sql = "insert into review values(?,?,?,sysdate)";
+		getPreparedStatement(sql);
+		
+		pstmt.setString(1, vo.getMid());
+		pstmt.setString(2, vo.getPid());
+		pstmt.setString(3, comm);
+
+		int count=pstmt.executeUpdate();
+		if(count!=0) 	result =true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
+	/**
+	 * product_row -기림
+	 */
+	public boolean product_row(ProductVO vo) {
+		boolean result  = false;
+		
+		try {
+			String sql =" update product set t_row =? where pid = ? ";
+			getPreparedStatement(sql);
+			
+			pstmt.setString(1,vo.getPid());
+			pstmt.setString(2,vo.getPid());
+			
+			int count=pstmt.executeUpdate();
+			if(count!=0) 	result =true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return  result;
+	}
+	
+	/**
+	 * review_list - 기림
+	 */
+	public ArrayList <ReviewVO> review_list(String id)
+	{
+		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
+			try {
+				String sql = " select mid,pid,evaluation,rdate from review where mid = ? order by rdate desc";
+				getPreparedStatement(sql);
+				
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					ReviewVO vo = new ReviewVO();
+					vo.setMid(rs.getString(1));
+					vo.setPid(rs.getString(2));
+					vo.setEvaluation(rs.getString(3));
+					vo.setRdate(rs.getString(4));
+					rlist.add(vo);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rlist;
+	}
+	
+	/**
+	 * delete_review  -기림
+	 */
+	public boolean delete_review(String pname) {
+		boolean result = false;
+		
+		try {
+			String sql = "delete from product where pid=?";
+			getPreparedStatement(sql);
+			pstmt.setString(1, pname);
+			int count = pstmt.executeUpdate();
+			if(count != 0) result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}	
 	
 	/** 
 	 * delete select -민석
@@ -586,4 +716,5 @@ class MarketDAO extends DBConn{
 		
 		return result;
 	}
+
 }

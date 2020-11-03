@@ -49,19 +49,50 @@ public class MarketMgmSystem {
 		return dao.insert(vo);
 	}
 	
-	/**전체 리스트 - 기림**/
-	public ArrayList <ProductVO> list() {
-		return dao.select();
+	/**검색 데이터 유효성 체크 -기림**/
+	public boolean searchDataCheck(String pname) {
+		return dao.searchDataCheck(pname);
+	}
+	
+	/**리뷰ID 데이터 유효성 체크 -기림**/
+	public boolean reviewDataCheck(String mid) {
+		return dao.searchDataCheck(mid);
+	}
+	
+	/**전체 조회 리스트 - 기림**/
+	public ArrayList <ProductVO> search_list() {
+		return dao.search_list();
+	}
+	
+	/**제품 이름 검색리스트 - 기림**/
+	public ArrayList<ProductVO> search_list(String pname) {
+		return dao.search_list(pname);
+	}
+	
+	/**리뷰 정보 저장 - 기림**/
+	public boolean review_insert(String comm,ProductVO vo){
+		return dao.review_insert(comm,vo);
+	}
+	
+	/**리뷰 row,pid 일치 - 기림**/
+	public boolean product_row(ProductVO vo) {
+		return dao.product_row(vo);
+	}
+	
+	/**리뷰 출력 - 기림**/
+	public ArrayList<ReviewVO> review_list(String id)
+	{
+		return dao.review_list(id);	
+	}
+	
+	/**구매후 물품삭제 -기림**/
+	public boolean delete_review(String pname) {
+		return dao.delete_review(pname);
 	}
 	
 	/**삭제 리스트 - 민석**/
 	public ArrayList <ProductVO> delete_list(MemberVO mvo) {
 		return dao.delete_select(mvo);
-	}
-
-	/**검색 - 기림**/
-	public ProductVO search(String pname) {
-		return dao.select(pname);
 	}
 	
 	/** 물품 정보 삭제 검색 - 민석 **/
@@ -122,4 +153,5 @@ public class MarketMgmSystem {
 	public boolean update_info(MemberVO mvo) {
 		return dao.update_info(mvo);
 	}
+
 } // class
