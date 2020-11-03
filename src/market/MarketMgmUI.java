@@ -362,7 +362,7 @@ public class MarketMgmUI extends JFrame {
 		northPane.add(welcome_member);
 
 		setSize(1350, 820);
-
+		
 		Dimension fsize = getSize();
 		Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (int) (scsize.getWidth() - fsize.getWidth()) / 2;
@@ -554,7 +554,7 @@ public class MarketMgmUI extends JFrame {
 			} else if (btnDelete == obj) {
 				new MarketDelete(main).delete();
 			} else if (btnUpdate == obj) {
-				new MarketUpdate(main).update();
+				new MarketUpdate(main, system.dao).update();
 			} else if (btnChat == obj) {
 				new MarketChat(main).chat();
 			} else if (btnReview == obj) {

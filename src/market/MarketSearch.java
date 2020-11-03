@@ -98,7 +98,9 @@ public class MarketSearch  implements TableModelListener{
 			plist = dao.search_list(pname);
 		}		
 		model = new MyTableModel(plist);	
-		JTable table = new JTable(model);	
+		JTable table = new JTable(model);
+//		model.removeTableModelListener(l);
+		table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 			
 		table.getColumn("±¸¸Å").setCellRenderer(dtcr);
 		    
@@ -163,7 +165,8 @@ public class MarketSearch  implements TableModelListener{
 			     }			
 			}
 		}		
-					
+			
+		
 	    public void tableChanged(TableModelEvent e) { 
 	    	System.out.println(e.getSource());
 	        int row = e.getFirstRow();

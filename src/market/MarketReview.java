@@ -131,7 +131,7 @@ public class MarketReview {
 				
 			//Æ¯Á¤°ª JTableDate
 		public void crateJTableData(String mid){
-			ArrayList <ReviewVO> rlist = dao.review_list(mid);
+			ArrayList <ReviewVO> rlist = main.system.review_list(mid);
 			model.setNumRows(0);			
 			for(ReviewVO rvo :rlist) {
 				if(rvo != null) {

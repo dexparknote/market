@@ -1,30 +1,22 @@
 package market;
 
 import java.awt.BorderLayout;
-
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-
-import javax.swing.ImageIcon;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import java.awt.Font;
-import java.awt.Color;
 import javax.swing.JRadioButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.ButtonGroup;
+import javax.swing.JTextField;
 
 
 public class MarketUpdate {
@@ -54,13 +46,14 @@ public class MarketUpdate {
 	MarketRegister rg;
 	String pid;
 	private JComboBox combo_method;
-	
+	MarketDAO dao;
 	
 	//Constructor
 	public MarketUpdate() {}
-	public MarketUpdate(MarketMgmUI main) {
+	public MarketUpdate(MarketMgmUI main, MarketDAO dao) {
 		this.main = main;
 		this.updatePane = main.updatePane;
+		this.dao = dao;
 	}
 	
 	//Method
@@ -371,7 +364,7 @@ public class MarketUpdate {
 //				tf.setText("");
 //			}
 //			selectFormTable();
-			new MarketSearch(main).search();
+			new MarketSearch(main, system.dao).search("show_all");
 		} else {
 			JOptionPane.showMessageDialog(null, "수정을 실패했습니다");
 		}

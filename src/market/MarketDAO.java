@@ -227,7 +227,7 @@ class MarketDAO extends DBConn{
 		boolean result = false;
 		
 		try {
-			String sql = "select count(*) from product where pname = ?";
+			String sql = " select count(*) from product where pname = ?";
 			getPreparedStatement(sql);
 			pstmt.setString(1, pname);
 			rs =pstmt.executeQuery();
@@ -247,7 +247,7 @@ class MarketDAO extends DBConn{
 		boolean result = false;
 			
 			try {
-				String sql = "select count(*) from review where mid = ?";
+				String sql = " select count(*) from review where mid = ?";
 				getPreparedStatement(sql);
 				pstmt.setString(1, mid);
 				rs =pstmt.executeQuery();
@@ -292,6 +292,7 @@ class MarketDAO extends DBConn{
 		
 		return list;
 	}
+	
 	/**
 	 * delete_select - 민석 
 	 */
@@ -334,7 +335,7 @@ class MarketDAO extends DBConn{
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		try {
-			String sql = "select pid,mid,pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%' order by pid desc";
+			String sql = " select pid,mid,pname, price, pphone, state, method, area, explain, pdate from product where pname like '%' || ? || '%' order by pid desc ";
 			getPreparedStatement(sql);
 			pstmt.setString(1, pname);
 			rs = pstmt.executeQuery();
@@ -365,14 +366,14 @@ class MarketDAO extends DBConn{
 	/**
 	 * review_insert -기림 
 	 */
-	public boolean review_insert(String comm,ProductVO vo){
+	public boolean review_insert(String comm,ReviewVO rvo){
 			boolean result= false;
 		try {
-			String sql = "insert into review values(?,?,?,sysdate)";
+			String sql = " insert into review values(?,?,?,sysdate)";
 		getPreparedStatement(sql);
 		
-		pstmt.setString(1, vo.getMid());
-		pstmt.setString(2, vo.getPid());
+		pstmt.setString(1, rvo.getMid());
+		pstmt.setString(2, rvo.getPid());
 		pstmt.setString(3, comm);
 
 		int count=pstmt.executeUpdate();
@@ -410,14 +411,14 @@ class MarketDAO extends DBConn{
 	/**
 	 * review_list - 기림
 	 */
-	public ArrayList <ReviewVO> review_list(String id)
+	public ArrayList <ReviewVO> review_list(String mid)
 	{
 		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
 			try {
-				String sql = " select mid,pid,evaluation,rdate from review where mid = ? order by rdate desc";
+				String sql = " select mid,pid,evaluation,rdate from review where mid = ? ";
 				getPreparedStatement(sql);
 				
-				pstmt.setString(1, id);
+				pstmt.setString(1, mid);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					ReviewVO vo = new ReviewVO();
@@ -441,7 +442,7 @@ class MarketDAO extends DBConn{
 		boolean result = false;
 		
 		try {
-			String sql = "delete from product where pid=?";
+			String sql = "delete from product where pid=? ";
 			getPreparedStatement(sql);
 			pstmt.setString(1, pname);
 			int count = pstmt.executeUpdate();

@@ -1,10 +1,14 @@
 package market;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 
 class MyTableModel extends AbstractTableModel {
 //Field
@@ -12,7 +16,8 @@ class MyTableModel extends AbstractTableModel {
 //    ImageIcon [] icon = new ImageIcon[6];	추후 이미지 파일 작업계획시 사용할 예정
     String[] columnNames= new String[]{"게시물번호","판매자ID","상품이름","가격","연락처","상태","거래방법","거래지역","상품정보","등록일","구매"};
     private Object[][] data;
-    Object value;   
+    Object value;  
+//    final DefaultTableModel model = new DefaultTableModel(data, columnNames);
     
 //Constructor
     MyTableModel(ArrayList<ProductVO> plist) {  
@@ -25,6 +30,7 @@ class MyTableModel extends AbstractTableModel {
     		
     	}
     }   
+    
     
     public int getColumnCount() {	
         return columnNames.length;
@@ -57,11 +63,16 @@ class MyTableModel extends AbstractTableModel {
     public Object getValue() {
     	return value;
     }
-
+    
+    
+    
+    
     public void setValueAt(Object value, int row, int col) {
         data[row][col] = value;
         fireTableCellUpdated(row, col);
         setValue(value);       
     }
+
+
         
 } 
