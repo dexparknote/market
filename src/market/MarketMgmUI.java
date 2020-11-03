@@ -40,9 +40,7 @@ public class MarketMgmUI extends JFrame {
 	public static final int CHAT = 5;
 	public static final int MYHOME = 6;
 	public static final int REVIEW = 7;
-	
-	
-	
+
 	public static final int CONNECT = 0; // 처음접속 MulltiChatClient.CONNECT
 	public static final int TALKING =1; // 대화중
 	public static final int EXIT = -1;//종료
@@ -150,7 +148,6 @@ public class MarketMgmUI extends JFrame {
 	public void start() { // 임시용
 		showPane.setVisible(false);
 		getContentPane().setLayout(null);
-		
 
 		mainPane = new JPanel();
 		menuPane = new JPanel();
@@ -500,8 +497,10 @@ public class MarketMgmUI extends JFrame {
 			system.login_state(vo,0); //종료 시 login_state 0으로
 			system.server_state(vo,0);//종료 시 server_state 0으로
 			system.dao.close();
-			JOptionPane.showMessageDialog(null,getMsg("프로그램 종료!!!"));
-			System.exit(0);
+			int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 프로그램을 종료 하시겠습니까?"));
+			if (result == 0) {
+				System.exit(0);
+			}
 		}
 
 		public boolean login() {
