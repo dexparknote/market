@@ -231,11 +231,11 @@ public class MarketRegister {
 		}
 
 		// 서버와 연결이 되있지 않다면 서버와 연결
-		if (mvo.getServer_state() == 0) {
-			main.serverConnect(); // server_state vo에서 int로 바꿔야함 ㅠ
-			main.now_room = main.system.get_pid(main.vo.getId());
-			System.out.println(main.now_room);
-		}
+//		if (mvo.getServer_state() == 0) {
+//			main.serverConnect(); // server_state vo에서 int로 바꿔야함 ㅠ
+//			main.now_room = main.system.get_pid(main.vo.getId());
+//			System.out.println(main.now_room);
+//		}
 	}
 
 	// 이벤트 처리 클래스
