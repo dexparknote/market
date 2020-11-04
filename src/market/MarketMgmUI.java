@@ -107,13 +107,13 @@ public class MarketMgmUI extends JFrame {
 		getContentPane().add(showPane);
 
 		JLabel Jl_id = new JLabel("\uC544\uC774\uB514");
-		Jl_id.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 14));
+		Jl_id.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 14));
 		Jl_id.setHorizontalAlignment(SwingConstants.CENTER);
 		Jl_id.setBounds(75, 367, 67, 34);
 		showPane.add(Jl_id);
 
 		JLabel Jl_pass = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		Jl_pass.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 14));
+		Jl_pass.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 14));
 		Jl_pass.setBounds(75, 395, 67, 34);
 		showPane.add(Jl_pass);
 
@@ -128,13 +128,14 @@ public class MarketMgmUI extends JFrame {
 		jtf_pass.setColumns(10);
 
 		btnLogin = new JButton("\uB85C\uADF8\uC778");
-		btnLogin.setBackground(new Color(240, 255, 240));
-		btnLogin.setForeground(new Color(0, 0, 0));
+		btnLogin.setBackground(Color.DARK_GRAY);
+		btnLogin.setForeground(new Color(153, 204, 255));
 		btnLogin.setBounds(75, 447, 91, 23);
 		showPane.add(btnLogin);
 
 		btnJoin = new JButton("\uD68C\uC6D0\uAC00\uC785");
-		btnJoin.setBackground(new Color(240, 255, 240));
+		btnJoin.setBackground(Color.DARK_GRAY);
+		btnJoin.setForeground(new Color(153, 204, 255));
 		btnJoin.setBounds(178, 447, 91, 23);
 		showPane.add(btnJoin);
 

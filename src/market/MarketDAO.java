@@ -299,7 +299,7 @@ class MarketDAO extends DBConn {
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 
 		try {
-			String sql = " select pid, pname, price, pphone, state, method, area, explain, pdate"
+			String sql = " select pid, pname, price, pphone, state, method, area, explain, to_char(pdate,'yyyy-mm-dd')"
 					+ " from (select pid, pname, price, pphone, state, method, area, explain, pdate from product p, market_member m "
 					+ " where m.mid=p.mid and m.mid=? order by pid desc)";
 			getPreparedStatement(sql);

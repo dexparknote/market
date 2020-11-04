@@ -117,12 +117,13 @@ public class MarketDelete {
 
 		JScrollPane pane = new JScrollPane(table);
 
-		table.getColumn(table.getColumnName(0)).setPreferredWidth(70);
+		table.getColumn(table.getColumnName(0)).setPreferredWidth(40);
 		table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
 		table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
 		table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
-		table.getColumn(table.getColumnName(6)).setPreferredWidth(80);
-		table.getColumn(table.getColumnName(7)).setPreferredWidth(200);
+		table.getColumn(table.getColumnName(6)).setPreferredWidth(50);
+		table.getColumn(table.getColumnName(7)).setPreferredWidth(230);
+		table.getColumn(table.getColumnName(8)).setPreferredWidth(50);
 
 		table.setPreferredScrollableViewportSize(new Dimension(1200, 535));
 		table.setRowHeight(table.getRowHeight() + 70);

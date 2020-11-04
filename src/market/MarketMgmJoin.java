@@ -55,38 +55,40 @@ public class MarketMgmJoin {
 		main.setSize(joinBackPane.getWidth(), joinBackPane.getHeight() + 38);
 		main.getContentPane().add(joinBackPane);
 
+//		ImageIcon join_img = new ImageIcon("C:/dev/se_workspace/sist_project_1/images/≈◊Ω∫∆Æ.jpg");
+		
 		jl_login = new JLabel("\uD68C\uC6D0\uAC00\uC785");
-		jl_login.setFont(new Font("±º∏≤", Font.BOLD, 15));
+		jl_login.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 17));
 		jl_login.setBounds(174, 10, 106, 30);
 		joinBackPane.add(jl_login);
 
 		jl_id = new JLabel("\uC544\uC774\uB514");
-		jl_id.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		jl_id.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		jl_id.setBounds(30, 75, 60, 20);
 		joinBackPane.add(jl_id);
 
 		jl_pass = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		jl_pass.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		jl_pass.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		jl_pass.setBounds(30, 120, 60, 20);
 		joinBackPane.add(jl_pass);
 
 		jl_name = new JLabel("\uC774\uB984");
-		jl_name.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		jl_name.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		jl_name.setBounds(30, 165, 60, 20);
 		joinBackPane.add(jl_name);
 
 		jl_phone = new JLabel("\uD578\uB4DC\uD3F0");
-		jl_phone.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		jl_phone.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		jl_phone.setBounds(30, 255, 60, 20);
 		joinBackPane.add(jl_phone);
 
 		jl_addr = new JLabel("\uC8FC\uC18C");
-		jl_addr.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		jl_addr.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		jl_addr.setBounds(30, 210, 60, 20);
 		joinBackPane.add(jl_addr);
 
 		jl_email = new JLabel("\uC774\uBA54\uC77C");
-		jl_email.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		jl_email.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		jl_email.setBounds(30, 300, 60, 20);
 		joinBackPane.add(jl_email);
 
@@ -121,34 +123,34 @@ public class MarketMgmJoin {
 		joinBackPane.add(jf_email);
 
 		idcheck = new JButton("\uC911\uBCF5\uD655\uC778");
-		idcheck.setForeground(new Color(102, 204, 255));
+		idcheck.setForeground(new Color(153, 204, 255));
 		idcheck.setBackground(Color.DARK_GRAY);
-		idcheck.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		idcheck.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		idcheck.setBounds(270, 73, 95, 25);
 		joinBackPane.add(idcheck);
 
 		JLabel label = new JLabel("-\uC5C6\uC774 \uC785\uB825");
-		label.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		label.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		label.setBounds(270, 255, 95, 20);
 		joinBackPane.add(label);
 
 		jl_emailCheck = new JLabel("");
-		jl_emailCheck.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		jl_emailCheck.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		jl_emailCheck.setBounds(115, 336, 200, 20);
 		joinBackPane.add(jl_emailCheck);
 
 		resetJoin = new JButton("\uAC00\uC785\uCDE8\uC18C");
-		resetJoin.setForeground(new Color(102, 204, 255));
-		resetJoin.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		resetJoin.setForeground(new Color(153, 204, 255));
+		resetJoin.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		resetJoin.setBackground(Color.DARK_GRAY);
 		resetJoin.setBounds(303, 397, 95, 25);
 		joinBackPane.add(resetJoin);
 
-		doJoin = new JButton("\uD68C\uC6D0\uAC00\uC785");
-		doJoin.setForeground(new Color(102, 204, 255));
-		doJoin.setFont(new Font("±º∏≤", Font.BOLD, 13));
+		doJoin = new JButton("»∏ø¯∞°¿‘");
+		doJoin.setForeground(new Color(153, 204, 255));
+		doJoin.setFont(new Font("¡¶¡÷∞ÌµÒ", Font.PLAIN, 13));
 		doJoin.setBackground(Color.DARK_GRAY);
-		doJoin.setBounds(199, 398, 95, 25);
+		doJoin.setBounds(199, 397, 95, 25);
 		joinBackPane.add(doJoin);
 
 		main.setVisible(true);
