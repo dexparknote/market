@@ -66,7 +66,7 @@ public class MarketUpdate {
 	 * @wbp.parser.entryPoint
 	 */
 	public void update() {
-
+//		JPanel updatePane=new  JPanel();
 		tf_update_list = new ArrayList<String>();
 
 		main.switchPane(MarketMgmUI.UPDATE);
@@ -74,16 +74,16 @@ public class MarketUpdate {
 
 		JLabel title_label = new JLabel("※ 수정할 게시물의 번호를 입력해주세요 ※");
 		title_label.setFont(new Font("제주고딕", Font.PLAIN, 13));
-		title_label.setBounds(363, 59, 245, 32);
+		title_label.setBounds(361, 86, 245, 32);
 		updatePane.add(title_label);
 
 		JLabel id_label = new JLabel("[ 게시물 번호 ]");
 		id_label.setFont(new Font("제주고딕", Font.PLAIN, 20));
-		id_label.setBounds(142, 20, 150, 40);
+		id_label.setBounds(140, 47, 150, 40);
 		updatePane.add(id_label);
 
 		tf_update = new JTextField();
-		tf_update.setBounds(292, 30, 375, 25);
+		tf_update.setBounds(290, 57, 375, 25);
 		tf_update.setColumns(10);
 		updatePane.add(tf_update);
 
@@ -91,8 +91,9 @@ public class MarketUpdate {
 		update_search.setBackground(Color.DARK_GRAY);
 		update_search.setForeground(new Color(153, 204, 255));
 		update_search.setFont(new Font("제주고딕", Font.PLAIN, 16));
-		update_search.setBounds(701, 25, 79, 32);
+		update_search.setBounds(699, 52, 79, 32);
 		updatePane.add(update_search);
+		
 
 		main.getContentPane().add(updatePane);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -126,83 +127,83 @@ public class MarketUpdate {
 
 		label_pname = new JLabel("-   \uC0C1\uD488 \uC774\uB984");
 		label_pname.setFont(new Font("제주고딕", Font.PLAIN, 18));
-		label_pname.setBounds(181, 85, 101, 40);
+		label_pname.setBounds(179, 112, 101, 40);
 		updatePane.add(label_pname);
 
 		label_price = new JLabel("-   \uC0C1\uD488 \uAC00\uACA9");
 		label_price.setFont(new Font("제주고딕", Font.PLAIN, 18));
-		label_price.setBounds(181, 130, 101, 40);
+		label_price.setBounds(179, 157, 101, 40);
 		updatePane.add(label_price);
 
 		label_phone = new JLabel("-  \uAC70\uB798\uC2DC\uC5F0\uB77D\uCC98");
 		label_phone.setFont(new Font("제주고딕", Font.PLAIN, 18));
-		label_phone.setBounds(181, 175, 127, 40);
+		label_phone.setBounds(179, 202, 127, 40);
 		updatePane.add(label_phone);
 
 		label_state = new JLabel("-   \uC0C1\uD488 \uC0C1\uD0DC");
 		label_state.setFont(new Font("제주고딕", Font.PLAIN, 18));
-		label_state.setBounds(181, 220, 99, 40);
+		label_state.setBounds(179, 247, 99, 40);
 		updatePane.add(label_state);
 
 		label_method = new JLabel("-   \uAC70\uB798 \uBC29\uBC95");
 		label_method.setFont(new Font("제주고딕", Font.PLAIN, 18));
-		label_method.setBounds(181, 265, 101, 40);
+		label_method.setBounds(179, 292, 101, 40);
 		updatePane.add(label_method);
 
 		tf_pname = new JTextField();
 		tf_pname.setFont(new Font("제주고딕", Font.PLAIN, 14));
 		tf_pname.setColumns(10);
-		tf_pname.setBounds(373, 96, 284, 25);
+		tf_pname.setBounds(371, 123, 284, 25);
 		updatePane.add(tf_pname);
 
 		tf_price = new JTextField();
 		tf_price.setFont(new Font("제주고딕", Font.PLAIN, 14));
 		tf_price.setColumns(10);
-		tf_price.setBounds(373, 140, 284, 25);
+		tf_price.setBounds(371, 167, 284, 25);
 		updatePane.add(tf_price);
 
 		tf_phone = new JTextField();
 		tf_phone.setFont(new Font("제주고딕", Font.PLAIN, 14));
 		tf_phone.setColumns(10);
-		tf_phone.setBounds(373, 184, 284, 25);
+		tf_phone.setBounds(371, 211, 284, 25);
 		updatePane.add(tf_phone);
 
 		tf_explain = new JTextField();
 		tf_explain.setFont(new Font("제주고딕", Font.PLAIN, 14));
 		tf_explain.setColumns(10);
-		tf_explain.setBounds(373, 369, 394, 60);
+		tf_explain.setBounds(371, 396, 394, 60);
 		updatePane.add(tf_explain);
 
 		btnUpdate = new JButton("\uC218\uC815 \uC644\uB8CC");
 		btnUpdate.setBackground(Color.DARK_GRAY);
 		btnUpdate.setForeground(new Color(153, 204, 255));
 		btnUpdate.setFont(new Font("제주고딕", Font.PLAIN, 16));
-		btnUpdate.setBounds(597, 433, 101, 28);
+		btnUpdate.setBounds(595, 474, 101, 28);
 		updatePane.add(btnUpdate);
 
 		btnUpdateReset = new JButton("\uB2E4\uC2DC \uC791\uC131");
 		btnUpdateReset.setForeground(new Color(153, 204, 255));
 		btnUpdateReset.setFont(new Font("제주고딕", Font.PLAIN, 16));
 		btnUpdateReset.setBackground(Color.DARK_GRAY);
-		btnUpdateReset.setBounds(721, 433, 101, 28);
+		btnUpdateReset.setBounds(719, 474, 101, 28);
 		updatePane.add(btnUpdateReset);
 
 		label_explain = new JLabel("-   \uC0C1\uD488 \uC815\uBCF4");
 		label_explain.setFont(new Font("제주고딕", Font.PLAIN, 18));
-		label_explain.setBounds(181, 355, 101, 40);
+		label_explain.setBounds(179, 382, 101, 40);
 		updatePane.add(label_explain);
 
 		btn_use = new JRadioButton(" \uC0AC\uC6A9\uAC10 \uC788\uC74C");
 		btn_use.setBackground(Color.WHITE);
 		btn_use.setFont(new Font("제주고딕", Font.PLAIN, 14));
-		btn_use.setBounds(373, 230, 107, 23);
+		btn_use.setBounds(371, 257, 107, 23);
 		btn_use.setActionCommand("사용감 있음");
 		updatePane.add(btn_use);
 
 		btn_unuse = new JRadioButton(" \uC0AC\uC6A9\uAC10 \uC5C6\uC74C");
 		btn_unuse.setBackground(Color.WHITE);
 		btn_unuse.setFont(new Font("제주고딕", Font.PLAIN, 14));
-		btn_unuse.setBounds(501, 230, 107, 23);
+		btn_unuse.setBounds(499, 257, 107, 23);
 		btn_unuse.setActionCommand("사용감 없음");
 		btn_unuse.setSelected(true);
 		updatePane.add(btn_unuse);
@@ -213,7 +214,7 @@ public class MarketUpdate {
 
 		JLabel label_area = new JLabel("-   \uAC70\uB798 \uC9C0\uC5ED");
 		label_area.setFont(new Font("제주고딕", Font.PLAIN, 18));
-		label_area.setBounds(181, 310, 101, 40);
+		label_area.setBounds(179, 337, 101, 40);
 		updatePane.add(label_area);
 
 		combo_method = new JComboBox();
@@ -221,7 +222,7 @@ public class MarketUpdate {
 		combo_method.setModel(new DefaultComboBoxModel(
 				new String[] { "\uC9C1\uAC70\uB798", "\uBC30\uC1A1", "\uC9C1\uAC70\uB798 \uB610\uB294 \uBC30\uC1A1" }));
 		combo_method.setFont(new Font("제주고딕", Font.PLAIN, 14));
-		combo_method.setBounds(373, 275, 127, 23);
+		combo_method.setBounds(371, 302, 127, 23);
 		updatePane.add(combo_method);
 
 		combo_area = new JComboBox();
@@ -234,8 +235,9 @@ public class MarketUpdate {
 				"\uC804\uB77C\uBD81\uB3C4", "\uC81C\uC8FC\uD2B9\uBCC4\uC790\uCE58\uB3C4", "\uCDA9\uCCAD\uB0A8\uB3C4",
 				"\uCDA9\uCCAD\uB0A8\uB3C4" }));
 		combo_area.setFont(new Font("제주고딕", Font.PLAIN, 14));
-		combo_area.setBounds(373, 320, 127, 23);
+		combo_area.setBounds(371, 347, 127, 23);
 		updatePane.add(combo_area);
+
 
 		String[] data_list = new String[20];
 		data_list[0] = pvo.getPname();
@@ -287,7 +289,6 @@ public class MarketUpdate {
 		tf_update_list.add(tf_explain.getText());
 
 		main.getContentPane().add(updatePane);
-		main.setLocationRelativeTo(null);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setVisible(true);
 

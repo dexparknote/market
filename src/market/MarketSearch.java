@@ -113,12 +113,15 @@ public class MarketSearch implements TableModelListener {
 		table.getColumn(table.getColumnName(0)).setPreferredWidth(50);
 		table.getColumn(table.getColumnName(1)).setPreferredWidth(70);
 		table.getColumn(table.getColumnName(2)).setPreferredWidth(50);
+		table.getColumn(table.getColumnName(3)).setPreferredWidth(40);
+		table.getColumn(table.getColumnName(4)).setPreferredWidth(60);
 		table.getColumn(table.getColumnName(5)).setPreferredWidth(50);
 		table.getColumn(table.getColumnName(6)).setPreferredWidth(50);
-		table.getColumn(table.getColumnName(8)).setPreferredWidth(200);
-		table.getColumn(table.getColumnName(10)).setPreferredWidth(50);
-
-		table.setPreferredScrollableViewportSize(new Dimension(1200, 535));
+		table.getColumn(table.getColumnName(8)).setPreferredWidth(230);
+		table.getColumn(table.getColumnName(9)).setPreferredWidth(50);
+		table.getColumn(table.getColumnName(10)).setPreferredWidth(40);
+			
+		table.setPreferredScrollableViewportSize(new Dimension(1200,535));
 
 		MyTableCellRenderer tcr = new MyTableCellRenderer(this, main);
 		table.getColumnModel().getColumn(10).setCellEditor(tcr);
