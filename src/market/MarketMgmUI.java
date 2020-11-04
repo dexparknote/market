@@ -42,19 +42,19 @@ public class MarketMgmUI extends JFrame {
 	public static final int REVIEW = 7;
 
 	public static final int CONNECT = 0; // 처음접속 MulltiChatClient.CONNECT
-	public static final int TALKING = 1; // 대화중
-	public static final int EXIT = -1;// 종료
-
+	public static final int TALKING =1; // 대화중
+	public static final int EXIT = -1;//종료
+	
 	ImagePanel showPane, northPane;
 	JButton btnLogin, btnJoin; // 로그인 버튼, 회원가입 버튼
 	JPanel mainPane, contentsPane, menuPane;
-	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout, btnMyPage, btnReview;
+	JButton btnReg, btnSearch, btnUpdate, btnDelete, btnChat, btnLogout, btnMyPage,btnReview;
 	JLabel jl_title, jl_img;
 	JTextField jtf_id; // 아이디 입력 JTextField
 	JPasswordField jtf_pass; // 비밀번호 입력 JPasswordField
-
-	JTextArea content = new JTextArea();
-	JTextField input = new JTextField();
+	
+	JTextArea content= new JTextArea();
+	JTextField input= new JTextField();
 	Socket socket;
 	ObjectInputStream ois;
 	ObjectOutputStream oos;
@@ -69,6 +69,7 @@ public class MarketMgmUI extends JFrame {
 	JPanel myPagePane = new JPanel();
 	JPanel reviewPane = new JPanel();
 	JScrollPane jScrollPane;
+
 
 //	ImagePanel regsearchPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\register_back.png").getImage()); //영재
 
@@ -86,7 +87,7 @@ public class MarketMgmUI extends JFrame {
 	// Constructor
 	public MarketMgmUI() {
 		super("도심 속 바다 : 바꿔쓰고 다시쓰고");
-
+		
 		showMain();
 //		start(); //영재 테스트용
 	}
@@ -96,6 +97,7 @@ public class MarketMgmUI extends JFrame {
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 //		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); // 영화
 		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage()); // 영화
+
 
 		// 영재-C:/java_workspace/market/images/login_main.png
 		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
@@ -136,13 +138,15 @@ public class MarketMgmUI extends JFrame {
 		btnJoin.setBackground(new Color(240, 255, 240));
 		btnJoin.setBounds(178, 447, 91, 23);
 		showPane.add(btnJoin);
-
+		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 //		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
-		Image img = toolkit.getImage("C:\\dev\\se_workspace\\market\\images\\icon.png");
+		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
 		// 영재 "C:/java_workspace/market/images/icon.png"
 		setIconImage(img);
 
+
+		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -163,8 +167,7 @@ public class MarketMgmUI extends JFrame {
 		menuPane = new JPanel();
 		menuPane.setBounds(0, 130, 200, 650);
 		mainPane.setBounds(200, 130, 1000, 650);
-		jl_title = new JLabel(
-				"null\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4 :)");
+		jl_title = new JLabel("null\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4 :)");
 		jl_title.setBounds(270, 32, 405, 22);
 		jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 		jl_img.setBounds(299, 16, -1, -1);
@@ -225,18 +228,18 @@ public class MarketMgmUI extends JFrame {
 //			add(mainPane, BorderLayout.CENTER);
 		getContentPane().add(menuPane);
 		getContentPane().add(mainPane);
-
+		
 		JLabel lblNewLabel = new JLabel("1. 게시물 등록");
 		lblNewLabel.setForeground(new Color(0, 102, 255));
 		lblNewLabel.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		lblNewLabel.setBounds(120, 78, 109, 34);
 		mainPane.add(lblNewLabel);
-
+		
 		JLabel lblNewLabel_1 = new JLabel("판매하고 싶은 상품을 등록할 수 있어요 ");
 		lblNewLabel_1.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1.setBounds(271, 83, 290, 22);
 		mainPane.add(lblNewLabel_1);
-
+		
 		JLabel lblNewLabel_1_2 = new JLabel("상품이름, 상품가격, 거래시 연락처, 상품상태, 거래방법, 거래지역 작성 및 선택할 수 있어요");
 		lblNewLabel_1_2.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_2.setBounds(271, 113, 587, 22);
@@ -246,128 +249,119 @@ public class MarketMgmUI extends JFrame {
 		lblNewLabel_1_2_1.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_2_1.setBounds(271, 143, 283, 22);
 		mainPane.add(lblNewLabel_1_2_1);
-
+		
 		JLabel lblNewLabel_1_1 = new JLabel("2. 게시물 검색");
 		lblNewLabel_1_1.setForeground(new Color(0, 102, 255));
 		lblNewLabel_1_1.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		lblNewLabel_1_1.setBounds(120, 176, 109, 34);
 		mainPane.add(lblNewLabel_1_1);
-
+		
+		
 		JLabel lblNewLabel_1_1_2 = new JLabel("3. 게시물 수정");
 		lblNewLabel_1_1_2.setForeground(new Color(0, 102, 255));
 		lblNewLabel_1_1_2.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		lblNewLabel_1_1_2.setBounds(120, 242, 109, 34);
 		mainPane.add(lblNewLabel_1_1_2);
-
-		JLabel lblNewLabel_1_1_3 = new JLabel(
-				"\uD310\uB9E4\uB97C \uC704\uD574 \uB4F1\uB85D\uD55C \uAC8C\uC2DC\uBB3C\uC744 \uC218\uC815\uD560 \uC218 \uC788\uC5B4\uC694\r\n");
+		
+		JLabel lblNewLabel_1_1_3 = new JLabel("\uD310\uB9E4\uB97C \uC704\uD574 \uB4F1\uB85D\uD55C \uAC8C\uC2DC\uBB3C\uC744 \uC218\uC815\uD560 \uC218 \uC788\uC5B4\uC694\r\n");
 		lblNewLabel_1_1_3.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_3.setBounds(271, 248, 337, 22);
 		mainPane.add(lblNewLabel_1_1_3);
-
+		
 		JLabel lblNewLabel_1_1_2_1 = new JLabel("4. 게시물 삭제");
 		lblNewLabel_1_1_2_1.setForeground(new Color(0, 102, 255));
 		lblNewLabel_1_1_2_1.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		lblNewLabel_1_1_2_1.setBounds(120, 316, 109, 34);
 		mainPane.add(lblNewLabel_1_1_2_1);
-
-		JLabel lblNewLabel_1_1_2_2 = new JLabel(
-				"\uD310\uB9E4\uB97C \uC704\uD574 \uB4F1\uB85D\uD55C \uAC8C\uC2DC\uBB3C\uC744 \uC0AD\uC81C\uD560 \uC218 \uC788\uC5B4\uC694");
+		
+		JLabel lblNewLabel_1_1_2_2 = new JLabel("\uD310\uB9E4\uB97C \uC704\uD574 \uB4F1\uB85D\uD55C \uAC8C\uC2DC\uBB3C\uC744 \uC0AD\uC81C\uD560 \uC218 \uC788\uC5B4\uC694");
 		lblNewLabel_1_1_2_2.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_2_2.setBounds(271, 321, 301, 22);
 		mainPane.add(lblNewLabel_1_1_2_2);
-
+		
 		JLabel lblNewLabel_1_1_2_3 = new JLabel("5. 채팅하기");
 		lblNewLabel_1_1_2_3.setForeground(new Color(0, 102, 255));
 		lblNewLabel_1_1_2_3.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		lblNewLabel_1_1_2_3.setBounds(120, 383, 109, 34);
 		mainPane.add(lblNewLabel_1_1_2_3);
-
-		JLabel lblNewLabel_1_1_2_4 = new JLabel(
-				"\uC2E4\uC2DC\uAC04 \uCC44\uD305\uC744 \uD560 \uC218 \uC788\uC5B4 \uD310\uB9E4\uC790\uC640 \uAD6C\uB9E4\uC790\uAC00 \uB300\uD654\uB97C \uB098\uB20C \uC218 \uC788\uC5B4\uC694\r\n");
+		
+		JLabel lblNewLabel_1_1_2_4 = new JLabel("\uC2E4\uC2DC\uAC04 \uCC44\uD305\uC744 \uD560 \uC218 \uC788\uC5B4 \uD310\uB9E4\uC790\uC640 \uAD6C\uB9E4\uC790\uAC00 \uB300\uD654\uB97C \uB098\uB20C \uC218 \uC788\uC5B4\uC694\r\n");
 		lblNewLabel_1_1_2_4.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_2_4.setBounds(271, 389, 566, 22);
 		mainPane.add(lblNewLabel_1_1_2_4);
-
+		
 		JLabel lblNewLabel_1_1_2_5 = new JLabel("6. \uB9AC\uBDF0\uD558\uAE30");
 		lblNewLabel_1_1_2_5.setForeground(new Color(0, 102, 255));
 		lblNewLabel_1_1_2_5.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		lblNewLabel_1_1_2_5.setBounds(120, 523, 109, 34);
 		mainPane.add(lblNewLabel_1_1_2_5);
-
-		JLabel lblNewLabel_1_1_2_6 = new JLabel(
-				"\uD310\uB9E4\uC790\uC758 \uC544\uC774\uB514\uB97C \uAC80\uC0C9\uD558\uBA74 \uD310\uB9E4\uC790\uC5D0 \uB300\uD55C \uB9AC\uBDF0\uB97C \uC870\uD68C\uD560 \uC218 \uC788\uC5B4\uC694! ");
+		
+		JLabel lblNewLabel_1_1_2_6 = new JLabel("\uD310\uB9E4\uC790\uC758 \uC544\uC774\uB514\uB97C \uAC80\uC0C9\uD558\uBA74 \uD310\uB9E4\uC790\uC5D0 \uB300\uD55C \uB9AC\uBDF0\uB97C \uC870\uD68C\uD560 \uC218 \uC788\uC5B4\uC694! ");
 		lblNewLabel_1_1_2_6.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_2_6.setBounds(271, 523, 601, 34);
 		mainPane.add(lblNewLabel_1_1_2_6);
-
-		JLabel lblNewLabel_2 = new JLabel(
-				"\uAD6C\uB9E4 \uBC0F \uD310\uB9E4\uD560 \uC218 \uC788\uB294 \uBAA8\uB4E0 \uAC8C\uC2DC\uBB3C\uC744 \uAC80\uC0C9\uD560 \uC218 \uC788\uC5B4\uC694 ");
+		
+		JLabel lblNewLabel_2 = new JLabel("\uAD6C\uB9E4 \uBC0F \uD310\uB9E4\uD560 \uC218 \uC788\uB294 \uBAA8\uB4E0 \uAC8C\uC2DC\uBB3C\uC744 \uAC80\uC0C9\uD560 \uC218 \uC788\uC5B4\uC694 ");
 		lblNewLabel_2.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_2.setBounds(271, 183, 367, 15);
 		mainPane.add(lblNewLabel_2);
-
-		JLabel lblNewLabel_2_1 = new JLabel(
-				"\uCC3E\uACE0 \uC2F6\uC740 \uC0C1\uD488\uBA85\uC744 \uC785\uB825\uD574\uC11C \uCC3E\uC744 \uC218 \uC788\uC5B4\uC694");
+		
+		JLabel lblNewLabel_2_1 = new JLabel("\uCC3E\uACE0 \uC2F6\uC740 \uC0C1\uD488\uBA85\uC744 \uC785\uB825\uD574\uC11C \uCC3E\uC744 \uC218 \uC788\uC5B4\uC694");
 		lblNewLabel_2_1.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_2_1.setBounds(271, 213, 367, 15);
 		mainPane.add(lblNewLabel_2_1);
-
-		JLabel lblNewLabel_1_1_3_1 = new JLabel(
-				"\uC218\uC815\uC744 \uD558\uACE0 \uC2F6\uC740 \uAC8C\uC2DC\uBB3C\uBC88\uD638\uB97C \uAC80\uC0C9\uD558\uC5EC \uC218\uC815\uD558\uC138\uC694");
+		
+		JLabel lblNewLabel_1_1_3_1 = new JLabel("\uC218\uC815\uC744 \uD558\uACE0 \uC2F6\uC740 \uAC8C\uC2DC\uBB3C\uBC88\uD638\uB97C \uAC80\uC0C9\uD558\uC5EC \uC218\uC815\uD558\uC138\uC694");
 		lblNewLabel_1_1_3_1.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_3_1.setBounds(271, 278, 337, 22);
 		mainPane.add(lblNewLabel_1_1_3_1);
-
-		JLabel lblNewLabel_1_1_2_2_1 = new JLabel(
-				"\uC0AD\uC81C\uB97C \uD558\uACE0 \uC2F6\uC740 \uAC8C\uC2DC\uBB3C\uBC88\uD638\uB97C \uAC80\uC0C9\uD558\uC5EC \uC0AD\uC81C\uD558\uC138\uC694");
+		
+		JLabel lblNewLabel_1_1_2_2_1 = new JLabel("\uC0AD\uC81C\uB97C \uD558\uACE0 \uC2F6\uC740 \uAC8C\uC2DC\uBB3C\uBC88\uD638\uB97C \uAC80\uC0C9\uD558\uC5EC \uC0AD\uC81C\uD558\uC138\uC694");
 		lblNewLabel_1_1_2_2_1.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_2_2_1.setBounds(271, 351, 441, 22);
 		mainPane.add(lblNewLabel_1_1_2_2_1);
-
-		JLabel lblNewLabel_1_1_2_4_1 = new JLabel(
-				"\uAD6C\uB9E4\uC790 : \uAD6C\uB9E4\uD558\uACE0 \uC2F6\uC740 \uC0C1\uD488\uC758 \uAC8C\uC2DC\uBB3C \uBC88\uD638\uB97C \uC785\uB825\uD558\uC5EC \uD310\uB9E4\uC790\uC640 \uB300\uD654\uD560 \uC218 \uC788\uC5B4\uC694\r\n");
+		
+		JLabel lblNewLabel_1_1_2_4_1 = new JLabel("\uAD6C\uB9E4\uC790 : \uAD6C\uB9E4\uD558\uACE0 \uC2F6\uC740 \uC0C1\uD488\uC758 \uAC8C\uC2DC\uBB3C \uBC88\uD638\uB97C \uC785\uB825\uD558\uC5EC \uD310\uB9E4\uC790\uC640 \uB300\uD654\uD560 \uC218 \uC788\uC5B4\uC694\r\n");
 		lblNewLabel_1_1_2_4_1.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_2_4_1.setBounds(271, 421, 529, 22);
 		mainPane.add(lblNewLabel_1_1_2_4_1);
-
-		JLabel lblNewLabel_1_1_2_4_1_1 = new JLabel(
-				"\uD310\uB9E4\uC790 : \uB4F1\uB85D\uD55C \uAC8C\uC2DC\uBB3C \uBAA9\uB85D\uC744 \uD074\uB9AD\uD558\uBA74 \uAD6C\uB9E4\uC790\uC640 \uB300\uD654\uD560 \uC218 \uC788\uC5B4\uC694\r\n");
+		
+		JLabel lblNewLabel_1_1_2_4_1_1 = new JLabel("\uD310\uB9E4\uC790 : \uB4F1\uB85D\uD55C \uAC8C\uC2DC\uBB3C \uBAA9\uB85D\uC744 \uD074\uB9AD\uD558\uBA74 \uAD6C\uB9E4\uC790\uC640 \uB300\uD654\uD560 \uC218 \uC788\uC5B4\uC694\r\n");
 		lblNewLabel_1_1_2_4_1_1.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_2_4_1_1.setBounds(271, 453, 566, 22);
 		mainPane.add(lblNewLabel_1_1_2_4_1_1);
-
-		JLabel lblNewLabel_1_1_2_4_1_2 = new JLabel(
-				"\u203B\uD310\uB9E4\uC790\uC640 \uAD6C\uB9E4\uC790 \uBAA8\uB450 \uB85C\uADF8\uC778 \uC0C1\uD0DC\uC77C \uB54C\uB9CC \uCC44\uD305\uC774 \uAC00\uB2A5\uD574\uC694! \uC720\uC758\uD574\uC8FC\uC138\uC694! \u203B");
+		
+		JLabel lblNewLabel_1_1_2_4_1_2 = new JLabel("\u203B\uD310\uB9E4\uC790\uC640 \uAD6C\uB9E4\uC790 \uBAA8\uB450 \uB85C\uADF8\uC778 \uC0C1\uD0DC\uC77C \uB54C\uB9CC \uCC44\uD305\uC774 \uAC00\uB2A5\uD574\uC694! \uC720\uC758\uD574\uC8FC\uC138\uC694! \u203B");
 		lblNewLabel_1_1_2_4_1_2.setForeground(new Color(255, 0, 51));
 		lblNewLabel_1_1_2_4_1_2.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_2_4_1_2.setBounds(271, 485, 566, 22);
 		mainPane.add(lblNewLabel_1_1_2_4_1_2);
-
+		
 		JLabel lblNewLabel_1_1_2_5_1 = new JLabel("7. \uB9C8\uC774\uD398\uC774\uC9C0");
 		lblNewLabel_1_1_2_5_1.setForeground(new Color(0, 102, 255));
 		lblNewLabel_1_1_2_5_1.setFont(new Font("제주고딕", Font.PLAIN, 17));
 		lblNewLabel_1_1_2_5_1.setBounds(120, 567, 109, 34);
 		mainPane.add(lblNewLabel_1_1_2_5_1);
-
-		JLabel lblNewLabel_1_1_2_6_1 = new JLabel(
-				"\uD68C\uC6D0\uAC00\uC785 \uC2DC \uB4F1\uB85D\uD55C \uAC1C\uC778\uC815\uBCF4\uB97C \uBCC0\uACBD\uD560 \uC218 \uC788\uC5B4\uC694 \r\n \uC544\uC774\uB514\uB97C \uC778\uC99D\uD558\uBA74 \uC218\uC815\uD560 \uC218 \uC788\uC5B4\uC694!");
+		
+		JLabel lblNewLabel_1_1_2_6_1 = new JLabel("\uD68C\uC6D0\uAC00\uC785 \uC2DC \uB4F1\uB85D\uD55C \uAC1C\uC778\uC815\uBCF4\uB97C \uBCC0\uACBD\uD560 \uC218 \uC788\uC5B4\uC694 \r\n \uC544\uC774\uB514\uB97C \uC778\uC99D\uD558\uBA74 \uC218\uC815\uD560 \uC218 \uC788\uC5B4\uC694!");
 		lblNewLabel_1_1_2_6_1.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_2_6_1.setBounds(271, 573, 601, 22);
 		mainPane.add(lblNewLabel_1_1_2_6_1);
+		
+
 
 //		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
-		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage()); // 영화
+		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage()); //영화
 //		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage());
 
-		// 영재 "C:/java_workspace/market/images/north.png"
-		// 민석 C:/dev/se_workspace/sist_project_1/images/north.png
+		//영재 "C:/java_workspace/market/images/north.png"
+		//민석 C:/dev/se_workspace/sist_project_1/images/north.png
 //		north_panel = new JPanel();
 //		north_panel.setBackground(new Color(153, 204, 255));
 		northPane.setBounds(0, 0, 1186, 130);
 		getContentPane().add(northPane);
 		northPane.setLayout(null);
-
+		
 		btnLogout = new JButton("로그아웃");
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setBounds(1081, 10, 93, 25);
@@ -388,7 +382,7 @@ public class MarketMgmUI extends JFrame {
 		welcome_member.setBounds(819, 10, 131, 25);
 		northPane.add(welcome_member);
 
-		setSize(1215, 780);
+		setSize(1230, 780);
 
 		Dimension fsize = getSize();
 		Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -417,29 +411,29 @@ public class MarketMgmUI extends JFrame {
 		btnReview.addActionListener(eventObj);
 	}// start method
 
-	// 서버와 연결
+	//서버와 연결
 	public void serverConnect() {
 		try {
-			socket = new Socket("localhost", 5777);
+			socket = new Socket("localhost",5777);
 			oos = new ObjectOutputStream(socket.getOutputStream());
 			ois = new ObjectInputStream(socket.getInputStream());
-
-			// 처음접속 메시지 전송
+			
+			//처음접속 메시지 전송
 			MessageVO msgVO = new MessageVO();
 			msgVO.setName(vo.id);
 			msgVO.setStatus(CONNECT);
 			msgVO.setRoom_num(now_room);
 
 			oos.writeObject(msgVO);
-
-			// 서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
-			ClientThread ct = new ClientThread(ois, content, input, this);
+			 
+			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
+			ClientThread ct = new ClientThread(ois,content,input,this);
 			ct.start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 	// 메뉴 이동 제어
 	public void resetPane() {
 		showPane.setVisible(false);
@@ -500,12 +494,14 @@ public class MarketMgmUI extends JFrame {
 		label.setFont(font);
 		return label;
 	}
+	
+	
+	
 
 	// 이벤트 처리 클래스
 	class MarketMgmUIEvent extends WindowAdapter implements ActionListener {
 		// Field
 		MarketMgmUI main;
-
 		// Constructor
 		public MarketMgmUIEvent() {
 		}
@@ -520,13 +516,13 @@ public class MarketMgmUI extends JFrame {
 			msgVO.setName(vo.id);
 			msgVO.setStatus(EXIT);
 			try {
-				oos.writeObject(msgVO);
+				oos.writeObject(msgVO);				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
-			system.login_state(vo, 0); // 종료 시 login_state 0으로
-			system.server_state(vo, 0);// 종료 시 server_state 0으로
+			
+			system.login_state(vo,0); //종료 시 login_state 0으로
+			system.server_state(vo,0);//종료 시 server_state 0으로
 			system.dao.close();
 			int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 프로그램을 종료 하시겠습니까?"));
 			if (result == 0) {
@@ -554,20 +550,20 @@ public class MarketMgmUI extends JFrame {
 		// 액션 이벤트 처리
 		public void actionPerformed(ActionEvent ae) {
 			Object obj = ae.getSource();
-			MarketChat mc = new MarketChat(main);
+			MarketChat mc=new MarketChat(main);
 
 			if (btnLogin == obj || jtf_pass == obj) {
 				if (login()) {
-					system.login_state(vo, 1);// 로그인 시 login_state를 1로 변경
+					system.login_state(vo,1);//로그인 시 login_state를 1로 변경
 					main.serverConnect();
-					system.server_state(vo, 1);
-					if (system.SellCkeck(vo)) {// 판매 게시물이 있으면 true 없으면 false
-						// now_room defualt 설정
-						ArrayList<String> list = main.system.chat_list(vo.id);
-						now_room = Integer.parseInt(list.get(0));
-						// server와 연결하기
-						// 서버와 연결 시 server_state 1로 변경
-
+					system.server_state(vo,1);
+					if(system.SellCkeck(vo)){// 판매 게시물이 있으면 true 없으면 false
+						//now_room defualt 설정
+						ArrayList<String> list=main.system.chat_list(vo.id);
+						now_room=Integer.parseInt(list.get(0));
+						//server와 연결하기
+						//서버와 연결 시 server_state 1로 변경
+						
 					}
 					start();
 				}
@@ -577,7 +573,7 @@ public class MarketMgmUI extends JFrame {
 			} else if (btnReg == obj) {
 				new MarketRegister(main).register();
 			} else if (btnSearch == obj) {
-				new MarketSearch(main, system.dao).search("show_all");
+				new MarketSearch(main, system.dao).search("show_all");	
 			} else if (btnDelete == obj) {
 				new MarketDelete(main).delete();
 			} else if (btnUpdate == obj) {
@@ -589,13 +585,13 @@ public class MarketMgmUI extends JFrame {
 			} else if (btnLogout == obj) {
 				int result = JOptionPane.showConfirmDialog(null, main.getMsg("정말로 로그아웃 하시겠습니까?"));
 				if (result == 0) {
-					system.login_state(vo, 0); // 로그아웃 시 login_state 0으로
-					system.server_state(vo, 0);// 로그아웃 시 server_state 0으로
+					system.login_state(vo,0); //로그아웃 시 login_state 0으로
+					system.server_state(vo,0);//로그아웃 시 server_state 0으로
 					MessageVO msgVO = new MessageVO();
 					msgVO.setName(vo.id);
 					msgVO.setStatus(EXIT);
 					try {
-						oos.writeObject(msgVO);
+						oos.writeObject(msgVO);				
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
