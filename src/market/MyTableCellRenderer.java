@@ -49,13 +49,11 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 						  rvo.setMid(vo.getMid());
 						  rvo.setPid(vo.getPid());
 						  rvo.setEvaluation(comm);				  
-//						  System.out.println(rvo.getMid() +", "+ rvo.getPid() +", "+ rvo.getEvaluation());
 						  
 						  market_s.dao.product_row(vo);
 						  market_s.dao.review_insert(comm,rvo);
 						  market_s.dao.delete_review(rvo.getPid());	
-						  
-						  
+						  						  
 						  new MarketSearch(main, market_s.dao).search("show_all");	
 					 }else {
 						 JOptionPane.showMessageDialog(null,"리뷰 등록이 취소되었습니다.");
@@ -79,5 +77,5 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 	public boolean shouldSelectCell(EventObject anEvent) {
 		return true;
 	}
-	
+
 }

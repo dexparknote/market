@@ -3,12 +3,10 @@ package market;
 import java.io.Serializable;
 
 public class MessageVO implements Serializable {
-	//Field
-	String name,msg;
+	// Field
+	String name, msg;
 	int status, room_num;
 
-	
-	
 	public int getRoom_num() {
 		return room_num;
 	}
@@ -40,5 +38,5 @@ public class MessageVO implements Serializable {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	
+
 }

@@ -48,19 +48,13 @@ public class MarketMgmJoin {
 	public void join() {
 		joinOff();
         main.showPane.setVisible(false);
-
-
 //        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/java_workspace/market/images/join_back.png").getImage());
-//        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/join_back.png").getImage()); //¹Î¼®
-//		main.showPane.setVisible(false);
+//        joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\join_back.png").getImage()); //¿µÈ­
+        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/join_back.png").getImage()); //¹Î¼®
 //        joinBackPane = new ImageJoinPanel(new ImageIcon("C:/java_workspace/market/images/join_back.png").getImage());
          joinBackPane = new ImageJoinPanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\join_back.png").getImage());
 
 
-// ¿µÀç-"C:/java_workspace/market/images/join_back.png").getImage());
-//¹Î¼® - C:/dev/se_workspace/sist_project_1/images/join_back.png").getImage();
-//±â¸² -"C:/dev/eclipse_workspace/market/images/join_back.png"  
-//¿µÈ­-C:\\dev\\se_workspace\\market\\images\\join_back.png
 		main.setSize(joinBackPane.getWidth(), joinBackPane.getHeight() + 38);
 		main.getContentPane().add(joinBackPane);
 
