@@ -65,7 +65,6 @@ public class MultiChatClient extends WindowAdapter implements ActionListener {
 			msgVO.setName(name);
 			msgVO.setStatus(MultiChatClient.CONNECT);
 			
-			
 			oos.writeObject(msgVO);
 			
 			//서버로 부터 전송되는 메시지를 계속 수신하는 쓰레드 객체 생성
@@ -76,8 +75,6 @@ public class MultiChatClient extends WindowAdapter implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-	
-	
 	
 	/**채팅화면구성**/
 	public void chatUI() {
@@ -106,10 +103,6 @@ public class MultiChatClient extends WindowAdapter implements ActionListener {
 		jf.addWindowListener(this);
 		input.addActionListener(this);
 		send.addActionListener(this);
-		
-		
-		
-		
 	}
 	/** 이벤트 처리**/
 	public void windowClosing(WindowEvent we) {
@@ -120,7 +113,6 @@ public class MultiChatClient extends WindowAdapter implements ActionListener {
 			msgVO.setStatus(MultiChatClient.EXIT);
 			oos.writeObject(msgVO);
 			System.exit(0);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -141,15 +133,10 @@ public class MultiChatClient extends WindowAdapter implements ActionListener {
 					msgVO.setMsg(msg);
 					msgVO.setStatus(MultiChatClient.TALKING);
 					oos.writeObject(msgVO);
-					
-				
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
 	}
-
-
 }
