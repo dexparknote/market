@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class MyTableCellRenderer extends AbstractCellEditor implements TableCellEditor, TableCellRenderer{	
 	MarketSearch market_s;
@@ -30,8 +31,8 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 		JButton comp =null;
 		if(column ==10) {
 			 comp = new JButton("구매");
-			 comp.setForeground(new Color(102, 153, 204));
-			 comp.setBackground(Color.DARK_GRAY);
+			 comp.setForeground(Color.DARK_GRAY);
+			 comp.setBackground(SystemColor.controlHighlight);
 		}
 		return comp;
 	}
@@ -40,8 +41,8 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 	 */
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected,int row, int column) {
 		JButton btn_buy = new JButton("구매");
-		btn_buy.setForeground(new Color(102, 153, 204));
-		btn_buy.setBackground(Color.DARK_GRAY);
+		btn_buy.setForeground(Color.DARK_GRAY);
+		btn_buy.setBackground(SystemColor.controlHighlight);
 		
 		btn_buy.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
