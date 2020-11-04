@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Color;
@@ -19,7 +20,7 @@ public class MarketMyPage {
 	JPanel myPagePane;
 //	JPanel info_updatePane, inputIdPane;
 	private JTextField jt_idCheck;
-	private JTextField jt_upass;
+	private JPasswordField jt_upass;
 	private JTextField jt_uname;
 	private JTextField jt_uaddr;
 	private JTextField jt_uphone;
@@ -29,7 +30,6 @@ public class MarketMyPage {
 	String mid;
 	int idx = 0;
 	MemberVO vo = new MemberVO();
-	ArrayList<String> tf_update_list = new ArrayList<>();
 
 	public MarketMyPage() {
 	}
@@ -115,8 +115,7 @@ public class MarketMyPage {
 		jl_uemail.setFont(new Font("力林绊雕", Font.PLAIN, 19));
 		myPagePane.add(jl_uemail);
 
-		jt_upass = new JTextField();
-		jt_upass.setFont(new Font("力林绊雕", Font.PLAIN, 19));
+		jt_upass = new JPasswordField();
 		jt_upass.setBounds(446, 190, 230, 25);
 		myPagePane.add(jt_upass);
 		jt_upass.setColumns(10);
@@ -166,17 +165,11 @@ public class MarketMyPage {
 		list[3] = mvo.getPhone();
 		list[4] = mvo.getEmail();
 
-		jt_upass.setText(list[0]);
+//		jt_upass.setText(list[0]);
 		jt_uname.setText(list[1]);
 		jt_uaddr.setText(list[2]);
 		jt_uphone.setText(list[3]);
 		jt_uemail.setText(list[4]);
-
-		tf_update_list.add(jt_upass.getText());
-		tf_update_list.add(jt_uname.getText());
-		tf_update_list.add(jt_uaddr.getText());
-		tf_update_list.add(jt_uphone.getText());
-		tf_update_list.add(jt_uemail.getText());
 
 		main.getContentPane().add(myPagePane);
 		main.setVisible(true);
