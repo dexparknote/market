@@ -140,7 +140,8 @@ public class MarketMgmUI extends JFrame {
 		showPane.add(btnJoin);
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
+//		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
+		Image img = toolkit.getImage("C:/dev/se_workspace/sist_project_1/images/icon.png");
 		// ¿µÀç "C:/java_workspace/market/images/icon.png"
 		setIconImage(img);
 
