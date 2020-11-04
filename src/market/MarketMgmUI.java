@@ -169,8 +169,12 @@ public class MarketMgmUI extends JFrame {
 		menuPane = new JPanel();
 		menuPane.setBounds(0, 130, 200, 650);
 		mainPane.setBounds(200, 130, 1000, 650);
-		jl_title = new JLabel(vo.getId()+"\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4 :)");
-		jl_title.setBounds(270, 32, 405, 22);
+//		jl_title = new JLabel(vo.getId()+"\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4 :)");
+		JLabel jl_id_title = new JLabel(vo.getId());
+		jl_id_title.setHorizontalAlignment(SwingConstants.RIGHT);
+		jl_id_title.setBounds(120, 32, 169, 22);
+		jl_title = new JLabel("\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4 :)");
+		jl_title.setBounds(290, 32, 405, 22);
 		jl_img = new JLabel(new ImageIcon("images/resell.jpg"));
 		jl_img.setBounds(299, 16, -1, -1);
 		mainPane.setBackground(Color.WHITE);
@@ -209,6 +213,8 @@ public class MarketMgmUI extends JFrame {
 		btnReview.setBackground(new Color(102, 153, 204));
 
 		jl_title.setFont(new Font("力林绊雕", Font.PLAIN, 20));
+		jl_id_title.setFont(new Font("力林绊雕", Font.PLAIN, 20));
+		jl_id_title.setForeground(Color.ORANGE);
 		btnReg.setFont(new Font("力林绊雕", Font.PLAIN, 17));
 		btnSearch.setFont(new Font("力林绊雕", Font.PLAIN, 17));
 		btnUpdate.setFont(new Font("力林绊雕", Font.PLAIN, 17));
@@ -217,6 +223,7 @@ public class MarketMgmUI extends JFrame {
 		btnReview.setFont(new Font("力林绊雕", Font.PLAIN, 17));
 		mainPane.setLayout(null);
 		mainPane.add(jl_img);
+		mainPane.add(jl_id_title);
 		mainPane.add(jl_title);
 		menuPane.setLayout(null);
 
