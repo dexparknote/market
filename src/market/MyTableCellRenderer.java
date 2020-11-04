@@ -1,6 +1,8 @@
 package market;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.EventObject;
@@ -9,7 +11,6 @@ import javax.swing.AbstractCellEditor;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
@@ -29,12 +30,16 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 		JButton comp =null;
 		if(column ==10) {
 			 comp = new JButton("구매");
+			 comp.setForeground(Color.DARK_GRAY);
+			 comp.setBackground(SystemColor.controlHighlight);
 		}
 		return comp;
 	}
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected,int row, int column) {
 		JButton btn_buy = new JButton("구매");
+		btn_buy.setForeground(Color.DARK_GRAY);
+		btn_buy.setBackground(SystemColor.controlHighlight);
 		
 		btn_buy.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
