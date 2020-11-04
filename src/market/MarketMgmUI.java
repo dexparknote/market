@@ -95,8 +95,8 @@ public class MarketMgmUI extends JFrame {
 	// Method
 	public void showMain() { // 10.22 영재 수정4i
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); // 영화
-
+//		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); // 영화
+		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage()); // 영화
 
 
 		// 영재-C:/java_workspace/market/images/login_main.png
@@ -350,8 +350,8 @@ public class MarketMgmUI extends JFrame {
 		
 
 
-		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
-//		northPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/north.png").getImage()); //영화
+//		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
+		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage()); //영화
 //		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage());
 
 		//영재 "C:/java_workspace/market/images/north.png"
@@ -382,7 +382,7 @@ public class MarketMgmUI extends JFrame {
 		welcome_member.setBounds(819, 10, 131, 25);
 		northPane.add(welcome_member);
 
-		setSize(1350, 820);
+		setSize(1230, 780);
 
 		Dimension fsize = getSize();
 		Dimension scsize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -555,14 +555,14 @@ public class MarketMgmUI extends JFrame {
 			if (btnLogin == obj || jtf_pass == obj) {
 				if (login()) {
 					system.login_state(vo,1);//로그인 시 login_state를 1로 변경
+					main.serverConnect();
+					system.server_state(vo,1);
 					if(system.SellCkeck(vo)){// 판매 게시물이 있으면 true 없으면 false
 						//now_room defualt 설정
 						ArrayList<String> list=main.system.chat_list(vo.id);
 						now_room=Integer.parseInt(list.get(0));
 						//server와 연결하기
-						main.serverConnect();
 						//서버와 연결 시 server_state 1로 변경
-						system.server_state(vo,1);
 						
 					}
 					start();
