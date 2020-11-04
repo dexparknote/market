@@ -110,7 +110,6 @@ public class MarketUpdate {
 		
 		
 		main.getContentPane().add(updatePane);
-		main.setLocationRelativeTo(null);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.setVisible(true);
 		
@@ -330,10 +329,6 @@ public class MarketUpdate {
 	/** 수정처리 메소드 */
 	public void updateProc() {
 		ArrayList<String> dataList = new ArrayList<String>();
-//		for(JTextField tf : tf_update_list) {
-//			dataList.add(tf.getText().trim());
-//		}
-		
 		
 		
 		dataList.add(tf_pname.getText().trim());
@@ -348,13 +343,6 @@ public class MarketUpdate {
 		dataList.add(combo_area.getSelectedItem().toString().trim());
 		dataList.add(tf_explain.getText().trim());
 		
-//		data_list[0] = pvo.getPname();
-//		data_list[1] = String.valueOf(pvo.getPrice());
-//		data_list[2] = pvo.getPphone();
-//		data_list[3] = pvo.getState();
-//		data_list[4] = pvo.getMethod();
-//		data_list[5] = pvo.getArea();
-//		data_list[6] = pvo.getExplain();
 		
 		ProductVO pvo = new ProductVO();
 		pvo.setPid(pid);
