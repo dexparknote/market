@@ -140,13 +140,12 @@ public class MarketMgmUI extends JFrame {
 		showPane.add(btnJoin);
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-<<<<<<< HEAD
+
 		Image img = toolkit.getImage("C:/dev/eclipse_workspace/market/images/icon.png");
 		// 기림 C:/dev/eclipse_workspace/market/images/icon.png
-=======
+
 //		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
-		Image img = toolkit.getImage("C:\\dev\\se_workspace\\market\\images\\icon.png");
->>>>>>> branch 'master' of https://github.com/lyj6054/market.git
+
 		// 영재 "C:/java_workspace/market/images/icon.png"
 		setIconImage(img);
 
@@ -356,13 +355,12 @@ public class MarketMgmUI extends JFrame {
 
 
 //		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
-<<<<<<< HEAD
+
 //		northPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/north.png").getImage()); //영화
 		northPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/north.png").getImage());//기림
-=======
-		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage()); //영화
+
 //		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage());
->>>>>>> branch 'master' of https://github.com/lyj6054/market.git
+
 
 		//영재 "C:/java_workspace/market/images/north.png"
 		//민석 C:/dev/se_workspace/sist_project_1/images/north.png
