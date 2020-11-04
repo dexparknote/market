@@ -181,14 +181,16 @@ public class MarketMyPage {
 	public void idSearchProc() {
 		mid = jt_idCheck.getText().trim();
 		if (mid.equals("")) {
-			JOptionPane.showMessageDialog(null, "비밀번호를 입력해주세요");
+			JOptionPane.showMessageDialog(null, "아이디를 입력해주세요");
 			jt_idCheck.requestFocus();
-		} else {
+		} else if (mid.equals(vo.getId())){
 			idx = main.system.searchMember(mid);
 			if (idx != 0) {
 				MemberVO mvo = main.system.selectMember(mid);
 				myPageUdate(mvo);
 			}
+		} else {
+			JOptionPane.showMessageDialog(null, "아이디를 다시 입력해주세요");
 		}
 	}
 
