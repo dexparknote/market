@@ -563,7 +563,6 @@ class MarketDAO extends DBConn {
 			pstmt.setString(7, pvo.getExplain());
 			pstmt.setString(8, pvo.getPid());
 			pstmt.setString(9, mvo.getId());
-			System.out.println(mvo.getId());
 
 			int count = pstmt.executeUpdate();
 			if (count != 0)
