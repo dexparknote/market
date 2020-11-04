@@ -4,7 +4,6 @@ public class MemberVO {
 	String id, pass, name, addr, phone, email;
 	int login_state, server_state;
 
-
 	public int getLogin_state() {
 		return login_state;
 	}
