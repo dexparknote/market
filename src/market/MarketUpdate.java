@@ -337,7 +337,7 @@ public class MarketUpdate {
 		pvo.setArea(dataList.get(5));
 		pvo.setExplain(dataList.get(6));
 
-		if (main.system.update_pr(pvo)) {
+		if (main.system.update_pr(pvo, main.vo)) {
 			JOptionPane.showMessageDialog(null, "수정이 완료됐습니다");
 			new MarketSearch(main, main.system.dao).search("show_all");
 		} else {
