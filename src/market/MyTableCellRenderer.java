@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class MyTableCellRenderer extends AbstractCellEditor implements TableCellEditor, TableCellRenderer{	
 	MarketSearch market_s;
@@ -35,7 +37,9 @@ public class MyTableCellRenderer extends AbstractCellEditor implements TableCell
 		}
 		return comp;
 	}
-	
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected,int row, int column) {
 		JButton btn_buy = new JButton("±¸¸Å");
 		btn_buy.setForeground(Color.DARK_GRAY);

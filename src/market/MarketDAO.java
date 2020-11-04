@@ -299,7 +299,7 @@ class MarketDAO extends DBConn {
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 
 		try {
-			String sql = " select pid, pname, price, pphone, state, method, area, explain, pdate"
+			String sql = " select pid, pname, price, pphone, state, method, area, explain, to_char(pdate,'yyyy-mm-dd')"
 					+ " from (select pid, pname, price, pphone, state, method, area, explain, pdate from product p, market_member m "
 					+ " where m.mid=p.mid and m.mid=? order by pid desc)";
 			getPreparedStatement(sql);
@@ -548,11 +548,11 @@ class MarketDAO extends DBConn {
 	}
 
 	/** 물품정보 수정 */
-	public boolean update_pr(ProductVO pvo) {
+	public boolean update_pr(ProductVO pvo, MemberVO mvo) {
 		boolean result = false;
 
 		try {
-			String sql = "update product set pname=?, price=?, pphone=?, state=?, method=?, area=?, explain=? where pid=?";
+			String sql = "update product set pname=?, price=?, pphone=?, state=?, method=?, area=?, explain=? where pid=? and mid=?";
 			getPreparedStatement(sql);
 			pstmt.setString(1, pvo.getPname());
 			pstmt.setInt(2, pvo.getPrice());
@@ -562,6 +562,7 @@ class MarketDAO extends DBConn {
 			pstmt.setString(6, pvo.getArea());
 			pstmt.setString(7, pvo.getExplain());
 			pstmt.setString(8, pvo.getPid());
+			pstmt.setString(9, mvo.getId());
 
 			int count = pstmt.executeUpdate();
 			if (count != 0)
