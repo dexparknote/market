@@ -1,8 +1,15 @@
 package market;
 
 public class ReviewVO {
-	String mid,evaluation,pid,rdate;
+	String mid,evaluation,pid,rdate,pname;
 	
+	
+	public String getPname() {
+		return pname;
+	}
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
 	public String getRdate() {
 		return rdate;
 	}

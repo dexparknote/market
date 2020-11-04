@@ -30,8 +30,8 @@ public class MarketReview {
 	   JLabel jl_reviewName, block1, block2, block3, block4;
 	   JButton btn_search;
 	   JTextField jt_search;
-	   Object[] columns = {"판매자ID","게시물번호","리뷰","리뷰등록일"};
-	   Object[] row =new Object[4];  
+	   Object[] columns = {"판매자ID","게시물번호","상품이름","리뷰","리뷰등록일"};
+	   Object[] row =new Object[5];  
 	   DefaultTableModel model =new DefaultTableModel(columns,0);   
 	   JTable table= new JTable(model); 
 	   MarketDAO dao;
@@ -103,6 +103,7 @@ public class MarketReview {
 	       
 	      table.getColumn("판매자ID").setCellRenderer(dtcr);
 		  table.getColumn("게시물번호").setCellRenderer(dtcr);
+		  table.getColumn("상품이름").setCellRenderer(dtcr);
 		  table.getColumn("리뷰").setCellRenderer(dtcr);
 		  table.getColumn("리뷰등록일").setCellRenderer(dtcr);
 	      
@@ -110,8 +111,8 @@ public class MarketReview {
 	      
 	      table.getColumn(table.getColumnName(0)).setPreferredWidth(30);   
 	      table.getColumn(table.getColumnName(1)).setPreferredWidth(20);
-	      table.getColumn(table.getColumnName(2)).setPreferredWidth(300);
-	      table.getColumn(table.getColumnName(3)).setPreferredWidth(50);
+	      table.getColumn(table.getColumnName(2)).setPreferredWidth(30);
+	      table.getColumn(table.getColumnName(3)).setPreferredWidth(300);
 	  
 	      table.setPreferredScrollableViewportSize(new Dimension(1200, 535));
 	      table.setRowHeight(table.getRowHeight() + 70);
@@ -137,8 +138,9 @@ public class MarketReview {
 				if(rvo != null) {
 					row[0]=rvo.getMid();
 					row[1]=rvo.getPid();
-					row[2]=rvo.getEvaluation();
-					row[3]=rvo.getRdate();
+					row[2]=rvo.getPname();
+					row[3]=rvo.getEvaluation();
+					row[4]=rvo.getRdate();
  					model.addRow(row);
 				}
 				table.repaint();		

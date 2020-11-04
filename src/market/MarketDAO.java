@@ -377,7 +377,6 @@ class MarketDAO extends DBConn{
 		pstmt.setString(1, rvo.getMid());
 		pstmt.setString(2, rvo.getPid());
 		pstmt.setString(3, comm);
-//		System.out.println(rvo.getMid() +", "+ rvo.getPid() +", "+ comm);
 
 		int count=pstmt.executeUpdate();
 		if(count!=0) 	result =true;
@@ -418,7 +417,7 @@ class MarketDAO extends DBConn{
 	{
 		ArrayList<ReviewVO> rlist = new ArrayList<ReviewVO>();
 			try {
-				String sql = " select mid,pid,evaluation,rdate from review where mid = ? ";
+				String sql = " select r.mid, r.pid, p.pname, evaluation,rdate from review r,product p where r.pid = p.pid and r.mid = ? order by rdate desc ";
 				getPreparedStatement(sql);
 				
 				pstmt.setString(1, mid);
@@ -427,8 +426,9 @@ class MarketDAO extends DBConn{
 					ReviewVO vo = new ReviewVO();
 					vo.setMid(rs.getString(1));
 					vo.setPid(rs.getString(2));
-					vo.setEvaluation(rs.getString(3));
-					vo.setRdate(rs.getString(4));
+					vo.setPname(rs.getString(3));
+					vo.setEvaluation(rs.getString(4));
+					vo.setRdate(rs.getString(5));
 					rlist.add(vo);
 			}
 			
