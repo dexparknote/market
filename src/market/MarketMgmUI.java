@@ -145,6 +145,7 @@ public class MarketMgmUI extends JFrame {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 
 
+
 		Image img = toolkit.getImage("C:/dev/eclipse_workspace/market/images/icon.png");
 		// 기림 C:/dev/eclipse_workspace/market/images/icon.png
 
@@ -366,6 +367,7 @@ public class MarketMgmUI extends JFrame {
 
 
 //		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
+
 
 //		northPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/north.png").getImage()); //영화
 		northPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/north.png").getImage());//기림
