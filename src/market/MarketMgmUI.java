@@ -503,7 +503,7 @@ public class MarketMgmUI extends JFrame {
 		JLabel label = new JLabel(msg);
 		label.setFont(font);
 		return label;
-	}
+	} 
 	
 	
 	
