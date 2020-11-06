@@ -421,6 +421,7 @@ public class MarketMgmUI extends JFrame {
 		btnReview.addActionListener(eventObj);
 	}// start method
 
+	
 	//서버와 연결
 	public void serverConnect() {
 		try {
