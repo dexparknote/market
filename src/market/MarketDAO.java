@@ -17,7 +17,7 @@ class MarketDAO extends DBConn {
 			String sql = "update market_member set login_state=? where mid=?";
 			getPreparedStatement(sql);
 			pstmt.setInt(1, login_state);
-			pstmt.setString(2, vo.getId());
+			pstmt.setString(2, vo.id);
 			int count = pstmt.executeUpdate();
 			if (count != 0)
 				result = true;

@@ -98,12 +98,9 @@ public class MarketMgmUI extends JFrame {
 
 //		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); // 영화
 
-		showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage()); // 영화
+//		showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage()); // 영화
 
-
-		// 영재-C:/java_workspace/market/images/login_main.png
-		// 기림-C:/dev/eclipse_workspace/market/images/login_main.png
-		// 민석-C:/dev/se_workspace/sist_project_1/images/login_main.png
+		showPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/login_main.png").getImage()); // 영화
 
 		setSize(showPane.getWidth(), showPane.getHeight() + 38);
 
@@ -146,7 +143,7 @@ public class MarketMgmUI extends JFrame {
 
 
 
-		Image img = toolkit.getImage("C:/dev/eclipse_workspace/market/images/icon.png");
+		Image img = toolkit.getImage("C:/dev/se_workspace/sist_project_1/images/icon.png");
 		// 기림 C:/dev/eclipse_workspace/market/images/icon.png
 
 //		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
@@ -363,20 +360,10 @@ public class MarketMgmUI extends JFrame {
 		lblNewLabel_1_1_2_6_1.setFont(new Font("제주고딕", Font.PLAIN, 15));
 		lblNewLabel_1_1_2_6_1.setBounds(271, 573, 601, 22);
 		mainPane.add(lblNewLabel_1_1_2_6_1);
-		
-
 
 //		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
-
-
-//		northPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/north.png").getImage()); //영화
-		northPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/north.png").getImage());//기림
-
-
-		//영재 "C:/java_workspace/market/images/north.png"
-		//민석 C:/dev/se_workspace/sist_project_1/images/north.png
-		//기림 C:/dev/eclipse_workspace/market/images/north.png
-
+		northPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/north.png").getImage()); //영화
+//		northPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/north.png").getImage());//기림
 
 //		north_panel = new JPanel();
 //		north_panel.setBackground(new Color(153, 204, 255));

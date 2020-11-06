@@ -212,8 +212,6 @@ public class MarketMyPage {
 
 		if (main.system.update_info(mvo)) {
 			JOptionPane.showMessageDialog(null, "수정이 완료되었습니다.");
-//			main.system.login_state(vo,0);//로그인 시 login_state를 1로 변경
-//			main.system.server_state(vo,0);
 			myPagePane.setVisible(false);
 			myPage();
 		} else {
