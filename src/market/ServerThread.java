@@ -32,7 +32,6 @@ public class ServerThread extends Thread {
 			while (flag) {
 				MessageVO msgVO = (MessageVO) ois.readObject();
 				RoomVO roomVO = new RoomVO();
-
 				if (msgVO.getStatus() == MarketMgmUI.CONNECT) {
 					msgVO.setMsg(msgVO.getName() + "¥‘¿Ã ¿‘¿Â ~~");
 					broadCastring(msgVO);
@@ -44,7 +43,6 @@ public class ServerThread extends Thread {
 					broadCastring(msgVO);
 					flag = false;
 				}
-
 			}
 			socket.close();
 

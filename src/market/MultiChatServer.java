@@ -14,13 +14,14 @@ public class MultiChatServer {
 	public MultiChatServer() {
 		try {
 			server = new ServerSocket(5777);
-
-			while (true) {
-				socket = server.accept();
-				ServerThread st = new ServerThread(socket);
-				st.start();
-				st_list.add(st);
+			boolean flag = true;
+			while (flag) {
+					socket = server.accept();
+					ServerThread st = new ServerThread(socket);
+					st.start();
+					st_list.add(st);
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -30,7 +31,6 @@ public class MultiChatServer {
 	/** main method **/
 	public static void main(String[] args) {
 		new MultiChatServer();
-
 	}
 
 }
