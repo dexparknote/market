@@ -95,9 +95,10 @@ public class MarketMgmUI extends JFrame {
 	// Method
 	public void showMain() { // 10.22 영재 수정4i
 //		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage()); // 영화
-		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage()); 
 
+//		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); // 영화
+
+		showPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/login_main.png").getImage()); // 영화
 
 
 		// 영재-C:/java_workspace/market/images/login_main.png
@@ -142,9 +143,14 @@ public class MarketMgmUI extends JFrame {
 		showPane.add(btnJoin);
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
-//		Image img = toolkit.getImage( "C:/java_workspace/market/images/icon.png");
-		// 영재 "C:/java_workspace/market/images/icon.png"
+
+
+
+		Image img = toolkit.getImage("C:/dev/eclipse_workspace/market/images/icon.png");
+		// 기림 C:/dev/eclipse_workspace/market/images/icon.png
+
+//		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
+
 		setIconImage(img);
 
 
@@ -169,6 +175,7 @@ public class MarketMgmUI extends JFrame {
 		menuPane = new JPanel();
 		menuPane.setBounds(0, 130, 200, 650);
 		mainPane.setBounds(200, 130, 1000, 650);
+
 //		jl_title = new JLabel(vo.getId()+"\uB2D8 ' \uB3C4\uC2EC \uC18D \uBC14\uB2E4 '\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4 :)");
 		JLabel jl_id_title = new JLabel(vo.getId());
 		jl_id_title.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -360,12 +367,17 @@ public class MarketMgmUI extends JFrame {
 
 
 //		northPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\north.png").getImage()); //영화
-//		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage()); //영화
-		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage());
-//		northPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/north.png").getImage());
+
+
+//		northPane = new ImagePanel(new ImageIcon("C:/dev/se_workspace/sist_project_1/images/north.png").getImage()); //영화
+		northPane = new ImagePanel(new ImageIcon("C:/dev/eclipse_workspace/market/images/north.png").getImage());//기림
+
 
 		//영재 "C:/java_workspace/market/images/north.png"
 		//민석 C:/dev/se_workspace/sist_project_1/images/north.png
+		//기림 C:/dev/eclipse_workspace/market/images/north.png
+
+
 //		north_panel = new JPanel();
 //		north_panel.setBackground(new Color(153, 204, 255));
 		northPane.setBounds(0, 0, 1186, 130);
@@ -421,6 +433,7 @@ public class MarketMgmUI extends JFrame {
 		btnReview.addActionListener(eventObj);
 	}// start method
 
+	
 	//서버와 연결
 	public void serverConnect() {
 		try {
@@ -552,6 +565,7 @@ public class MarketMgmUI extends JFrame {
 				JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 먼저 입력해주세요.");
 			} else {
 				JOptionPane.showMessageDialog(null, "아이디/비밀번호가 틀렸습니다. 다시한번 확인해주세요");
+				jtf_id.setText(""); jtf_pass.setText("");
 			}
 
 			return result;
