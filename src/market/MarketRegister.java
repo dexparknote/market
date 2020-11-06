@@ -226,6 +226,11 @@ public class MarketRegister {
 		boolean result = main.system.register(vo);
 		if (result) {
 			JOptionPane.showMessageDialog(null, "등록 성공!!");
+			jt_name.setText("");
+			jt_price.setText("");
+			jt_explain.setText("");
+			jt_pphone.setText("");
+			jt_name.requestFocus();
 		} else {
 			JOptionPane.showMessageDialog(null, "등록 실패!!");
 		}

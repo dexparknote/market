@@ -94,7 +94,7 @@ public class MarketMgmUI extends JFrame {
 
 	// Method
 	public void showMain() { // 10.22 영재 수정4i
-//		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
+		showPane = new ImagePanel(new ImageIcon("C:/java_workspace/market/images/login_main.png").getImage());
 
 //		showPane = new ImagePanel(new ImageIcon("C:\\dev\\se_workspace\\market\\images\\login_main.png").getImage()); // 영화
 
@@ -144,13 +144,9 @@ public class MarketMgmUI extends JFrame {
 
 
 		Image img = toolkit.getImage("C:/dev/se_workspace/sist_project_1/images/icon.png");
+//		Image img = toolkit.getImage("C:/dev/eclipse_workspace/market/images/icon.png");
 		// 기림 C:/dev/eclipse_workspace/market/images/icon.png
-
-//		Image img = toolkit.getImage("C:/java_workspace/market/images/icon.png");
-
 		setIconImage(img);
-
-
 		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -503,7 +499,7 @@ public class MarketMgmUI extends JFrame {
 		JLabel label = new JLabel(msg);
 		label.setFont(font);
 		return label;
-	}
+	} 
 	
 	
 	

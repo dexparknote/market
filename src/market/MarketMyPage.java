@@ -202,7 +202,7 @@ public class MarketMyPage {
 		list.add(jt_uphone.getText().trim());
 		list.add(jt_uemail.getText().trim());
 
-		MemberVO mvo = new MemberVO();
+		MemberVO mvo = new MemberVO(); 
 		mvo.setId(mid);
 		mvo.setPass(list.get(0));
 		mvo.setName(list.get(1));
