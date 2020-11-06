@@ -165,7 +165,7 @@ public class MarketMyPage {
 		list[3] = mvo.getPhone();
 		list[4] = mvo.getEmail();
 
-//		jt_upass.setText(list[0]);
+		jt_upass.setText(list[0]);
 		jt_uname.setText(list[1]);
 		jt_uaddr.setText(list[2]);
 		jt_uphone.setText(list[3]);
